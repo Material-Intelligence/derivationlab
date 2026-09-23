@@ -2,10 +2,7 @@
 
 ## Send us a record we verify wrong
 
-That is the contribution this project wants most. The verifier is the part of
-this repository everything else rests on; the only real evidence about it is a
-record it judges incorrectly. Two
-kinds are equally useful:
+Two kinds are useful:
 
 - a record that **should verify and does not** — the rules are too strict, or one
   of them is wrong;
@@ -42,8 +39,7 @@ tests/records/must_be_rejected/<case>/why.md
 
 Adding a directory is all it takes — `tests/test_records_corpus.py` walks both
 trees. `why.md` is required and is the part worth writing carefully: name the
-rule that should decide the case, and the expected message. A record with no
-account of why it is there stops being a test and becomes a puzzle.
+rule that should decide the case, and the expected message.
 
 ## Reporting a soundness bug privately
 

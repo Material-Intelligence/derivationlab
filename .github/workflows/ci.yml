@@ -9,7 +9,8 @@ name: CI
 #   app-tests     Do the runtime, the service and the API pass their suites?
 #   web           Does the web UI build, type-check, lint and pass its tests,
 #                 and does its generated client match openapi.json?
-#   gates         Is the tree free of everything that must not be published?
+#   gates         Is the tree free of secrets, oversized files and committed
+#                 bytecode?
 #   lint          Is the Python code clean under each package's own rules?
 #   packaging     Does the record distribution install and work outside the
 #                 checkout?
@@ -188,11 +189,10 @@ jobs:
       # would be published.
       #
       # Three of the scanner's gates need a needle list, which is not in this
-      # repository on purpose (see `.release-needles.example`), so they do not
-      # run here and the scanner says so in its output. Everything else it
-      # checks on every push: secret patterns, high-entropy tokens, third-party
-      # addresses, CJK outside the reasoned exemptions, oversized files,
-      # committed bytecode and non-text files.
+      # repository, so they do not run here and the scanner says so in its
+      # output. Everything else it checks on every push: secret patterns,
+      # high-entropy tokens, third-party addresses, CJK outside the reasoned
+      # exemptions, oversized files, committed bytecode and non-text files.
       - name: Scan the working tree
         run: python tools/release_check.py
 

@@ -12,8 +12,7 @@ binds the confirmed problem by its SHA-256 in its first event; the request is in
 the run's `manifest.json`), and the typeset layer's formula repairs run after a
 route finishes (see `route_typeset.py` below).
 
-This document describes the code as it is. Paths are relative to the
-repository root.
+Paths are relative to the repository root.
 
 ## The five packages
 
@@ -96,9 +95,8 @@ the runtime is replayed by this package before the service shows it.
   executable, its version, its configuration and the platform's sandbox
   evidence match what is pinned, and report every mismatch as a gate issue. The
   only platform evidence shipped is for macOS (`platform_evidence/`). Two of
-  the macOS host's four evidence items in `platform_report.current.json` are
-  development runs that are not in this repository; they are listed by digest
-  only, with `"published": false`.
+  the four macOS evidence items in `platform_report.current.json` are listed by
+  digest only (`"published": false`).
 - `prompts.py`: the Writer, Checker and Judge prompts and their JSON output
   schemas, kept in one place so they can be audited.
 - `formula_normalization.py`, `formula_validation.py`: the reversible

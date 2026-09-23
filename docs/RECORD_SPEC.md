@@ -10,10 +10,9 @@
 > defaults.
 
 **About this document.** It is an English translation of the contract
-documents the runtime hashes into every record, cross-checked line by line
-against the JSON schemas and the replay engine in this repository. The
-originals, in Chinese, ship untranslated under `docs/spec/` because their bytes
-are what the records pin (see `docs/spec/README.md`). Where the original text and
+documents the runtime hashes into every record. The originals, in Chinese,
+ship untranslated under `docs/spec/` because their bytes are what the records
+pin (see `docs/spec/README.md`). Where the original text and
 the code disagreed, the code wins and the disagreement is recorded in §18. This
 file is a translation, not the hashed artefact of a Record v1: see §18.1 before
 treating any sentence here as the frozen contract.
@@ -778,7 +777,7 @@ only; it does not prove that a physical inference holds. A run given no source
 material has an empty registry and MUST NOT accept literature citations from
 any other condition or from the answer side.
 
-> Note for publication: this event embeds third-party source text verbatim
+> Note: this event embeds third-party source text verbatim
 > inside the hash chain, where it cannot be removed without destroying the
 > record. A record containing `source_evidence_registered` should be treated as
 > carrying whatever rights attach to that text.
@@ -950,9 +949,8 @@ result has been reproduced.
 
 ## 18. Notes: where this document, the schemas and the code differ
 
-Every item was checked against the files in this repository. Where the source
-document and the code disagree, the code is authoritative and the body of this
-translation follows the code.
+Where the source document and the code disagree, the code is authoritative and
+the body of this translation follows the code.
 
 **18.1 This file is not the hashed contract — in the Record v1 records.** Each
 record's `run_created` pins three things by path and SHA-256: the contract and
@@ -964,18 +962,17 @@ it writes (`src/derivation_app/service.py`): a Record v1 pins
 `docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md`, a Record 1.1 written by the
 runtime pins `docs/spec/DERIVATION_RUNTIME_RECORD_V1_1_cn.md`. Both are in
 Chinese and ship untranslated, because a translation is a different byte
-sequence and nothing else could hash to the pinned digest. Both are public
-editions of their upstream originals, in which clauses that named unpublished
-work were made generic (for the first, two items of the §15 list, plus one
-sentence of §4.2 reworded; see §18.14),
-so their digests differ from the originals' (`docs/spec/README.md`). The first
-hashes to `9d6cfcd5…`. The two Record v1 example records cite it by path. The
-deterministic fixture was regenerated against the public edition, and its pin
-resolves. The real model run, `examples/runs/uniformly_charged_sphere/`, was
-written against the upstream original (`290a674f…`); that digest is inside its
-hash chain, so its `record_spec` pin does not resolve here and is reported as
-withheld. No record in this repository pins the second document. The two v1
-JSON schemas that both v1 records cite ship byte-identical —
+sequence and nothing else could hash to the pinned digest. Both differ from
+earlier wordings in a few clauses (for the first, two items of the §15 list and
+one sentence of §4.2; see §18.14), so their digests differ from those of the
+earlier wordings (`docs/spec/README.md`). The first hashes to `9d6cfcd5…`. The
+two Record v1 example records cite it by path. The deterministic fixture pins
+the shipped document, and its pin resolves. The real model run,
+`examples/runs/uniformly_charged_sphere/`, was written against the earlier
+wording (`290a674f…`); that digest is inside its hash chain, so its
+`record_spec` pin does not resolve here and is reported as withheld. No record
+in this repository pins the second document. The two v1 JSON schemas that both
+v1 records cite ship byte-identical —
 `docs/spec/derivation_agent_event_v1.schema.json` hashes to `2d23d249…` and
 `docs/spec/derivation_agent_canonical_v1.schema.json` to `f4050b21…`. Treat
 §0–§16 as a faithful rendering of the first document, and the code as the
@@ -1059,25 +1056,18 @@ The replay engine establishes that the authorizing resume came after the failure
 by comparing the human action's `seq` with the `seq` of the event that completed
 the check. An `event_id` is a name, and a producer chooses it freely (§2.2), so
 nothing may be inferred from it; there is no constraint on the id format beyond
-the one §2.2 states. An earlier revision of this package derived the failure's
-position by parsing the numeric tail of `completed_event_id`, which both crashed
-on ids with no numeric tail and let a producer misstate the ordering by naming
-an event; `tests/records/must_be_rejected/retry_predating_failure/` keeps that
-case.
+the one §2.2 states. `tests/records/must_be_rejected/retry_predating_failure/`
+is a record whose ids misstate that ordering.
 
-**18.14 Where the public edition differs from the original.** In the upstream
-original of the Record v1 document, two items of the §15 list of things v1 does
-not do were written in project-local shorthand. The public edition that ships
-in `docs/spec/` states them generically, and this translation follows it: "any
-particular scientific problem" and "a frozen task statement, judge
-configuration or historical tag established before it". No normative content
-changes: the clause still says v1 runs no problem of its own and modifies no
-earlier frozen artefact. The edition also words the opening sentence of §4.2
-as a plain normative statement; the rule it states, that a human edit never
-overwrites a historical step, is unchanged and is what §4.2 of this translation
-says. These two edits are the only differences between the edition and the
-original, and the reason one pin of
-`examples/runs/uniformly_charged_sphere/` does not resolve (§18.1).
+**18.14 Earlier wording of the v1 document.** The document that ships in
+`docs/spec/` differs from the wording `examples/runs/uniformly_charged_sphere/`
+pins in two items of the §15 list of things v1 does not do, which this
+translation follows: "any particular scientific problem" and "a frozen task
+statement, judge configuration or historical tag established before it"; and
+in the opening sentence of §4.2, which the shipped document words as a plain
+normative statement of the rule that a human edit never overwrites a historical
+step. No normative content changes. These are the only differences, and the
+reason one pin of that record does not resolve (§18.1).
 
 **18.15 What the shipped golden fixture actually asserts.** §13.12 requires the
 JSON, the canonical JSON and the HTML to rebuild byte for byte. In this repository

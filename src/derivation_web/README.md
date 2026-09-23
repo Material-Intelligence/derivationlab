@@ -12,7 +12,7 @@ npm run dev
 
 The product build uses the same-origin HTTP API by default. Open `/?empty=1` to start persistent AI Problem Intake. The backend owns one recoverable IntakeSession and returns every currently independent blocking question as one frontier. The page renders the questions as option/custom-answer cards and submits the whole frontier together. `?intake=<session_id>` restores the same session after refresh or backend restart; unfinished sessions are discoverable in a collapsed list. The complete specification and advanced runtime settings stay collapsed until requested.
 
-Fixture mode is explicit and never calls a backend. It exposes the tree and run catalog fixture but intentionally does not pretend to provide AI intake:
+Fixture mode never calls a backend. It serves the tree and run-catalog fixtures; Problem Intake is not available in this mode:
 
 ```bash
 VITE_API_MODE=fixture npm run dev
@@ -57,7 +57,7 @@ Two browser smokes are manual and need an installed Chrome/Edge browser (or `CHR
 ## Interaction contract
 
 - The run catalog remains visible on desktop and becomes a drawer on narrow screens; changing runs replaces `?run=` and closes the old SSE subscription.
-- Read-only validation runs expose the same tree and route reader without pause, resume, interrupt, or branch commands.
+- Archived runs are read-only: they expose the same tree and route reader without pause, resume, interrupt, or branch commands.
 - Problem Intake is a persistent backend-owned decision frontier rather than a fixed questionnaire. The complete versioned specification is inspectable but collapsed by default.
 - The complete tree remains the primary canvas; the reader renders the whole current route as one continuous document, headed by the run question with the route label, status and size as its subtitle.
 - Clicking a node or edge resolves a route in this order: keep the route already being read when it still contains the target, then the direction remembered for that fork, then the canonical order by `status_history[0].seq`, then `branch_id`.

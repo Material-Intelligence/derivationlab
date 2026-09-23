@@ -8,10 +8,9 @@ loads that file; nothing in it is hand-edited.
 ## Inputs (all committed, so a rerun is deterministic)
 
 - `candidates.json`: the candidate universe. Seeded from the static whitelist
-  of `derivation_runtime.formula_validation` plus the commands seen in an
-  offline replay of archived Writer math and formula audits, less a few
-  document-specific macro names that no engine defines (dropping them cannot
-  change the output). `unsafe` lists names that are never compiled.
+  of `derivation_runtime.formula_validation` plus commands observed in Writer
+  output, less a few document-specific macro names that no engine defines
+  (dropping them cannot change the output). `unsafe` lists names that are never compiled.
 - `config/reporting/tectonic_runtime.lock.json`: Tectonic version, binary and
   bundle hashes.
 - `REPORT_TEX_PREAMBLE` in `src/derivation_app/reporting.py`.

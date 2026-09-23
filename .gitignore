@@ -51,9 +51,6 @@ htmlcov/
 /scratch/
 *.local.*
 
-# The release scanner's needle list: every string that must not appear in this
-# repository, which makes the list itself the one file that must never be in
-# it. `.release-needles.example` is the published format documentation; the
-# real list lives only in a private working copy. tests/test_release_check.py
-# asserts that this path is not in git's publish set.
+# The release scanner's needle list, which is never committed.
+# tests/test_release_check.py asserts that this path is not in git's publish set.
 /.release-needles

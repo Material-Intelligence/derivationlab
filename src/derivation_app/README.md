@@ -23,18 +23,22 @@ changing the engine, but v1 ships only the App Server adapter.
 
 Every run resolves a versioned `CapabilityProfile`. The profile is stored in
 the run manifest with its SHA-256 but stays outside frozen Record V1. It defines
-the experiment's permissions, tools, network, project instructions, Skills,
-MCP servers, apps, and scientific runtime.
+the experiment's permissions, tools, network, project instructions, agent
+skills, MCP servers, apps, and scientific runtime.
 
-`benchmark_symbolic_v1` is the only v1 product profile:
+Two profiles are built in. `benchmark_symbolic_v1` is the closed-book profile:
 
 - isolated writable run workspace;
-- no project instructions or Skills;
+- no project instructions or agent skills;
 - no web, MCP, apps, or command network;
-- the reviewed `sympy_uv` scientific runtime.
+- the hash-pinned `sympy_uv` scientific runtime.
 
-The adapter translates that profile into App Server thread configuration. The
-engine sees only its stable identity and hash.
+`source_reading_v1` has the same settings plus the source, transcript and
+feedback reading tools; direct problem specifications (Record 1.1) require it.
+No source pack ships, so its source library is empty.
+
+The adapter translates the selected profile into App Server thread
+configuration. The engine sees only its stable identity and hash.
 
 ## Product profile and subscription login
 
@@ -54,10 +58,9 @@ Normal startup checks only what the product needs:
 - `account/read` identifies a ChatGPT subscription;
 - the run's capability profile is applied.
 
-Sandbox escapes, tool behavior, network denial, provider resume/fork semantics,
-and installation signatures belong to conformance tests run during development,
-after meaningful Codex/provider changes, and before formal benchmarks. They are
-not re-attested on every turn.
+Sandbox escapes, tool behavior, network denial and provider resume/fork
+semantics are covered by the platform evidence in
+`src/derivation_runtime/platform_evidence/`, not re-checked on every turn.
 
 Provision the pinned scientific runtime once during product setup:
 
@@ -72,7 +75,7 @@ When the npm Codex package is used with a controlled PATH, launch its packaged
 native binary rather than the JavaScript wrapper, which depends on `node` being
 discoverable through the host PATH.
 
-Provider warning, plugin, Skill-discovery, and tool/process lifecycle events are
+Provider warning, plugin, skill-discovery, and tool/process lifecycle events are
 diagnostics. They do not fail a scientific run merely by existing. The adapter
 still validates the final structured model output and terminal thread/turn
 lineage strictly.
@@ -197,7 +200,7 @@ confirmed specification. Run evidence then contains immutable
 
 `GET /api/runs` combines the current writable product run root with compatible
 Record V1 archives under repository `runs/`. An archive is listed only when its
-manifest is compatible and strict replay succeeds. Archived validation runs are
+manifest is compatible and strict replay succeeds. Archived runs are
 read-only: their tree and route content are visible, while pause, resume,
 interrupt, and branch commands return `archive_run_read_only`.
 

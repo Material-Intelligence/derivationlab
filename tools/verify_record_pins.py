@@ -21,10 +21,10 @@ Every pin must resolve, with one declared exception and no allowance for an
 absent file. The Record v1 records cite the Chinese contract document,
 `docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md`, which ships untranslated for
 exactly this reason: a translation is a different byte sequence, so only the
-cited bytes can hash to the pinned digest. The file that ships is a public
-edition of its upstream original (two clauses of §15 made generic). A record
-written against the edition resolves. The one record written against the
-upstream original, `examples/runs/uniformly_charged_sphere/`, cannot: its
+cited bytes can hash to the pinned digest. The file that ships differs from an
+earlier wording in a few clauses. A record written against the shipped file
+resolves. The one record written against the earlier wording,
+`examples/runs/uniformly_charged_sphere/`, cannot: its
 `record_spec` digest is listed in `WITHHELD_ORIGINALS`, reported as withheld
 rather than resolved, and any other digest at that path still fails. See
 `docs/spec/README.md`.
@@ -52,8 +52,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 #: The three `run_created` payload fields that pin a file.
 PINNED_FIELDS = ("record_spec", "event_schema", "canonical_schema")
 
-#: Pins of an upstream original that this repository ships only as a public
-#: edition, keyed by (field, path, digest). Such a pin cannot resolve here, and
+#: Pins of an earlier wording of a document this repository ships, keyed by
+#: (field, path, digest). Such a pin cannot resolve here, and
 #: saying so is the whole of the exception: it is reported, never counted as
 #: resolved, and it covers exactly this field, path and digest.
 WITHHELD_ORIGINALS: dict[tuple[str, str, str], str] = {
@@ -62,7 +62,7 @@ WITHHELD_ORIGINALS: dict[tuple[str, str, str], str] = {
         "docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md",
         "290a674f2f39fcd6509e5a31aa7ec8a7d069722ea4c104530335dc2d09251cfb",
     ): (
-        "upstream original of the shipped public edition; the two differ in two clauses "
+        "earlier wording of the shipped document; the two differ in two clauses "
         "of section 15 and one sentence of section 4.2"
     ),
 }

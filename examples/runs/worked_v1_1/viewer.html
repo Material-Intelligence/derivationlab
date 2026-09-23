@@ -54,9 +54,9 @@ ul { margin: 0; padding-left: 1.1rem; }
 <h2>Judgements</h2>
 <article class="card"><h3><code>jdg-1</code> <span class="badge pass">pass</span></h3><p>Candidate <code>cand-1</code>; reason: The derivative is correct and the scope statement matches the claim.</p></article>
 <h2>Event hash chain</h2>
-<p class="small">Head: <code>93f291093a750358721cd20aa47c8c22bab9908893a2c2318b3b07ca7654daa5</code></p>
+<p class="small">Head: <code>0a4ce26fbf35c7587a54d25f8b8d24adc6bc4cfaf96226a8df97ccb87124e51e</code></p>
 <table><thead><tr><th>Seq</th><th>Event</th><th>Type</th><th>Actor</th><th>Hash</th><th>Payload</th></tr></thead>
-<tbody><tr><td>1</td><td><code>evt-0001</code></td><td>run_created</td><td>system:record-runtime</td><td><code>ab71efc5ce8e</code></td><td><details><summary>payload</summary><pre>{
+<tbody><tr><td>1</td><td><code>evt-0001</code></td><td>run_created</td><td>system:record-runtime</td><td><code>d2bcd75b510d</code></td><td><details><summary>payload</summary><pre>{
   &quot;canonical_schema&quot;: {
     &quot;path&quot;: &quot;src/derivation_agent_record/schemas/canonical-v1.1.schema.json&quot;,
     &quot;sha256&quot;: &quot;f1d8540849519c08904a0bd6cd14e803b5317afbc4154c3cb483a0186f25366b&quot;
@@ -104,13 +104,13 @@ ul { margin: 0; padding-left: 1.1rem; }
   },
   &quot;record_spec&quot;: {
     &quot;path&quot;: &quot;docs/RECORD_SPEC.md&quot;,
-    &quot;sha256&quot;: &quot;b0bcbbd6361bdc1b640a6b094e92c7b3f3da186d74fb906cafab74043a444da2&quot;
+    &quot;sha256&quot;: &quot;aac97b363902ed6882e0bd81f3ad6e5f0cbdb61a0b38034265d3919887bf80e3&quot;
   },
   &quot;task&quot;: {
     &quot;id&quot;: &quot;task-derivative&quot;,
     &quot;sha256&quot;: &quot;0ebb429fa86d481c2630fac53db1c91cffed5d4d41d1021c179444eb67e7ee0b&quot;
   }
-}</pre></details></td></tr><tr><td>2</td><td><code>evt-0002</code></td><td>branch_created</td><td>system:record-runtime</td><td><code>678b949bfcd5</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>2</td><td><code>evt-0002</code></td><td>branch_created</td><td>system:record-runtime</td><td><code>5dadcfb0d322</code></td><td><details><summary>payload</summary><pre>{
   &quot;anchor_step_revision_id&quot;: null,
   &quot;branch_id&quot;: &quot;br-1&quot;,
   &quot;created_reason&quot;: &quot;root&quot;,
@@ -124,7 +124,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;inherited_step_revision_ids&quot;: [],
   &quot;initial_status&quot;: &quot;active&quot;,
   &quot;parent_branch_id&quot;: null
-}</pre></details></td></tr><tr><td>3</td><td><code>evt-0003</code></td><td>model_call_started</td><td>model:writer</td><td><code>7ad151a6aecb</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>3</td><td><code>evt-0003</code></td><td>model_call_started</td><td>model:writer</td><td><code>ead5cef48b83</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-writer&quot;,
   &quot;model_call_id&quot;: &quot;mc-0&quot;,
@@ -135,7 +135,7 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;branch_id&quot;: &quot;br-1&quot;,
     &quot;step_slot&quot;: 1
   }
-}</pre></details></td></tr><tr><td>4</td><td><code>evt-0004</code></td><td>human_action_recorded</td><td>human:operator</td><td><code>bc46506c71f1</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>4</td><td><code>evt-0004</code></td><td>human_action_recorded</td><td>human:operator</td><td><code>0f2aac26368b</code></td><td><details><summary>payload</summary><pre>{
   &quot;action&quot;: &quot;abort_model_call&quot;,
   &quot;action_id&quot;: &quot;ha-0&quot;,
   &quot;content&quot;: null,
@@ -144,13 +144,13 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target&quot;: {
     &quot;model_call_id&quot;: &quot;mc-0&quot;
   }
-}</pre></details></td></tr><tr><td>5</td><td><code>evt-0005</code></td><td>model_call_aborted</td><td>model:writer</td><td><code>84eeea48dc07</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>5</td><td><code>evt-0005</code></td><td>model_call_aborted</td><td>model:writer</td><td><code>ab67bad636bb</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 21,
   &quot;human_action_id&quot;: &quot;ha-0&quot;,
   &quot;model_call_id&quot;: &quot;mc-0&quot;,
   &quot;partial_output_sha256&quot;: &quot;28bb1c6160ad62378df99b1a9296161923637cdceac346fc650287f72c02df76&quot;,
   &quot;partial_output_text&quot;: &quot;The derivative of x^2&quot;
-}</pre></details></td></tr><tr><td>6</td><td><code>evt-0006</code></td><td>model_call_started</td><td>model:writer</td><td><code>28478e26e3a8</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>6</td><td><code>evt-0006</code></td><td>model_call_started</td><td>model:writer</td><td><code>1dea67758639</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-writer&quot;,
   &quot;model_call_id&quot;: &quot;mc-1&quot;,
@@ -161,19 +161,19 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;branch_id&quot;: &quot;br-1&quot;,
     &quot;step_slot&quot;: 1
   }
-}</pre></details></td></tr><tr><td>7</td><td><code>evt-0007</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>7defdc5599cb</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>7</td><td><code>evt-0007</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>0fbed796270e</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;raw&quot;,
   &quot;index&quot;: 0,
   &quot;model_call_id&quot;: &quot;mc-1&quot;,
   &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;continue\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;f03cd5b66370b40ead6e19f8b9825c8e1050b47253cfc04f84706f66f9201392&quot;
-}</pre></details></td></tr><tr><td>8</td><td><code>evt-0008</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>bf16b2dacc4b</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>8</td><td><code>evt-0008</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>5ff16b4c4dac</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;body&quot;,
   &quot;index&quot;: 1,
   &quot;model_call_id&quot;: &quot;mc-1&quot;,
   &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x).\&quot;,\&quot;derivation\&quot;:\&quot;Apply the power rule to x^3 and the derivative of sine: \\bfrac{d}{dx} x^3 = 3x^2, \\\\frac{d}{dx} sin(x) = cos(x).\&quot;,\&quot;scope\&quot;:\&quot;Real x. Elementary calculus only; no distributional derivatives.\&quot;,\&quot;source\&quot;:\&quot;Task statement: differentiate f(x) = x^3 + sin(x).\&quot;,\&quot;why\&quot;:\&quot;The task asks for the derivative of the given elementary function.\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;bbfac271cb2dda8e6592cde5158d2da9e30dc2b7efe735e72c27c992c385b434&quot;
-}</pre></details></td></tr><tr><td>9</td><td><code>evt-0009</code></td><td>model_call_finished</td><td>model:writer</td><td><code>226f56eb9937</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>9</td><td><code>evt-0009</code></td><td>model_call_finished</td><td>model:writer</td><td><code>bbf0caa709c2</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 400,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-1&quot;,
@@ -183,7 +183,7 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>10</td><td><code>evt-0010</code></td><td>writer_output_normalized</td><td>system:record-runtime</td><td><code>af26e651eaaf</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>10</td><td><code>evt-0010</code></td><td>writer_output_normalized</td><td>system:record-runtime</td><td><code>42123ade134d</code></td><td><details><summary>payload</summary><pre>{
   &quot;content&quot;: {
     &quot;claim&quot;: &quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x).&quot;,
     &quot;derivation&quot;: &quot;Apply the power rule to x^3 and the derivative of sine: \\frac{d}{dx} x^3 = 3x^2, \\frac{d}{dx} sin(x) = cos(x).&quot;,
@@ -208,7 +208,7 @@ ul { margin: 0; padding-left: 1.1rem; }
       &quot;start&quot;: 56
     }
   ]
-}</pre></details></td></tr><tr><td>11</td><td><code>evt-0011</code></td><td>step_revision_sealed</td><td>model:writer</td><td><code>b0208ddb504a</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>11</td><td><code>evt-0011</code></td><td>step_revision_sealed</td><td>model:writer</td><td><code>773991289dff</code></td><td><details><summary>payload</summary><pre>{
   &quot;branch_id&quot;: &quot;br-1&quot;,
   &quot;content&quot;: {
     &quot;claim&quot;: &quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x).&quot;,
@@ -227,13 +227,13 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;revision&quot;: 1,
   &quot;step_revision_id&quot;: &quot;sr-1&quot;,
   &quot;step_slot&quot;: 1
-}</pre></details></td></tr><tr><td>12</td><td><code>evt-0012</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>fcd49f047704</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>12</td><td><code>evt-0012</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>5735c1010e9f</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-1&quot;,
   &quot;reason&quot;: &quot;Differentiation check on the sealed step.&quot;,
   &quot;required_for_candidate&quot;: true,
   &quot;target_output_sha256&quot;: &quot;f67322afe7029321fc7d0375c02be3e5bee70a858500b5ad368fd2700c6c37b4&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-1&quot;
-}</pre></details></td></tr><tr><td>13</td><td><code>evt-0013</code></td><td>model_call_started</td><td>checker:checker</td><td><code>85e9cab83b47</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>13</td><td><code>evt-0013</code></td><td>model_call_started</td><td>checker:checker</td><td><code>10b972614cbe</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-checker&quot;,
   &quot;model_call_id&quot;: &quot;mc-2&quot;,
@@ -243,7 +243,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target&quot;: {
     &quot;check_id&quot;: &quot;chk-1&quot;
   }
-}</pre></details></td></tr><tr><td>14</td><td><code>evt-0014</code></td><td>model_call_failed</td><td>checker:checker</td><td><code>7fbb0d8e669a</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>14</td><td><code>evt-0014</code></td><td>model_call_failed</td><td>checker:checker</td><td><code>b8073b71e7f2</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 0,
   &quot;failure_kind&quot;: &quot;transport_timeout&quot;,
   &quot;message&quot;: &quot;The checker process did not answer within the deadline.&quot;,
@@ -251,7 +251,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;partial_output_sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
   &quot;partial_output_text&quot;: &quot;&quot;,
   &quot;retryable&quot;: true
-}</pre></details></td></tr><tr><td>15</td><td><code>evt-0015</code></td><td>check_completed</td><td>checker:checker</td><td><code>ed1cf8d32850</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>15</td><td><code>evt-0015</code></td><td>check_completed</td><td>checker:checker</td><td><code>13c716e4f6ab</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-1&quot;,
   &quot;checker_call_id&quot;: &quot;mc-2&quot;,
   &quot;evidence&quot;: [],
@@ -259,7 +259,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target_output_sha256&quot;: &quot;f67322afe7029321fc7d0375c02be3e5bee70a858500b5ad368fd2700c6c37b4&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-1&quot;,
   &quot;verdict&quot;: &quot;instrument_failure&quot;
-}</pre></details></td></tr><tr><td>16</td><td><code>evt-0016</code></td><td>branch_status_changed</td><td>system:record-runtime</td><td><code>67cb66c5078d</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>16</td><td><code>evt-0016</code></td><td>branch_status_changed</td><td>system:record-runtime</td><td><code>7b5425e031e8</code></td><td><details><summary>payload</summary><pre>{
   &quot;branch_id&quot;: &quot;br-1&quot;,
   &quot;check_id&quot;: &quot;chk-1&quot;,
   &quot;from_status&quot;: &quot;active&quot;,
@@ -267,7 +267,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;model_call_id&quot;: &quot;mc-2&quot;,
   &quot;reason_code&quot;: &quot;runtime_failure&quot;,
   &quot;to_status&quot;: &quot;paused&quot;
-}</pre></details></td></tr><tr><td>17</td><td><code>evt-0017</code></td><td>human_action_recorded</td><td>human:operator</td><td><code>f3fb84c234b7</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>17</td><td><code>evt-0017</code></td><td>human_action_recorded</td><td>human:operator</td><td><code>28b6d6e8df39</code></td><td><details><summary>payload</summary><pre>{
   &quot;action&quot;: &quot;resume_branch&quot;,
   &quot;action_id&quot;: &quot;ha-1&quot;,
   &quot;content&quot;: null,
@@ -276,10 +276,10 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target&quot;: {
     &quot;branch_id&quot;: &quot;br-1&quot;
   }
-}</pre></details></td></tr><tr><td>18</td><td><code>evt-0018</code></td><td>check_retry_authorized</td><td>system:record-runtime</td><td><code>02780ad42221</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>18</td><td><code>evt-0018</code></td><td>check_retry_authorized</td><td>system:record-runtime</td><td><code>07185309b383</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-1&quot;,
   &quot;human_action_id&quot;: &quot;ha-1&quot;
-}</pre></details></td></tr><tr><td>19</td><td><code>evt-0019</code></td><td>branch_status_changed</td><td>human:operator</td><td><code>a10038030080</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>19</td><td><code>evt-0019</code></td><td>branch_status_changed</td><td>human:operator</td><td><code>1e8509af65d3</code></td><td><details><summary>payload</summary><pre>{
   &quot;branch_id&quot;: &quot;br-1&quot;,
   &quot;check_id&quot;: null,
   &quot;from_status&quot;: &quot;paused&quot;,
@@ -287,13 +287,13 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;model_call_id&quot;: null,
   &quot;reason_code&quot;: &quot;manual_reopen&quot;,
   &quot;to_status&quot;: &quot;active&quot;
-}</pre></details></td></tr><tr><td>20</td><td><code>evt-0020</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>aa950bf3d42a</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>20</td><td><code>evt-0020</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>b571a911d3f9</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-2&quot;,
   &quot;reason&quot;: &quot;Retry of the differentiation check after the instrument failure.&quot;,
   &quot;required_for_candidate&quot;: true,
   &quot;target_output_sha256&quot;: &quot;f67322afe7029321fc7d0375c02be3e5bee70a858500b5ad368fd2700c6c37b4&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-1&quot;
-}</pre></details></td></tr><tr><td>21</td><td><code>evt-0021</code></td><td>model_call_started</td><td>checker:checker</td><td><code>96a1a2f7d0ee</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>21</td><td><code>evt-0021</code></td><td>model_call_started</td><td>checker:checker</td><td><code>cd0e86608588</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-checker&quot;,
   &quot;model_call_id&quot;: &quot;mc-3&quot;,
@@ -303,7 +303,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target&quot;: {
     &quot;check_id&quot;: &quot;chk-2&quot;
   }
-}</pre></details></td></tr><tr><td>22</td><td><code>evt-0022</code></td><td>model_call_finished</td><td>checker:checker</td><td><code>64403d615e21</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>22</td><td><code>evt-0022</code></td><td>model_call_finished</td><td>checker:checker</td><td><code>8c8b43959878</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 23,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-3&quot;,
@@ -313,7 +313,7 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>23</td><td><code>evt-0023</code></td><td>check_completed</td><td>checker:checker</td><td><code>b4cacf38a9d0</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>23</td><td><code>evt-0023</code></td><td>check_completed</td><td>checker:checker</td><td><code>e92ee3bbfee7</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-2&quot;,
   &quot;checker_call_id&quot;: &quot;mc-3&quot;,
   &quot;evidence&quot;: [
@@ -327,7 +327,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target_output_sha256&quot;: &quot;f67322afe7029321fc7d0375c02be3e5bee70a858500b5ad368fd2700c6c37b4&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-1&quot;,
   &quot;verdict&quot;: &quot;objection&quot;
-}</pre></details></td></tr><tr><td>24</td><td><code>evt-0024</code></td><td>model_call_started</td><td>model:writer</td><td><code>1c41243dc40e</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>24</td><td><code>evt-0024</code></td><td>model_call_started</td><td>model:writer</td><td><code>dd95cfc51af3</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-writer&quot;,
   &quot;model_call_id&quot;: &quot;mc-4&quot;,
@@ -338,19 +338,19 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;branch_id&quot;: &quot;br-1&quot;,
     &quot;step_slot&quot;: 2
   }
-}</pre></details></td></tr><tr><td>25</td><td><code>evt-0025</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>4da52896fa0c</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>25</td><td><code>evt-0025</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>14d4610a1690</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;raw&quot;,
   &quot;index&quot;: 0,
   &quot;model_call_id&quot;: &quot;mc-4&quot;,
   &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;revise\&quot;,\&quot;reason\&quot;:\&quot;State the domain of validity in the claim itself.\&quot;,\&quot;revise_step_revision_id\&quot;:\&quot;sr-1\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;44ae45850beb523b9c7f7ab05ed0fdd65fa4bd6cba12be5632e310cf966cf037&quot;
-}</pre></details></td></tr><tr><td>26</td><td><code>evt-0026</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>db208d32866f</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>26</td><td><code>evt-0026</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>3c5027a9871e</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;body&quot;,
   &quot;index&quot;: 1,
   &quot;model_call_id&quot;: &quot;mc-4&quot;,
   &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x), for every real x.\&quot;,\&quot;derivation\&quot;:\&quot;Apply the power rule to x^3 and the derivative of sine: \\\\frac{d}{dx} x^3 = 3x^2, \\\\frac{d}{dx} sin(x) = cos(x).\&quot;,\&quot;scope\&quot;:\&quot;Real x, stated in the claim. Elementary calculus only; no distributional derivatives.\&quot;,\&quot;source\&quot;:\&quot;Task statement: differentiate f(x) = x^3 + sin(x).\&quot;,\&quot;why\&quot;:\&quot;The task asks for the derivative of the given elementary function.\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;3fbe9d50440727f80fdaa4361b34f1701e6c7d3586ee6d39cf21f8b5a41a4ea8&quot;
-}</pre></details></td></tr><tr><td>27</td><td><code>evt-0027</code></td><td>model_call_finished</td><td>model:writer</td><td><code>969ac6805024</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>27</td><td><code>evt-0027</code></td><td>model_call_finished</td><td>model:writer</td><td><code>12e05f3ce487</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 439,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-4&quot;,
@@ -360,11 +360,11 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>28</td><td><code>evt-0028</code></td><td>model_revision_deferred</td><td>system:record-runtime</td><td><code>da0f5dc3dca3</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>28</td><td><code>evt-0028</code></td><td>model_revision_deferred</td><td>system:record-runtime</td><td><code>db1e26e9a3af</code></td><td><details><summary>payload</summary><pre>{
   &quot;model_call_id&quot;: &quot;mc-4&quot;,
   &quot;reason&quot;: &quot;The local repair budget for this route was already spent; recorded, not applied.&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-1&quot;
-}</pre></details></td></tr><tr><td>29</td><td><code>evt-0029</code></td><td>model_call_started</td><td>model:writer</td><td><code>eee189bd2a6c</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>29</td><td><code>evt-0029</code></td><td>model_call_started</td><td>model:writer</td><td><code>a13e245b10f3</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-writer&quot;,
   &quot;model_call_id&quot;: &quot;mc-5&quot;,
@@ -375,19 +375,19 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;branch_id&quot;: &quot;br-1&quot;,
     &quot;step_slot&quot;: 2
   }
-}</pre></details></td></tr><tr><td>30</td><td><code>evt-0030</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>487a28727f06</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>30</td><td><code>evt-0030</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>778ecc63d307</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;raw&quot;,
   &quot;index&quot;: 0,
   &quot;model_call_id&quot;: &quot;mc-5&quot;,
   &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;revise\&quot;,\&quot;reason\&quot;:\&quot;State the domain of validity in the claim itself.\&quot;,\&quot;revise_step_revision_id\&quot;:\&quot;sr-1\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;44ae45850beb523b9c7f7ab05ed0fdd65fa4bd6cba12be5632e310cf966cf037&quot;
-}</pre></details></td></tr><tr><td>31</td><td><code>evt-0031</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>531a5d0fd825</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>31</td><td><code>evt-0031</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>1e494a153bc3</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;body&quot;,
   &quot;index&quot;: 1,
   &quot;model_call_id&quot;: &quot;mc-5&quot;,
   &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x), for every real x.\&quot;,\&quot;derivation\&quot;:\&quot;Apply the power rule to x^3 and the derivative of sine: \\\\frac{d}{dx} x^3 = 3x^2, \\\\frac{d}{dx} sin(x) = cos(x).\&quot;,\&quot;scope\&quot;:\&quot;Real x, stated in the claim. Elementary calculus only; no distributional derivatives.\&quot;,\&quot;source\&quot;:\&quot;Task statement: differentiate f(x) = x^3 + sin(x).\&quot;,\&quot;why\&quot;:\&quot;The task asks for the derivative of the given elementary function.\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;3fbe9d50440727f80fdaa4361b34f1701e6c7d3586ee6d39cf21f8b5a41a4ea8&quot;
-}</pre></details></td></tr><tr><td>32</td><td><code>evt-0032</code></td><td>model_call_finished</td><td>model:writer</td><td><code>8a3e264552b5</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>32</td><td><code>evt-0032</code></td><td>model_call_finished</td><td>model:writer</td><td><code>32d9666f4b98</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 439,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-5&quot;,
@@ -397,7 +397,7 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>33</td><td><code>evt-0033</code></td><td>model_revision_applied</td><td>model:writer</td><td><code>7daa42537260</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>33</td><td><code>evt-0033</code></td><td>model_revision_applied</td><td>model:writer</td><td><code>34fd4ee40d46</code></td><td><details><summary>payload</summary><pre>{
   &quot;branch_id&quot;: &quot;br-2&quot;,
   &quot;content&quot;: {
     &quot;claim&quot;: &quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x), for every real x.&quot;,
@@ -411,13 +411,13 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;reason&quot;: &quot;State the domain of validity in the claim itself.&quot;,
   &quot;step_revision_id&quot;: &quot;sr-2&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-1&quot;
-}</pre></details></td></tr><tr><td>34</td><td><code>evt-0034</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>91127e52bb7d</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>34</td><td><code>evt-0034</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>1eb848325815</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-3&quot;,
   &quot;reason&quot;: &quot;Differentiation check on the revised step.&quot;,
   &quot;required_for_candidate&quot;: true,
   &quot;target_output_sha256&quot;: &quot;3fbe9d50440727f80fdaa4361b34f1701e6c7d3586ee6d39cf21f8b5a41a4ea8&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-2&quot;
-}</pre></details></td></tr><tr><td>35</td><td><code>evt-0035</code></td><td>model_call_started</td><td>checker:checker</td><td><code>539b83faaf3b</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>35</td><td><code>evt-0035</code></td><td>model_call_started</td><td>checker:checker</td><td><code>aa751cfd7bd5</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-checker&quot;,
   &quot;model_call_id&quot;: &quot;mc-6&quot;,
@@ -427,7 +427,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target&quot;: {
     &quot;check_id&quot;: &quot;chk-3&quot;
   }
-}</pre></details></td></tr><tr><td>36</td><td><code>evt-0036</code></td><td>model_call_finished</td><td>checker:checker</td><td><code>0cc3f059c817</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>36</td><td><code>evt-0036</code></td><td>model_call_finished</td><td>checker:checker</td><td><code>a0747c88be4c</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 16,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-6&quot;,
@@ -437,7 +437,7 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>37</td><td><code>evt-0037</code></td><td>check_completed</td><td>checker:checker</td><td><code>d17801e55bb6</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>37</td><td><code>evt-0037</code></td><td>check_completed</td><td>checker:checker</td><td><code>8acbad4a4eff</code></td><td><details><summary>payload</summary><pre>{
   &quot;check_id&quot;: &quot;chk-3&quot;,
   &quot;checker_call_id&quot;: &quot;mc-6&quot;,
   &quot;evidence&quot;: [],
@@ -445,7 +445,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target_output_sha256&quot;: &quot;3fbe9d50440727f80fdaa4361b34f1701e6c7d3586ee6d39cf21f8b5a41a4ea8&quot;,
   &quot;target_step_revision_id&quot;: &quot;sr-2&quot;,
   &quot;verdict&quot;: &quot;ok&quot;
-}</pre></details></td></tr><tr><td>38</td><td><code>evt-0038</code></td><td>model_call_started</td><td>model:writer</td><td><code>f690eb999890</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>38</td><td><code>evt-0038</code></td><td>model_call_started</td><td>model:writer</td><td><code>4ac81151928e</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-writer&quot;,
   &quot;model_call_id&quot;: &quot;mc-7&quot;,
@@ -456,19 +456,19 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;branch_id&quot;: &quot;br-2&quot;,
     &quot;step_slot&quot;: 2
   }
-}</pre></details></td></tr><tr><td>39</td><td><code>evt-0039</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>d7064ecb3f31</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>39</td><td><code>evt-0039</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>3e28dbd2583c</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;raw&quot;,
   &quot;index&quot;: 0,
   &quot;model_call_id&quot;: &quot;mc-7&quot;,
   &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;complete\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;2af89c6a9021bf3392d9e0b9c5c781e828a788d8180929b563be43bfaacd14b4&quot;
-}</pre></details></td></tr><tr><td>40</td><td><code>evt-0040</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>7d9b426b720e</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>40</td><td><code>evt-0040</code></td><td>model_call_chunk</td><td>model:writer</td><td><code>16c9d90b0e8c</code></td><td><details><summary>payload</summary><pre>{
   &quot;channel&quot;: &quot;body&quot;,
   &quot;index&quot;: 1,
   &quot;model_call_id&quot;: &quot;mc-7&quot;,
   &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The derivative of x^3 + sin(x) is 3x^2 + cos(x), for every real x.\&quot;,\&quot;derivation\&quot;:\&quot;Apply the power rule to x^3 and the derivative of sine: \\\\frac{d}{dx} x^3 = 3x^2, \\\\frac{d}{dx} sin(x) = cos(x).\&quot;,\&quot;scope\&quot;:\&quot;Real x, stated in the claim. Elementary calculus only; no distributional derivatives.\&quot;,\&quot;source\&quot;:\&quot;Task statement: differentiate f(x) = x^3 + sin(x).\&quot;,\&quot;why\&quot;:\&quot;The task asks for the derivative of the given elementary function.\&quot;}&quot;,
   &quot;text_sha256&quot;: &quot;3fbe9d50440727f80fdaa4361b34f1701e6c7d3586ee6d39cf21f8b5a41a4ea8&quot;
-}</pre></details></td></tr><tr><td>41</td><td><code>evt-0041</code></td><td>model_call_finished</td><td>model:writer</td><td><code>1e235e8db29f</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>41</td><td><code>evt-0041</code></td><td>model_call_finished</td><td>model:writer</td><td><code>b0c86c310aca</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 439,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-7&quot;,
@@ -478,11 +478,11 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>42</td><td><code>evt-0042</code></td><td>writer_route_completion</td><td>model:writer</td><td><code>549dee4f6db3</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>42</td><td><code>evt-0042</code></td><td>writer_route_completion</td><td>model:writer</td><td><code>255bd5fbc8b8</code></td><td><details><summary>payload</summary><pre>{
   &quot;branch_id&quot;: &quot;br-2&quot;,
   &quot;model_call_id&quot;: &quot;mc-7&quot;,
   &quot;tip_step_revision_id&quot;: &quot;sr-2&quot;
-}</pre></details></td></tr><tr><td>43</td><td><code>evt-0043</code></td><td>candidate_declared</td><td>model:writer</td><td><code>d200cd02f501</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>43</td><td><code>evt-0043</code></td><td>candidate_declared</td><td>model:writer</td><td><code>f4e7992aff9c</code></td><td><details><summary>payload</summary><pre>{
   &quot;branch_id&quot;: &quot;br-2&quot;,
   &quot;candidate_id&quot;: &quot;cand-1&quot;,
   &quot;declared_by&quot;: &quot;writer&quot;,
@@ -496,13 +496,13 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;sr-2&quot;
   ],
   &quot;unresolved_check_ids&quot;: []
-}</pre></details></td></tr><tr><td>44</td><td><code>evt-0044</code></td><td>judgement_requested</td><td>system:record-runtime</td><td><code>a1938b5ef1b4</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>44</td><td><code>evt-0044</code></td><td>judgement_requested</td><td>system:record-runtime</td><td><code>c8a41e055a62</code></td><td><details><summary>payload</summary><pre>{
   &quot;candidate_id&quot;: &quot;cand-1&quot;,
   &quot;candidate_transcript_sha256&quot;: &quot;23d080503e42c31cbb3ea66217b624c96fe1c59fa9f7f1adfcbb60f984db00e3&quot;,
   &quot;judgement_id&quot;: &quot;jdg-1&quot;,
   &quot;reason&quot;: &quot;One eligible candidate on a completed route.&quot;,
   &quot;requested_by&quot;: &quot;system&quot;
-}</pre></details></td></tr><tr><td>45</td><td><code>evt-0045</code></td><td>model_call_started</td><td>judge:judge</td><td><code>a506cd5697ac</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>45</td><td><code>evt-0045</code></td><td>model_call_started</td><td>judge:judge</td><td><code>801796c3d435</code></td><td><details><summary>payload</summary><pre>{
   &quot;effort&quot;: &quot;low&quot;,
   &quot;model&quot;: &quot;deterministic-judge&quot;,
   &quot;model_call_id&quot;: &quot;mc-8&quot;,
@@ -512,7 +512,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;target&quot;: {
     &quot;judgement_id&quot;: &quot;jdg-1&quot;
   }
-}</pre></details></td></tr><tr><td>46</td><td><code>evt-0046</code></td><td>model_call_finished</td><td>judge:judge</td><td><code>a6058eb60fdb</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>46</td><td><code>evt-0046</code></td><td>model_call_finished</td><td>judge:judge</td><td><code>38f429483baa</code></td><td><details><summary>payload</summary><pre>{
   &quot;body_chars&quot;: 18,
   &quot;finish_reason&quot;: &quot;stop&quot;,
   &quot;model_call_id&quot;: &quot;mc-8&quot;,
@@ -522,7 +522,7 @@ ul { margin: 0; padding-left: 1.1rem; }
     &quot;input_tokens&quot;: 0,
     &quot;output_tokens&quot;: 0
   }
-}</pre></details></td></tr><tr><td>47</td><td><code>evt-0047</code></td><td>judgement_completed</td><td>judge:judge</td><td><code>3186a4453413</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>47</td><td><code>evt-0047</code></td><td>judgement_completed</td><td>judge:judge</td><td><code>b1b08296e07d</code></td><td><details><summary>payload</summary><pre>{
   &quot;candidate_id&quot;: &quot;cand-1&quot;,
   &quot;candidate_transcript_sha256&quot;: &quot;23d080503e42c31cbb3ea66217b624c96fe1c59fa9f7f1adfcbb60f984db00e3&quot;,
   &quot;judge_call_id&quot;: &quot;mc-8&quot;,
@@ -530,7 +530,7 @@ ul { margin: 0; padding-left: 1.1rem; }
   &quot;reason&quot;: &quot;The derivative is correct and the scope statement matches the claim.&quot;,
   &quot;score&quot;: 1,
   &quot;verdict&quot;: &quot;pass&quot;
-}</pre></details></td></tr><tr><td>48</td><td><code>evt-0048</code></td><td>selection_recorded</td><td>system:record-runtime</td><td><code>93f291093a75</code></td><td><details><summary>payload</summary><pre>{
+}</pre></details></td></tr><tr><td>48</td><td><code>evt-0048</code></td><td>selection_recorded</td><td>system:record-runtime</td><td><code>0a4ce26fbf35</code></td><td><details><summary>payload</summary><pre>{
   &quot;candidate_id&quot;: &quot;cand-1&quot;,
   &quot;candidate_transcript_sha256&quot;: &quot;23d080503e42c31cbb3ea66217b624c96fe1c59fa9f7f1adfcbb60f984db00e3&quot;,
   &quot;human_action_id&quot;: null,

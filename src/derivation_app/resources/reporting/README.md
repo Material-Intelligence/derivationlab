@@ -44,7 +44,7 @@ access denied.
 
 ## When the runtime is missing
 
-Everything except PDF export works without the runtime. When the runtime is not
+Runs, checks and the Record do not need the runtime. When the runtime is not
 installed, fails verification, or the platform has no pinned target, PDF export
 and formula compilation fail closed with `tectonic_runtime_unavailable`, and
 the tests that need a real compiler are skipped with that reason.

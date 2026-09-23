@@ -77,11 +77,8 @@ extend-exclude = [
 select = ["E", "W", "F", "I", "B", "UP", "ISC", "C4", "PIE", "RUF", "EXE"]
 
 [tool.ruff.lint.per-file-ignores]
-# Honest debt, written down instead of hidden by a narrower rule set. The
-# record package was written by hand, before this configuration existed, and
-# its long single-expression `require(...)` calls are deliberate: each one is a
-# rule of the contract on one line. Reformatting 1,200 lines of a verifier is a
-# change that deserves its own commit and its own test run, not a drive-by.
+# The record package predates this configuration. Its long `require(...)`
+# calls are deliberate: one contract rule per line.
 #
 # To clear this block: `ruff check --fix src/derivation_agent_record/` fixes the
 # four non-E501 rules mechanically; E501 goes away only with a reflow, so
@@ -91,9 +88,9 @@ select = ["E", "W", "F", "I", "B", "UP", "ISC", "C4", "PIE", "RUF", "EXE"]
 [tool.black]
 line-length = 120
 target-version = ["py39"]
-# Same debt as above, same reason. Everything this repository added — the test
-# suite and the release scanner — is black-formatted and checked in CI. The
-# application packages are formatted by their own tooling, not by black.
+# The record package is excluded for the same reason; the test suite and
+# tools/*.py are black-formatted and checked in CI. The application packages
+# are formatted by their own tooling, not by black.
 extend-exclude = "^/(src|tools/formula_whitelist)/"
 
 [tool.pytest.ini_options]

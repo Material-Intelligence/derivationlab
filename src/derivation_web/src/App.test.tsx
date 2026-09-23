@@ -495,10 +495,10 @@ describe("tree-first derivation UI", () => {
       return stop;
     };
     await renderApp(api);
-    await screen.findByText("Read-only validation · the original run will not be changed");
+    await screen.findByText("Read-only archive · the original run will not be changed");
     expect(screen.queryByRole("button", { name: "Pause all" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Interrupt active calls" })).not.toBeInTheDocument();
-    expect(screen.getByText("Read-only validation · the original run will not be changed")).toBeVisible();
+    expect(screen.getByText("Read-only archive · the original run will not be changed")).toBeVisible();
   });
 
   it("keeps RunView command authority when the catalog fails", async () => {
@@ -518,7 +518,7 @@ describe("tree-first derivation UI", () => {
     const api = createFixtureApi(archived);
     api.listRuns = vi.fn(async () => [summary(archived, true)]);
     const user = await renderApp(api);
-    await screen.findByText("Read-only validation · the original run will not be changed");
+    await screen.findByText("Read-only archive · the original run will not be changed");
     await user.click(screen.getByRole("button", { name: "Open: Numerical counterexample check" }));
     expect(screen.queryByRole("button", { name: "Start a new branch here" })).not.toBeInTheDocument();
   });
@@ -528,7 +528,7 @@ describe("tree-first derivation UI", () => {
     const api = createFixtureApi(paused);
     api.listRuns = vi.fn(async () => [summary(paused, true)]);
     await renderApp(api);
-    await screen.findByText("Read-only validation · the original run will not be changed");
+    await screen.findByText("Read-only archive · the original run will not be changed");
     expect(screen.queryByRole("button", { name: "Resume run" })).not.toBeInTheDocument();
   });
 });

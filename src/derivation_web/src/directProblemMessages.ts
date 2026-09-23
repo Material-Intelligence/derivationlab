@@ -5,7 +5,7 @@ const en = {
   direct: "Use a complete problem",
   intake: "Clarify with AI",
   title: "Start from a complete problem",
-  intro: "Choose a prepared problem or import your own. The displayed problem is sent directly to the derivation model.",
+  intro: "Import a problem file. The displayed problem is sent directly to the derivation model.",
   preset: "Prepared problem",
   choose: "Choose a problem",
   import: "Import problem JSON",
@@ -58,7 +58,7 @@ const en = {
 
 const zh: Record<keyof typeof en, string> = {
   entry: "如何开始？", direct: "使用完整题面", intake: "通过 AI 澄清需求",
-  title: "从完整题面开始", intro: "选择预置题目或导入自己的题面。显示的题面会直接交给推导模型。",
+  title: "从完整题面开始", intro: "导入题面文件。显示的题面会直接交给推导模型。",
   preset: "预置题目", choose: "选择题目", import: "导入题面 JSON", imported: "已导入题面", download: "下载这份题面",
   loading: "正在读取预置题目…", loadFailed: "无法读取预置题目。", retry: "重试", invalid: "题面文件无效",
   directOnly: "请导入 origin 为 direct_spec、confirmed_by_user 为 false 的直接题面，不能将 Intake 记录改标为直接题面。",

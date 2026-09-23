@@ -28,8 +28,6 @@ runtime, the HTTP service, the web UI, the Record contract, and example records.
   your own ChatGPT sign-in; there is no API-key path yet. See
   [Run DerivationLab locally](#run-derivationlab-locally).
 
-There are no benchmark numbers or results tables here.
-
 ## Verify a record yourself
 
 No install, no dependencies, no network. Python 3.9 or newer and a clone:
@@ -146,9 +144,8 @@ removed again.
   device-code login (from the web UI), or imports an existing Codex CLI ChatGPT
   login. Runs use that account's plan and usage limits. The credential stays in
   a private profile directory (`CODEX_HOME/auth.json`, mode 0600) and is never
-  copied into a run, a record, a manifest or a log. `OPENAI_API_KEY` is
-  deliberately not used: the app-server is launched with an environment that
-  does not contain it. An API-key path is on the roadmap, not in the code.
+  copied into a run, a record, a manifest or a log. `OPENAI_API_KEY` is not
+  used; the app-server is launched without it.
 - **uv** and Python 3.13 or 3.14 for the service (`src/derivation_api/`
   pins 3.14). On first start the product also creates, with uv, the SymPy
   environment the model's compute tool uses, from a hash-pinned lock; that
@@ -212,7 +209,7 @@ makes no model call. Run it after the first start: before that, the product
 profile does not exist yet and `doctor` reports it missing.
 
 `python -m derivation_app --help` lists the other options, including the
-multi-user `server` mode, which this README does not cover.
+multi-user `server` mode.
 
 ### PDF reports
 
@@ -273,7 +270,7 @@ src/derivation_web/            React UI
 docs/                          the Record contract, event vocabulary, architecture
 examples/runs/                 three example records with captions
 config/reporting/              Tectonic pins (lock and bundle manifest)
-tools/                         release scanner, pin checker, Tectonic provisioning
+tools/                         pin checker, Tectonic provisioning, formula whitelist generator
 tests/                         Record contract suite and tooling tests
 ```
 
@@ -292,8 +289,7 @@ $ PYTHONPATH=src:src/derivation_api uv run --frozen --project src/derivation_api
 # Web UI
 $ cd src/derivation_web && npm test && npm run api:check && npm run typecheck && npm run lint
 
-# Release gates and record pins
-$ python3 tools/release_check.py
+# Record pins
 $ python3 tools/verify_record_pins.py
 ```
 
@@ -310,21 +306,12 @@ a platform it was not generated on. CI runs all of the above on every push
   sign-in. There is no API-key adapter, and no other provider.
 - **One Codex version.** Exactly 0.147.0. A newer Codex CLI is refused until
   the protocol boundary is re-pinned and re-tested.
-- **One platform.** Derivation runs and PDF reporting are supported on
-  `darwin-arm64` only. Other platforms fail closed at the formula-engine
-  whitelist check, sandbox conformance evidence exists for macOS only, and the
-  PDF runtime is pinned for `darwin-arm64` only. The whitelist generator is in
-  [`tools/formula_whitelist/`](tools/formula_whitelist), but it compiles with
-  the pinned Tectonic, so a new platform needs a Tectonic pin first
-  ([`CONTRIBUTING.md`](CONTRIBUTING.md) has the steps). The record verifier
-  depends on none of this: it is standard-library Python.
+- **One platform.** Runs and PDF reports are supported on `darwin-arm64` only
+  (see [What a run needs](#what-a-run-needs); porting steps are in
+  [`CONTRIBUTING.md`](CONTRIBUTING.md)). The record verifier runs anywhere.
 - **Closed book.** The code for hash-bound literature packs exists, but no pack
   ships and the service refuses runs that ask for one, so runs cannot cite
   sources. There are no built-in problem presets.
-- **One real-model example.** The other two example records are a
-  deterministic fixture and a synthetic record.
-- **Layering is not strict.** See the two function-local imports under
-  [Architecture](#architecture).
 
 ## Roadmap
 

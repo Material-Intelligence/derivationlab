@@ -49,11 +49,9 @@ record below is for.
 | Problem | differentiate `x^3 + sin(x)` with respect to `x` |
 | Network access / web search / MCP servers | false / false / none |
 
-What it is good for: reading the contract by example, and having a record that
-`verify` must accept on every machine, forever, with no credentials and no
-network. What it is **not**: evidence that a model can derive physics. Nothing
-in this run was produced by a language model, and the problem is a first-year
-calculus exercise chosen because its answer is not in dispute.
+Use it to read the contract by example: `verify` must accept it on any
+machine, with no credentials and no network. It says nothing about model
+capability.
 
 Three fields need explaining:
 
@@ -69,9 +67,9 @@ Three fields need explaining:
   document `docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md`, which the runtime
   hashes into every Record v1 it writes; it ships untranslated next to the
   English translation (`docs/RECORD_SPEC.md`) because only those bytes hash to
-  the pinned digest. It is the public edition of the upstream original, and
-  this record was regenerated against it (`docs/spec/README.md`).
-  `tools/verify_record_pins.py` checks all three pins.
+  the pinned digest. This record pins the shipped document, so the pin
+  resolves (`docs/spec/README.md`). `tools/verify_record_pins.py` checks all
+  three pins.
 - `code_commit` is forty zeros, the placeholder the fake service writes when it
   is not given a commit. The record was produced by this repository's own
   deterministic runtime (`derivation_app.factory.create_fake_app`, with the
@@ -90,9 +88,8 @@ away from the code that describes it.
 
 It is written rather than captured for one reason: Record v1.1 added
 `source_evidence_registered`, which puts third-party source text *inside* the
-hash chain, where it can never be removed again. A real v1.1 run from this
-project therefore cannot be published as it stands. Rather than ship no v1.1
-record at all, this one states the vocabulary directly.
+hash chain, where it can never be removed again. A real v1.1 run that
+registered sources therefore cannot be published.
 
 | | |
 |---|---|
@@ -132,10 +129,7 @@ compare, or run `python3 tools/verify_record_pins.py`, which does it for every
 record here. One consequence: editing the contract document changes this
 record, and the suite refuses to let the two drift apart.
 
-What it is good for: seeing what Record v1.1 added, and having a v1.1 record
-that `verify` must accept. What it is **not**: evidence about any model, or
-about anything at all outside the record format — the derivation in it is a
-first-year calculus exercise, written by hand.
+Use it to see what Record v1.1 added.
 
 ---
 
@@ -165,33 +159,22 @@ record registers no external source text. `runtime_config.auth_mode` in
 the product's only auth mode and is written unconditionally; what actually ran
 is `api_config.backend` and the three provider entries.
 
-What it is **not**:
+Limitations:
 
-- **Not a research result.** A first-year exercise whose answer is in the
-  model's weights, so it tests the machinery — sealing, checking, judgement,
-  replay — against an independently known answer.
-- **Not an independent verdict.** Writer, checker and judge are the same model:
-  the judgement is an independent *call*, not an independent *model*.
-- **Not a blind cold run.** `problem.accepted_decisions` admits Maxwell's
-  electrostatic equations, the divergence theorem and the uniqueness theorem as
-  external primitives, to be recorded as assumed rather than derived; only
-  spherical symmetry of the field is withheld. It is a scoped exercise.
-- **Not the first attempt.** Two earlier attempts failed — one killed by the
-  checker with `hard_defect`, one by an `invalid_model_output` inside the
-  checker's evidence protocol — and are not shipped.
-- **Not a reproducible tree.** `code_commit` `f47623cb` is the real upstream
-  commit this repository was exported from; the tree that ran was a subset of
-  that commit's files. Read the field as provenance, not as a build recipe.
-- **One of its pins does not resolve here.** Its two schema pins resolve like
-  the fixture's. Its `record_spec` pin names
-  `docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md` at `290a674f…`, the digest of
-  the upstream original of that document; this repository ships a public
-  edition in which two items of its §15 list, written in project-local
-  shorthand, were made generic, so the file at that path hashes to something
-  else. The digest is inside the hash chain and cannot be changed without
-  destroying the record. `tools/verify_record_pins.py` reports this one pin as
-  withheld rather than resolved (`docs/spec/README.md`); `verify` is
-  unaffected, because replay does not read the pinned file.
+- A textbook exercise; it tests the machinery (sealing, checking, judgement,
+  replay), not model capability.
+- Writer, checker and judge are the same model.
+- `problem.accepted_decisions` admits Maxwell's electrostatic equations, the
+  divergence theorem and the uniqueness theorem as primitives; only the
+  spherical symmetry of the field is left to derive.
+- Two earlier attempts failed and are not included.
+- `code_commit` names a development commit that is not in this repository's
+  history.
+- Its `record_spec` pin names an earlier wording of
+  `docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md` (`290a674f…`) and does not
+  resolve here; `tools/verify_record_pins.py` reports it as withheld
+  (`docs/spec/README.md`), and `verify` is unaffected because replay does not
+  read the pinned file. Its two schema pins resolve.
 
 ---
 

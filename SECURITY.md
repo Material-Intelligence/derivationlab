@@ -45,4 +45,4 @@ attribution unless you ask otherwise.
 
 ## Supported versions
 
-Only the latest release. This is a 0.x snapshot; there is no backport branch.
+Only the latest release; fixes are not backported.

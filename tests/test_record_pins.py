@@ -12,8 +12,8 @@ The tests below are the check a reader would do by hand — `shasum -a 256` on t
 cited path, compared with the cited digest — done for every pin of every record,
 plus the positive control that says the check can fail, and the one declared
 exception: the real model run under `examples/runs/uniformly_charged_sphere/`
-pins the upstream original of the Record v1 contract, of which this repository
-ships a public edition, so that one pin is reported as withheld.
+pins an earlier wording of the Record v1 contract than the one this repository
+ships, so that one pin is reported as withheld.
 """
 
 from __future__ import annotations

@@ -195,23 +195,6 @@ def test_the_shipped_scanner_carries_no_needle(clean_tree: Path) -> None:
     assert findings == [], "\n".join(findings)
 
 
-def test_the_example_needle_list_is_synthetic() -> None:
-    """The published example documents the format and gives away nothing."""
-
-    example = REPO_ROOT / f"{DEFAULT_NEEDLE_FILE}.example"
-    parsed = load_needles(example)
-    assert parsed is not None, f"{example.name} must exist: it is the only published account of the format"
-    assert parsed.literals and parsed.vocabulary and parsed.affiliation
-    assert parsed.allowlist, "an example with no [allow] entry documents half the format"
-
-    if PRIVATE is None:
-        pytest.skip(NO_PRIVATE_LIST)
-
-    text = example.read_text(encoding="utf-8").lower()
-    for index, (needle, gate) in enumerate(private_entries(PRIVATE)):
-        assert needle.lower() not in text, f"needle #{index} of the {gate} list appears in {example.name}"
-
-
 # ---------------------------------------------------------------------------
 # One planted needle per gate
 # ---------------------------------------------------------------------------

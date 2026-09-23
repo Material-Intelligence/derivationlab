@@ -28,9 +28,6 @@ include tools/verify_record_pins.py
 # The Tectonic provisioning script belongs to the application, not to this
 # distribution, and its test reads the application's config/reporting/ pins.
 exclude tests/test_provision_tectonic.py
-# The scanner's needle list is never in this repository; the format is. The
-# suite reads this file, so an sdist without it would carry a failing test.
-include .release-needles.example
 
 global-exclude *.py[cod]
 global-exclude .DS_Store

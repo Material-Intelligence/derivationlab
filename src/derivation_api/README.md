@@ -1,8 +1,8 @@
 # Derivation HTTP/SSE control plane
 
-This package is the local, single-user Web boundary for an autonomous
-`DerivationRun`.  It contains no model provider and does not mutate Record V1
-inside HTTP handlers.  A concrete runtime implements `DerivationService` and is
+This package is the HTTP/SSE boundary for a `DerivationRun`: single-user on
+loopback by default, with an authenticated multi-user server mode.  It
+contains no model provider and does not mutate Record V1 inside HTTP handlers.  A concrete runtime implements `DerivationService` and is
 injected into `create_app(...)`.
 
 The bundled `FakeDerivationService` is deterministic and hermetic.  It exists

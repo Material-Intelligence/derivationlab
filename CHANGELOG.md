@@ -36,15 +36,13 @@ First public release.
 - `docs/RECORD_SPEC.md` (the contract in English), `docs/EVENT_VOCABULARY.md`,
   `docs/ARCHITECTURE.md`, and under `docs/spec/` the two Chinese documents of
   the contract that the runtime hashes into every record, shipped untranslated
-  as public editions (`docs/spec/README.md`).
+  (`docs/spec/README.md`).
 - Three example records under `examples/runs/`, each with a caption saying
   what it is and is not evidence of.
 - `tools/provision_tectonic.py`, which downloads and verifies the Tectonic
   runtime for PDF reports against `config/reporting/`;
   `tools/formula_whitelist/`, which regenerates the formula engine whitelist
-  against a provisioned runtime; `tools/verify_record_pins.py`;
-  `tools/release_check.py`, the scanner that gates what this repository may
-  contain.
+  against a provisioned runtime; `tools/verify_record_pins.py`.
 
 ### Known limitations
 

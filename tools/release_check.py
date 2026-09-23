@@ -13,8 +13,7 @@ needles are, by definition, the strings that must not appear in this repository
 — so the list cannot live in this file. Encoding it would not help: an encoding
 is reversible by anyone who reads the decoder beside it. The list therefore
 lives in ``.release-needles``, which ``.gitignore`` keeps out of the publish set
-and which this scanner never scans. ``.release-needles.example`` documents the
-format with synthetic values and is published.
+and which this scanner never scans.
 
 Without that file those three gates are OFF, and the scanner says so on stderr
 and again in its last line rather than printing a bare "ok". Every other gate —
@@ -207,7 +206,7 @@ PUBLIC_EXEMPTIONS: tuple[Exemption, ...] = (
     Exemption(
         "docs/spec/DERIVATION_RUNTIME_RECORD_V1_1_cn.md",
         "cjk",
-        "normative original of the Record 1.1 contract (public edition); the runtime hashes these bytes "
+        "normative original of the Record 1.1 contract; the runtime hashes these bytes "
         "into every Record 1.1 it writes (English translation: docs/RECORD_SPEC.md; see docs/spec/README.md)",
     ),
     # --- cjk: locale resources of the web UI ----------------------------------
