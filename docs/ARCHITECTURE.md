@@ -45,9 +45,8 @@ imports inside a function rather than at module level:
   and the (empty) problem presets from `derivation_app`, for its deterministic
   demo service.
 
-So `derivation_runtime` and `derivation_api` do not import cleanly on their
-own without `derivation_app` next to them. That is recorded here rather than
-claimed away.
+So `derivation_runtime` and `derivation_api` need `derivation_app` on the path
+to import.
 
 | Package | Where | Depends on | Tests |
 |---|---|---|---|

@@ -44,11 +44,7 @@ subscription credential is `CODEX_HOME/auth.json`; it is never copied into a
 Run, Record, manifest, log, or child-tool environment. On POSIX systems the
 file must be owned by the current user with mode `0600`.
 
-V1 deliberately uses the file credential store on macOS, Linux, and Windows.
-The earlier macOS-only Keychain IPC and executable-attestation path was removed:
-it made ordinary startup platform-specific without improving the scientific
-state machine. OS keyring integration can return later behind a credential
-store interface if it proves useful.
+The credential is a file; there is no OS keyring integration.
 
 Normal startup checks only what the product needs:
 
@@ -157,9 +153,8 @@ uv run --project src/derivation_api python -m derivation_app
 
 Use `--codex-executable PATH` when the pinned Codex executable is not available
 as `codex` on `PATH`. The default profile is outside the repository in the
-platform's application-data directory. The reusable `auth.json` must already
-have been created by the official ChatGPT login flow; this entry does not
-implement a second login protocol.
+platform's application-data directory. Sign in from the web UI (device-code login
+through the app-server) or import an existing Codex CLI login.
 
 `doctor` performs local, zero-model-call diagnostics. It does not provision,
 log in, start App Server, or claim that the stored account is a valid ChatGPT
@@ -191,9 +186,8 @@ one explicit user confirmation. Corrections create new specification versions;
 thread loss creates a visible replacement generation from the canonical stored
 state.
 
-The clean-break HTTP surface is `/api/intake/sessions` plus the per-session
-`rounds`, `confirm`, and `cancel` commands. The old stateless
-`/api/intake/turn` adapter was removed. A confirmed IntakeSession can create a
+The HTTP surface is `/api/intake/sessions` plus the per-session `rounds`,
+`confirm`, and `cancel` commands. A confirmed IntakeSession can create a
 Run only when the Record V1 compatibility projection exactly matches the
 confirmed specification. Run evidence then contains immutable
 `intake/problem_specification.json`, `decision_log.json`,

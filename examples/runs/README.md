@@ -55,7 +55,7 @@ network. What it is **not**: evidence that a model can derive physics. Nothing
 in this run was produced by a language model, and the problem is a first-year
 calculus exercise chosen because its answer is not in dispute.
 
-Two things in the files are worth explaining rather than hiding:
+Three fields need explaining:
 
 - `manifest.json` has `runtime_config.auth_mode: "chatgpt"`. That is the
   product's only auth mode and it is recorded unconditionally; it does not mean

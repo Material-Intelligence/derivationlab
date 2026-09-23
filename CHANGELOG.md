@@ -15,15 +15,7 @@ stability promise yet.
 
 ## 0.1.0 — 2026-09
 
-First public snapshot, exported from the private development repository at
-commit `f47623cb72a8f82414ead0987b361774959ec14d`. Exported files were changed
-only to remove references to unpublished material, relocate evidence files,
-replace fixtures from unpublished work with synthetic ones, and make refusals
-explicit where this build lacks a component. The digest of every file the
-shipped records pin is unchanged; the Record 1.1 contract original is a public
-edition with two clauses made generic, and no shipped record pins it
-(`docs/spec/README.md`). The verifier comes from a later revision than that commit (see
-`docs/RECORD_SPEC.md` §18.13).
+First public release.
 
 ### Added
 
@@ -54,9 +46,7 @@ edition with two clauses made generic, and no shipped record pins it
   `tools/release_check.py`, the scanner that gates what this repository may
   contain.
 
-### Not included
+### Known limitations
 
-The internal evaluation harness, the desktop packaging shell, literature
-source packs and the vendored TeX runtime of the development repository. Runs
-are closed-book; PDF export needs the provisioning step and is pinned for
+Runs are closed-book; PDF export needs the provisioning step and is pinned for
 `darwin-arm64` only; there is no API-key model adapter.

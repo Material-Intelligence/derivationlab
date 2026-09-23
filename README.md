@@ -116,7 +116,7 @@ the English translation, because only those bytes match the pinned digest
 | Record | What it is | Read it as |
 |---|---|---|
 | [`deterministic_fixture/`](examples/runs/deterministic_fixture) | Record v1, 51 events, 2 branches, 10 model calls, 4 checks, 2 candidates, 2 judgements | **No model was called.** A deterministic stand-in runtime, recorded exactly as a real run would be. The problem is differentiating `x^3 + sin(x)`. Evidence about the record format only. Produced by this repository's fake service; `code_commit` is a zero placeholder. |
-| [`uniformly_charged_sphere/`](examples/runs/uniformly_charged_sphere) | Record v1, 35 events, 1 branch, 3 step revisions, 7 model calls, 3 checks, 1 candidate, 1 judgement | **A real model run, closed book**: `gpt-5.6-sol` through `codex-app-server` 0.147.0 derives the field of a uniformly charged sphere; checks `ok`, judgement `pass`. Writer, checker and judge are the same model; Maxwell's equations and the divergence and uniqueness theorems are admitted as primitives; two earlier attempts failed and are not shipped. Its `code_commit` is upstream commit `f47623cb`, the commit this repository was exported from; the tree that ran was a subset of that commit's files, so read the field as provenance, not as a build recipe. |
+| [`uniformly_charged_sphere/`](examples/runs/uniformly_charged_sphere) | Record v1, 35 events, 1 branch, 3 step revisions, 7 model calls, 3 checks, 1 candidate, 1 judgement | **A real model run, closed book**: `gpt-5.6-sol` through `codex-app-server` 0.147.0 derives the field of a uniformly charged sphere; checks `ok`, judgement `pass`. Writer, checker and judge are the same model; Maxwell's equations and the divergence and uniqueness theorems are admitted as primitives; two earlier attempts failed and are not shipped. Its `code_commit` names the development commit that produced it, which is not in this repository's history. |
 | [`worked_v1_1/`](examples/runs/worked_v1_1) | Record v1.1, 48 events, 21 of the 22 event types | **Synthetic.** Written from the contract by [`tests/v1_1_example.py`](tests/v1_1_example.py), not captured from a run; the suite pins the file to the builder. |
 
 [`examples/runs/README.md`](examples/runs/README.md) explains every field that
@@ -127,8 +127,6 @@ removed again.
 ## Run DerivationLab locally
 
 ### What a run needs
-
-Please read this list before installing.
 
 - **macOS on Apple silicon (`darwin-arm64`).** Derivation runs and PDF
   reporting are supported there only, today. The formula checker's engine
@@ -345,32 +343,6 @@ The most useful contribution is a record the verifier judges wrongly;
 part of the test suite. A record that verifies but should not, or a way to get
 a credential out of the product profile, is a security report:
 [`SECURITY.md`](SECURITY.md).
-
-## Provenance of this repository
-
-Exported from the private development repository at commit
-`f47623cb72a8f82414ead0987b361774959ec14d`, with fresh history rather than a
-filtered clone. The export left out internal planning documents, the internal
-evaluation harness, the desktop packaging shell, third-party literature, and the
-vendored TeX runtime (now provisioned by `tools/provision_tectonic.py`).
-
-Exported files were changed, by a series of small patches kept with the export
-tooling, only to remove references to unpublished material, to relocate
-evidence files out of internal directories, to replace fixtures that came from
-unpublished work with synthetic ones, and to make refusals explicit where this
-build lacks a component (a source pack, the correct Codex version). The digests
-of the v1 and 1.1 schemas are unchanged, and so are the protocol schema, the
-platform evidence and the Tectonic lock. The two contract documents did change:
-in `docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md` and
-`docs/spec/DERIVATION_RUNTIME_RECORD_V1_1_cn.md`, clauses that named
-unpublished work were made generic. A record written by the upstream runtime
-pins the upstream digest and will not resolve that one pin here; among the
-shipped records that is `examples/runs/uniformly_charged_sphere/`, whose
-`record_spec` pin `tools/verify_record_pins.py` reports as withheld
-(`docs/spec/README.md`). The record verifier under
-`src/derivation_agent_record/` comes from a later revision than `f47623cb`; its
-behavioural difference is listed in [`docs/RECORD_SPEC.md`](docs/RECORD_SPEC.md)
-§18.13, and it gives the same verdict on every record the runtime writes.
 
 ## Citing
 

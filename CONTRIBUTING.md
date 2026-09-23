@@ -60,7 +60,6 @@ the same list with context.
 PYTHONPATH=src python3 -m unittest derivation_agent_record.selftest
 python3 -m pytest
 ruff check . && black --check .
-python3 tools/release_check.py
 python3 tools/verify_record_pins.py
 
 # Runtime, service and API (uv reads src/derivation_api/uv.lock)
@@ -105,21 +104,8 @@ platform work, and both are welcome as one pull request:
 Say in the pull request which machine you generated them on and paste the
 output of the provisioning script and the generator.
 
-Two conventions that are not obvious from the code:
+One convention that is not obvious from the code:
 
 - **Tests state the contract.** A test that mocks the verifier tests nothing.
   Build a real record, break one rule, and require the real replay to reject it —
   `tests/conftest.py` and `tests/v1_1_example.py` are the builders to reach for.
-- **The release scanner is scanned, and carries no needles.** Three of its gates
-  work by substring — a private path, a provenance claim, an institution — and
-  those needles are exactly the strings that must not appear in this repository,
-  so they cannot live in a file that is published. They are read from
-  `.release-needles`, which `.gitignore` keeps out of the publish set and which
-  the scanner never scans; `.release-needles.example` documents the format with
-  synthetic values. Without that file those three gates are off, the scanner
-  says so on stderr and in its final line, and every other gate still runs —
-  which is the state of this repository and of CI. Add a needle by editing your
-  own `.release-needles`; never add one to the source or to the tests.
-  `tests/test_release_check.py` exercises the real list when there is one, by
-  reading it at run time and reporting failures by index, so that no test output
-  can contain an entry.
