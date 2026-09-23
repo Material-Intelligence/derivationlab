@@ -1,0 +1,176 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0004.jsonl line 14",
+  "captured": "2026-09-04",
+  "provenance": {
+    "recorded_at": "2026-09-04T00:00:00Z",
+    "intake_session_id": "intake_corpus_004",
+    "round_number": 0,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": "gpt-5.6-sol",
+    "payload_sha256_prefix": "b46df29978c5"
+  },
+  "payload": {
+    "public_summary": "The target is a canonical-ensemble derivation for a noninteracting two-level model with energies 0 and Δ. One blocking ambiguity remains: whether the “particles” are independent localized two-state units, a single particle, or indistinguishable quantum particles; this changes the many-particle partition function and potentially the per-particle thermodynamics.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Derive the equilibrium thermodynamics of a noninteracting two-level system in the canonical ensemble.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "Obtain the canonical partition function, mean energy per particle, and heat capacity per particle as explicit functions of temperature T and level spacing Δ.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "The allowed energies are 0 and Δ, with Δ>0. The system is noninteracting and is described by the canonical ensemble.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use β=1/(k_B T), retain k_B explicitly, and denote the heat capacity associated with the internal two-level energy by C=dU/dT.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "Treat the two stated levels as nondegenerate and use exact canonical Boltzmann factors for T>0. The T→0 and T→∞ limits may be obtained by continuity.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "Include only the two internal levels and exclude interactions, external-field dependence of Δ, translational motion, and additional degrees of freedom.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "Show the partition-function construction and derive closed-form expressions for the mean energy and heat capacity per particle as functions of T, Δ, and k_B.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The result must have consistent dimensions, nonnegative heat capacity, U/N→0 as T→0, U/N→Δ/2 as T→∞ for independent nondegenerate two-state units, and C/N→0 in both temperature limits.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "The derivation agent may choose the algebraic form of equivalent expressions, such as exponential or hyperbolic-function forms, and may include useful low- and high-temperature checks.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_004a"
+    ],
+    "questions": [
+      {
+        "question_id": "q_particle_realization_v1",
+        "decision_id": "particle_realization",
+        "semantic_key": "system.particle_realization_statistics",
+        "title": "Particle realization",
+        "prompt": "What physical realization should “per particle” and the canonical partition function refer to?",
+        "why_needed": "The one-particle spectrum alone does not determine the fixed-N partition function unless particle distinguishability and occupancy rules are specified.",
+        "why_it_matters": "The choice determines whether the partition function is z, z^N, or a Bose/Fermi fixed-N sum and can change the resulting per-particle energy and heat capacity.",
+        "decision_class": "problem",
+        "answer_mode": "single_choice",
+        "options": [
+          {
+            "option_id": "independent_localized",
+            "label": "Independent localized units",
+            "impact": "Treat N distinguishable two-state units, giving Z_N=(1+e^{-βΔ})^N and the standard Schottky heat capacity per unit."
+          },
+          {
+            "option_id": "single_particle",
+            "label": "Single particle",
+            "impact": "Derive z=1+e^{-βΔ}; the requested per-particle quantities are simply the single-particle results."
+          },
+          {
+            "option_id": "fixed_n_bosons",
+            "label": "Fixed-N bosons",
+            "impact": "Allow bosonic occupation of the two one-particle levels, producing an N-dependent partition sum and thermodynamics."
+          },
+          {
+            "option_id": "fixed_n_fermions",
+            "label": "Fixed-N fermions",
+            "impact": "Impose fermionic occupation of the two available states, restricting N and changing the partition sum."
+          }
+        ],
+        "recommended_option_ids": [
+          "independent_localized"
+        ],
+        "recommendation_reason": "This is the standard textbook interpretation of a noninteracting two-level system asking for heat capacity per particle.",
+        "allow_custom": true,
+        "depends_on": [],
+        "blocking": true,
+        "grounded_in": "event_corpus_004a"
+      }
+    ],
+    "declared_defaults": [
+      {
+        "default_id": "explicit_boltzmann_constant",
+        "decision_class": "convention",
+        "title": "Thermal units",
+        "statement": "Retain k_B explicitly and define β=1/(k_B T).",
+        "rationale": "This displays physical dimensions and can be translated immediately to units with k_B=1.",
+        "alternatives": [
+          "Set k_B=1",
+          "Use inverse temperature β as the sole temperature variable"
+        ]
+      },
+      {
+        "default_id": "internal_heat_capacity_definition",
+        "decision_class": "convention",
+        "title": "Heat-capacity notation",
+        "statement": "Interpret heat capacity as C=dU/dT for the internal two-level energy, equivalently C_V when volume is held fixed.",
+        "rationale": "No volume-dependent energy appears in the stated model.",
+        "alternatives": [
+          "Write C_V explicitly",
+          "Report molar heat capacity"
+        ]
+      },
+      {
+        "default_id": "exact_finite_temperature_weights",
+        "decision_class": "approximation_level",
+        "title": "Temperature treatment",
+        "statement": "Use exact finite-temperature Boltzmann factors over the two levels.",
+        "rationale": "The requested full temperature dependence is available in closed form without an asymptotic approximation.",
+        "alternatives": [
+          "Low-temperature approximation",
+          "High-temperature expansion",
+          "Zero-temperature occupation only"
+        ]
+      },
+      {
+        "default_id": "equivalent_algebraic_form",
+        "decision_class": "convention",
+        "title": "Expression form",
+        "statement": "Allow exponential and hyperbolic-function forms as equivalent representations of the final thermodynamic functions.",
+        "rationale": "They are algebraically interchangeable and do not change the physics.",
+        "alternatives": [
+          "Exponential form only",
+          "Hyperbolic-function form only"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Exact two-level canonical baseline",
+        "relaxes": "Baseline rung; it relaxes nothing and uses the exact two-level Boltzmann distribution required for the requested temperature-dependent observables.",
+        "default_ids": [
+          "explicit_boltzmann_constant",
+          "internal_heat_capacity_definition",
+          "exact_finite_temperature_weights",
+          "equivalent_algebraic_form"
+        ],
+        "decision_ids": [
+          "particle_realization"
+        ],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": false
+  }
+}

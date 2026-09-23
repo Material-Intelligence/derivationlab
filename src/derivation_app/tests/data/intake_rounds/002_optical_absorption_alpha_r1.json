@@ -1,0 +1,192 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0001.jsonl line 22",
+  "captured": "2026-09-02",
+  "provenance": {
+    "recorded_at": "2026-09-02T00:01:00Z",
+    "intake_session_id": "intake_corpus_001",
+    "round_number": 1,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": null,
+    "payload_sha256_prefix": "cdc1297db92f"
+  },
+  "payload": {
+    "public_summary": "The blocking problem choices have been resolved. The specification is now scientifically executable for an autonomous derivation of the bulk optical absorption coefficient as a function of photon energy from ordinary DFT-accessible Kohn-Sham quantities in the independent-particle interband picture.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Derive the dependence of the bulk optical absorption coefficient on photon energy, starting from quantities obtainable from an ordinary DFT calculation.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "A formal derivation of the 3D bulk absorption coefficient α(ħω) as a function of photon energy for a periodic solid, using ordinary DFT-accessible Kohn-Sham band energies, orbitals, and occupations within the independent-particle interband optical-response picture.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "The derivation starts from ordinary DFT-accessible Kohn-Sham quantities: band energies E_n(k), Bloch orbitals |n,k>, and occupations f_n(k). These are sufficient to construct interband optical transition matrix elements and the independent-particle dielectric response.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use standard condensed-matter optical-response notation: photon energy ħω, band energies E_n(k), occupations f_n(k), and interband matrix elements written in a velocity or momentum form by default. The derivation proceeds through the imaginary part of the dielectric function before converting to α(ħω).",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "The target regime is a 3D bulk periodic solid treated in the Kohn-Sham independent-particle picture, with vertical interband optical transitions only. Intraband/Drude, excitonic, and phonon-assisted processes are excluded from the required derivation.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "The required deliverable is a formal derivation, not an implementation workflow. The scope is limited to bulk interband absorption derivable from ordinary DFT-accessible Kohn-Sham electronic structure, excluding many-body and indirect-transition corrections.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "A self-contained formal derivation from DFT-accessible Kohn-Sham quantities to the bulk absorption coefficient α(ħω), showing the chain from interband transition matrix elements to Im ε(ω) and then to the absorption coefficient as a function of photon energy.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The final derivation must end at the bulk absorption coefficient α(ħω), must use only the resolved ordinary-DFT starting quantities, and must include only independent-particle interband optical physics for a 3D bulk solid.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "All remaining conventions and approximation-level choices are delegated to the derivation agent, which should begin from the simplest compatible baseline and refine only if needed for coherence.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_001a",
+      "event_corpus_001b"
+    ],
+    "questions": [],
+    "declared_defaults": [
+      {
+        "default_id": "def_conv_units",
+        "decision_class": "convention",
+        "title": "Unit system",
+        "statement": "Default to SI-compatible final expressions.",
+        "rationale": "The unit system is interchangeable and does not change the target physics or deliverable.",
+        "alternatives": [
+          "Gaussian units",
+          "atomic units throughout"
+        ]
+      },
+      {
+        "default_id": "def_conv_gauge",
+        "decision_class": "convention",
+        "title": "Optical matrix-element form",
+        "statement": "Default to the velocity or momentum-matrix-element route, translated as needed to equivalent dipole forms.",
+        "rationale": "Gauge or equivalent matrix-element form is translatable and does not affect the blocking scientific specification.",
+        "alternatives": [
+          "length-gauge dipole form",
+          "explicit momentum form only"
+        ]
+      },
+      {
+        "default_id": "def_conv_lineshape",
+        "decision_class": "convention",
+        "title": "Line shape",
+        "statement": "Default to an ideal delta-function spectrum at the baseline rung.",
+        "rationale": "Line-shape convention does not change the included physics and can be refined later without changing the problem statement.",
+        "alternatives": [
+          "Lorentzian broadening",
+          "Gaussian broadening"
+        ]
+      },
+      {
+        "default_id": "def_conv_response_route",
+        "decision_class": "convention",
+        "title": "Response conversion route",
+        "statement": "Default to deriving Im ε(ω) first and then converting to the absorption coefficient.",
+        "rationale": "The route through equivalent response quantities is conventional and does not alter the scientific target.",
+        "alternatives": [
+          "conductivity-first route",
+          "susceptibility-first route"
+        ]
+      },
+      {
+        "default_id": "def_conv_real_part_source",
+        "decision_class": "convention",
+        "title": "Real dielectric part",
+        "statement": "Default to obtaining the real part from the imaginary part by the standard dispersive relation when needed.",
+        "rationale": "This is a standard interchangeable convention and not a blocking scientific choice.",
+        "alternatives": [
+          "direct independent expression for Re ε",
+          "external optical-model input"
+        ]
+      },
+      {
+        "default_id": "def_app_band_model",
+        "decision_class": "approximation_level",
+        "title": "Electronic-structure level",
+        "statement": "Default to general Kohn-Sham Bloch bands rather than reducing to an effective two-band model.",
+        "rationale": "The resolved starting point is ordinary DFT-accessible Kohn-Sham electronic structure, so the baseline should stay at that level.",
+        "alternatives": [
+          "parabolic two-band model",
+          "Kane model"
+        ]
+      },
+      {
+        "default_id": "def_app_matrix_element",
+        "decision_class": "approximation_level",
+        "title": "Matrix-element complexity",
+        "statement": "Default to k-dependent interband transition matrix elements.",
+        "rationale": "State-dependent matrix elements are naturally available from the resolved Kohn-Sham starting point and are the most direct baseline for the requested derivation.",
+        "alternatives": [
+          "constant matrix element"
+        ]
+      },
+      {
+        "default_id": "def_app_broadening",
+        "decision_class": "approximation_level",
+        "title": "Spectral broadening level",
+        "statement": "Default baseline uses an ideal delta function, with finite broadening deferred to a higher refinement rung.",
+        "rationale": "Broadening level is an approximation refinement, not a blocking problem choice.",
+        "alternatives": [
+          "constant broadening",
+          "state-dependent lifetime"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Textbook Independent-Particle Baseline",
+        "relaxes": "Nothing below it; this is the simplest baseline compatible with the resolved problem constraints.",
+        "default_ids": [
+          "def_conv_units",
+          "def_conv_gauge",
+          "def_conv_lineshape",
+          "def_conv_response_route",
+          "def_conv_real_part_source",
+          "def_app_band_model",
+          "def_app_matrix_element",
+          "def_app_broadening"
+        ],
+        "decision_ids": [],
+        "parallel_branch": false
+      },
+      {
+        "rung": 1,
+        "name": "Resolved Target Derivation",
+        "relaxes": "Fixes the final deliverable, permitted DFT starting quantities, included optical physics, and bulk optical observable relative to rung 0.",
+        "default_ids": [],
+        "decision_ids": [
+          "d1_deliverable_scope",
+          "d2_allowed_dft_inputs",
+          "d3_physics_scope",
+          "d4_system_dimensionality"
+        ],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": true
+  }
+}

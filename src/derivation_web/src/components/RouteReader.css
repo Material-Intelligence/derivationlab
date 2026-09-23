@@ -1,0 +1,346 @@
+/*
+ * Paper-style reading desk (M2).
+ *
+ * Token roles, the shared reader hooks (`.reader-document`, `.route-step-title`,
+ * `.route-step-body`) and the one selection language live in styles.css. This
+ * file owns only what a continuous document adds on top of the old timeline
+ * rules, plus the reading focus mode. Every value reads a token with a fallback.
+ */
+
+.reader-doc { scroll-padding-top: 24px; }
+
+.reader-doc .reader-doc-body {
+  max-width: var(--reading-max-width, var(--reader-max-width, 760px));
+  margin: 0 auto;
+  padding: 22px 20px 96px;
+}
+
+.reader-doc .reader-status-strip { display: block; min-width: 0; padding: 9px 20px; }
+.reader-doc .reader-document-inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; max-width: var(--reading-max-width, var(--reader-max-width, 760px)); margin: 0 auto; }
+.reader-doc .reader-document { min-width: 0; margin: 0 0 22px; padding: 0 12px 14px; border-bottom: 1px solid var(--line-strong, #c8c8c8); }
+/* Outranks the shared `.reader-heading h2` chrome rule: this is a document title. */
+/* A run question is a paragraph, not a label: it wraps in full and is never clipped. */
+.reader-doc .reader-document-title { font-size: var(--font-size-heading, 20px); font-weight: var(--font-weight-semibold, 600); line-height: 1.3; overflow: visible; white-space: normal; overflow-wrap: break-word; text-overflow: clip; }
+.reader-doc .reader-route-label { color: var(--ink, #202020); font-weight: var(--font-weight-semibold, 600); }
+.reader-doc .reader-document-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 8px 0 0; }
+.reader-doc .reader-path { min-width: 0; overflow-wrap: anywhere; }
+
+/*
+ * A document has no timeline rail and no 28px gutter for a bullet.
+ * `content-visibility` keeps a 7-step / 30k-character run off the first paint.
+ */
+.reader-doc .route-step-v2 {
+  padding: 10px 12px 26px;
+  scroll-margin-top: 16px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+}
+.reader-doc .route-step-v2::before { content: none; }
+
+.reader-doc .reader-step-head {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  padding: 2px 30px 2px 0;
+  border-radius: 0;
+  background: transparent;
+}
+.reader-doc .reader-step-head:hover, .reader-doc .reader-step-head:focus-within { background: transparent; }
+
+.reader-doc .reader-step-index {
+  border: 0;
+  border-radius: var(--radius-small, 4px);
+  padding: 1px 5px;
+  color: var(--sequence-ink, var(--accent, #0069cc));
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-size-meta, 12px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .08em;
+}
+.reader-doc .reader-step-index:hover { background: var(--accent-soft, #eaf3fc); }
+.reader-doc .route-step-v2[aria-current="step"] .reader-step-index {
+  color: var(--on-accent, #ffffff);
+  background: var(--sequence-ink, var(--accent, #0069cc));
+}
+
+.reader-doc .route-step-title { font-size: var(--font-size-title, 17px); line-height: 1.4; }
+
+/*
+  Typeset marker: a quiet word after the title, never a badge competing with
+  the check dot. It states that the formulas below are the verified typeset
+  rendering rather than the sealed text; the tooltip carries the full sentence.
+*/
+.reader-doc .route-step-typeset {
+  margin-left: 8px;
+  padding: 0 5px;
+  border: 1px solid var(--line, #dcdcdc);
+  border-radius: var(--radius-small, 4px);
+  color: var(--muted, #606060);
+  background: transparent;
+  font-size: var(--font-size-meta, 12px);
+  font-weight: var(--font-weight-regular, 400);
+  letter-spacing: .04em;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: help;
+}
+.reader-doc .route-step-body { margin-top: 8px; }
+.reader-doc .route-step-body .scientific-text,
+.reader-doc .route-step-output .scientific-text {
+  font-size: var(--font-size-body, 15px);
+  line-height: var(--line-height-body, 1.7);
+}
+
+.reader-doc .route-step-output {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--formula-edge, var(--accent, #0069cc));
+  border-radius: 0 var(--radius-small, 4px) var(--radius-small, 4px) 0;
+  background: var(--formula-bg, #f5f5f7);
+}
+.reader-doc .route-step-output-label {
+  margin: 0 0 4px;
+  color: var(--muted, #606060);
+  font-size: var(--font-size-meta, 12px);
+  font-weight: var(--font-weight-semibold, 600);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.reader-doc .route-step-output .katex-display { border-left: 0; padding-left: 0; background: transparent; }
+
+.reader-doc .reader-step-actions { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line, #dcdcdc); }
+
+.route-status.active { color: var(--accent, #0069cc); background: var(--accent-soft, #eaf3fc); }
+.route-status.failed { color: var(--danger, #b42318); background: var(--danger-soft, #fff1f0); }
+
+/*
+ * Reading focus mode. Mirror of the existing route-pane collapse: the tree rail
+ * folds to a 24px strip and the desk takes the main area, without changing
+ * which pane owns the grid columns.
+ */
+.workbench-split.is-tree-collapsed { grid-template-columns: minmax(0, 1fr) 24px; }
+.workbench-split.is-tree-collapsed .workbench-tree-pane { display: none; }
+.workbench-split.is-tree-collapsed .workbench-sash { display: none; }
+
+.workbench-collapse-tree-button {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: center;
+  z-index: 9;
+  width: 22px;
+  height: 24px;
+  margin-top: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong, #c8c8c8);
+  border-radius: var(--control-radius, 6px);
+  padding: 0;
+  color: var(--muted, #606060);
+  background: var(--chrome, #fafafd);
+  cursor: pointer;
+}
+.workbench-restore-tree {
+  grid-column: 2;
+  grid-row: 1;
+  width: 24px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-right: 0;
+  border-left: 1px solid var(--line-strong, #c8c8c8);
+  padding: 0;
+  color: var(--muted, #606060);
+  background: var(--chrome, #fafafd);
+  cursor: pointer;
+}
+.workbench-collapse-tree-button:hover, .workbench-restore-tree:hover { color: var(--accent, #0069cc); background: var(--surface, #ffffff); }
+.workbench-collapse-tree-button svg, .workbench-restore-tree svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/*
+ * Live run.
+ *
+ * A derivation only reaches `run.steps` when a StepRevision is sealed, which on
+ * a real run is minutes apart. These rules carry the three signals that used to
+ * be invisible in the desk: what each sealed step's checks say, which step just
+ * arrived, and what the run is doing right now.
+ */
+
+/* Check mark. Filled = passed, hollow = pending, filled danger = failed. */
+.reader-doc .step-check {
+  align-self: center;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--muted, #606060);
+  border-radius: 50%;
+  background: transparent;
+}
+.reader-doc .step-check.is-passed { border-color: var(--accent, #0069cc); background: var(--accent, #0069cc); }
+.reader-doc .step-check.is-pending { border-color: var(--muted, #606060); background: transparent; }
+.reader-doc .step-check.is-failed { border-color: var(--danger, #b42318); background: var(--danger, #b42318); }
+
+/* A step sealed moments ago, marked by a bar that fades out over four seconds. */
+.reader-doc .route-step-v2.is-new { position: relative; }
+.reader-doc .route-step-v2.is-new::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 18px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--accent, #0069cc);
+  animation: reader-new-step-fade 4s ease-out forwards;
+}
+@keyframes reader-new-step-fade {
+  from { opacity: 1; }
+  70% { opacity: .55; }
+  to { opacity: 0; }
+}
+
+/* End-of-document activity block, inside the reading column. */
+.reader-activity {
+  margin: 26px 12px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line, #dcdcdc);
+  border-radius: var(--radius-medium, 8px);
+  background: var(--formula-bg, #f5f5f7);
+}
+.reader-activity-title {
+  margin: 0 0 8px;
+  color: var(--muted, #606060);
+  font-size: var(--font-size-meta, 12px);
+  font-weight: var(--font-weight-semibold, 600);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.reader-activity-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.reader-activity-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  min-width: 0;
+}
+.reader-activity-role {
+  padding: 1px 8px;
+  border: 1px solid var(--line-strong, #c8c8c8);
+  border-radius: 999px;
+  color: var(--muted, #606060);
+  background: var(--surface, #ffffff);
+  font-size: var(--font-size-meta, 12px);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.reader-activity-role.is-writer, .reader-activity-role.is-checker, .reader-activity-role.is-judge {
+  border-color: var(--accent, #0069cc);
+  color: var(--accent, #0069cc);
+}
+.reader-activity-anchor {
+  border: 0;
+  border-radius: var(--radius-small, 4px);
+  padding: 1px 5px;
+  color: var(--sequence-ink, var(--accent, #0069cc));
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-size-meta, 12px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .08em;
+}
+.reader-activity-anchor:hover { background: var(--accent-soft, #eaf3fc); }
+.reader-activity-anchor.is-off-route { color: var(--muted, #606060); cursor: default; }
+.reader-activity-elapsed {
+  margin-left: auto;
+  color: var(--muted, #606060);
+  font-size: var(--font-size-meta, 12px);
+  font-variant-numeric: tabular-nums;
+}
+.reader-activity-preview {
+  flex: 1 0 100%;
+  max-height: 8.5em;
+  margin: 2px 0 0;
+  overflow: hidden;
+  color: var(--muted, #606060);
+  font-size: var(--font-size-meta, 12px);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.reader-activity-empty { margin: 0; color: var(--muted, #606060); font-size: var(--font-size-meta, 12px); }
+
+/* Sentinel: purely an IntersectionObserver target for "is the end in view". */
+.reader-doc .reader-doc-end { height: 1px; }
+
+/*
+ * Jump affordance. The dock is zero-height and sticky, so the button floats over
+ * the last lines of the document without adding scroll length to it.
+ */
+.reader-doc .reader-jump-dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 6;
+  height: 0;
+  display: flex;
+  /* `flex-end`, never the default stretch: a zero-height row would squash the button. */
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+.reader-doc .reader-jump-latest {
+  transform: translateY(-20px);
+  border: 1px solid var(--line-strong, #c8c8c8);
+  border-radius: 999px;
+  padding: 6px 14px;
+  color: var(--on-accent, #ffffff);
+  background: var(--accent, #0069cc);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+  cursor: pointer;
+  pointer-events: auto;
+  font: inherit;
+  font-size: var(--font-size-control, 13px);
+}
+.reader-doc .reader-jump-latest:hover { background: var(--accent-strong, var(--accent, #0069cc)); }
+
+/* Announcement text: read by assistive tech, never laid out. */
+.reader-doc .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader-doc .route-step-v2.is-new::after { animation: none; opacity: .8; }
+}
+
+@media (max-width: 760px) {
+  /* The compact workbench is tab-driven; a collapsed rail has no meaning there. */
+  .workbench-split.is-tree-collapsed { grid-template-columns: minmax(0, 1fr); grid-template-rows: 31px minmax(0, 1fr); }
+  .workbench-split.is-tree-collapsed .workbench-tree-pane { display: none; grid-column: 1; grid-row: 2; }
+  .workbench-split.is-tree-collapsed .workbench-tree-pane[data-compact-active="true"] { display: block; }
+  .workbench-split.is-tree-collapsed .workbench-route-pane { grid-column: 1; grid-row: 2; }
+  .workbench-collapse-tree-button, .workbench-restore-tree { display: none; }
+  .reader-doc .reader-doc-body { padding: 14px 12px 48px; }
+}
+
+@media (max-width: 520px) {
+  .reader-doc .reader-doc-body { padding: 12px 10px 40px; }
+  .reader-doc .route-step-v2 { padding: 8px 8px 20px; }
+}

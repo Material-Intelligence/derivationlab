@@ -1,0 +1,980 @@
+{
+  "control_symbols": [
+    " ",
+    "!",
+    "$",
+    "&",
+    ",",
+    "/",
+    ":",
+    ";",
+    "\\",
+    "_",
+    "{",
+    "|",
+    "}"
+  ],
+  "engine": {
+    "binary_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "bundle_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "lock_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "target": "test-fixture",
+    "version": "0.17.0"
+  },
+  "environments": [
+    "Vmatrix",
+    "aligned",
+    "alignedat",
+    "array",
+    "bmatrix",
+    "cases",
+    "gathered",
+    "matrix",
+    "pmatrix",
+    "smallmatrix",
+    "split",
+    "vmatrix"
+  ],
+  "preamble_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "schema_version": "formula-engine-whitelist-v1",
+  "supported": {
+    "Big": [
+      "bare"
+    ],
+    "Bigg": [
+      "bare"
+    ],
+    "Biggl": [
+      "bare"
+    ],
+    "Biggr": [
+      "bare"
+    ],
+    "Bigl": [
+      "bare"
+    ],
+    "Bigr": [
+      "bare"
+    ],
+    "Delta": [
+      "bare"
+    ],
+    "Downarrow": [
+      "bare"
+    ],
+    "Gamma": [
+      "bare"
+    ],
+    "Im": [
+      "bare"
+    ],
+    "Lambda": [
+      "bare"
+    ],
+    "Leftarrow": [
+      "bare"
+    ],
+    "Leftrightarrow": [
+      "bare"
+    ],
+    "Longleftarrow": [
+      "bare"
+    ],
+    "Longleftrightarrow": [
+      "bare"
+    ],
+    "Longrightarrow": [
+      "bare"
+    ],
+    "Omega": [
+      "bare"
+    ],
+    "Phi": [
+      "bare"
+    ],
+    "Pi": [
+      "bare"
+    ],
+    "Pr": [
+      "bare"
+    ],
+    "Psi": [
+      "bare"
+    ],
+    "Re": [
+      "bare"
+    ],
+    "Rightarrow": [
+      "bare"
+    ],
+    "Sigma": [
+      "bare"
+    ],
+    "Theta": [
+      "bare"
+    ],
+    "Uparrow": [
+      "bare"
+    ],
+    "Updownarrow": [
+      "bare"
+    ],
+    "Upsilon": [
+      "bare"
+    ],
+    "Vert": [
+      "bare"
+    ],
+    "Xi": [
+      "bare"
+    ],
+    "acute": [
+      "bare"
+    ],
+    "alpha": [
+      "bare"
+    ],
+    "approx": [
+      "bare"
+    ],
+    "arccos": [
+      "bare"
+    ],
+    "arcsin": [
+      "bare"
+    ],
+    "arctan": [
+      "bare"
+    ],
+    "arg": [
+      "bare"
+    ],
+    "ast": [
+      "bare"
+    ],
+    "asymp": [
+      "bare"
+    ],
+    "bar": [
+      "bare"
+    ],
+    "because": [
+      "bare"
+    ],
+    "begin": [
+      "bare"
+    ],
+    "beta": [
+      "bare"
+    ],
+    "bf": [
+      "bare"
+    ],
+    "big": [
+      "bare"
+    ],
+    "bigcap": [
+      "bare"
+    ],
+    "bigcup": [
+      "bare"
+    ],
+    "bigg": [
+      "bare"
+    ],
+    "biggl": [
+      "bare"
+    ],
+    "biggr": [
+      "bare"
+    ],
+    "bigl": [
+      "bare"
+    ],
+    "bigodot": [
+      "bare"
+    ],
+    "bigoplus": [
+      "bare"
+    ],
+    "bigotimes": [
+      "bare"
+    ],
+    "bigr": [
+      "bare"
+    ],
+    "bigsqcup": [
+      "bare"
+    ],
+    "bigtriangledown": [
+      "bare"
+    ],
+    "bigtriangleup": [
+      "bare"
+    ],
+    "biguplus": [
+      "bare"
+    ],
+    "bigvee": [
+      "bare"
+    ],
+    "bigwedge": [
+      "bare"
+    ],
+    "boldsymbol": [
+      "bare"
+    ],
+    "bowtie": [
+      "bare"
+    ],
+    "boxed": [
+      "bare"
+    ],
+    "breve": [
+      "bare"
+    ],
+    "bullet": [
+      "bare"
+    ],
+    "cal": [
+      "bare"
+    ],
+    "cap": [
+      "bare"
+    ],
+    "cdot": [
+      "bare"
+    ],
+    "cdots": [
+      "bare"
+    ],
+    "check": [
+      "bare"
+    ],
+    "chi": [
+      "bare"
+    ],
+    "circ": [
+      "bare"
+    ],
+    "cong": [
+      "bare"
+    ],
+    "coprod": [
+      "bare"
+    ],
+    "cos": [
+      "bare"
+    ],
+    "cosh": [
+      "bare"
+    ],
+    "cot": [
+      "bare"
+    ],
+    "coth": [
+      "bare"
+    ],
+    "csc": [
+      "bare"
+    ],
+    "cup": [
+      "bare"
+    ],
+    "dagger": [
+      "bare"
+    ],
+    "dashv": [
+      "bare"
+    ],
+    "ddagger": [
+      "bare"
+    ],
+    "ddddot": [
+      "bare"
+    ],
+    "dddot": [
+      "bare"
+    ],
+    "ddot": [
+      "bare"
+    ],
+    "deg": [
+      "bare"
+    ],
+    "delta": [
+      "bare"
+    ],
+    "det": [
+      "bare"
+    ],
+    "dfrac": [
+      "bare"
+    ],
+    "dim": [
+      "bare"
+    ],
+    "displaystyle": [
+      "bare"
+    ],
+    "div": [
+      "bare"
+    ],
+    "dot": [
+      "bare"
+    ],
+    "downarrow": [
+      "bare"
+    ],
+    "ell": [
+      "bare"
+    ],
+    "emptyset": [
+      "bare"
+    ],
+    "end": [
+      "bare"
+    ],
+    "enspace": [
+      "bare"
+    ],
+    "epsilon": [
+      "bare"
+    ],
+    "equiv": [
+      "bare"
+    ],
+    "eta": [
+      "bare"
+    ],
+    "exists": [
+      "bare"
+    ],
+    "exp": [
+      "bare"
+    ],
+    "forall": [
+      "bare"
+    ],
+    "frac": [
+      "bare"
+    ],
+    "frown": [
+      "bare"
+    ],
+    "gamma": [
+      "bare"
+    ],
+    "gcd": [
+      "bare"
+    ],
+    "ge": [
+      "bare"
+    ],
+    "geq": [
+      "bare"
+    ],
+    "gets": [
+      "bare"
+    ],
+    "gg": [
+      "bare"
+    ],
+    "grave": [
+      "bare"
+    ],
+    "hat": [
+      "bare"
+    ],
+    "hbar": [
+      "bare"
+    ],
+    "hom": [
+      "bare"
+    ],
+    "hookleftarrow": [
+      "bare"
+    ],
+    "hookrightarrow": [
+      "bare"
+    ],
+    "hspace": [
+      "bare"
+    ],
+    "iiiint": [
+      "bare"
+    ],
+    "iiint": [
+      "bare"
+    ],
+    "iint": [
+      "bare"
+    ],
+    "imath": [
+      "bare"
+    ],
+    "in": [
+      "bare"
+    ],
+    "inf": [
+      "bare"
+    ],
+    "infty": [
+      "bare"
+    ],
+    "int": [
+      "bare"
+    ],
+    "iota": [
+      "bare"
+    ],
+    "jmath": [
+      "bare"
+    ],
+    "kappa": [
+      "bare"
+    ],
+    "ker": [
+      "bare"
+    ],
+    "lVert": [
+      "bare"
+    ],
+    "lambda": [
+      "bare"
+    ],
+    "land": [
+      "bare"
+    ],
+    "langle": [
+      "bare"
+    ],
+    "lceil": [
+      "bare"
+    ],
+    "ldots": [
+      "bare"
+    ],
+    "le": [
+      "bare"
+    ],
+    "left": [
+      "bare"
+    ],
+    "leftarrow": [
+      "bare"
+    ],
+    "leftharpoondown": [
+      "bare"
+    ],
+    "leftharpoonup": [
+      "bare"
+    ],
+    "leftrightarrow": [
+      "bare"
+    ],
+    "leq": [
+      "bare"
+    ],
+    "lfloor": [
+      "bare"
+    ],
+    "lim": [
+      "bare"
+    ],
+    "liminf": [
+      "bare"
+    ],
+    "limsup": [
+      "bare"
+    ],
+    "ll": [
+      "bare"
+    ],
+    "ln": [
+      "bare"
+    ],
+    "log": [
+      "bare"
+    ],
+    "longleftarrow": [
+      "bare"
+    ],
+    "longleftrightarrow": [
+      "bare"
+    ],
+    "longmapsto": [
+      "bare"
+    ],
+    "longrightarrow": [
+      "bare"
+    ],
+    "lor": [
+      "bare"
+    ],
+    "lvert": [
+      "bare"
+    ],
+    "mapsto": [
+      "bare"
+    ],
+    "mathbb": [
+      "bare"
+    ],
+    "mathbf": [
+      "bare"
+    ],
+    "mathcal": [
+      "bare"
+    ],
+    "mathfrak": [
+      "bare"
+    ],
+    "mathit": [
+      "bare"
+    ],
+    "mathring": [
+      "bare"
+    ],
+    "mathrm": [
+      "bare"
+    ],
+    "mathscr": [
+      "bare"
+    ],
+    "mathsf": [
+      "bare"
+    ],
+    "mathtt": [
+      "bare"
+    ],
+    "max": [
+      "bare"
+    ],
+    "medspace": [
+      "bare"
+    ],
+    "mid": [
+      "bare"
+    ],
+    "middle": [
+      "bare"
+    ],
+    "min": [
+      "bare"
+    ],
+    "models": [
+      "bare"
+    ],
+    "mp": [
+      "bare"
+    ],
+    "mu": [
+      "bare"
+    ],
+    "nabla": [
+      "bare"
+    ],
+    "ne": [
+      "bare"
+    ],
+    "nearrow": [
+      "bare"
+    ],
+    "neg": [
+      "bare"
+    ],
+    "neq": [
+      "bare"
+    ],
+    "nexists": [
+      "bare"
+    ],
+    "ni": [
+      "bare"
+    ],
+    "nmid": [
+      "bare"
+    ],
+    "not": [
+      "bare"
+    ],
+    "notin": [
+      "bare"
+    ],
+    "nu": [
+      "bare"
+    ],
+    "nwarrow": [
+      "bare"
+    ],
+    "odot": [
+      "bare"
+    ],
+    "oint": [
+      "bare"
+    ],
+    "omega": [
+      "bare"
+    ],
+    "omicron": [
+      "bare"
+    ],
+    "ominus": [
+      "bare"
+    ],
+    "operatorname": [
+      "bare"
+    ],
+    "operatornamewithlimits": [
+      "bare"
+    ],
+    "oplus": [
+      "bare"
+    ],
+    "oslash": [
+      "bare"
+    ],
+    "otimes": [
+      "bare"
+    ],
+    "overbrace": [
+      "bare"
+    ],
+    "overline": [
+      "bare"
+    ],
+    "overset": [
+      "bare"
+    ],
+    "parallel": [
+      "bare"
+    ],
+    "partial": [
+      "bare"
+    ],
+    "perp": [
+      "bare"
+    ],
+    "phi": [
+      "bare"
+    ],
+    "pi": [
+      "bare"
+    ],
+    "pm": [
+      "bare"
+    ],
+    "prec": [
+      "bare"
+    ],
+    "preceq": [
+      "bare"
+    ],
+    "prod": [
+      "bare"
+    ],
+    "propto": [
+      "bare"
+    ],
+    "psi": [
+      "bare"
+    ],
+    "qquad": [
+      "bare"
+    ],
+    "quad": [
+      "bare"
+    ],
+    "rVert": [
+      "bare"
+    ],
+    "rangle": [
+      "bare"
+    ],
+    "rceil": [
+      "bare"
+    ],
+    "rfloor": [
+      "bare"
+    ],
+    "rho": [
+      "bare"
+    ],
+    "right": [
+      "bare"
+    ],
+    "rightarrow": [
+      "bare"
+    ],
+    "rightharpoondown": [
+      "bare"
+    ],
+    "rightharpoonup": [
+      "bare"
+    ],
+    "rightleftharpoons": [
+      "bare"
+    ],
+    "rm": [
+      "bare"
+    ],
+    "rvert": [
+      "bare"
+    ],
+    "scriptscriptstyle": [
+      "bare"
+    ],
+    "scriptstyle": [
+      "bare"
+    ],
+    "searrow": [
+      "bare"
+    ],
+    "sec": [
+      "bare"
+    ],
+    "setminus": [
+      "bare"
+    ],
+    "sigma": [
+      "bare"
+    ],
+    "sim": [
+      "bare"
+    ],
+    "simeq": [
+      "bare"
+    ],
+    "sin": [
+      "bare"
+    ],
+    "sinh": [
+      "bare"
+    ],
+    "smile": [
+      "bare"
+    ],
+    "sqcap": [
+      "bare"
+    ],
+    "sqcup": [
+      "bare"
+    ],
+    "sqrt": [
+      "bare"
+    ],
+    "sqsubset": [
+      "bare"
+    ],
+    "sqsubseteq": [
+      "bare"
+    ],
+    "sqsupset": [
+      "bare"
+    ],
+    "sqsupseteq": [
+      "bare"
+    ],
+    "star": [
+      "bare"
+    ],
+    "subset": [
+      "bare"
+    ],
+    "subseteq": [
+      "bare"
+    ],
+    "substack": [
+      "bare"
+    ],
+    "succ": [
+      "bare"
+    ],
+    "succeq": [
+      "bare"
+    ],
+    "sum": [
+      "bare"
+    ],
+    "sup": [
+      "bare"
+    ],
+    "supset": [
+      "bare"
+    ],
+    "supseteq": [
+      "bare"
+    ],
+    "swarrow": [
+      "bare"
+    ],
+    "tan": [
+      "bare"
+    ],
+    "tanh": [
+      "bare"
+    ],
+    "tau": [
+      "bare"
+    ],
+    "text": [
+      "bare"
+    ],
+    "textit": [
+      "bare"
+    ],
+    "textstyle": [
+      "bare"
+    ],
+    "tfrac": [
+      "bare"
+    ],
+    "therefore": [
+      "bare"
+    ],
+    "theta": [
+      "bare"
+    ],
+    "thickspace": [
+      "bare"
+    ],
+    "thinspace": [
+      "bare"
+    ],
+    "tilde": [
+      "bare"
+    ],
+    "times": [
+      "bare"
+    ],
+    "to": [
+      "bare"
+    ],
+    "triangleleft": [
+      "bare"
+    ],
+    "triangleright": [
+      "bare"
+    ],
+    "underbrace": [
+      "bare"
+    ],
+    "underline": [
+      "bare"
+    ],
+    "underset": [
+      "bare"
+    ],
+    "uparrow": [
+      "bare"
+    ],
+    "updownarrow": [
+      "bare"
+    ],
+    "uplus": [
+      "bare"
+    ],
+    "upsilon": [
+      "bare"
+    ],
+    "varepsilon": [
+      "bare"
+    ],
+    "varnothing": [
+      "bare"
+    ],
+    "varphi": [
+      "bare"
+    ],
+    "varpi": [
+      "bare"
+    ],
+    "varrho": [
+      "bare"
+    ],
+    "varsigma": [
+      "bare"
+    ],
+    "vartheta": [
+      "bare"
+    ],
+    "vdash": [
+      "bare"
+    ],
+    "vec": [
+      "bare"
+    ],
+    "vee": [
+      "bare"
+    ],
+    "vert": [
+      "bare"
+    ],
+    "wedge": [
+      "bare"
+    ],
+    "widehat": [
+      "bare"
+    ],
+    "widetilde": [
+      "bare"
+    ],
+    "wp": [
+      "bare"
+    ],
+    "wr": [
+      "bare"
+    ],
+    "xi": [
+      "bare"
+    ],
+    "xrightarrow": [
+      "bare"
+    ],
+    "zeta": [
+      "bare"
+    ]
+  },
+  "unsafe_excluded": [
+    "catcode",
+    "csname",
+    "def",
+    "directlua",
+    "documentclass",
+    "edef",
+    "endcsname",
+    "everydisplay",
+    "everyjob",
+    "everymath",
+    "expandafter",
+    "font",
+    "futurelet",
+    "gdef",
+    "global",
+    "hbox",
+    "immediate",
+    "include",
+    "input",
+    "let",
+    "loop",
+    "luaexec",
+    "newcommand",
+    "newenvironment",
+    "noexpand",
+    "openin",
+    "openout",
+    "providecommand",
+    "read",
+    "renewcommand",
+    "renewenvironment",
+    "repeat",
+    "scantokens",
+    "shipout",
+    "special",
+    "usepackage",
+    "vbox",
+    "write",
+    "xdef"
+  ]
+}

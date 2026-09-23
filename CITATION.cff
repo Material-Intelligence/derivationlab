@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "DerivationLab: machine-assisted physics derivations with hash-chained, replayable records"
+abstract: >-
+  A system that runs physics derivations with language-model Writer, Checker
+  and Judge roles under human direction, and records every step, check, model
+  call, judgement and human action in an append-only, hash-chained event log.
+  It includes a standard-library-only verifier that replays such a record and
+  refuses any record whose chain or cross-event semantics do not hold, and a
+  renderer that turns a verified record into a self-contained offline HTML view.
+authors:
+  - family-names: Xie
+    given-names: Jiahao
+    email: xiejh.mail@gmail.com
+repository-code: "https://github.com/Material-Intelligence/derivationlab"
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-09-23"
+keywords:
+  - provenance
+  - reproducibility
+  - symbolic derivation
+  - language models
+  - hash chain
+  - audit trail

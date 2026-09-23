@@ -1,0 +1,34 @@
+{
+  "network_denied": {
+    "id": 4,
+    "result": {
+      "exitCode": 0,
+      "stderr": "",
+      "stdout": "NETWORK_DENIED errno=1\n"
+    }
+  },
+  "outside_read_denied": {
+    "id": 3,
+    "result": {
+      "exitCode": 1,
+      "stderr": "cat: ../outside/sentinel.txt: Operation not permitted\n",
+      "stdout": ""
+    }
+  },
+  "sympy_calculation": {
+    "id": 1,
+    "result": {
+      "exitCode": 0,
+      "stderr": "",
+      "stdout": "SYMPY_OK version=1.14.0 roots=-1,1\n"
+    }
+  },
+  "workspace_read_write": {
+    "id": 2,
+    "result": {
+      "exitCode": 0,
+      "stderr": "",
+      "stdout": "WORKSPACE_OK result=2*x**3 sympy=1.14.0\n"
+    }
+  }
+}

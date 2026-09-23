@@ -1,0 +1,11 @@
+{
+  "api_config": {
+    "backend": {
+      "name": "synthetic-record-builder",
+      "version": "1"
+    }
+  },
+  "note": "No model was called and no runtime produced this record. It was built event by event from the Record v1.1 contract, because the v1.1 vocabulary includes source_evidence_registered, which puts third-party source text inside the hash chain where it can never be removed. Every run directory carries a manifest; this one states its own provenance instead of a runtime's, and the test suite pins its backend against the record.",
+  "produced_by": "tests/v1_1_example.py::worked_v1_1_events",
+  "record_schema_version": "derivation-agent-event-v1.1"
+}

@@ -1,0 +1,200 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0002.jsonl line 22",
+  "captured": "2026-09-04",
+  "provenance": {
+    "recorded_at": "2026-09-04T00:01:00Z",
+    "intake_session_id": "intake_corpus_002",
+    "round_number": 1,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": null,
+    "payload_sha256_prefix": "c7e71dd9d5d4"
+  },
+  "payload": {
+    "public_summary": "The only blocking ambiguity was converted into a simplest-first refinement path. There are no remaining problem-class questions, so the intake is scientifically executable and candidate-ready.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Derive the optical absorption coefficient alpha as a function of photon energy hbar omega for a direct-gap semiconductor from single-particle Bloch states in the independent-particle approximation.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "Produce a derivation tree for direct-gap interband absorption and a closed-form alpha(hbar omega), handled in a simplest-first refinement path from edge scaling to the full symbolic prefactor.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "Start from single-particle Bloch valence and conduction states. Use Fermi's golden rule for vertical interband transitions in a direct-gap semiconductor. Use a parabolic two-band model with conduction and valence bands, reduced mass mu, band gap Eg, and a constant interband momentum matrix element.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use SI units. Use Eg and mu as symbols. Assume unpolarized light and isotropic bands, so the absorption is treated as a scalar alpha(hbar omega).",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "Include vertical interband transitions, independent particles, parabolic two-band dispersion, constant momentum matrix element, zero-temperature occupations, the joint density of states, and a delta-function line shape. Exclude excitons, local-field and Coulomb-enhancement effects, phonon-assisted or indirect processes, free-carrier absorption, k dot p warping beyond the parabolic edge, finite lifetime or broadening, finite temperature, and many-body self-energy effects.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "No numerics, no code, and no materials-specific DFT. The result is an analytic textbook derivation, not a material-calibrated prediction.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "Provide the derivation tree and a simplest-first ladder in which rung 0 gives the near-edge functional form of alpha(hbar omega) up to an overall constant, and the final rung upgrades that result to the full closed-form symbolic prefactor retaining the constant momentum-matrix-element normalization.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The derivation must stay within the independent-particle direct-gap vertical-transition model, preserve the stated included and excluded physics, use SI conventions, and culminate in a full symbolic alpha(hbar omega) expression after the simplest-first upgrade path.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "All remaining non-blocking presentation and convention choices are owned by the derivation agent and should follow standard textbook defaults consistent with the user's simplest-first policy.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_002a",
+      "event_corpus_002b"
+    ],
+    "questions": [],
+    "declared_defaults": [
+      {
+        "default_id": "default_conv_si_units",
+        "decision_class": "convention",
+        "title": "Unit system",
+        "statement": "Use SI units throughout.",
+        "rationale": "The user explicitly fixed SI units.",
+        "alternatives": [
+          "Gaussian units",
+          "Heaviside-Lorentz units"
+        ]
+      },
+      {
+        "default_id": "default_conv_matrix_element_form",
+        "decision_class": "convention",
+        "title": "Matrix-element representation",
+        "statement": "Use the momentum-matrix-element form for the interband optical coupling.",
+        "rationale": "The user explicitly specified a constant momentum matrix element, making this the direct textbook convention.",
+        "alternatives": [
+          "Velocity-matrix-element form",
+          "Dipole-matrix-element form"
+        ]
+      },
+      {
+        "default_id": "default_conv_gauge",
+        "decision_class": "convention",
+        "title": "Gauge handling",
+        "statement": "Use the standard long-wavelength optical coupling convention consistent with the momentum-matrix-element formulation, without treating gauge choice as a separate branch.",
+        "rationale": "Gauge is a convention, not a blocking physics decision, and the user requested textbook defaults for unspecified items.",
+        "alternatives": [
+          "Length gauge",
+          "Velocity gauge treated explicitly as the primary presentation"
+        ]
+      },
+      {
+        "default_id": "default_conv_lineshape_delta",
+        "decision_class": "convention",
+        "title": "Line shape",
+        "statement": "Use an ideal delta-function line shape with no phenomenological broadening.",
+        "rationale": "The user explicitly excluded finite lifetime and broadening.",
+        "alternatives": [
+          "Lorentzian broadening",
+          "Gaussian broadening"
+        ]
+      },
+      {
+        "default_id": "default_conv_absorption_route",
+        "decision_class": "convention",
+        "title": "Route to alpha",
+        "statement": "Use the most direct textbook route from the interband transition rate to alpha, introducing equivalent response-function relations only when algebraically useful.",
+        "rationale": "The deliverable is alpha(hbar omega) itself, so this avoids unnecessary convention branches.",
+        "alternatives": [
+          "Route via imaginary dielectric function epsilon_2",
+          "Route via optical conductivity then conversion to alpha"
+        ]
+      },
+      {
+        "default_id": "default_conv_real_part_handling",
+        "decision_class": "convention",
+        "title": "Real-part treatment",
+        "statement": "Do not derive a separate real part of the dielectric function unless needed for an intermediate consistency relation.",
+        "rationale": "The requested observable is alpha(hbar omega), not the full complex dielectric function.",
+        "alternatives": [
+          "Kramers-Kronig reconstruction of the real part",
+          "External model for the real part of epsilon"
+        ]
+      },
+      {
+        "default_id": "default_approx_parabolic_two_band",
+        "decision_class": "approximation_level",
+        "title": "Band model",
+        "statement": "Use the parabolic two-band conduction-plus-valence model near the direct gap edge.",
+        "rationale": "The user explicitly fixed this model and excluded higher-order warping.",
+        "alternatives": [
+          "Kane model",
+          "General Bloch-band treatment"
+        ]
+      },
+      {
+        "default_id": "default_approx_constant_matrix_element",
+        "decision_class": "approximation_level",
+        "title": "Matrix-element k dependence",
+        "statement": "Treat the interband momentum matrix element as k independent.",
+        "rationale": "The user explicitly fixed a constant momentum matrix element.",
+        "alternatives": [
+          "k-dependent matrix element"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Edge-scaling baseline",
+        "relaxes": "Nothing; this is the textbook-simplest baseline compatible with the fixed physics, keeping only the near-edge functional dependence of alpha(hbar omega) up to an overall constant.",
+        "default_ids": [
+          "default_conv_si_units",
+          "default_conv_matrix_element_form",
+          "default_conv_gauge",
+          "default_conv_lineshape_delta",
+          "default_conv_absorption_route",
+          "default_conv_real_part_handling",
+          "default_approx_parabolic_two_band",
+          "default_approx_constant_matrix_element"
+        ],
+        "decision_ids": [
+          "dec_prefactor_scope_alpha"
+        ],
+        "parallel_branch": false
+      },
+      {
+        "rung": 1,
+        "name": "Full symbolic prefactor",
+        "relaxes": "Relaxes the omission of the overall multiplicative constant at rung 0 by carrying the constant momentum-matrix-element prefactor and equivalent optical normalization factors explicitly.",
+        "default_ids": [
+          "default_conv_si_units",
+          "default_conv_matrix_element_form",
+          "default_conv_gauge",
+          "default_conv_lineshape_delta",
+          "default_conv_absorption_route",
+          "default_conv_real_part_handling",
+          "default_approx_parabolic_two_band",
+          "default_approx_constant_matrix_element"
+        ],
+        "decision_ids": [
+          "dec_prefactor_scope_alpha"
+        ],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": true
+  }
+}

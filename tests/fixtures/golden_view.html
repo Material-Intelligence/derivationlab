@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derivation Agent Record v1 audit</title>
+<style>
+:root { font-family: ui-sans-serif, system-ui, sans-serif; color: #171717; background: #f5f5f5; }
+body { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+h1, h2 { letter-spacing: -0.02em; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+code { overflow-wrap: anywhere; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .75rem; }
+.metric, .card { background: white; border: 1px solid #ddd; border-radius: .7rem; padding: 1rem; margin: .7rem 0; }
+.metric strong { display: block; font-size: 1.6rem; }
+.selected { border-width: 2px; }
+table { width: 100%; border-collapse: collapse; background: white; font-size: .9rem; }
+th, td { border: 1px solid #ddd; padding: .55rem; text-align: left; vertical-align: top; }
+pre { white-space: pre-wrap; max-width: 50rem; }
+.badge { display: inline-block; padding: .15rem .45rem; border-radius: 999px; background: #e5e5e5; font-size: .8rem; }
+.eligible, .pass, .ok { background: #d1fae5; }
+.rejected, .fail, .hard_defect { background: #fee2e2; }
+.provisional, .blocked, .conditional, .near_pass, .objection, .instrument_failure { background: #fef3c7; }
+.small { color: #555; font-size: .9rem; }
+.label { color: #555; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; margin: .6rem 0 .1rem; }
+.field { margin: 0; }
+ul { margin: 0; padding-left: 1.1rem; }
+</style>
+</head>
+<body>
+<h1>Derivation Agent Record v1 audit</h1>
+<p class="small">Read-only view derived from the append-only event log. It is not a control surface.</p>
+<div class="metrics">
+<div class="metric"><strong>5</strong>branches</div>
+<div class="metric"><strong>4</strong>step revisions</div>
+<div class="metric"><strong>9</strong>model calls</div>
+<div class="metric"><strong>4</strong>checks</div>
+<div class="metric"><strong>2</strong>candidates</div>
+<div class="metric"><strong>1</strong>judgements</div>
+</div>
+<h2>Selected submission</h2>
+<article class="card selected"><h3>Selected submission: <code>cand_human_edit</code></h3><p>Judgement <code>judge_edit_final</code>; transcript <code>eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec</code>.</p><p>human_touched=<strong>True</strong>; reason: The root candidate was rejected by a late hard defect; the replacement candidate passed final judgement.</p></article>
+<h2>Branches</h2>
+<table><thead><tr><th>Branch</th><th>Status</th><th>Created reason</th><th>Content provenance</th><th>Steps</th></tr></thead>
+<tbody><tr><td><code>br_human_direction</code></td><td>paused</td><td>human_direction</td><td>human_steered</td><td>1</td></tr><tr><td><code>br_human_edit</code></td><td>completed</td><td>human_revision</td><td>human_edited</td><td>3</td></tr><tr><td><code>br_instrument</code></td><td>parked</td><td>model_alternative</td><td>model_only</td><td>1</td></tr><tr><td><code>br_model_alt</code></td><td>paused</td><td>model_alternative</td><td>model_only</td><td>1</td></tr><tr><td><code>br_root</code></td><td>killed</td><td>root</td><td>model_only</td><td>2</td></tr></tbody></table>
+<h2>Step revisions</h2>
+<p class="small">Every step on every branch route, in transcript order. Inherited steps appear on each route that carries them.</p>
+<h3>Branch <code>br_human_direction</code></h3><article class="card"><h4><code>step_root_1_r1</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">The invariant Q is positive at the first checkpoint.</pre><p class="label">why</p><pre class="field">This establishes the sign convention before any branch-specific manipulation.</pre><p class="label">source</p><pre class="field">Fixture axiom A1.</pre><p class="label">derivation</p><pre class="field">From A1, Q = u^2 with u nonzero, so Q &gt; 0.</pre><p class="label">scope</p><pre class="field">Applies while u is real and nonzero.</pre><p class="small">Output SHA-256 <code>2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83</code>; sealed by model <code>call_writer_s1</code>.</p></article><h3>Branch <code>br_human_edit</code></h3><article class="card"><h4><code>step_root_1_r1</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">The invariant Q is positive at the first checkpoint.</pre><p class="label">why</p><pre class="field">This establishes the sign convention before any branch-specific manipulation.</pre><p class="label">source</p><pre class="field">Fixture axiom A1.</pre><p class="label">derivation</p><pre class="field">From A1, Q = u^2 with u nonzero, so Q &gt; 0.</pre><p class="label">scope</p><pre class="field">Applies while u is real and nonzero.</pre><p class="small">Output SHA-256 <code>2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83</code>; sealed by model <code>call_writer_s1</code>.</p></article><article class="card"><h4><code>step_edit_2_r2</code> <span class="small">slot 2, revision 2, replaces <code>step_root_2_r1</code></span></h4><p class="label">claim</p><pre class="field">The invariant Q remains positive at the second checkpoint.</pre><p class="label">why</p><pre class="field">The human reviewer removes the unsupported sign flip while preserving the first checkpoint.</pre><p class="label">source</p><pre class="field">Fixture axiom A1 and explicit human revision act_revision.</pre><p class="label">derivation</p><pre class="field">Because Q = u^2 and no sign-changing operation is justified, Q stays positive.</pre><p class="label">scope</p><pre class="field">Applies while u is real and nonzero; no sign-changing transformation is assumed.</pre><p class="small">Output SHA-256 <code>6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156</code>; sealed by human <code>act_revision</code>.</p></article><article class="card"><h4><code>step_edit_3_r1</code> <span class="small">slot 3, revision 1</span></h4><p class="label">claim</p><pre class="field">The toy derivation closes with a self-consistent positive invariant.</pre><p class="label">why</p><pre class="field">A final summary step makes the candidate goal explicit.</pre><p class="label">source</p><pre class="field">Steps step_root_1_r1 and step_edit_2_r2.</pre><p class="label">derivation</p><pre class="field">Both sealed premises assert Q &gt; 0 in the same scope; the conclusion records their consistent closure.</pre><p class="label">scope</p><pre class="field">Only the nonphysics fixture assumptions; no external scientific claim is made.</pre><p class="small">Output SHA-256 <code>7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a</code>; sealed by model <code>call_writer_edit_3</code>.</p></article><h3>Branch <code>br_instrument</code></h3><article class="card"><h4><code>step_root_1_r1</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">The invariant Q is positive at the first checkpoint.</pre><p class="label">why</p><pre class="field">This establishes the sign convention before any branch-specific manipulation.</pre><p class="label">source</p><pre class="field">Fixture axiom A1.</pre><p class="label">derivation</p><pre class="field">From A1, Q = u^2 with u nonzero, so Q &gt; 0.</pre><p class="label">scope</p><pre class="field">Applies while u is real and nonzero.</pre><p class="small">Output SHA-256 <code>2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83</code>; sealed by model <code>call_writer_s1</code>.</p></article><h3>Branch <code>br_model_alt</code></h3><article class="card"><h4><code>step_root_1_r1</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">The invariant Q is positive at the first checkpoint.</pre><p class="label">why</p><pre class="field">This establishes the sign convention before any branch-specific manipulation.</pre><p class="label">source</p><pre class="field">Fixture axiom A1.</pre><p class="label">derivation</p><pre class="field">From A1, Q = u^2 with u nonzero, so Q &gt; 0.</pre><p class="label">scope</p><pre class="field">Applies while u is real and nonzero.</pre><p class="small">Output SHA-256 <code>2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83</code>; sealed by model <code>call_writer_s1</code>.</p></article><h3>Branch <code>br_root</code></h3><article class="card"><h4><code>step_root_1_r1</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">The invariant Q is positive at the first checkpoint.</pre><p class="label">why</p><pre class="field">This establishes the sign convention before any branch-specific manipulation.</pre><p class="label">source</p><pre class="field">Fixture axiom A1.</pre><p class="label">derivation</p><pre class="field">From A1, Q = u^2 with u nonzero, so Q &gt; 0.</pre><p class="label">scope</p><pre class="field">Applies while u is real and nonzero.</pre><p class="small">Output SHA-256 <code>2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83</code>; sealed by model <code>call_writer_s1</code>.</p></article><article class="card"><h4><code>step_root_2_r1</code> <span class="small">slot 2, revision 1</span></h4><p class="label">claim</p><pre class="field">The same invariant Q is negative at the second checkpoint.</pre><p class="label">why</p><pre class="field">The root route applies a sign flip to close the toy derivation.</pre><p class="label">source</p><pre class="field">Fixture transformation T-root.</pre><p class="label">derivation</p><pre class="field">Applying T-root gives Q -&gt; -Q; the route therefore records Q &lt; 0.</pre><p class="label">scope</p><pre class="field">Claims the same real, nonzero regime as the first checkpoint.</pre><p class="small">Output SHA-256 <code>03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704</code>; sealed by model <code>call_writer_s2</code>.</p></article>
+<h2>Checks</h2>
+<table><thead><tr><th>Check</th><th>Target step</th><th>Verdict</th><th>Reason</th><th>Evidence</th></tr></thead>
+<tbody><tr><td><code>check_edit_2</code></td><td><code>step_edit_2_r2</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The new revision preserves the earlier sign and states its scope.</td><td></td></tr><tr><td><code>check_edit_3</code></td><td><code>step_edit_3_r1</code></td><td><span class="badge objection">objection</span> <span class="small">required</span></td><td>The explanation is terse and should be visible to final judgement, but it is not a hard defect.</td><td></td></tr><tr><td><code>check_root_1</code></td><td><code>step_root_1_r1</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>No executable defect was found in the sealed revision.</td><td></td></tr><tr><td><code>check_root_2_late</code></td><td><code>step_root_2_r1</code></td><td><span class="badge hard_defect">hard_defect</span> <span class="small">required</span></td><td>The same scoped invariant is asserted positive and then negative without a justified regime change.</td><td><ul><li><code>ancestor_quote</code> <code>step_root_1_r1</code>: The invariant Q is positive at the first checkpoint.</li></ul></td></tr></tbody></table>
+<h2>Candidates</h2>
+<article class="card"><h3><code>cand_human_edit</code> <span class="badge eligible">eligible</span></h3><p>Branch <code>br_human_edit</code>; tip <code>step_edit_3_r1</code>.</p><p>Transcript SHA-256: <code>eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec</code></p><p>Provenance: <strong>human_edited</strong>; human_touched=<strong>True</strong>.</p><p>Required checks: check_edit_2, check_edit_3, check_root_1</p></article><article class="card"><h3><code>cand_root</code> <span class="badge rejected">rejected</span></h3><p>Branch <code>br_root</code>; tip <code>step_root_2_r1</code>.</p><p>Transcript SHA-256: <code>726f4a2ebb3c87609d97062adcf53f0660a5e549473128de8780c3cc425061fd</code></p><p>Provenance: <strong>model_only</strong>; human_touched=<strong>False</strong>.</p><p>Required checks: check_root_1, check_root_2_late</p></article>
+<h2>Judgements</h2>
+<article class="card"><h3><code>judge_edit_final</code> <span class="badge pass">pass</span></h3><p>Candidate <code>cand_human_edit</code>; reason: The nonphysics fixture target is met and the human edit is clearly attributed.</p></article>
+<h2>Event hash chain</h2>
+<p class="small">Head: <code>a983d8b0a9495b2ec061c2e93bf7604f772f1106fa08bc087df8e712cd1df4d2</code></p>
+<table><thead><tr><th>Seq</th><th>Event</th><th>Type</th><th>Actor</th><th>Hash</th><th>Payload</th></tr></thead>
+<tbody><tr><td>1</td><td><code>evt_0001</code></td><td>run_created</td><td>system:record-runtime</td><td><code>c42aa544e5a1</code></td><td><details><summary>payload</summary><pre>{
+  &quot;canonical_schema&quot;: {
+    &quot;path&quot;: &quot;docs/spec/derivation_agent_canonical_v1.schema.json&quot;,
+    &quot;sha256&quot;: &quot;f4050b21035309adb07b5a544132223984a941c697b1d2e24cab05fbc0753625&quot;
+  },
+  &quot;code_commit&quot;: &quot;64fff20f1a2253a934f9dcbb3a15522add6f2c53&quot;,
+  &quot;configuration&quot;: {
+    &quot;backend&quot;: {
+      &quot;name&quot;: &quot;offline-golden-fixture&quot;,
+      &quot;version&quot;: &quot;1&quot;
+    },
+    &quot;granularity&quot;: &quot;one_task&quot;,
+    &quot;max_active_branches&quot;: null,
+    &quot;max_model_calls&quot;: 32,
+    &quot;models&quot;: {
+      &quot;checker&quot;: {
+        &quot;effort&quot;: &quot;fixture&quot;,
+        &quot;model&quot;: &quot;mock:checker&quot;,
+        &quot;provider&quot;: &quot;mock&quot;
+      },
+      &quot;judge&quot;: {
+        &quot;effort&quot;: &quot;fixture&quot;,
+        &quot;model&quot;: &quot;mock:judge&quot;,
+        &quot;provider&quot;: &quot;mock&quot;
+      },
+      &quot;writer&quot;: {
+        &quot;effort&quot;: &quot;fixture&quot;,
+        &quot;model&quot;: &quot;mock:writer&quot;,
+        &quot;provider&quot;: &quot;mock&quot;
+      }
+    }
+  },
+  &quot;event_schema&quot;: {
+    &quot;path&quot;: &quot;docs/spec/derivation_agent_event_v1.schema.json&quot;,
+    &quot;sha256&quot;: &quot;2d23d2490f6bc274e6f65d48a7e06df2ab144429ab05bdc9cd6a70e2ec868d24&quot;
+  },
+  &quot;input_policy&quot;: {
+    &quot;allowed_paths&quot;: [],
+    &quot;reference_allowed&quot;: false
+  },
+  &quot;pack&quot;: {
+    &quot;id&quot;: &quot;fixture_empty_pack&quot;,
+    &quot;sha256&quot;: &quot;9d091c337dff2a149b383d19ef6a06cf489e060dd2e6df456dc37dfcf6fb6681&quot;
+  },
+  &quot;record_spec&quot;: {
+    &quot;path&quot;: &quot;docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md&quot;,
+    &quot;sha256&quot;: &quot;9d6cfcd525ac2fe60921c01523bf29e1e81e8dd4cb290fb7e282101fc5a58a1b&quot;
+  },
+  &quot;task&quot;: {
+    &quot;id&quot;: &quot;fixture_nonphysics_task&quot;,
+    &quot;sha256&quot;: &quot;b00c338053da6866c271aeadd958451618e0e999d5257170dbd76938ebc07cb7&quot;
+  }
+}</pre></details></td></tr><tr><td>2</td><td><code>evt_0002</code></td><td>branch_created</td><td>system:record-runtime</td><td><code>8180ac0106fc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: null,
+  &quot;branch_id&quot;: &quot;br_root&quot;,
+  &quot;created_reason&quot;: &quot;root&quot;,
+  &quot;fork_mode&quot;: &quot;root&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;model&quot;,
+    &quot;source_event_id&quot;: null,
+    &quot;text&quot;: &quot;Assume the invariant Q can be propagated consistently from the initial relation.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [],
+  &quot;initial_status&quot;: &quot;active&quot;,
+  &quot;parent_branch_id&quot;: null
+}</pre></details></td></tr><tr><td>3</td><td><code>evt_0003</code></td><td>model_call_started</td><td>model:mock:writer</td><td><code>f19a803146d8</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_s1&quot;,
+  &quot;prompt_sha256&quot;: &quot;a51f85c4276895f435f4ed55a33df39372f7833fa7c8e6353f8955d1e8847bf3&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_root&quot;,
+    &quot;step_slot&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>4</td><td><code>evt_0004</code></td><td>model_call_chunk</td><td>model:mock:writer</td><td><code>2929ca2824a0</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_writer_s1&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The invariant Q is positive at the first checkpoint.\&quot;,\&quot;derivation\&quot;:\&quot;From A1, Q = u^2 with u nonzero, so Q &gt; 0.\&quot;,\&quot;scope\&quot;:\&quot;Applies while u is real and nonzero.\&quot;,\&quot;source\&quot;:\&quot;Fixture axiom A1.\&quot;,\&quot;why\&quot;:\&quot;This establishes the sign convention before any branch-specific manipulation.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83&quot;
+}</pre></details></td></tr><tr><td>5</td><td><code>evt_0005</code></td><td>model_call_finished</td><td>model:mock:writer</td><td><code>9f0cbcf98f79</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 284,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_s1&quot;,
+  &quot;output_sha256&quot;: &quot;2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The invariant Q is positive at the first checkpoint.\&quot;,\&quot;derivation\&quot;:\&quot;From A1, Q = u^2 with u nonzero, so Q &gt; 0.\&quot;,\&quot;scope\&quot;:\&quot;Applies while u is real and nonzero.\&quot;,\&quot;source\&quot;:\&quot;Fixture axiom A1.\&quot;,\&quot;why\&quot;:\&quot;This establishes the sign convention before any branch-specific manipulation.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>6</td><td><code>evt_0006</code></td><td>step_revision_sealed</td><td>model:mock:writer</td><td><code>40a3804254c4</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_root&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;The invariant Q is positive at the first checkpoint.&quot;,
+    &quot;derivation&quot;: &quot;From A1, Q = u^2 with u nonzero, so Q &gt; 0.&quot;,
+    &quot;scope&quot;: &quot;Applies while u is real and nonzero.&quot;,
+    &quot;source&quot;: &quot;Fixture axiom A1.&quot;,
+    &quot;why&quot;: &quot;This establishes the sign convention before any branch-specific manipulation.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_writer_s1&quot;
+  },
+  &quot;output_sha256&quot;: &quot;2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_root_1_r1&quot;,
+  &quot;step_slot&quot;: 1
+}</pre></details></td></tr><tr><td>7</td><td><code>evt_0007</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>d3959e214d47</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_root_1&quot;,
+  &quot;reason&quot;: &quot;Every sealed step in the fixture receives a required step check.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_root_1_r1&quot;
+}</pre></details></td></tr><tr><td>8</td><td><code>evt_0008</code></td><td>model_call_started</td><td>checker:mock:checker</td><td><code>6ca66d01c0d7</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_root_1&quot;,
+  &quot;prompt_sha256&quot;: &quot;513045506aacc8c2928374ad5bd1b7ecbb36f33612cbe9127b4f408603b0766d&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_root_1&quot;
+  }
+}</pre></details></td></tr><tr><td>9</td><td><code>evt_0009</code></td><td>model_call_finished</td><td>checker:mock:checker</td><td><code>02659781e917</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 76,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_root_1&quot;,
+  &quot;output_sha256&quot;: &quot;bea9e1d26bfe6a7351f644751d17c598443f3a4dca05f6565d60688526e1e8f1&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The claim follows from the stated fixture axiom.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>10</td><td><code>evt_0010</code></td><td>check_completed</td><td>checker:mock:checker</td><td><code>e439136cbef8</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_root_1&quot;,
+  &quot;checker_call_id&quot;: &quot;call_checker_root_1&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;No executable defect was found in the sealed revision.&quot;,
+  &quot;target_output_sha256&quot;: &quot;2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_root_1_r1&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>11</td><td><code>evt_0011</code></td><td>model_call_started</td><td>model:mock:writer</td><td><code>f67632279d87</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_s2&quot;,
+  &quot;prompt_sha256&quot;: &quot;079e4ac4bc1c6c6594f72b0ea297a4fa5167042c8c8d530aba7d361d5f2b55ba&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_root&quot;,
+    &quot;step_slot&quot;: 2
+  }
+}</pre></details></td></tr><tr><td>12</td><td><code>evt_0012</code></td><td>model_call_finished</td><td>model:mock:writer</td><td><code>b22bae97cb33</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 337,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_s2&quot;,
+  &quot;output_sha256&quot;: &quot;03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The same invariant Q is negative at the second checkpoint.\&quot;,\&quot;derivation\&quot;:\&quot;Applying T-root gives Q -&gt; -Q; the route therefore records Q &lt; 0.\&quot;,\&quot;scope\&quot;:\&quot;Claims the same real, nonzero regime as the first checkpoint.\&quot;,\&quot;source\&quot;:\&quot;Fixture transformation T-root.\&quot;,\&quot;why\&quot;:\&quot;The root route applies a sign flip to close the toy derivation.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>13</td><td><code>evt_0013</code></td><td>step_revision_sealed</td><td>model:mock:writer</td><td><code>4c1128679f71</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_root&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;The same invariant Q is negative at the second checkpoint.&quot;,
+    &quot;derivation&quot;: &quot;Applying T-root gives Q -&gt; -Q; the route therefore records Q &lt; 0.&quot;,
+    &quot;scope&quot;: &quot;Claims the same real, nonzero regime as the first checkpoint.&quot;,
+    &quot;source&quot;: &quot;Fixture transformation T-root.&quot;,
+    &quot;why&quot;: &quot;The root route applies a sign flip to close the toy derivation.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_writer_s2&quot;
+  },
+  &quot;output_sha256&quot;: &quot;03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_root_2_r1&quot;,
+  &quot;step_slot&quot;: 2
+}</pre></details></td></tr><tr><td>14</td><td><code>evt_0014</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>6222de23909a</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_root_2_late&quot;,
+  &quot;reason&quot;: &quot;This check is deliberately completed after candidate declaration.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_root_2_r1&quot;
+}</pre></details></td></tr><tr><td>15</td><td><code>evt_0015</code></td><td>branch_status_changed</td><td>model:mock:writer</td><td><code>07dcc1c9270e</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_root&quot;,
+  &quot;check_id&quot;: null,
+  &quot;from_status&quot;: &quot;active&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: null,
+  &quot;reason_code&quot;: &quot;writer_complete&quot;,
+  &quot;to_status&quot;: &quot;completed&quot;
+}</pre></details></td></tr><tr><td>16</td><td><code>evt_0016</code></td><td>candidate_declared</td><td>model:mock:writer</td><td><code>68f0b0c5f3e2</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_root&quot;,
+  &quot;candidate_id&quot;: &quot;cand_root&quot;,
+  &quot;declared_by&quot;: &quot;writer&quot;,
+  &quot;reason&quot;: &quot;The root writer declares the toy target reached while one required check is pending.&quot;,
+  &quot;required_check_ids&quot;: [
+    &quot;check_root_1&quot;,
+    &quot;check_root_2_late&quot;
+  ],
+  &quot;tip_step_revision_id&quot;: &quot;step_root_2_r1&quot;,
+  &quot;transcript_sha256&quot;: &quot;726f4a2ebb3c87609d97062adcf53f0660a5e549473128de8780c3cc425061fd&quot;,
+  &quot;transcript_step_revision_ids&quot;: [
+    &quot;step_root_1_r1&quot;,
+    &quot;step_root_2_r1&quot;
+  ]
+}</pre></details></td></tr><tr><td>17</td><td><code>evt_0017</code></td><td>branch_created</td><td>model:mock:writer</td><td><code>f96f74343952</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: &quot;step_root_1_r1&quot;,
+  &quot;branch_id&quot;: &quot;br_model_alt&quot;,
+  &quot;created_reason&quot;: &quot;model_alternative&quot;,
+  &quot;fork_mode&quot;: &quot;after&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;model&quot;,
+    &quot;source_event_id&quot;: null,
+    &quot;text&quot;: &quot;Use an alternative decomposition while preserving Q &gt; 0.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [
+    &quot;step_root_1_r1&quot;
+  ],
+  &quot;initial_status&quot;: &quot;paused&quot;,
+  &quot;parent_branch_id&quot;: &quot;br_root&quot;
+}</pre></details></td></tr><tr><td>18</td><td><code>evt_0018</code></td><td>human_action_recorded</td><td>human:fixture-reviewer</td><td><code>623fc1c72be9</code></td><td><details><summary>payload</summary><pre>{
+  &quot;action&quot;: &quot;set_direction&quot;,
+  &quot;action_id&quot;: &quot;act_direction&quot;,
+  &quot;content&quot;: &quot;Explore a direct consistency proof from the positive checkpoint.&quot;,
+  &quot;content_sha256&quot;: &quot;7792bae5dcf7c8a1f865753a38d7c18cf1df335d88e32cf36027be4b77f844fd&quot;,
+  &quot;reason&quot;: &quot;Exercise explicit human steering without editing existing text.&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_root&quot;
+  }
+}</pre></details></td></tr><tr><td>19</td><td><code>evt_0019</code></td><td>branch_created</td><td>human:fixture-reviewer</td><td><code>ac298d2c3f98</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: &quot;step_root_1_r1&quot;,
+  &quot;branch_id&quot;: &quot;br_human_direction&quot;,
+  &quot;created_reason&quot;: &quot;human_direction&quot;,
+  &quot;fork_mode&quot;: &quot;after&quot;,
+  &quot;human_action_id&quot;: &quot;act_direction&quot;,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;human&quot;,
+    &quot;source_event_id&quot;: &quot;evt_0018&quot;,
+    &quot;text&quot;: &quot;Explore a direct consistency proof from the positive checkpoint.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [
+    &quot;step_root_1_r1&quot;
+  ],
+  &quot;initial_status&quot;: &quot;paused&quot;,
+  &quot;parent_branch_id&quot;: &quot;br_root&quot;
+}</pre></details></td></tr><tr><td>20</td><td><code>evt_0020</code></td><td>branch_created</td><td>model:mock:writer</td><td><code>a1b2a2fd2de2</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: &quot;step_root_1_r1&quot;,
+  &quot;branch_id&quot;: &quot;br_instrument&quot;,
+  &quot;created_reason&quot;: &quot;model_alternative&quot;,
+  &quot;fork_mode&quot;: &quot;after&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;model&quot;,
+    &quot;source_event_id&quot;: null,
+    &quot;text&quot;: &quot;Try a fresh local continuation to exercise the instrument-failure path.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [
+    &quot;step_root_1_r1&quot;
+  ],
+  &quot;initial_status&quot;: &quot;active&quot;,
+  &quot;parent_branch_id&quot;: &quot;br_root&quot;
+}</pre></details></td></tr><tr><td>21</td><td><code>evt_0021</code></td><td>model_call_started</td><td>model:mock:writer</td><td><code>56813c05842d</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_zero_body&quot;,
+  &quot;prompt_sha256&quot;: &quot;438cc77c9ed6ee337c7acf4206f95f6f69e87dac27d2886729f88cd9054e0860&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_instrument&quot;,
+    &quot;step_slot&quot;: 2
+  }
+}</pre></details></td></tr><tr><td>22</td><td><code>evt_0022</code></td><td>model_call_failed</td><td>model:mock:writer</td><td><code>656004ba6377</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 0,
+  &quot;failure_kind&quot;: &quot;zero_body_instrument_failure&quot;,
+  &quot;message&quot;: &quot;Mock writer exhausted its output budget before emitting body text.&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_zero_body&quot;,
+  &quot;partial_output_sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
+  &quot;partial_output_text&quot;: &quot;&quot;,
+  &quot;retryable&quot;: true
+}</pre></details></td></tr><tr><td>23</td><td><code>evt_0023</code></td><td>branch_status_changed</td><td>system:record-runtime</td><td><code>f165bbfc1ad5</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_instrument&quot;,
+  &quot;check_id&quot;: null,
+  &quot;from_status&quot;: &quot;active&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: &quot;call_writer_zero_body&quot;,
+  &quot;reason_code&quot;: &quot;instrument_failure&quot;,
+  &quot;to_status&quot;: &quot;parked&quot;
+}</pre></details></td></tr><tr><td>24</td><td><code>evt_0024</code></td><td>human_action_recorded</td><td>human:fixture-reviewer</td><td><code>bd46078d87ab</code></td><td><details><summary>payload</summary><pre>{
+  &quot;action&quot;: &quot;revise_step&quot;,
+  &quot;action_id&quot;: &quot;act_revision&quot;,
+  &quot;content&quot;: &quot;{\&quot;claim\&quot;:\&quot;The invariant Q remains positive at the second checkpoint.\&quot;,\&quot;derivation\&quot;:\&quot;Because Q = u^2 and no sign-changing operation is justified, Q stays positive.\&quot;,\&quot;scope\&quot;:\&quot;Applies while u is real and nonzero; no sign-changing transformation is assumed.\&quot;,\&quot;source\&quot;:\&quot;Fixture axiom A1 and explicit human revision act_revision.\&quot;,\&quot;why\&quot;:\&quot;The human reviewer removes the unsupported sign flip while preserving the first checkpoint.\&quot;}&quot;,
+  &quot;content_sha256&quot;: &quot;6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156&quot;,
+  &quot;reason&quot;: &quot;Replace the unsupported sign flip without mutating the old route.&quot;,
+  &quot;target&quot;: {
+    &quot;step_revision_id&quot;: &quot;step_root_2_r1&quot;
+  }
+}</pre></details></td></tr><tr><td>25</td><td><code>evt_0025</code></td><td>branch_created</td><td>human:fixture-reviewer</td><td><code>0de32836c73c</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: &quot;step_root_2_r1&quot;,
+  &quot;branch_id&quot;: &quot;br_human_edit&quot;,
+  &quot;created_reason&quot;: &quot;human_revision&quot;,
+  &quot;fork_mode&quot;: &quot;replace&quot;,
+  &quot;human_action_id&quot;: &quot;act_revision&quot;,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;human&quot;,
+    &quot;source_event_id&quot;: &quot;evt_0024&quot;,
+    &quot;text&quot;: &quot;Keep the positive invariant and replace the unsupported second step.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [
+    &quot;step_root_1_r1&quot;
+  ],
+  &quot;initial_status&quot;: &quot;active&quot;,
+  &quot;parent_branch_id&quot;: &quot;br_root&quot;
+}</pre></details></td></tr><tr><td>26</td><td><code>evt_0026</code></td><td>step_revision_sealed</td><td>human:fixture-reviewer</td><td><code>7103161b915a</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_human_edit&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;The invariant Q remains positive at the second checkpoint.&quot;,
+    &quot;derivation&quot;: &quot;Because Q = u^2 and no sign-changing operation is justified, Q stays positive.&quot;,
+    &quot;scope&quot;: &quot;Applies while u is real and nonzero; no sign-changing transformation is assumed.&quot;,
+    &quot;source&quot;: &quot;Fixture axiom A1 and explicit human revision act_revision.&quot;,
+    &quot;why&quot;: &quot;The human reviewer removes the unsupported sign flip while preserving the first checkpoint.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: &quot;act_revision&quot;,
+    &quot;kind&quot;: &quot;human&quot;,
+    &quot;model_call_id&quot;: null
+  },
+  &quot;output_sha256&quot;: &quot;6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156&quot;,
+  &quot;replaces_step_revision_id&quot;: &quot;step_root_2_r1&quot;,
+  &quot;revision&quot;: 2,
+  &quot;step_revision_id&quot;: &quot;step_edit_2_r2&quot;,
+  &quot;step_slot&quot;: 2
+}</pre></details></td></tr><tr><td>27</td><td><code>evt_0027</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>728f86eb1986</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_edit_2&quot;,
+  &quot;reason&quot;: &quot;Check the exact human-authored replacement revision.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_edit_2_r2&quot;
+}</pre></details></td></tr><tr><td>28</td><td><code>evt_0028</code></td><td>model_call_started</td><td>checker:mock:checker</td><td><code>e241d61c91c2</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_edit_2&quot;,
+  &quot;prompt_sha256&quot;: &quot;a303088353cfe9bd3a3c3991716c7b3085036edf29363645394baa1bcb035f42&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_edit_2&quot;
+  }
+}</pre></details></td></tr><tr><td>29</td><td><code>evt_0029</code></td><td>model_call_finished</td><td>checker:mock:checker</td><td><code>a67d16dfdb04</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 78,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_edit_2&quot;,
+  &quot;output_sha256&quot;: &quot;c7b7c4def03462a89fe19b43589d9b6de3c91a284c096ed711bc97cf4d68ee19&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The replacement is consistent with the first step.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>30</td><td><code>evt_0030</code></td><td>check_completed</td><td>checker:mock:checker</td><td><code>f980f2ed55f1</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_edit_2&quot;,
+  &quot;checker_call_id&quot;: &quot;call_checker_edit_2&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The new revision preserves the earlier sign and states its scope.&quot;,
+  &quot;target_output_sha256&quot;: &quot;6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_edit_2_r2&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>31</td><td><code>evt_0031</code></td><td>model_call_started</td><td>model:mock:writer</td><td><code>e6ed4ca1be60</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_edit_3&quot;,
+  &quot;prompt_sha256&quot;: &quot;33972e14331b8b0ebe7cc6cb52d93798244bf7d7e64b92167b2dac1f2d4f0d58&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_human_edit&quot;,
+    &quot;step_slot&quot;: 3
+  }
+}</pre></details></td></tr><tr><td>32</td><td><code>evt_0032</code></td><td>model_call_finished</td><td>model:mock:writer</td><td><code>0bb6d7ee78bc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 402,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_writer_edit_3&quot;,
+  &quot;output_sha256&quot;: &quot;7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The toy derivation closes with a self-consistent positive invariant.\&quot;,\&quot;derivation\&quot;:\&quot;Both sealed premises assert Q &gt; 0 in the same scope; the conclusion records their consistent closure.\&quot;,\&quot;scope\&quot;:\&quot;Only the nonphysics fixture assumptions; no external scientific claim is made.\&quot;,\&quot;source\&quot;:\&quot;Steps step_root_1_r1 and step_edit_2_r2.\&quot;,\&quot;why\&quot;:\&quot;A final summary step makes the candidate goal explicit.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>33</td><td><code>evt_0033</code></td><td>step_revision_sealed</td><td>model:mock:writer</td><td><code>15d61e0f8edc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_human_edit&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;The toy derivation closes with a self-consistent positive invariant.&quot;,
+    &quot;derivation&quot;: &quot;Both sealed premises assert Q &gt; 0 in the same scope; the conclusion records their consistent closure.&quot;,
+    &quot;scope&quot;: &quot;Only the nonphysics fixture assumptions; no external scientific claim is made.&quot;,
+    &quot;source&quot;: &quot;Steps step_root_1_r1 and step_edit_2_r2.&quot;,
+    &quot;why&quot;: &quot;A final summary step makes the candidate goal explicit.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_writer_edit_3&quot;
+  },
+  &quot;output_sha256&quot;: &quot;7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_edit_3_r1&quot;,
+  &quot;step_slot&quot;: 3
+}</pre></details></td></tr><tr><td>34</td><td><code>evt_0034</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>0cefb8214829</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_edit_3&quot;,
+  &quot;reason&quot;: &quot;Check the model-written closure step.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_edit_3_r1&quot;
+}</pre></details></td></tr><tr><td>35</td><td><code>evt_0035</code></td><td>model_call_started</td><td>checker:mock:checker</td><td><code>aa6d12c83a76</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_edit_3&quot;,
+  &quot;prompt_sha256&quot;: &quot;291db1ab9048d31796bee944b314ea45091e94f3610fa37ad19ae02b38a6199e&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_edit_3&quot;
+  }
+}</pre></details></td></tr><tr><td>36</td><td><code>evt_0036</code></td><td>model_call_finished</td><td>checker:mock:checker</td><td><code>82d89b750f3c</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 78,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_edit_3&quot;,
+  &quot;output_sha256&quot;: &quot;af39960fb65b87fab23e7cd16c342321ca12e2def191a069c833dfdf0a21f63b&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The summary is terse but not contradictory.\&quot;,\&quot;verdict\&quot;:\&quot;objection\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>37</td><td><code>evt_0037</code></td><td>check_completed</td><td>checker:mock:checker</td><td><code>01717f9d98fd</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_edit_3&quot;,
+  &quot;checker_call_id&quot;: &quot;call_checker_edit_3&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The explanation is terse and should be visible to final judgement, but it is not a hard defect.&quot;,
+  &quot;target_output_sha256&quot;: &quot;7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_edit_3_r1&quot;,
+  &quot;verdict&quot;: &quot;objection&quot;
+}</pre></details></td></tr><tr><td>38</td><td><code>evt_0038</code></td><td>branch_status_changed</td><td>model:mock:writer</td><td><code>ad3a8029cfa9</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_human_edit&quot;,
+  &quot;check_id&quot;: null,
+  &quot;from_status&quot;: &quot;active&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: null,
+  &quot;reason_code&quot;: &quot;writer_complete&quot;,
+  &quot;to_status&quot;: &quot;completed&quot;
+}</pre></details></td></tr><tr><td>39</td><td><code>evt_0039</code></td><td>candidate_declared</td><td>model:mock:writer</td><td><code>29f194408adc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_human_edit&quot;,
+  &quot;candidate_id&quot;: &quot;cand_human_edit&quot;,
+  &quot;declared_by&quot;: &quot;writer&quot;,
+  &quot;reason&quot;: &quot;The replacement branch reaches a consistent fixture conclusion.&quot;,
+  &quot;required_check_ids&quot;: [
+    &quot;check_edit_2&quot;,
+    &quot;check_edit_3&quot;,
+    &quot;check_root_1&quot;
+  ],
+  &quot;tip_step_revision_id&quot;: &quot;step_edit_3_r1&quot;,
+  &quot;transcript_sha256&quot;: &quot;eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec&quot;,
+  &quot;transcript_step_revision_ids&quot;: [
+    &quot;step_root_1_r1&quot;,
+    &quot;step_edit_2_r2&quot;,
+    &quot;step_edit_3_r1&quot;
+  ]
+}</pre></details></td></tr><tr><td>40</td><td><code>evt_0040</code></td><td>model_call_started</td><td>checker:mock:checker</td><td><code>5dbf97127ef3</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_root_2_late&quot;,
+  &quot;prompt_sha256&quot;: &quot;fa7b2aeadd9b3ab24c5cdf0d423b656b6ee75e127d4d009ed7bc381d8e889af7&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_root_2_late&quot;
+  }
+}</pre></details></td></tr><tr><td>41</td><td><code>evt_0041</code></td><td>model_call_finished</td><td>checker:mock:checker</td><td><code>a0f17c9439f6</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 89,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_checker_root_2_late&quot;,
+  &quot;output_sha256&quot;: &quot;76e45e0419c81f86bcb0e897a843da12b6d09dff1807695c7e274a38ac91293c&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The second root step directly contradicts the first.\&quot;,\&quot;verdict\&quot;:\&quot;hard_defect\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>42</td><td><code>evt_0042</code></td><td>check_completed</td><td>checker:mock:checker</td><td><code>85dd8158ac25</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_root_2_late&quot;,
+  &quot;checker_call_id&quot;: &quot;call_checker_root_2_late&quot;,
+  &quot;evidence&quot;: [
+    {
+      &quot;kind&quot;: &quot;ancestor_quote&quot;,
+      &quot;quote&quot;: &quot;The invariant Q is positive at the first checkpoint.&quot;,
+      &quot;source_id&quot;: &quot;step_root_1_r1&quot;
+    }
+  ],
+  &quot;reason&quot;: &quot;The same scoped invariant is asserted positive and then negative without a justified regime change.&quot;,
+  &quot;target_output_sha256&quot;: &quot;03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_root_2_r1&quot;,
+  &quot;verdict&quot;: &quot;hard_defect&quot;
+}</pre></details></td></tr><tr><td>43</td><td><code>evt_0043</code></td><td>branch_status_changed</td><td>checker:mock:checker</td><td><code>26647c2b8dce</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_root&quot;,
+  &quot;check_id&quot;: &quot;check_root_2_late&quot;,
+  &quot;from_status&quot;: &quot;completed&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: null,
+  &quot;reason_code&quot;: &quot;hard_defect&quot;,
+  &quot;to_status&quot;: &quot;killed&quot;
+}</pre></details></td></tr><tr><td>44</td><td><code>evt_0044</code></td><td>judgement_requested</td><td>system:record-runtime</td><td><code>74686444687d</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_human_edit&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec&quot;,
+  &quot;judgement_id&quot;: &quot;judge_edit_final&quot;,
+  &quot;reason&quot;: &quot;Send the eligible replacement candidate to independent final judgement.&quot;,
+  &quot;requested_by&quot;: &quot;system&quot;
+}</pre></details></td></tr><tr><td>45</td><td><code>evt_0045</code></td><td>model_call_started</td><td>judge:mock:judge</td><td><code>fc5d84ef1149</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;fixture&quot;,
+  &quot;model&quot;: &quot;mock:judge&quot;,
+  &quot;model_call_id&quot;: &quot;call_judge_edit_final&quot;,
+  &quot;prompt_sha256&quot;: &quot;2640e1021bfce7a9b1d6903617a55de6c522e41d710c3c5dfd9c9120ff2bc1ae&quot;,
+  &quot;provider&quot;: &quot;mock&quot;,
+  &quot;role&quot;: &quot;judge&quot;,
+  &quot;target&quot;: {
+    &quot;judgement_id&quot;: &quot;judge_edit_final&quot;
+  }
+}</pre></details></td></tr><tr><td>46</td><td><code>evt_0046</code></td><td>model_call_finished</td><td>judge:mock:judge</td><td><code>7662627497f5</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 117,
+  &quot;finish_reason&quot;: &quot;mock_complete&quot;,
+  &quot;model_call_id&quot;: &quot;call_judge_edit_final&quot;,
+  &quot;output_sha256&quot;: &quot;a0ea8e71e5d751cd7308c295abcf991da0e060329a54cf0d29da52a4f3716490&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The fixture conclusion is internally consistent and provenance is explicit.\&quot;,\&quot;score\&quot;:1.0,\&quot;verdict\&quot;:\&quot;pass\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 0,
+    &quot;mock&quot;: true,
+    &quot;output_tokens&quot;: 0
+  }
+}</pre></details></td></tr><tr><td>47</td><td><code>evt_0047</code></td><td>judgement_completed</td><td>judge:mock:judge</td><td><code>7c49ebbc93d1</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_human_edit&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec&quot;,
+  &quot;judge_call_id&quot;: &quot;call_judge_edit_final&quot;,
+  &quot;judgement_id&quot;: &quot;judge_edit_final&quot;,
+  &quot;reason&quot;: &quot;The nonphysics fixture target is met and the human edit is clearly attributed.&quot;,
+  &quot;score&quot;: 1.0,
+  &quot;verdict&quot;: &quot;pass&quot;
+}</pre></details></td></tr><tr><td>48</td><td><code>evt_0048</code></td><td>human_action_recorded</td><td>human:fixture-reviewer</td><td><code>c6d53c498b37</code></td><td><details><summary>payload</summary><pre>{
+  &quot;action&quot;: &quot;select_candidate&quot;,
+  &quot;action_id&quot;: &quot;act_select&quot;,
+  &quot;content&quot;: null,
+  &quot;content_sha256&quot;: null,
+  &quot;reason&quot;: &quot;Choose the only eligible candidate with a pass judgement.&quot;,
+  &quot;target&quot;: {
+    &quot;candidate_id&quot;: &quot;cand_human_edit&quot;
+  }
+}</pre></details></td></tr><tr><td>49</td><td><code>evt_0049</code></td><td>selection_recorded</td><td>human:fixture-reviewer</td><td><code>a983d8b0a949</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_human_edit&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec&quot;,
+  &quot;human_action_id&quot;: &quot;act_select&quot;,
+  &quot;judgement_id&quot;: &quot;judge_edit_final&quot;,
+  &quot;reason&quot;: &quot;The root candidate was rejected by a late hard defect; the replacement candidate passed final judgement.&quot;,
+  &quot;selection_id&quot;: &quot;selection_final&quot;
+}</pre></details></td></tr></tbody></table>
+</body>
+</html>

@@ -1,0 +1,177 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0002.jsonl line 10",
+  "captured": "2026-09-04",
+  "provenance": {
+    "recorded_at": "2026-09-04T00:00:00Z",
+    "intake_session_id": "intake_corpus_002",
+    "round_number": 0,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": null,
+    "payload_sha256_prefix": "d5ec38feb16e"
+  },
+  "payload": {
+    "public_summary": "The specification is already scientifically executable with no blocking problem-class ambiguities. I advanced the session by one frontier round with no questions, recorded the stated conventions and approximation choices as defaults owned by the derivation agent, and set the candidate as ready.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Derive the optical absorption coefficient alpha as a function of photon energy hbar omega for a direct-gap semiconductor from single-particle Bloch states in the independent-particle approximation.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "Obtain a closed-form expression for alpha(hbar omega) together with the derivation tree leading to it.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "Start from single-particle Bloch valence and conduction states. Use Fermi's golden rule for vertical interband transitions in a direct-gap semiconductor. Use a parabolic two-band model with conduction and valence bands, reduced mass mu, band gap Eg, and a constant momentum matrix element.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use SI units. Express results in terms of Eg, mu, and photon energy hbar omega. Assume unpolarized light and isotropic bands, so the response is treated as a scalar absorption coefficient.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "Include vertical interband transitions, independent particles, parabolic two-band dispersion, constant momentum matrix element, zero temperature occupations, joint density of states, and a delta-function line shape. Exclude excitons, local-field and Coulomb enhancement effects, phonon-assisted or indirect processes, free-carrier absorption, k dot p warping beyond the parabolic edge, finite lifetime or broadening, finite temperature, and many-body self-energy effects.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "No numerics, no code, and no materials-specific DFT. The deliverable is an analytic textbook-level derivation and closed-form alpha(hbar omega), not a material-calibrated prediction.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "Provide the closed-form optical absorption coefficient alpha(hbar omega) for the specified direct-gap semiconductor model and the derivation tree that produces it, at the textbook-simplest level compatible with the stated constraints.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The derivation must remain within the independent-particle, direct-gap, vertical-transition model; use SI conventions; preserve the stated included and excluded physics; and end with a closed-form alpha(hbar omega) in symbolic form using Eg and mu.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "Any residual non-blocking convention or presentation choice not fixed by the user is owned by the derivation agent and should follow standard textbook defaults consistent with the stated simplest-first policy.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_002a"
+    ],
+    "questions": [],
+    "declared_defaults": [
+      {
+        "default_id": "default_conv_si_units",
+        "decision_class": "convention",
+        "title": "Unit system",
+        "statement": "Use SI units throughout.",
+        "rationale": "The user explicitly fixed SI units, and this convention is fully compatible with the requested analytic derivation.",
+        "alternatives": [
+          "Gaussian units",
+          "Heaviside-Lorentz units"
+        ]
+      },
+      {
+        "default_id": "default_conv_matrix_element_form",
+        "decision_class": "convention",
+        "title": "Matrix-element representation",
+        "statement": "Use the momentum-matrix-element form for the interband coupling, with a constant matrix element.",
+        "rationale": "The user specified a constant momentum matrix element, making the momentum-form textbook route the direct convention.",
+        "alternatives": [
+          "Velocity-matrix-element form",
+          "Dipole-matrix-element form"
+        ]
+      },
+      {
+        "default_id": "default_conv_lineshape_delta",
+        "decision_class": "convention",
+        "title": "Line shape",
+        "statement": "Use an ideal delta-function line shape with no phenomenological broadening.",
+        "rationale": "The user explicitly excluded finite lifetime and broadening and requested a delta-function line shape.",
+        "alternatives": [
+          "Lorentzian broadening",
+          "Gaussian broadening"
+        ]
+      },
+      {
+        "default_id": "default_conv_absorption_route",
+        "decision_class": "convention",
+        "title": "Route to absorption coefficient",
+        "statement": "Derive alpha from the interband transition rate and equivalent linear-response normalization in SI, without introducing alternative dielectric-function reconstruction routes unless needed algebraically.",
+        "rationale": "The target is alpha(hbar omega) itself, so the most direct textbook route minimizes unnecessary convention choices.",
+        "alternatives": [
+          "Route via imaginary dielectric function epsilon_2",
+          "Route via optical conductivity then conversion to alpha"
+        ]
+      },
+      {
+        "default_id": "default_conv_real_part_handling",
+        "decision_class": "convention",
+        "title": "Real-part treatment",
+        "statement": "Do not derive a separate real part of the dielectric function unless it is required for an intermediate consistency relation; focus directly on the absorption coefficient.",
+        "rationale": "The requested deliverable is alpha(hbar omega), and the excluded physics plus delta-line-shape setting make a separate real-part construction unnecessary for the baseline derivation.",
+        "alternatives": [
+          "Kramers-Kronig reconstruction of the real part",
+          "External model for the real part of epsilon"
+        ]
+      },
+      {
+        "default_id": "default_approx_parabolic_two_band",
+        "decision_class": "approximation_level",
+        "title": "Band model",
+        "statement": "Use the parabolic two-band conduction-plus-valence model near the direct gap edge.",
+        "rationale": "The user explicitly fixed the textbook parabolic two-band model and excluded warping beyond the parabolic edge.",
+        "alternatives": [
+          "Kane model",
+          "General Bloch-band treatment"
+        ]
+      },
+      {
+        "default_id": "default_approx_constant_matrix_element",
+        "decision_class": "approximation_level",
+        "title": "k dependence of matrix element",
+        "statement": "Treat the interband momentum matrix element as k independent.",
+        "rationale": "The user explicitly fixed a constant momentum matrix element.",
+        "alternatives": [
+          "k-dependent matrix element"
+        ]
+      },
+      {
+        "default_id": "default_approx_zero_temperature",
+        "decision_class": "approximation_level",
+        "title": "Occupation model",
+        "statement": "Use zero-temperature occupations.",
+        "rationale": "The user explicitly fixed T = 0 and excluded finite temperature.",
+        "alternatives": [
+          "Finite-temperature Fermi occupations"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Textbook direct-gap absorption baseline",
+        "relaxes": "Nothing; this is the baseline textbook-simplest specification compatible with all fixed problem constraints.",
+        "default_ids": [
+          "default_conv_si_units",
+          "default_conv_matrix_element_form",
+          "default_conv_lineshape_delta",
+          "default_conv_absorption_route",
+          "default_conv_real_part_handling",
+          "default_approx_parabolic_two_band",
+          "default_approx_constant_matrix_element",
+          "default_approx_zero_temperature"
+        ],
+        "decision_ids": [],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": true
+  }
+}

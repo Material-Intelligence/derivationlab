@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derivation Agent Record v1 audit</title>
+<style>
+:root { font-family: ui-sans-serif, system-ui, sans-serif; color: #171717; background: #f5f5f5; }
+body { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+h1, h2 { letter-spacing: -0.02em; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+code { overflow-wrap: anywhere; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .75rem; }
+.metric, .card { background: white; border: 1px solid #ddd; border-radius: .7rem; padding: 1rem; margin: .7rem 0; }
+.metric strong { display: block; font-size: 1.6rem; }
+.selected { border-width: 2px; }
+table { width: 100%; border-collapse: collapse; background: white; font-size: .9rem; }
+th, td { border: 1px solid #ddd; padding: .55rem; text-align: left; vertical-align: top; }
+pre { white-space: pre-wrap; max-width: 50rem; }
+.badge { display: inline-block; padding: .15rem .45rem; border-radius: 999px; background: #e5e5e5; font-size: .8rem; }
+.eligible, .pass, .ok { background: #d1fae5; }
+.rejected, .fail, .hard_defect { background: #fee2e2; }
+.provisional, .blocked, .conditional, .near_pass, .objection, .instrument_failure { background: #fef3c7; }
+.small { color: #555; font-size: .9rem; }
+.label { color: #555; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; margin: .6rem 0 .1rem; }
+.field { margin: 0; }
+ul { margin: 0; padding-left: 1.1rem; }
+</style>
+</head>
+<body>
+<h1>Derivation Agent Record v1 audit</h1>
+<p class="small">Read-only view derived from the append-only event log. It is not a control surface.</p>
+<div class="metrics">
+<div class="metric"><strong>1</strong>branches</div>
+<div class="metric"><strong>3</strong>step revisions</div>
+<div class="metric"><strong>7</strong>model calls</div>
+<div class="metric"><strong>3</strong>checks</div>
+<div class="metric"><strong>1</strong>candidates</div>
+<div class="metric"><strong>1</strong>judgements</div>
+</div>
+<h2>Selected submission</h2>
+<p>No selected submission.</p>
+<h2>Branches</h2>
+<table><thead><tr><th>Branch</th><th>Status</th><th>Created reason</th><th>Content provenance</th><th>Steps</th></tr></thead>
+<tbody><tr><td><code>br_0001</code></td><td>completed</td><td>root</td><td>model_only</td><td>3</td></tr></tbody></table>
+<h2>Step revisions</h2>
+<p class="small">Every step on every branch route, in transcript order. Inherited steps appear on each route that carries them.</p>
+<h3>Branch <code>br_0001</code></h3><article class="card"><h4><code>step_0001</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">Intent ledger for deriving the electric field of a uniformly charged solid sphere in Gaussian units.</pre><p class="label">why</p><pre class="field">This ledger fixes the starting data, endpoint, permitted ingredients, boundary conditions, and range of validity before any derivation is performed.</pre><p class="label">source</p><pre class="field">Frozen task statement only; no external references are allowlisted.</pre><p class="label">derivation</p><pre class="field">STARTING OBJECT AND COMPUTED QUANTITY: Take \(R&gt;0\), total charge \(Q\), and the prescribed uniform volume density \(\rho(\mathbf x)=\rho_0\Theta(R-|\mathbf x|)\), with \(\rho_0\) to be fixed from \(\int_{\mathbb R^3}\rho\,d^3x=Q\). Compute the static vacuum electric field \(\mathbf E(\mathbf x)\).
+
+ENDPOINT FORM: Deliver an explicit piecewise formula \(\mathbf E(\mathbf x)=E(r)\hat{\mathbf r}\), \(r=|\mathbf x|\), for \(0&lt;r&lt;R\) and \(r&gt;R\), supplemented by its regular value at \(r=0\), its common limiting value at \(r=R\), its radial direction for either sign of \(Q\), and its decay at infinity. Verify continuity at \(R\), the exterior point-charge limit, spherical symmetry, signs, normalization, and Gaussian-unit dimensions.
+
+INTENT DEPENDENCY LEDGER (all entries presently HYPOTHESIS):
+1. HYPOTHESIS — Gaussian-unit vacuum electrostatics obeys \(\nabla\!\cdot\!\mathbf E=4\pi\rho\) and \(\nabla\!\times\!\mathbf E=0\). This is an admitted external starting primitive in the frozen task; no allowlisted source span exists.
+2. HYPOTHESIS — The divergence theorem gives \(\int_V \nabla\!\cdot\!\mathbf E\,d^3x=\oint_{\partial V}\mathbf E\!\cdot d\mathbf A\). It is an admitted external mathematical result; no allowlisted source span exists.
+3. HYPOTHESIS — A solution of the electrostatic Poisson problem that decays at infinity is unique. This is an admitted external result; no allowlisted source span exists.
+4. HYPOTHESIS — Rotational covariance of the linear electrostatic equations, invariance of \(\rho\) and the boundary condition \(\mathbf E\to0\) as \(r\to\infty\), plus uniqueness imply \(\mathbf E(\mathcal R\mathbf x)=\mathcal R\mathbf E(\mathbf x)\) for every rotation \(\mathcal R\), hence \(\mathbf E(\mathbf x)=E(r)\hat{\mathbf r}\) for \(r&gt;0\). This symmetry claim must be derived later rather than assumed.
+5. HYPOTHESIS — Euclidean spherical geometry supplies \(d^3x=4\pi r&#x27;^2dr&#x27;\) after angular integration and \(\oint_{S_r}dA=4\pi r^2\); these identities will be used to normalize \(\rho_0\), compute enclosed charge, and evaluate flux.
+6. HYPOTHESIS — Integrating the divergence equation over a centered ball and applying the divergence theorem yields Gaussian Gauss law \(\oint_{S_r}\mathbf E\cdot d\mathbf A=4\pi Q_{\mathrm{enc}}(r)\); this must be derived later from entries 1 and 2.
+7. HYPOTHESIS — Because the volume density has only a finite step at \(r=R\) and contains no surface delta-function charge, the normal component of \(\mathbf E\) is continuous there; this will be checked directly from the derived regional formulas rather than used to determine them.
+8. HYPOTHESIS — Regularity at the origin excludes a singular homogeneous \(C/r^2\) contribution inside, while isolation imposes \(\mathbf E\to0\) at infinity. The centered-ball flux computation should fix the solution without leaving such constants.
+9. HYPOTHESIS — Unit convention: Gaussian electrostatic units, with \([\nabla\cdot\mathbf E]=[\mathbf E]/L=4\pi[\rho]\), so \([\mathbf E]=[Q]L^{-2}\); \(4\pi\) is dimensionless and no \(\epsilon_0\) occurs.
+10. HYPOTHESIS — Sign convention: \(\hat{\mathbf r}=\mathbf x/r\) points outward, so the scalar coefficient has the sign of \(Q\); positive charge produces an outward field and negative charge an inward field.
+
+DECLARED CLASS: Classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed, time-independent, exactly spherically symmetric volume charge distribution of compact support; no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic corrections, or quantum effects. The operators are the ordinary Euclidean gradient, divergence, and curl acting classically away from \(r=R\), with the divergence equation interpreted distributionally across the density step. No Hamiltonian formulation is invoked.</pre><p class="label">scope</p><pre class="field">Planning step only: no field formula is yet derived. The eventual claim is restricted to the declared classical vacuum electrostatic operator class and the stated uniformly charged sphere.</pre><p class="small">Output SHA-256 <code>efb7fd193e2921276095540712a529e53e46fd7807a784cee6704631bcc68377</code>; sealed by model <code>call_0001</code>.</p></article><article class="card"><h4><code>step_0002</code> <span class="small">slot 2, revision 1</span></h4><p class="label">claim</p><pre class="field">For the declared classical vacuum electrostatic problem, spherical symmetry reduces the field to a radial scalar, and Gauss&#x27;s law then gives \(\mathbf E(\mathbf x)=Q\mathbf x/R^3\) inside the sphere and \(\mathbf E(\mathbf x)=Q\mathbf x/r^3\) outside it.</pre><p class="label">why</p><pre class="field">This carries the prescribed uniform charge density through its normalization and enclosed charge to the explicit field in both spatial regions; boundary, limiting, and dependency-ledger closure remain for the next step.</pre><p class="label">source</p><pre class="field">The equations \(\nabla\cdot\mathbf E=4\pi\rho\), \(\nabla\times\mathbf E=0\), the divergence theorem, and electrostatic uniqueness are admitted external primitives in the frozen task. No external references are allowlisted.</pre><p class="label">derivation</p><pre class="field">Let \(r=|\mathbf x|\), \(\hat{\mathbf r}=\mathbf x/r\) for \(r&gt;0\), and \(B_r=\{\mathbf x:|\mathbf x|\le r\}\). The prescribed density is
+\[
+\rho(\mathbf x)=\rho_0\Theta(R-r),\qquad R&gt;0.
+\]
+Using the Euclidean spherical measure \(d^3x=r&#x27;^2\sin\theta\,dr&#x27;\,d\theta\,d\phi\), its normalization is
+\[
+Q=\int_{\mathbb R^3}\rho\,d^3x
+ =\rho_0\int_0^R r&#x27;^2dr&#x27;\int_0^\pi\sin\theta\,d\theta\int_0^{2\pi}d\phi
+ =\rho_0\frac{R^3}{3}(2)(2\pi)
+ =\frac{4\pi}{3}\rho_0R^3,
+\]
+so
+\[
+\rho_0=\frac{3Q}{4\pi R^3}.
+\]
+
+SYMMETRY REDUCTION: For any rotation \(\mathcal R\in SO(3)\), define the rotated field
+\[
+\mathbf E_{\mathcal R}(\mathbf x)=\mathcal R\,\mathbf E(\mathcal R^{-1}\mathbf x).
+\]
+Ordinary Euclidean divergence and curl are rotation covariant. Since \(\rho(\mathcal R^{-1}\mathbf x)=\rho(\mathbf x)\), \(\mathbf E_{\mathcal R}\) obeys the same electrostatic equations, is regular at the origin, and has the same decay condition at infinity as \(\mathbf E\). By the admitted uniqueness theorem, \(\mathbf E_{\mathcal R}=\mathbf E\), equivalently
+\[
+\mathbf E(\mathcal R\mathbf x)=\mathcal R\mathbf E(\mathbf x).
+\]
+At fixed nonzero \(\mathbf x\), every rotation about the axis through \(\mathbf x\) leaves \(\mathbf x\) fixed. The displayed covariance then requires \(\mathbf E(\mathbf x)\) to be invariant under all such rotations, so it has no component perpendicular to \(\mathbf x\):
+\[
+\mathbf E(\mathbf x)=E(r)\hat{\mathbf r}.
+\]
+Rotations carrying one point of radius \(r\) to another show that the coefficient depends only on \(r\).
+
+GAUSS LAW FROM THE DECLARED PRIMITIVES: Integrate \(\nabla\cdot\mathbf E=4\pi\rho\) over \(B_r\) and apply the admitted divergence theorem:
+\[
+\oint_{S_r}\mathbf E\cdot d\mathbf A
+ =\int_{B_r}(\nabla\cdot\mathbf E)d^3x
+ =4\pi\int_{B_r}\rho\,d^3x
+ =4\pi Q_{\mathrm{enc}}(r).
+\]
+Here \(S_r=\partial B_r\), its outward oriented area element is \(d\mathbf A=\hat{\mathbf r}\,r^2\sin\theta\,d\theta\,d\phi\), and therefore
+\[
+\oint_{S_r}\mathbf E\cdot d\mathbf A
+ =E(r)r^2\int_0^\pi\sin\theta\,d\theta\int_0^{2\pi}d\phi
+ =4\pi r^2E(r).
+\]
+Thus, for \(r&gt;0\),
+\[
+E(r)=\frac{Q_{\mathrm{enc}}(r)}{r^2}.
+\]
+The enclosed charge is explicitly
+\[
+Q_{\mathrm{enc}}(r)=4\pi\rho_0\int_0^{\min(r,R)}r&#x27;^2dr&#x27;
+=\begin{cases}
+\dfrac{4\pi\rho_0r^3}{3}=Q\dfrac{r^3}{R^3},&amp;0&lt;r&lt;R,\\[6pt]
+\dfrac{4\pi\rho_0R^3}{3}=Q,&amp;r&gt;R.
+\end{cases}
+\]
+Substitution gives
+\[
+\boxed{\mathbf E(\mathbf x)=
+\begin{cases}
+\dfrac{Q}{R^3}\mathbf x=\dfrac{Qr}{R^3}\hat{\mathbf r},&amp;0&lt;r&lt;R,\\[7pt]
+\dfrac{Q}{r^3}\mathbf x=\dfrac{Q}{r^2}\hat{\mathbf r},&amp;r&gt;R.
+\end{cases}}
+\]
+The regular extension to the center is \(\mathbf E(\mathbf 0)=\mathbf 0\), because the interior expression is linear in \(\mathbf x\). Since \(\hat{\mathbf r}\) is outward, \(Q&gt;0\) gives an outward field and \(Q&lt;0\) gives an inward field. No undetermined homogeneous \(C/r^2\) term remains: the flux through every centered sphere was fixed by its actual enclosed charge, regularity holds at the origin, and the exterior solution decays as \(r^{-2}\).</pre><p class="label">scope</p><pre class="field">Derived for a static, exactly spherically symmetric, uniformly charged solid sphere in three-dimensional classical linear Maxwell electrostatics in vacuum and Gaussian units, with no external fields, conductors, dielectrics, or additional singular surface charge.</pre><p class="small">Output SHA-256 <code>e4c0958a9299afab64f3649223552f76fc22d97dec4ca447673216bd10c30d7e</code>; sealed by model <code>call_0003</code>.</p></article><article class="card"><h4><code>step_0003</code> <span class="small">slot 3, revision 1</span></h4><p class="label">claim</p><pre class="field">The electric field of the uniformly charged solid sphere is \(\mathbf E(\mathbf 0)=\mathbf 0\) and, for \(r&gt;0\), \(\mathbf E(\mathbf x)=(Qr/R^3)\hat{\mathbf r}\) inside and \(\mathbf E(\mathbf x)=(Q/r^2)\hat{\mathbf r}\) outside; it is continuous at \(r=R\), radial, regular at the origin, and decays at infinity.</pre><p class="label">why</p><pre class="field">The normalized density, symmetry reduction, enclosed charge, and Gaussian flux relation derived in slot 2 determine both regional expressions. The checks below close the boundary behavior, Maxwell equations, signs, limits, dimensions, and dependency ledger.</pre><p class="label">source</p><pre class="field">No external references are allowlisted. The frozen task itself admits Gaussian-unit electrostatic Maxwell equations, the divergence theorem, and electrostatic uniqueness as external starting primitives; they are recorded below as assumptions and are not claimed as derived.</pre><p class="label">derivation</p><pre class="field">FINAL RESULT AND CONDITIONS. With \(r=|\mathbf x|\), \(\hat{\mathbf r}=\mathbf x/r\) for \(r&gt;0\), and \(R&gt;0\), slot 2 found
+\[
+\rho_0=\frac{3Q}{4\pi R^3},\qquad
+\boxed{\mathbf E(\mathbf x)=
+\begin{cases}
+\mathbf 0,&amp;r=0,\\[3pt]
+\dfrac{Qr}{R^3}\hat{\mathbf r}=\dfrac{Q}{R^3}\mathbf x,&amp;0&lt;r&lt;R,\\[7pt]
+\dfrac{Q}{R^2}\hat{\mathbf r},&amp;r=R,\\[7pt]
+\dfrac{Q}{r^2}\hat{\mathbf r}=\dfrac{Q}{r^3}\mathbf x,&amp;r&gt;R.
+\end{cases}}
+\]
+Here \(\hat{\mathbf r}\) is outward. Hence \(Q&gt;0\) gives an outward field, \(Q&lt;0\) an inward field, and \(Q=0\) the zero field.
+
+BOUNDARY CHECK. Directly,
+\[
+\lim_{r\to R^-}\mathbf E=\frac{QR}{R^3}\hat{\mathbf r}=\frac{Q}{R^2}\hat{\mathbf r}
+=\lim_{r\to R^+}\frac{Q}{r^2}\hat{\mathbf r}.
+\]
+Thus the normal jump is zero, \(\hat{\mathbf r}\cdot(\mathbf E_{\rm out}-\mathbf E_{\rm in})=0\), consistently with the absence of a surface delta-function charge. The tangential field vanishes on both sides by spherical symmetry.
+
+MAXWELL, SIGN, AND FACTOR CHECKS. In Cartesian components, inside the sphere
+\[
+E_i=\frac{Qx_i}{R^3},\qquad \partial_jE_i=\frac{Q}{R^3}\delta_{ij},
+\]
+so
+\[
+\nabla\cdot\mathbf E=\partial_iE_i=\frac{3Q}{R^3}=4\pi\frac{3Q}{4\pi R^3}=4\pi\rho_0,
+\qquad
+(\nabla\times\mathbf E)_k=\epsilon_{kji}\partial_jE_i=0.
+\]
+Outside, for \(r&gt;R\),
+\[
+E_i=Qx_ir^{-3},\qquad
+\partial_jE_i=Q\left(\delta_{ij}r^{-3}-3x_ix_jr^{-5}\right).
+\]
+Therefore
+\[
+\partial_iE_i=Q(3r^{-3}-3r^2r^{-5})=0,
+\qquad
+\epsilon_{kji}\partial_jE_i=0,
+\]
+because \(\partial_jE_i\) is symmetric in \(i,j\). Continuity at \(R\) prevents a surface delta term in either distributional derivative, and regularity at \(r=0\) prevents a point-charge delta there. The flux is \(4\pi r^2E(r)=4\pi Q_{\rm enc}(r)\); thus the factors and the sign agree with \(\nabla\cdot\mathbf E=4\pi\rho\).
+
+EXPLICIT LIMITING EXPANSIONS. At the center,
+\[
+\mathbf E(\mathbf x)=\frac{Q}{R^3}\mathbf x=O(r),\qquad r\to0,
+\]
+so \(\mathbf E(\mathbf0)=\mathbf0\). Writing \(\delta&gt;0\), the two surface limits are
+\[
+\mathbf E((R-\delta)\hat{\mathbf r})
+=\frac{Q}{R^2}\left(1-\frac{\delta}{R}\right)\hat{\mathbf r},
+\]
+\[
+\mathbf E((R+\delta)\hat{\mathbf r})
+=\frac{Q}{R^2}\left(1-2\frac{\delta}{R}+3\frac{\delta^2}{R^2}+O\!\left(\frac{\delta^3}{R^3}\right)\right)\hat{\mathbf r}.
+\]
+Both have leading value \(Q\hat{\mathbf r}/R^2\), although their radial derivatives differ because the volume density jumps. At large radius,
+\[
+\mathbf E(\mathbf x)=\frac{Q}{r^2}\hat{\mathbf r}=O(r^{-2})\longrightarrow\mathbf0,
+\qquad r\to\infty.
+\]
+Indeed, throughout \(r&gt;R\) this is exactly, not merely asymptotically, the Gaussian-unit field of a point charge \(Q\) at the origin.
+
+DIMENSIONAL ANALYSIS IN GAUSSIAN UNITS. From the declared equation \(\nabla\cdot\mathbf E=4\pi\rho\), with \([\nabla]=L^{-1}\), \([\rho]=[Q]L^{-3}\), and \([4\pi]=[\hat{\mathbf r}]=1\), one has \([\mathbf E]=[Q]L^{-2}\). Every factor in the endpoint closes explicitly:
+\[
+\left[\frac{Qr}{R^3}\hat{\mathbf r}\right]=[Q]L\,L^{-3}\cdot1=[Q]L^{-2}=[\mathbf E],
+\qquad
+\left[\frac{Q}{r^2}\hat{\mathbf r}\right]=[Q]L^{-2}\cdot1=[\mathbf E].
+\]
+There is no \(\epsilon_0\) in Gaussian units, and the \(4\pi\) from Maxwell&#x27;s equation cancels the dimensionless \(4\pi\) area factor of a sphere.
+
+ASSUMPTION REGISTER AND RECONCILIATION WITH SLOT 1. Intent entries 1–3 are retired from the proof-dependency ledger because the frozen task explicitly declares them external starting primitives, while also forbidding their derivation here and supplying no allowlisted source from which they could receive the status SOURCED. They remain openly recorded as assumptions: (A1) \(\nabla\cdot\mathbf E=4\pi\rho\) and \(\nabla\times\mathbf E=0\); (A2) the divergence theorem; (A3) uniqueness for the decaying electrostatic boundary-value problem. This is not an unresolved scientific ingredient within the conditional derivation: the requested result is derived under precisely these admitted axioms. No Hamiltonian is used.
+
+FINAL DEPENDENCY LEDGER. Every entry below has exactly one permitted status.
+1. DERIVED_HERE (slot 2) — Rotational covariance, spherical invariance of the source and boundary condition, and admitted uniqueness imply \(\mathbf E(\mathcal R\mathbf x)=\mathcal R\mathbf E(\mathbf x)\), hence \(\mathbf E=E(r)\hat{\mathbf r}\). This closes intent entry 4.
+2. DERIVED_HERE (this step) — The spherical-coordinate map \(\mathbf x=(r\sin\theta\cos\phi,r\sin\theta\sin\phi,r\cos\theta)\) has Jacobian magnitude \(r^2\sin\theta\); fixing \(r\) gives outward area element \(d\mathbf A=\hat{\mathbf r}r^2\sin\theta\,d\theta\,d\phi\). Consequently \(d^3x=r^2\sin\theta\,dr\,d\theta\,d\phi\), \(\int d\Omega=\int_0^{2\pi}d\phi\int_0^\pi\sin\theta\,d\theta=4\pi\), and \(\operatorname{area}(S_r)=4\pi r^2\). This closes intent entry 5 and defines all measures and weights used.
+3. DERIVED_HERE (slot 2) — Integrating A1 over \(B_r\) and applying A2 gives \(\oint_{S_r}\mathbf E\cdot d\mathbf A=4\pi Q_{\rm enc}(r)\). This closes intent entry 6.
+4. DERIVED_HERE (slot 2) — Normalization gives \(\rho_0=3Q/(4\pi R^3)\), and direct radial integration gives \(Q_{\rm enc}=Qr^3/R^3\) inside and \(Q_{\rm enc}=Q\) outside.
+5. DERIVED_HERE (this step) — The regional limits both equal \(Q\hat{\mathbf r}/R^2\); hence the field is continuous without a surface-charge term. This closes intent entry 7.
+6. DERIVED_HERE (slot 2) — The interior result is linear in \(\mathbf x\), so it is regular and vanishes at the origin; the exterior result decays as \(r^{-2}\), and the flux construction leaves no free \(C/r^2\) term. This closes intent entry 8.
+7. DERIVED_HERE (this step) — The Gaussian-unit dimensional equations above give \([\mathbf E]=[Q]L^{-2}\) and verify both endpoint branches factor by factor. This closes intent entry 9.
+8. DERIVED_HERE (slot 2) — With outward \(\hat{\mathbf r}\), the scalar coefficient has the sign of \(Q\), fixing the field direction. This closes intent entry 10.
+9. DERIVED_HERE (this step) — Direct Cartesian differentiation verifies both divergence and curl in each region; field continuity eliminates a surface distribution, while regularity eliminates an origin singularity.
+10. DERIVED_HERE (this step) — The explicit expansions close the center, surface, and infinity limits, and the exterior branch is exactly the point-charge field.
+11. DERIVED_HERE (slot 1) — The declared validity class is classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed static, exactly spherically symmetric uniform volume charge, with no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic effects, or quantum effects. Ordinary Euclidean divergence and curl are used classically away from the density step and distributionally across it; no Hamiltonian, projector, gauge choice, complex quantity, or degeneracy enters.
+
+There are no approximations and no unresolved endpoint dependencies.</pre><p class="label">scope</p><pre class="field">Complete within classical linear Maxwell electrostatics in three-dimensional vacuum, Gaussian units, for an isolated, static, exactly spherical and spatially uniform volume charge distribution. The result does not claim validity with external fields, nonspherical sources, surface charge, conductors, dielectrics, time dependence, relativistic corrections, or quantum effects.</pre><p class="small">Output SHA-256 <code>dc301186270d79fc780901367223cd431ae3bddfe2b35b7cb2f9d73665ddf8fa</code>; sealed by model <code>call_0005</code>.</p></article>
+<h2>Checks</h2>
+<table><thead><tr><th>Check</th><th>Target step</th><th>Verdict</th><th>Reason</th><th>Evidence</th></tr></thead>
+<tbody><tr><td><code>check_0001</code></td><td><code>step_0001</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The first-step intent ledger cites no source spans requiring verification, and its entries are mutually consistent with one another and with the admitted task primitives. The symmetry claim and Gauss-law construction are correctly left for later derivation.</td><td></td></tr><tr><td><code>check_0002</code></td><td><code>step_0002</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The intermediate step is internally valid and correctly derives the normalized density, rotational symmetry reduction, Gauss-law flux relation, enclosed charge, and the inside/outside fields from the task’s admitted primitives. It explicitly leaves boundary, limiting, dimensional, and dependency-ledger closure to a later step; because candidate_completion_intent is false, those absent completion checks are not defects at this stage.</td><td></td></tr><tr><td><code>check_0003</code></td><td><code>step_0003</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The assembled route derives and checks the explicit inside and outside fields, center and surface values, direction, normalization, symmetry reduction, boundary continuity, point-charge exterior behavior, limiting expansions, Maxwell signs and factors, and Gaussian-unit dimensions. The final scope matches the operator and source class actually handled. The dependency ledger reconciles the intent ledger, gives reasons for retiring the task-admitted primitives, and its DERIVED_HERE references are supported by the cited route steps. No load-bearing unresolved dependency or dimensional inconsistency remains.</td><td></td></tr></tbody></table>
+<h2>Candidates</h2>
+<article class="card"><h3><code>cand_0001</code> <span class="badge eligible">eligible</span></h3><p>Branch <code>br_0001</code>; tip <code>step_0003</code>.</p><p>Transcript SHA-256: <code>0933f00283b7a8818daa9fbc30ba88cb4805896868514936137049dd243da66c</code></p><p>Provenance: <strong>model_only</strong>; human_touched=<strong>False</strong>.</p><p>Required checks: check_0001, check_0002, check_0003</p></article>
+<h2>Judgements</h2>
+<article class="card"><h3><code>judge_0001</code> <span class="badge pass">pass</span></h3><p>Candidate <code>cand_0001</code>; reason: The transcript correctly derives the uniform density, explicitly justifies radial symmetry using rotational covariance and uniqueness, derives Gauss’s law from the admitted Maxwell equation and divergence theorem, and obtains the correct Gaussian-unit fields: E=(Qr/R^3) rhat inside and E=(Q/r^2) rhat outside. It states the sign-dependent direction, regularity at the origin, decay at infinity, continuity at r=R, and the exact exterior point-charge result. The required assumptions and scope are clearly recorded, with admitted external results not misrepresented as derived.</p></article>
+<h2>Event hash chain</h2>
+<p class="small">Head: <code>35c99f778deff5f647c280129b00b1b06353ddbe165858a64c9c5ba70effaf63</code></p>
+<table><thead><tr><th>Seq</th><th>Event</th><th>Type</th><th>Actor</th><th>Hash</th><th>Payload</th></tr></thead>
+<tbody><tr><td>1</td><td><code>evt_00000001</code></td><td>run_created</td><td>system:record-runtime</td><td><code>69b6ac633171</code></td><td><details><summary>payload</summary><pre>{
+  &quot;canonical_schema&quot;: {
+    &quot;path&quot;: &quot;docs/spec/derivation_agent_canonical_v1.schema.json&quot;,
+    &quot;sha256&quot;: &quot;f4050b21035309adb07b5a544132223984a941c697b1d2e24cab05fbc0753625&quot;
+  },
+  &quot;code_commit&quot;: &quot;f47623cb72a8f82414ead0987b361774959ec14d&quot;,
+  &quot;configuration&quot;: {
+    &quot;backend&quot;: {
+      &quot;name&quot;: &quot;codex-app-server&quot;,
+      &quot;version&quot;: &quot;0.147.0&quot;
+    },
+    &quot;granularity&quot;: &quot;one_task&quot;,
+    &quot;max_active_branches&quot;: 1,
+    &quot;max_model_calls&quot;: 24,
+    &quot;models&quot;: {
+      &quot;checker&quot;: {
+        &quot;effort&quot;: &quot;medium&quot;,
+        &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+        &quot;provider&quot;: &quot;openai&quot;
+      },
+      &quot;judge&quot;: {
+        &quot;effort&quot;: &quot;medium&quot;,
+        &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+        &quot;provider&quot;: &quot;openai&quot;
+      },
+      &quot;writer&quot;: {
+        &quot;effort&quot;: &quot;medium&quot;,
+        &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+        &quot;provider&quot;: &quot;openai&quot;
+      }
+    }
+  },
+  &quot;event_schema&quot;: {
+    &quot;path&quot;: &quot;docs/spec/derivation_agent_event_v1.schema.json&quot;,
+    &quot;sha256&quot;: &quot;2d23d2490f6bc274e6f65d48a7e06df2ab144429ab05bdc9cd6a70e2ec868d24&quot;
+  },
+  &quot;input_policy&quot;: {
+    &quot;allowed_paths&quot;: [],
+    &quot;reference_allowed&quot;: false
+  },
+  &quot;pack&quot;: {
+    &quot;id&quot;: &quot;pack_empty&quot;,
+    &quot;sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;
+  },
+  &quot;record_spec&quot;: {
+    &quot;path&quot;: &quot;docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md&quot;,
+    &quot;sha256&quot;: &quot;290a674f2f39fcd6509e5a31aa7ec8a7d069722ea4c104530335dc2d09251cfb&quot;
+  },
+  &quot;task&quot;: {
+    &quot;id&quot;: &quot;task_run_69b24aef161f4053b69559dfe338eb5a&quot;,
+    &quot;sha256&quot;: &quot;c9ba6036b3acf8a42605189549eb22444321484f12bbdec91c411b130973ee85&quot;
+  }
+}</pre></details></td></tr><tr><td>2</td><td><code>evt_00000002</code></td><td>branch_created</td><td>system:record-runtime</td><td><code>abaeeecd5f55</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: null,
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;created_reason&quot;: &quot;root&quot;,
+  &quot;fork_mode&quot;: &quot;root&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;inherited&quot;,
+    &quot;source_event_id&quot;: null,
+    &quot;text&quot;: &quot;# Frozen derivation problem toy_efield_sphere_20260922d:v1\n\n## Objective\n\nDerive the electrostatic field of a uniformly charged solid sphere everywhere: give E(r) both inside (r &lt; R) and outside (r &gt; R), state its direction, and make explicit the conditions and assumptions under which the result holds.\n\n## Givens\n\n- A solid sphere of radius R carries total charge Q distributed uniformly over its volume.\n- Vacuum, electrostatics, Gaussian units.\n\n## Accepted assumptions\n\n- Static charge distribution; no external fields; no conductors or dielectrics present.\n- Perfect spherical symmetry of the charge distribution.\n\n## Confirmed intake decisions\n\n- Maxwell&#x27;s equations of electrostatics in vacuum, in Gaussian units, are admitted as standard external results: div E = 4*pi*rho and curl E = 0. They are the starting primitives of this task and must be recorded as assumed external, never as derived here.\n- The divergence theorem of vector calculus is admitted as a standard external mathematical result. Record it as assumed external; do not attempt to prove it and do not label it as derived here.\n- The uniqueness theorem for the electrostatic boundary-value problem — a solution of Poisson&#x27;s equation that decays at infinity is unique — is admitted as a standard external result. Record it as assumed external and cite it rather than proving it.\n- The statement that a spherically symmetric static charge distribution produces a field of the form E(r) = E(r) * rhat still has to be argued from the symmetry of the sources and the linearity of the field equations; it is not admitted as a primitive.\n\n## Scope\n\nClassical electrostatics in vacuum, spherically symmetric source.\n\n## Required deliverable\n\nE(r) for r &lt; R and for r &gt; R with the radial direction stated, together with the symmetry and boundary conditions that justify each region and the continuity check at r = R.\n\n## Allowed tools\n\n- scientific_compute\n\n## Allowed references\n\n- None declared\n\n## Success criteria\n\n- Both regions are derived with justification, not quoted from memory.\n- The symmetry argument that makes Gauss&#x27;s law usable is stated explicitly.\n- The inside and outside expressions agree at r = R.\n- The r &gt; R result reduces to the field of a point charge Q.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [],
+  &quot;initial_status&quot;: &quot;active&quot;,
+  &quot;parent_branch_id&quot;: null
+}</pre></details></td></tr><tr><td>3</td><td><code>evt_00000003</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>35ab60070320</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;prompt_sha256&quot;: &quot;2b41b32a8206938c0ca1a44c800fe091eb45712e07dcaf55968572b8f918acb2&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0001&quot;,
+    &quot;step_slot&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>4</td><td><code>evt_00000004</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>fbda452be836</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;continue\&quot;,\&quot;reason\&quot;:\&quot;The mandatory intent ledger is complete, but the symmetry reduction, density normalization, enclosed-charge calculation, regional fields, boundary checks, dependency reconciliation, and dimensional closure still require derivation.\&quot;,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;1b0270430d34abe60554e8549f3d356ed5427fa007d5cbb1c64152063793b60e&quot;
+}</pre></details></td></tr><tr><td>5</td><td><code>evt_00000005</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>bc08b77e231a</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Intent ledger for deriving the electric field of a uniformly charged solid sphere in Gaussian units.\&quot;,\&quot;derivation\&quot;:\&quot;STARTING OBJECT AND COMPUTED QUANTITY: Take \\\\(R&gt;0\\\\), total charge \\\\(Q\\\\), and the prescribed uniform volume density \\\\(\\\\rho(\\\\mathbf x)=\\\\rho_0\\\\Theta(R-|\\\\mathbf x|)\\\\), with \\\\(\\\\rho_0\\\\) to be fixed from \\\\(\\\\int_{\\\\mathbb R^3}\\\\rho\\\\,d^3x=Q\\\\). Compute the static vacuum electric field \\\\(\\\\mathbf E(\\\\mathbf x)\\\\).\\n\\nENDPOINT FORM: Deliver an explicit piecewise formula \\\\(\\\\mathbf E(\\\\mathbf x)=E(r)\\\\hat{\\\\mathbf r}\\\\), \\\\(r=|\\\\mathbf x|\\\\), for \\\\(0&lt;r&lt;R\\\\) and \\\\(r&gt;R\\\\), supplemented by its regular value at \\\\(r=0\\\\), its common limiting value at \\\\(r=R\\\\), its radial direction for either sign of \\\\(Q\\\\), and its decay at infinity. Verify continuity at \\\\(R\\\\), the exterior point-charge limit, spherical symmetry, signs, normalization, and Gaussian-unit dimensions.\\n\\nINTENT DEPENDENCY LEDGER (all entries presently HYPOTHESIS):\\n1. HYPOTHESIS — Gaussian-unit vacuum electrostatics obeys \\\\(\\\\nabla\\\\!\\\\cdot\\\\!\\\\mathbf E=4\\\\pi\\\\rho\\\\) and \\\\(\\\\nabla\\\\!\\\\times\\\\!\\\\mathbf E=0\\\\). This is an admitted external starting primitive in the frozen task; no allowlisted source span exists.\\n2. HYPOTHESIS — The divergence theorem gives \\\\(\\\\int_V \\\\nabla\\\\!\\\\cdot\\\\!\\\\mathbf E\\\\,d^3x=\\\\oint_{\\\\partial V}\\\\mathbf E\\\\!\\\\cdot d\\\\mathbf A\\\\). It is an admitted external mathematical result; no allowlisted source span exists.\\n3. HYPOTHESIS — A solution of the electrostatic Poisson problem that decays at infinity is unique. This is an admitted external result; no allowlisted source span exists.\\n4. HYPOTHESIS — Rotational covariance of the linear electrostatic equations, invariance of \\\\(\\\\rho\\\\) and the boundary condition \\\\(\\\\mathbf E\\\\to0\\\\) as \\\\(r\\\\to\\\\infty\\\\), plus uniqueness imply \\\\(\\\\mathbf E(\\\\mathcal R\\\\mathbf x)=\\\\mathcal R\\\\mathbf E(\\\\mathbf x)\\\\) for every rotation \\\\(\\\\mathcal R\\\\), hence \\\\(\\\\mathbf E(\\\\mathbf x)=E(r)\\\\hat{\\\\mathbf r}\\\\) for \\\\(r&gt;0\\\\). This symmetry claim must be derived later rather than assumed.\\n5. HYPOTHESIS — Euclidean spherical geometry supplies \\\\(d^3x=4\\\\pi r&#x27;^2dr&#x27;\\\\) after angular integration and \\\\(\\\\oint_{S_r}dA=4\\\\pi r^2\\\\); these identities will be used to normalize \\\\(\\\\rho_0\\\\), compute enclosed charge, and evaluate flux.\\n6. HYPOTHESIS — Integrating the divergence equation over a centered ball and applying the divergence theorem yields Gaussian Gauss law \\\\(\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A=4\\\\pi Q_{\\\\mathrm{enc}}(r)\\\\); this must be derived later from entries 1 and 2.\\n7. HYPOTHESIS — Because the volume density has only a finite step at \\\\(r=R\\\\) and contains no surface delta-function charge, the normal component of \\\\(\\\\mathbf E\\\\) is continuous there; this will be checked directly from the derived regional formulas rather than used to determine them.\\n8. HYPOTHESIS — Regularity at the origin excludes a singular homogeneous \\\\(C/r^2\\\\) contribution inside, while isolation imposes \\\\(\\\\mathbf E\\\\to0\\\\) at infinity. The centered-ball flux computation should fix the solution without leaving such constants.\\n9. HYPOTHESIS — Unit convention: Gaussian electrostatic units, with \\\\([\\\\nabla\\\\cdot\\\\mathbf E]=[\\\\mathbf E]/L=4\\\\pi[\\\\rho]\\\\), so \\\\([\\\\mathbf E]=[Q]L^{-2}\\\\); \\\\(4\\\\pi\\\\) is dimensionless and no \\\\(\\\\epsilon_0\\\\) occurs.\\n10. HYPOTHESIS — Sign convention: \\\\(\\\\hat{\\\\mathbf r}=\\\\mathbf x/r\\\\) points outward, so the scalar coefficient has the sign of \\\\(Q\\\\); positive charge produces an outward field and negative charge an inward field.\\n\\nDECLARED CLASS: Classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed, time-independent, exactly spherically symmetric volume charge distribution of compact support; no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic corrections, or quantum effects. The operators are the ordinary Euclidean gradient, divergence, and curl acting classically away from \\\\(r=R\\\\), with the divergence equation interpreted distributionally across the density step. No Hamiltonian formulation is invoked.\&quot;,\&quot;scope\&quot;:\&quot;Planning step only: no field formula is yet derived. The eventual claim is restricted to the declared classical vacuum electrostatic operator class and the stated uniformly charged sphere.\&quot;,\&quot;source\&quot;:\&quot;Frozen task statement only; no external references are allowlisted.\&quot;,\&quot;why\&quot;:\&quot;This ledger fixes the starting data, endpoint, permitted ingredients, boundary conditions, and range of validity before any derivation is performed.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;efb7fd193e2921276095540712a529e53e46fd7807a784cee6704631bcc68377&quot;
+}</pre></details></td></tr><tr><td>6</td><td><code>evt_00000006</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>dd0019682058</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 4577,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;output_sha256&quot;: &quot;efb7fd193e2921276095540712a529e53e46fd7807a784cee6704631bcc68377&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Intent ledger for deriving the electric field of a uniformly charged solid sphere in Gaussian units.\&quot;,\&quot;derivation\&quot;:\&quot;STARTING OBJECT AND COMPUTED QUANTITY: Take \\\\(R&gt;0\\\\), total charge \\\\(Q\\\\), and the prescribed uniform volume density \\\\(\\\\rho(\\\\mathbf x)=\\\\rho_0\\\\Theta(R-|\\\\mathbf x|)\\\\), with \\\\(\\\\rho_0\\\\) to be fixed from \\\\(\\\\int_{\\\\mathbb R^3}\\\\rho\\\\,d^3x=Q\\\\). Compute the static vacuum electric field \\\\(\\\\mathbf E(\\\\mathbf x)\\\\).\\n\\nENDPOINT FORM: Deliver an explicit piecewise formula \\\\(\\\\mathbf E(\\\\mathbf x)=E(r)\\\\hat{\\\\mathbf r}\\\\), \\\\(r=|\\\\mathbf x|\\\\), for \\\\(0&lt;r&lt;R\\\\) and \\\\(r&gt;R\\\\), supplemented by its regular value at \\\\(r=0\\\\), its common limiting value at \\\\(r=R\\\\), its radial direction for either sign of \\\\(Q\\\\), and its decay at infinity. Verify continuity at \\\\(R\\\\), the exterior point-charge limit, spherical symmetry, signs, normalization, and Gaussian-unit dimensions.\\n\\nINTENT DEPENDENCY LEDGER (all entries presently HYPOTHESIS):\\n1. HYPOTHESIS — Gaussian-unit vacuum electrostatics obeys \\\\(\\\\nabla\\\\!\\\\cdot\\\\!\\\\mathbf E=4\\\\pi\\\\rho\\\\) and \\\\(\\\\nabla\\\\!\\\\times\\\\!\\\\mathbf E=0\\\\). This is an admitted external starting primitive in the frozen task; no allowlisted source span exists.\\n2. HYPOTHESIS — The divergence theorem gives \\\\(\\\\int_V \\\\nabla\\\\!\\\\cdot\\\\!\\\\mathbf E\\\\,d^3x=\\\\oint_{\\\\partial V}\\\\mathbf E\\\\!\\\\cdot d\\\\mathbf A\\\\). It is an admitted external mathematical result; no allowlisted source span exists.\\n3. HYPOTHESIS — A solution of the electrostatic Poisson problem that decays at infinity is unique. This is an admitted external result; no allowlisted source span exists.\\n4. HYPOTHESIS — Rotational covariance of the linear electrostatic equations, invariance of \\\\(\\\\rho\\\\) and the boundary condition \\\\(\\\\mathbf E\\\\to0\\\\) as \\\\(r\\\\to\\\\infty\\\\), plus uniqueness imply \\\\(\\\\mathbf E(\\\\mathcal R\\\\mathbf x)=\\\\mathcal R\\\\mathbf E(\\\\mathbf x)\\\\) for every rotation \\\\(\\\\mathcal R\\\\), hence \\\\(\\\\mathbf E(\\\\mathbf x)=E(r)\\\\hat{\\\\mathbf r}\\\\) for \\\\(r&gt;0\\\\). This symmetry claim must be derived later rather than assumed.\\n5. HYPOTHESIS — Euclidean spherical geometry supplies \\\\(d^3x=4\\\\pi r&#x27;^2dr&#x27;\\\\) after angular integration and \\\\(\\\\oint_{S_r}dA=4\\\\pi r^2\\\\); these identities will be used to normalize \\\\(\\\\rho_0\\\\), compute enclosed charge, and evaluate flux.\\n6. HYPOTHESIS — Integrating the divergence equation over a centered ball and applying the divergence theorem yields Gaussian Gauss law \\\\(\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A=4\\\\pi Q_{\\\\mathrm{enc}}(r)\\\\); this must be derived later from entries 1 and 2.\\n7. HYPOTHESIS — Because the volume density has only a finite step at \\\\(r=R\\\\) and contains no surface delta-function charge, the normal component of \\\\(\\\\mathbf E\\\\) is continuous there; this will be checked directly from the derived regional formulas rather than used to determine them.\\n8. HYPOTHESIS — Regularity at the origin excludes a singular homogeneous \\\\(C/r^2\\\\) contribution inside, while isolation imposes \\\\(\\\\mathbf E\\\\to0\\\\) at infinity. The centered-ball flux computation should fix the solution without leaving such constants.\\n9. HYPOTHESIS — Unit convention: Gaussian electrostatic units, with \\\\([\\\\nabla\\\\cdot\\\\mathbf E]=[\\\\mathbf E]/L=4\\\\pi[\\\\rho]\\\\), so \\\\([\\\\mathbf E]=[Q]L^{-2}\\\\); \\\\(4\\\\pi\\\\) is dimensionless and no \\\\(\\\\epsilon_0\\\\) occurs.\\n10. HYPOTHESIS — Sign convention: \\\\(\\\\hat{\\\\mathbf r}=\\\\mathbf x/r\\\\) points outward, so the scalar coefficient has the sign of \\\\(Q\\\\); positive charge produces an outward field and negative charge an inward field.\\n\\nDECLARED CLASS: Classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed, time-independent, exactly spherically symmetric volume charge distribution of compact support; no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic corrections, or quantum effects. The operators are the ordinary Euclidean gradient, divergence, and curl acting classically away from \\\\(r=R\\\\), with the divergence equation interpreted distributionally across the density step. No Hamiltonian formulation is invoked.\&quot;,\&quot;scope\&quot;:\&quot;Planning step only: no field formula is yet derived. The eventual claim is restricted to the declared classical vacuum electrostatic operator class and the stated uniformly charged sphere.\&quot;,\&quot;source\&quot;:\&quot;Frozen task statement only; no external references are allowlisted.\&quot;,\&quot;why\&quot;:\&quot;This ledger fixes the starting data, endpoint, permitted ingredients, boundary conditions, and range of validity before any derivation is performed.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 7936,
+      &quot;inputTokens&quot;: 12907,
+      &quot;outputTokens&quot;: 1355,
+      &quot;reasoningOutputTokens&quot;: 90,
+      &quot;totalTokens&quot;: 14262
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 7936,
+      &quot;inputTokens&quot;: 12907,
+      &quot;outputTokens&quot;: 1355,
+      &quot;reasoningOutputTokens&quot;: 90,
+      &quot;totalTokens&quot;: 14262
+    }
+  }
+}</pre></details></td></tr><tr><td>7</td><td><code>evt_00000007</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>a1a54fb6ff65</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;Intent ledger for deriving the electric field of a uniformly charged solid sphere in Gaussian units.&quot;,
+    &quot;derivation&quot;: &quot;STARTING OBJECT AND COMPUTED QUANTITY: Take \\(R&gt;0\\), total charge \\(Q\\), and the prescribed uniform volume density \\(\\rho(\\mathbf x)=\\rho_0\\Theta(R-|\\mathbf x|)\\), with \\(\\rho_0\\) to be fixed from \\(\\int_{\\mathbb R^3}\\rho\\,d^3x=Q\\). Compute the static vacuum electric field \\(\\mathbf E(\\mathbf x)\\).\n\nENDPOINT FORM: Deliver an explicit piecewise formula \\(\\mathbf E(\\mathbf x)=E(r)\\hat{\\mathbf r}\\), \\(r=|\\mathbf x|\\), for \\(0&lt;r&lt;R\\) and \\(r&gt;R\\), supplemented by its regular value at \\(r=0\\), its common limiting value at \\(r=R\\), its radial direction for either sign of \\(Q\\), and its decay at infinity. Verify continuity at \\(R\\), the exterior point-charge limit, spherical symmetry, signs, normalization, and Gaussian-unit dimensions.\n\nINTENT DEPENDENCY LEDGER (all entries presently HYPOTHESIS):\n1. HYPOTHESIS — Gaussian-unit vacuum electrostatics obeys \\(\\nabla\\!\\cdot\\!\\mathbf E=4\\pi\\rho\\) and \\(\\nabla\\!\\times\\!\\mathbf E=0\\). This is an admitted external starting primitive in the frozen task; no allowlisted source span exists.\n2. HYPOTHESIS — The divergence theorem gives \\(\\int_V \\nabla\\!\\cdot\\!\\mathbf E\\,d^3x=\\oint_{\\partial V}\\mathbf E\\!\\cdot d\\mathbf A\\). It is an admitted external mathematical result; no allowlisted source span exists.\n3. HYPOTHESIS — A solution of the electrostatic Poisson problem that decays at infinity is unique. This is an admitted external result; no allowlisted source span exists.\n4. HYPOTHESIS — Rotational covariance of the linear electrostatic equations, invariance of \\(\\rho\\) and the boundary condition \\(\\mathbf E\\to0\\) as \\(r\\to\\infty\\), plus uniqueness imply \\(\\mathbf E(\\mathcal R\\mathbf x)=\\mathcal R\\mathbf E(\\mathbf x)\\) for every rotation \\(\\mathcal R\\), hence \\(\\mathbf E(\\mathbf x)=E(r)\\hat{\\mathbf r}\\) for \\(r&gt;0\\). This symmetry claim must be derived later rather than assumed.\n5. HYPOTHESIS — Euclidean spherical geometry supplies \\(d^3x=4\\pi r&#x27;^2dr&#x27;\\) after angular integration and \\(\\oint_{S_r}dA=4\\pi r^2\\); these identities will be used to normalize \\(\\rho_0\\), compute enclosed charge, and evaluate flux.\n6. HYPOTHESIS — Integrating the divergence equation over a centered ball and applying the divergence theorem yields Gaussian Gauss law \\(\\oint_{S_r}\\mathbf E\\cdot d\\mathbf A=4\\pi Q_{\\mathrm{enc}}(r)\\); this must be derived later from entries 1 and 2.\n7. HYPOTHESIS — Because the volume density has only a finite step at \\(r=R\\) and contains no surface delta-function charge, the normal component of \\(\\mathbf E\\) is continuous there; this will be checked directly from the derived regional formulas rather than used to determine them.\n8. HYPOTHESIS — Regularity at the origin excludes a singular homogeneous \\(C/r^2\\) contribution inside, while isolation imposes \\(\\mathbf E\\to0\\) at infinity. The centered-ball flux computation should fix the solution without leaving such constants.\n9. HYPOTHESIS — Unit convention: Gaussian electrostatic units, with \\([\\nabla\\cdot\\mathbf E]=[\\mathbf E]/L=4\\pi[\\rho]\\), so \\([\\mathbf E]=[Q]L^{-2}\\); \\(4\\pi\\) is dimensionless and no \\(\\epsilon_0\\) occurs.\n10. HYPOTHESIS — Sign convention: \\(\\hat{\\mathbf r}=\\mathbf x/r\\) points outward, so the scalar coefficient has the sign of \\(Q\\); positive charge produces an outward field and negative charge an inward field.\n\nDECLARED CLASS: Classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed, time-independent, exactly spherically symmetric volume charge distribution of compact support; no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic corrections, or quantum effects. The operators are the ordinary Euclidean gradient, divergence, and curl acting classically away from \\(r=R\\), with the divergence equation interpreted distributionally across the density step. No Hamiltonian formulation is invoked.&quot;,
+    &quot;scope&quot;: &quot;Planning step only: no field formula is yet derived. The eventual claim is restricted to the declared classical vacuum electrostatic operator class and the stated uniformly charged sphere.&quot;,
+    &quot;source&quot;: &quot;Frozen task statement only; no external references are allowlisted.&quot;,
+    &quot;why&quot;: &quot;This ledger fixes the starting data, endpoint, permitted ingredients, boundary conditions, and range of validity before any derivation is performed.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0001&quot;
+  },
+  &quot;output_sha256&quot;: &quot;efb7fd193e2921276095540712a529e53e46fd7807a784cee6704631bcc68377&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0001&quot;,
+  &quot;step_slot&quot;: 1
+}</pre></details></td></tr><tr><td>8</td><td><code>evt_00000008</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>a6f6e32834c5</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0001&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;efb7fd193e2921276095540712a529e53e46fd7807a784cee6704631bcc68377&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0001&quot;
+}</pre></details></td></tr><tr><td>9</td><td><code>evt_00000009</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>5dede57105da</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0002&quot;,
+  &quot;prompt_sha256&quot;: &quot;5b25be688b954fe4f5624c683c0a44e1cf8280e599d43fef06b1805ca3265920&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0001&quot;
+  }
+}</pre></details></td></tr><tr><td>10</td><td><code>evt_00000010</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>6e15beec92f2</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 299,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0002&quot;,
+  &quot;output_sha256&quot;: &quot;ed949196ac00e549089071a28a89fa2b3e7cdfe83d06b741f5679bb983e5d534&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The first-step intent ledger cites no source spans requiring verification, and its entries are mutually consistent with one another and with the admitted task primitives. The symmetry claim and Gauss-law construction are correctly left for later derivation.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 16268,
+      &quot;outputTokens&quot;: 257,
+      &quot;reasoningOutputTokens&quot;: 189,
+      &quot;totalTokens&quot;: 16525
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 16268,
+      &quot;outputTokens&quot;: 257,
+      &quot;reasoningOutputTokens&quot;: 189,
+      &quot;totalTokens&quot;: 16525
+    }
+  }
+}</pre></details></td></tr><tr><td>11</td><td><code>evt_00000011</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>b05aaa67aeca</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0001&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0002&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The first-step intent ledger cites no source spans requiring verification, and its entries are mutually consistent with one another and with the admitted task primitives. The symmetry claim and Gauss-law construction are correctly left for later derivation.&quot;,
+  &quot;target_output_sha256&quot;: &quot;efb7fd193e2921276095540712a529e53e46fd7807a784cee6704631bcc68377&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0001&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>12</td><td><code>evt_00000012</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>68ff9072332a</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;prompt_sha256&quot;: &quot;49792db68f2cff83e6e02c52573badcda3c6e372381e0684bb0d25e16641a06b&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0001&quot;,
+    &quot;step_slot&quot;: 2
+  }
+}</pre></details></td></tr><tr><td>13</td><td><code>evt_00000013</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>266e1e090bbb</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;continue\&quot;,\&quot;reason\&quot;:\&quot;The endpoint has been derived, but completion still requires the explicit boundary and limiting expansions, curl/sign/factor consistency checks, dimensional-analysis line, and a reconciled full dependency ledger with the status constraints required by the task.\&quot;,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;426d54f7f92ce0b60f8807108478b23f0e10902ca689fef5ba9e33b171628af2&quot;
+}</pre></details></td></tr><tr><td>14</td><td><code>evt_00000014</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>fb8fd808f120</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;For the declared classical vacuum electrostatic problem, spherical symmetry reduces the field to a radial scalar, and Gauss&#x27;s law then gives \\\\(\\\\mathbf E(\\\\mathbf x)=Q\\\\mathbf x/R^3\\\\) inside the sphere and \\\\(\\\\mathbf E(\\\\mathbf x)=Q\\\\mathbf x/r^3\\\\) outside it.\&quot;,\&quot;derivation\&quot;:\&quot;Let \\\\(r=|\\\\mathbf x|\\\\), \\\\(\\\\hat{\\\\mathbf r}=\\\\mathbf x/r\\\\) for \\\\(r&gt;0\\\\), and \\\\(B_r=\\\\{\\\\mathbf x:|\\\\mathbf x|\\\\le r\\\\}\\\\). The prescribed density is\\n\\\\[\\n\\\\rho(\\\\mathbf x)=\\\\rho_0\\\\Theta(R-r),\\\\qquad R&gt;0.\\n\\\\]\\nUsing the Euclidean spherical measure \\\\(d^3x=r&#x27;^2\\\\sin\\\\theta\\\\,dr&#x27;\\\\,d\\\\theta\\\\,d\\\\phi\\\\), its normalization is\\n\\\\[\\nQ=\\\\int_{\\\\mathbb R^3}\\\\rho\\\\,d^3x\\n =\\\\rho_0\\\\int_0^R r&#x27;^2dr&#x27;\\\\int_0^\\\\pi\\\\sin\\\\theta\\\\,d\\\\theta\\\\int_0^{2\\\\pi}d\\\\phi\\n =\\\\rho_0\\\\frac{R^3}{3}(2)(2\\\\pi)\\n =\\\\frac{4\\\\pi}{3}\\\\rho_0R^3,\\n\\\\]\\nso\\n\\\\[\\n\\\\rho_0=\\\\frac{3Q}{4\\\\pi R^3}.\\n\\\\]\\n\\nSYMMETRY REDUCTION: For any rotation \\\\(\\\\mathcal R\\\\in SO(3)\\\\), define the rotated field\\n\\\\[\\n\\\\mathbf E_{\\\\mathcal R}(\\\\mathbf x)=\\\\mathcal R\\\\,\\\\mathbf E(\\\\mathcal R^{-1}\\\\mathbf x).\\n\\\\]\\nOrdinary Euclidean divergence and curl are rotation covariant. Since \\\\(\\\\rho(\\\\mathcal R^{-1}\\\\mathbf x)=\\\\rho(\\\\mathbf x)\\\\), \\\\(\\\\mathbf E_{\\\\mathcal R}\\\\) obeys the same electrostatic equations, is regular at the origin, and has the same decay condition at infinity as \\\\(\\\\mathbf E\\\\). By the admitted uniqueness theorem, \\\\(\\\\mathbf E_{\\\\mathcal R}=\\\\mathbf E\\\\), equivalently\\n\\\\[\\n\\\\mathbf E(\\\\mathcal R\\\\mathbf x)=\\\\mathcal R\\\\mathbf E(\\\\mathbf x).\\n\\\\]\\nAt fixed nonzero \\\\(\\\\mathbf x\\\\), every rotation about the axis through \\\\(\\\\mathbf x\\\\) leaves \\\\(\\\\mathbf x\\\\) fixed. The displayed covariance then requires \\\\(\\\\mathbf E(\\\\mathbf x)\\\\) to be invariant under all such rotations, so it has no component perpendicular to \\\\(\\\\mathbf x\\\\):\\n\\\\[\\n\\\\mathbf E(\\\\mathbf x)=E(r)\\\\hat{\\\\mathbf r}.\\n\\\\]\\nRotations carrying one point of radius \\\\(r\\\\) to another show that the coefficient depends only on \\\\(r\\\\).\\n\\nGAUSS LAW FROM THE DECLARED PRIMITIVES: Integrate \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\) over \\\\(B_r\\\\) and apply the admitted divergence theorem:\\n\\\\[\\n\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A\\n =\\\\int_{B_r}(\\\\nabla\\\\cdot\\\\mathbf E)d^3x\\n =4\\\\pi\\\\int_{B_r}\\\\rho\\\\,d^3x\\n =4\\\\pi Q_{\\\\mathrm{enc}}(r).\\n\\\\]\\nHere \\\\(S_r=\\\\partial B_r\\\\), its outward oriented area element is \\\\(d\\\\mathbf A=\\\\hat{\\\\mathbf r}\\\\,r^2\\\\sin\\\\theta\\\\,d\\\\theta\\\\,d\\\\phi\\\\), and therefore\\n\\\\[\\n\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A\\n =E(r)r^2\\\\int_0^\\\\pi\\\\sin\\\\theta\\\\,d\\\\theta\\\\int_0^{2\\\\pi}d\\\\phi\\n =4\\\\pi r^2E(r).\\n\\\\]\\nThus, for \\\\(r&gt;0\\\\),\\n\\\\[\\nE(r)=\\\\frac{Q_{\\\\mathrm{enc}}(r)}{r^2}.\\n\\\\]\\nThe enclosed charge is explicitly\\n\\\\[\\nQ_{\\\\mathrm{enc}}(r)=4\\\\pi\\\\rho_0\\\\int_0^{\\\\min(r,R)}r&#x27;^2dr&#x27;\\n=\\\\begin{cases}\\n\\\\dfrac{4\\\\pi\\\\rho_0r^3}{3}=Q\\\\dfrac{r^3}{R^3},&amp;0&lt;r&lt;R,\\\\\\\\[6pt]\\n\\\\dfrac{4\\\\pi\\\\rho_0R^3}{3}=Q,&amp;r&gt;R.\\n\\\\end{cases}\\n\\\\]\\nSubstitution gives\\n\\\\[\\n\\\\boxed{\\\\mathbf E(\\\\mathbf x)=\\n\\\\begin{cases}\\n\\\\dfrac{Q}{R^3}\\\\mathbf x=\\\\dfrac{Qr}{R^3}\\\\hat{\\\\mathbf r},&amp;0&lt;r&lt;R,\\\\\\\\[7pt]\\n\\\\dfrac{Q}{r^3}\\\\mathbf x=\\\\dfrac{Q}{r^2}\\\\hat{\\\\mathbf r},&amp;r&gt;R.\\n\\\\end{cases}}\\n\\\\]\\nThe regular extension to the center is \\\\(\\\\mathbf E(\\\\mathbf 0)=\\\\mathbf 0\\\\), because the interior expression is linear in \\\\(\\\\mathbf x\\\\). Since \\\\(\\\\hat{\\\\mathbf r}\\\\) is outward, \\\\(Q&gt;0\\\\) gives an outward field and \\\\(Q&lt;0\\\\) gives an inward field. No undetermined homogeneous \\\\(C/r^2\\\\) term remains: the flux through every centered sphere was fixed by its actual enclosed charge, regularity holds at the origin, and the exterior solution decays as \\\\(r^{-2}\\\\).\&quot;,\&quot;scope\&quot;:\&quot;Derived for a static, exactly spherically symmetric, uniformly charged solid sphere in three-dimensional classical linear Maxwell electrostatics in vacuum and Gaussian units, with no external fields, conductors, dielectrics, or additional singular surface charge.\&quot;,\&quot;source\&quot;:\&quot;The equations \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\), \\\\(\\\\nabla\\\\times\\\\mathbf E=0\\\\), the divergence theorem, and electrostatic uniqueness are admitted external primitives in the frozen task. No external references are allowlisted.\&quot;,\&quot;why\&quot;:\&quot;This carries the prescribed uniform charge density through its normalization and enclosed charge to the explicit field in both spatial regions; boundary, limiting, and dependency-ledger closure remain for the next step.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;e4c0958a9299afab64f3649223552f76fc22d97dec4ca447673216bd10c30d7e&quot;
+}</pre></details></td></tr><tr><td>15</td><td><code>evt_00000015</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>881e259ba502</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 4359,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;output_sha256&quot;: &quot;e4c0958a9299afab64f3649223552f76fc22d97dec4ca447673216bd10c30d7e&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;For the declared classical vacuum electrostatic problem, spherical symmetry reduces the field to a radial scalar, and Gauss&#x27;s law then gives \\\\(\\\\mathbf E(\\\\mathbf x)=Q\\\\mathbf x/R^3\\\\) inside the sphere and \\\\(\\\\mathbf E(\\\\mathbf x)=Q\\\\mathbf x/r^3\\\\) outside it.\&quot;,\&quot;derivation\&quot;:\&quot;Let \\\\(r=|\\\\mathbf x|\\\\), \\\\(\\\\hat{\\\\mathbf r}=\\\\mathbf x/r\\\\) for \\\\(r&gt;0\\\\), and \\\\(B_r=\\\\{\\\\mathbf x:|\\\\mathbf x|\\\\le r\\\\}\\\\). The prescribed density is\\n\\\\[\\n\\\\rho(\\\\mathbf x)=\\\\rho_0\\\\Theta(R-r),\\\\qquad R&gt;0.\\n\\\\]\\nUsing the Euclidean spherical measure \\\\(d^3x=r&#x27;^2\\\\sin\\\\theta\\\\,dr&#x27;\\\\,d\\\\theta\\\\,d\\\\phi\\\\), its normalization is\\n\\\\[\\nQ=\\\\int_{\\\\mathbb R^3}\\\\rho\\\\,d^3x\\n =\\\\rho_0\\\\int_0^R r&#x27;^2dr&#x27;\\\\int_0^\\\\pi\\\\sin\\\\theta\\\\,d\\\\theta\\\\int_0^{2\\\\pi}d\\\\phi\\n =\\\\rho_0\\\\frac{R^3}{3}(2)(2\\\\pi)\\n =\\\\frac{4\\\\pi}{3}\\\\rho_0R^3,\\n\\\\]\\nso\\n\\\\[\\n\\\\rho_0=\\\\frac{3Q}{4\\\\pi R^3}.\\n\\\\]\\n\\nSYMMETRY REDUCTION: For any rotation \\\\(\\\\mathcal R\\\\in SO(3)\\\\), define the rotated field\\n\\\\[\\n\\\\mathbf E_{\\\\mathcal R}(\\\\mathbf x)=\\\\mathcal R\\\\,\\\\mathbf E(\\\\mathcal R^{-1}\\\\mathbf x).\\n\\\\]\\nOrdinary Euclidean divergence and curl are rotation covariant. Since \\\\(\\\\rho(\\\\mathcal R^{-1}\\\\mathbf x)=\\\\rho(\\\\mathbf x)\\\\), \\\\(\\\\mathbf E_{\\\\mathcal R}\\\\) obeys the same electrostatic equations, is regular at the origin, and has the same decay condition at infinity as \\\\(\\\\mathbf E\\\\). By the admitted uniqueness theorem, \\\\(\\\\mathbf E_{\\\\mathcal R}=\\\\mathbf E\\\\), equivalently\\n\\\\[\\n\\\\mathbf E(\\\\mathcal R\\\\mathbf x)=\\\\mathcal R\\\\mathbf E(\\\\mathbf x).\\n\\\\]\\nAt fixed nonzero \\\\(\\\\mathbf x\\\\), every rotation about the axis through \\\\(\\\\mathbf x\\\\) leaves \\\\(\\\\mathbf x\\\\) fixed. The displayed covariance then requires \\\\(\\\\mathbf E(\\\\mathbf x)\\\\) to be invariant under all such rotations, so it has no component perpendicular to \\\\(\\\\mathbf x\\\\):\\n\\\\[\\n\\\\mathbf E(\\\\mathbf x)=E(r)\\\\hat{\\\\mathbf r}.\\n\\\\]\\nRotations carrying one point of radius \\\\(r\\\\) to another show that the coefficient depends only on \\\\(r\\\\).\\n\\nGAUSS LAW FROM THE DECLARED PRIMITIVES: Integrate \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\) over \\\\(B_r\\\\) and apply the admitted divergence theorem:\\n\\\\[\\n\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A\\n =\\\\int_{B_r}(\\\\nabla\\\\cdot\\\\mathbf E)d^3x\\n =4\\\\pi\\\\int_{B_r}\\\\rho\\\\,d^3x\\n =4\\\\pi Q_{\\\\mathrm{enc}}(r).\\n\\\\]\\nHere \\\\(S_r=\\\\partial B_r\\\\), its outward oriented area element is \\\\(d\\\\mathbf A=\\\\hat{\\\\mathbf r}\\\\,r^2\\\\sin\\\\theta\\\\,d\\\\theta\\\\,d\\\\phi\\\\), and therefore\\n\\\\[\\n\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A\\n =E(r)r^2\\\\int_0^\\\\pi\\\\sin\\\\theta\\\\,d\\\\theta\\\\int_0^{2\\\\pi}d\\\\phi\\n =4\\\\pi r^2E(r).\\n\\\\]\\nThus, for \\\\(r&gt;0\\\\),\\n\\\\[\\nE(r)=\\\\frac{Q_{\\\\mathrm{enc}}(r)}{r^2}.\\n\\\\]\\nThe enclosed charge is explicitly\\n\\\\[\\nQ_{\\\\mathrm{enc}}(r)=4\\\\pi\\\\rho_0\\\\int_0^{\\\\min(r,R)}r&#x27;^2dr&#x27;\\n=\\\\begin{cases}\\n\\\\dfrac{4\\\\pi\\\\rho_0r^3}{3}=Q\\\\dfrac{r^3}{R^3},&amp;0&lt;r&lt;R,\\\\\\\\[6pt]\\n\\\\dfrac{4\\\\pi\\\\rho_0R^3}{3}=Q,&amp;r&gt;R.\\n\\\\end{cases}\\n\\\\]\\nSubstitution gives\\n\\\\[\\n\\\\boxed{\\\\mathbf E(\\\\mathbf x)=\\n\\\\begin{cases}\\n\\\\dfrac{Q}{R^3}\\\\mathbf x=\\\\dfrac{Qr}{R^3}\\\\hat{\\\\mathbf r},&amp;0&lt;r&lt;R,\\\\\\\\[7pt]\\n\\\\dfrac{Q}{r^3}\\\\mathbf x=\\\\dfrac{Q}{r^2}\\\\hat{\\\\mathbf r},&amp;r&gt;R.\\n\\\\end{cases}}\\n\\\\]\\nThe regular extension to the center is \\\\(\\\\mathbf E(\\\\mathbf 0)=\\\\mathbf 0\\\\), because the interior expression is linear in \\\\(\\\\mathbf x\\\\). Since \\\\(\\\\hat{\\\\mathbf r}\\\\) is outward, \\\\(Q&gt;0\\\\) gives an outward field and \\\\(Q&lt;0\\\\) gives an inward field. No undetermined homogeneous \\\\(C/r^2\\\\) term remains: the flux through every centered sphere was fixed by its actual enclosed charge, regularity holds at the origin, and the exterior solution decays as \\\\(r^{-2}\\\\).\&quot;,\&quot;scope\&quot;:\&quot;Derived for a static, exactly spherically symmetric, uniformly charged solid sphere in three-dimensional classical linear Maxwell electrostatics in vacuum and Gaussian units, with no external fields, conductors, dielectrics, or additional singular surface charge.\&quot;,\&quot;source\&quot;:\&quot;The equations \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\), \\\\(\\\\nabla\\\\times\\\\mathbf E=0\\\\), the divergence theorem, and electrostatic uniqueness are admitted external primitives in the frozen task. No external references are allowlisted.\&quot;,\&quot;why\&quot;:\&quot;This carries the prescribed uniform charge density through its normalization and enclosed charge to the explicit field in both spatial regions; boundary, limiting, and dependency-ledger closure remain for the next step.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 12672,
+      &quot;inputTokens&quot;: 17598,
+      &quot;outputTokens&quot;: 2204,
+      &quot;reasoningOutputTokens&quot;: 643,
+      &quot;totalTokens&quot;: 19802
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 20608,
+      &quot;inputTokens&quot;: 30505,
+      &quot;outputTokens&quot;: 3559,
+      &quot;reasoningOutputTokens&quot;: 733,
+      &quot;totalTokens&quot;: 34064
+    }
+  }
+}</pre></details></td></tr><tr><td>16</td><td><code>evt_00000016</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>72fdded0d6b2</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;For the declared classical vacuum electrostatic problem, spherical symmetry reduces the field to a radial scalar, and Gauss&#x27;s law then gives \\(\\mathbf E(\\mathbf x)=Q\\mathbf x/R^3\\) inside the sphere and \\(\\mathbf E(\\mathbf x)=Q\\mathbf x/r^3\\) outside it.&quot;,
+    &quot;derivation&quot;: &quot;Let \\(r=|\\mathbf x|\\), \\(\\hat{\\mathbf r}=\\mathbf x/r\\) for \\(r&gt;0\\), and \\(B_r=\\{\\mathbf x:|\\mathbf x|\\le r\\}\\). The prescribed density is\n\\[\n\\rho(\\mathbf x)=\\rho_0\\Theta(R-r),\\qquad R&gt;0.\n\\]\nUsing the Euclidean spherical measure \\(d^3x=r&#x27;^2\\sin\\theta\\,dr&#x27;\\,d\\theta\\,d\\phi\\), its normalization is\n\\[\nQ=\\int_{\\mathbb R^3}\\rho\\,d^3x\n =\\rho_0\\int_0^R r&#x27;^2dr&#x27;\\int_0^\\pi\\sin\\theta\\,d\\theta\\int_0^{2\\pi}d\\phi\n =\\rho_0\\frac{R^3}{3}(2)(2\\pi)\n =\\frac{4\\pi}{3}\\rho_0R^3,\n\\]\nso\n\\[\n\\rho_0=\\frac{3Q}{4\\pi R^3}.\n\\]\n\nSYMMETRY REDUCTION: For any rotation \\(\\mathcal R\\in SO(3)\\), define the rotated field\n\\[\n\\mathbf E_{\\mathcal R}(\\mathbf x)=\\mathcal R\\,\\mathbf E(\\mathcal R^{-1}\\mathbf x).\n\\]\nOrdinary Euclidean divergence and curl are rotation covariant. Since \\(\\rho(\\mathcal R^{-1}\\mathbf x)=\\rho(\\mathbf x)\\), \\(\\mathbf E_{\\mathcal R}\\) obeys the same electrostatic equations, is regular at the origin, and has the same decay condition at infinity as \\(\\mathbf E\\). By the admitted uniqueness theorem, \\(\\mathbf E_{\\mathcal R}=\\mathbf E\\), equivalently\n\\[\n\\mathbf E(\\mathcal R\\mathbf x)=\\mathcal R\\mathbf E(\\mathbf x).\n\\]\nAt fixed nonzero \\(\\mathbf x\\), every rotation about the axis through \\(\\mathbf x\\) leaves \\(\\mathbf x\\) fixed. The displayed covariance then requires \\(\\mathbf E(\\mathbf x)\\) to be invariant under all such rotations, so it has no component perpendicular to \\(\\mathbf x\\):\n\\[\n\\mathbf E(\\mathbf x)=E(r)\\hat{\\mathbf r}.\n\\]\nRotations carrying one point of radius \\(r\\) to another show that the coefficient depends only on \\(r\\).\n\nGAUSS LAW FROM THE DECLARED PRIMITIVES: Integrate \\(\\nabla\\cdot\\mathbf E=4\\pi\\rho\\) over \\(B_r\\) and apply the admitted divergence theorem:\n\\[\n\\oint_{S_r}\\mathbf E\\cdot d\\mathbf A\n =\\int_{B_r}(\\nabla\\cdot\\mathbf E)d^3x\n =4\\pi\\int_{B_r}\\rho\\,d^3x\n =4\\pi Q_{\\mathrm{enc}}(r).\n\\]\nHere \\(S_r=\\partial B_r\\), its outward oriented area element is \\(d\\mathbf A=\\hat{\\mathbf r}\\,r^2\\sin\\theta\\,d\\theta\\,d\\phi\\), and therefore\n\\[\n\\oint_{S_r}\\mathbf E\\cdot d\\mathbf A\n =E(r)r^2\\int_0^\\pi\\sin\\theta\\,d\\theta\\int_0^{2\\pi}d\\phi\n =4\\pi r^2E(r).\n\\]\nThus, for \\(r&gt;0\\),\n\\[\nE(r)=\\frac{Q_{\\mathrm{enc}}(r)}{r^2}.\n\\]\nThe enclosed charge is explicitly\n\\[\nQ_{\\mathrm{enc}}(r)=4\\pi\\rho_0\\int_0^{\\min(r,R)}r&#x27;^2dr&#x27;\n=\\begin{cases}\n\\dfrac{4\\pi\\rho_0r^3}{3}=Q\\dfrac{r^3}{R^3},&amp;0&lt;r&lt;R,\\\\[6pt]\n\\dfrac{4\\pi\\rho_0R^3}{3}=Q,&amp;r&gt;R.\n\\end{cases}\n\\]\nSubstitution gives\n\\[\n\\boxed{\\mathbf E(\\mathbf x)=\n\\begin{cases}\n\\dfrac{Q}{R^3}\\mathbf x=\\dfrac{Qr}{R^3}\\hat{\\mathbf r},&amp;0&lt;r&lt;R,\\\\[7pt]\n\\dfrac{Q}{r^3}\\mathbf x=\\dfrac{Q}{r^2}\\hat{\\mathbf r},&amp;r&gt;R.\n\\end{cases}}\n\\]\nThe regular extension to the center is \\(\\mathbf E(\\mathbf 0)=\\mathbf 0\\), because the interior expression is linear in \\(\\mathbf x\\). Since \\(\\hat{\\mathbf r}\\) is outward, \\(Q&gt;0\\) gives an outward field and \\(Q&lt;0\\) gives an inward field. No undetermined homogeneous \\(C/r^2\\) term remains: the flux through every centered sphere was fixed by its actual enclosed charge, regularity holds at the origin, and the exterior solution decays as \\(r^{-2}\\).&quot;,
+    &quot;scope&quot;: &quot;Derived for a static, exactly spherically symmetric, uniformly charged solid sphere in three-dimensional classical linear Maxwell electrostatics in vacuum and Gaussian units, with no external fields, conductors, dielectrics, or additional singular surface charge.&quot;,
+    &quot;source&quot;: &quot;The equations \\(\\nabla\\cdot\\mathbf E=4\\pi\\rho\\), \\(\\nabla\\times\\mathbf E=0\\), the divergence theorem, and electrostatic uniqueness are admitted external primitives in the frozen task. No external references are allowlisted.&quot;,
+    &quot;why&quot;: &quot;This carries the prescribed uniform charge density through its normalization and enclosed charge to the explicit field in both spatial regions; boundary, limiting, and dependency-ledger closure remain for the next step.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0003&quot;
+  },
+  &quot;output_sha256&quot;: &quot;e4c0958a9299afab64f3649223552f76fc22d97dec4ca447673216bd10c30d7e&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0002&quot;,
+  &quot;step_slot&quot;: 2
+}</pre></details></td></tr><tr><td>17</td><td><code>evt_00000017</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>6f762e020e4f</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0002&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;e4c0958a9299afab64f3649223552f76fc22d97dec4ca447673216bd10c30d7e&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0002&quot;
+}</pre></details></td></tr><tr><td>18</td><td><code>evt_00000018</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>a4f7431394ed</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0004&quot;,
+  &quot;prompt_sha256&quot;: &quot;4c4dcd7c76a3db6f5030dea5632696cec4a2580fe03790eeb019db7ca56e7590&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0002&quot;
+  }
+}</pre></details></td></tr><tr><td>19</td><td><code>evt_00000019</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>9819c06e6b38</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 478,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0004&quot;,
+  &quot;output_sha256&quot;: &quot;64f67af88ebf178778cf9fcf7f8aca6e168c95cc60a775f0fb8c42566f25ce91&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The intermediate step is internally valid and correctly derives the normalized density, rotational symmetry reduction, Gauss-law flux relation, enclosed charge, and the inside/outside fields from the task’s admitted primitives. It explicitly leaves boundary, limiting, dimensional, and dependency-ledger closure to a later step; because candidate_completion_intent is false, those absent completion checks are not defects at this stage.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 19736,
+      &quot;outputTokens&quot;: 307,
+      &quot;reasoningOutputTokens&quot;: 206,
+      &quot;totalTokens&quot;: 20043
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 19736,
+      &quot;outputTokens&quot;: 307,
+      &quot;reasoningOutputTokens&quot;: 206,
+      &quot;totalTokens&quot;: 20043
+    }
+  }
+}</pre></details></td></tr><tr><td>20</td><td><code>evt_00000020</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>e6a97706d12e</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0002&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0004&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The intermediate step is internally valid and correctly derives the normalized density, rotational symmetry reduction, Gauss-law flux relation, enclosed charge, and the inside/outside fields from the task’s admitted primitives. It explicitly leaves boundary, limiting, dimensional, and dependency-ledger closure to a later step; because candidate_completion_intent is false, those absent completion checks are not defects at this stage.&quot;,
+  &quot;target_output_sha256&quot;: &quot;e4c0958a9299afab64f3649223552f76fc22d97dec4ca447673216bd10c30d7e&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0002&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>21</td><td><code>evt_00000021</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>22b844f0d118</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;prompt_sha256&quot;: &quot;3f29830d06e1040e460cafff8d7a053aa937e6c84ebb1c48dd6c83604834678a&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0001&quot;,
+    &quot;step_slot&quot;: 3
+  }
+}</pre></details></td></tr><tr><td>22</td><td><code>evt_00000022</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>501f9d7e3aaf</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;complete\&quot;,\&quot;reason\&quot;:\&quot;Both regional fields and their direction are explicit; normalization, symmetry, boundary continuity, Maxwell equations, signs, factors, limits, point-charge reduction, dimensions, validity class, and all non-primitive dependencies have been closed.\&quot;,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;c442923b89492cf34be38f03a2489fafc6508b29a2126eb33d9751f17e029bb2&quot;
+}</pre></details></td></tr><tr><td>23</td><td><code>evt_00000023</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>04183d0ffc60</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The electric field of the uniformly charged solid sphere is \\\\(\\\\mathbf E(\\\\mathbf 0)=\\\\mathbf 0\\\\) and, for \\\\(r&gt;0\\\\), \\\\(\\\\mathbf E(\\\\mathbf x)=(Qr/R^3)\\\\hat{\\\\mathbf r}\\\\) inside and \\\\(\\\\mathbf E(\\\\mathbf x)=(Q/r^2)\\\\hat{\\\\mathbf r}\\\\) outside; it is continuous at \\\\(r=R\\\\), radial, regular at the origin, and decays at infinity.\&quot;,\&quot;derivation\&quot;:\&quot;FINAL RESULT AND CONDITIONS. With \\\\(r=|\\\\mathbf x|\\\\), \\\\(\\\\hat{\\\\mathbf r}=\\\\mathbf x/r\\\\) for \\\\(r&gt;0\\\\), and \\\\(R&gt;0\\\\), slot 2 found\\n\\\\[\\n\\\\rho_0=\\\\frac{3Q}{4\\\\pi R^3},\\\\qquad\\n\\\\boxed{\\\\mathbf E(\\\\mathbf x)=\\n\\\\begin{cases}\\n\\\\mathbf 0,&amp;r=0,\\\\\\\\[3pt]\\n\\\\dfrac{Qr}{R^3}\\\\hat{\\\\mathbf r}=\\\\dfrac{Q}{R^3}\\\\mathbf x,&amp;0&lt;r&lt;R,\\\\\\\\[7pt]\\n\\\\dfrac{Q}{R^2}\\\\hat{\\\\mathbf r},&amp;r=R,\\\\\\\\[7pt]\\n\\\\dfrac{Q}{r^2}\\\\hat{\\\\mathbf r}=\\\\dfrac{Q}{r^3}\\\\mathbf x,&amp;r&gt;R.\\n\\\\end{cases}}\\n\\\\]\\nHere \\\\(\\\\hat{\\\\mathbf r}\\\\) is outward. Hence \\\\(Q&gt;0\\\\) gives an outward field, \\\\(Q&lt;0\\\\) an inward field, and \\\\(Q=0\\\\) the zero field.\\n\\nBOUNDARY CHECK. Directly,\\n\\\\[\\n\\\\lim_{r\\\\to R^-}\\\\mathbf E=\\\\frac{QR}{R^3}\\\\hat{\\\\mathbf r}=\\\\frac{Q}{R^2}\\\\hat{\\\\mathbf r}\\n=\\\\lim_{r\\\\to R^+}\\\\frac{Q}{r^2}\\\\hat{\\\\mathbf r}.\\n\\\\]\\nThus the normal jump is zero, \\\\(\\\\hat{\\\\mathbf r}\\\\cdot(\\\\mathbf E_{\\\\rm out}-\\\\mathbf E_{\\\\rm in})=0\\\\), consistently with the absence of a surface delta-function charge. The tangential field vanishes on both sides by spherical symmetry.\\n\\nMAXWELL, SIGN, AND FACTOR CHECKS. In Cartesian components, inside the sphere\\n\\\\[\\nE_i=\\\\frac{Qx_i}{R^3},\\\\qquad \\\\partial_jE_i=\\\\frac{Q}{R^3}\\\\delta_{ij},\\n\\\\]\\nso\\n\\\\[\\n\\\\nabla\\\\cdot\\\\mathbf E=\\\\partial_iE_i=\\\\frac{3Q}{R^3}=4\\\\pi\\\\frac{3Q}{4\\\\pi R^3}=4\\\\pi\\\\rho_0,\\n\\\\qquad\\n(\\\\nabla\\\\times\\\\mathbf E)_k=\\\\epsilon_{kji}\\\\partial_jE_i=0.\\n\\\\]\\nOutside, for \\\\(r&gt;R\\\\),\\n\\\\[\\nE_i=Qx_ir^{-3},\\\\qquad\\n\\\\partial_jE_i=Q\\\\left(\\\\delta_{ij}r^{-3}-3x_ix_jr^{-5}\\\\right).\\n\\\\]\\nTherefore\\n\\\\[\\n\\\\partial_iE_i=Q(3r^{-3}-3r^2r^{-5})=0,\\n\\\\qquad\\n\\\\epsilon_{kji}\\\\partial_jE_i=0,\\n\\\\]\\nbecause \\\\(\\\\partial_jE_i\\\\) is symmetric in \\\\(i,j\\\\). Continuity at \\\\(R\\\\) prevents a surface delta term in either distributional derivative, and regularity at \\\\(r=0\\\\) prevents a point-charge delta there. The flux is \\\\(4\\\\pi r^2E(r)=4\\\\pi Q_{\\\\rm enc}(r)\\\\); thus the factors and the sign agree with \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\).\\n\\nEXPLICIT LIMITING EXPANSIONS. At the center,\\n\\\\[\\n\\\\mathbf E(\\\\mathbf x)=\\\\frac{Q}{R^3}\\\\mathbf x=O(r),\\\\qquad r\\\\to0,\\n\\\\]\\nso \\\\(\\\\mathbf E(\\\\mathbf0)=\\\\mathbf0\\\\). Writing \\\\(\\\\delta&gt;0\\\\), the two surface limits are\\n\\\\[\\n\\\\mathbf E((R-\\\\delta)\\\\hat{\\\\mathbf r})\\n=\\\\frac{Q}{R^2}\\\\left(1-\\\\frac{\\\\delta}{R}\\\\right)\\\\hat{\\\\mathbf r},\\n\\\\]\\n\\\\[\\n\\\\mathbf E((R+\\\\delta)\\\\hat{\\\\mathbf r})\\n=\\\\frac{Q}{R^2}\\\\left(1-2\\\\frac{\\\\delta}{R}+3\\\\frac{\\\\delta^2}{R^2}+O\\\\!\\\\left(\\\\frac{\\\\delta^3}{R^3}\\\\right)\\\\right)\\\\hat{\\\\mathbf r}.\\n\\\\]\\nBoth have leading value \\\\(Q\\\\hat{\\\\mathbf r}/R^2\\\\), although their radial derivatives differ because the volume density jumps. At large radius,\\n\\\\[\\n\\\\mathbf E(\\\\mathbf x)=\\\\frac{Q}{r^2}\\\\hat{\\\\mathbf r}=O(r^{-2})\\\\longrightarrow\\\\mathbf0,\\n\\\\qquad r\\\\to\\\\infty.\\n\\\\]\\nIndeed, throughout \\\\(r&gt;R\\\\) this is exactly, not merely asymptotically, the Gaussian-unit field of a point charge \\\\(Q\\\\) at the origin.\\n\\nDIMENSIONAL ANALYSIS IN GAUSSIAN UNITS. From the declared equation \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\), with \\\\([\\\\nabla]=L^{-1}\\\\), \\\\([\\\\rho]=[Q]L^{-3}\\\\), and \\\\([4\\\\pi]=[\\\\hat{\\\\mathbf r}]=1\\\\), one has \\\\([\\\\mathbf E]=[Q]L^{-2}\\\\). Every factor in the endpoint closes explicitly:\\n\\\\[\\n\\\\left[\\\\frac{Qr}{R^3}\\\\hat{\\\\mathbf r}\\\\right]=[Q]L\\\\,L^{-3}\\\\cdot1=[Q]L^{-2}=[\\\\mathbf E],\\n\\\\qquad\\n\\\\left[\\\\frac{Q}{r^2}\\\\hat{\\\\mathbf r}\\\\right]=[Q]L^{-2}\\\\cdot1=[\\\\mathbf E].\\n\\\\]\\nThere is no \\\\(\\\\epsilon_0\\\\) in Gaussian units, and the \\\\(4\\\\pi\\\\) from Maxwell&#x27;s equation cancels the dimensionless \\\\(4\\\\pi\\\\) area factor of a sphere.\\n\\nASSUMPTION REGISTER AND RECONCILIATION WITH SLOT 1. Intent entries 1–3 are retired from the proof-dependency ledger because the frozen task explicitly declares them external starting primitives, while also forbidding their derivation here and supplying no allowlisted source from which they could receive the status SOURCED. They remain openly recorded as assumptions: (A1) \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\) and \\\\(\\\\nabla\\\\times\\\\mathbf E=0\\\\); (A2) the divergence theorem; (A3) uniqueness for the decaying electrostatic boundary-value problem. This is not an unresolved scientific ingredient within the conditional derivation: the requested result is derived under precisely these admitted axioms. No Hamiltonian is used.\\n\\nFINAL DEPENDENCY LEDGER. Every entry below has exactly one permitted status.\\n1. DERIVED_HERE (slot 2) — Rotational covariance, spherical invariance of the source and boundary condition, and admitted uniqueness imply \\\\(\\\\mathbf E(\\\\mathcal R\\\\mathbf x)=\\\\mathcal R\\\\mathbf E(\\\\mathbf x)\\\\), hence \\\\(\\\\mathbf E=E(r)\\\\hat{\\\\mathbf r}\\\\). This closes intent entry 4.\\n2. DERIVED_HERE (this step) — The spherical-coordinate map \\\\(\\\\mathbf x=(r\\\\sin\\\\theta\\\\cos\\\\phi,r\\\\sin\\\\theta\\\\sin\\\\phi,r\\\\cos\\\\theta)\\\\) has Jacobian magnitude \\\\(r^2\\\\sin\\\\theta\\\\); fixing \\\\(r\\\\) gives outward area element \\\\(d\\\\mathbf A=\\\\hat{\\\\mathbf r}r^2\\\\sin\\\\theta\\\\,d\\\\theta\\\\,d\\\\phi\\\\). Consequently \\\\(d^3x=r^2\\\\sin\\\\theta\\\\,dr\\\\,d\\\\theta\\\\,d\\\\phi\\\\), \\\\(\\\\int d\\\\Omega=\\\\int_0^{2\\\\pi}d\\\\phi\\\\int_0^\\\\pi\\\\sin\\\\theta\\\\,d\\\\theta=4\\\\pi\\\\), and \\\\(\\\\operatorname{area}(S_r)=4\\\\pi r^2\\\\). This closes intent entry 5 and defines all measures and weights used.\\n3. DERIVED_HERE (slot 2) — Integrating A1 over \\\\(B_r\\\\) and applying A2 gives \\\\(\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A=4\\\\pi Q_{\\\\rm enc}(r)\\\\). This closes intent entry 6.\\n4. DERIVED_HERE (slot 2) — Normalization gives \\\\(\\\\rho_0=3Q/(4\\\\pi R^3)\\\\), and direct radial integration gives \\\\(Q_{\\\\rm enc}=Qr^3/R^3\\\\) inside and \\\\(Q_{\\\\rm enc}=Q\\\\) outside.\\n5. DERIVED_HERE (this step) — The regional limits both equal \\\\(Q\\\\hat{\\\\mathbf r}/R^2\\\\); hence the field is continuous without a surface-charge term. This closes intent entry 7.\\n6. DERIVED_HERE (slot 2) — The interior result is linear in \\\\(\\\\mathbf x\\\\), so it is regular and vanishes at the origin; the exterior result decays as \\\\(r^{-2}\\\\), and the flux construction leaves no free \\\\(C/r^2\\\\) term. This closes intent entry 8.\\n7. DERIVED_HERE (this step) — The Gaussian-unit dimensional equations above give \\\\([\\\\mathbf E]=[Q]L^{-2}\\\\) and verify both endpoint branches factor by factor. This closes intent entry 9.\\n8. DERIVED_HERE (slot 2) — With outward \\\\(\\\\hat{\\\\mathbf r}\\\\), the scalar coefficient has the sign of \\\\(Q\\\\), fixing the field direction. This closes intent entry 10.\\n9. DERIVED_HERE (this step) — Direct Cartesian differentiation verifies both divergence and curl in each region; field continuity eliminates a surface distribution, while regularity eliminates an origin singularity.\\n10. DERIVED_HERE (this step) — The explicit expansions close the center, surface, and infinity limits, and the exterior branch is exactly the point-charge field.\\n11. DERIVED_HERE (slot 1) — The declared validity class is classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed static, exactly spherically symmetric uniform volume charge, with no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic effects, or quantum effects. Ordinary Euclidean divergence and curl are used classically away from the density step and distributionally across it; no Hamiltonian, projector, gauge choice, complex quantity, or degeneracy enters.\\n\\nThere are no approximations and no unresolved endpoint dependencies.\&quot;,\&quot;scope\&quot;:\&quot;Complete within classical linear Maxwell electrostatics in three-dimensional vacuum, Gaussian units, for an isolated, static, exactly spherical and spatially uniform volume charge distribution. The result does not claim validity with external fields, nonspherical sources, surface charge, conductors, dielectrics, time dependence, relativistic corrections, or quantum effects.\&quot;,\&quot;source\&quot;:\&quot;No external references are allowlisted. The frozen task itself admits Gaussian-unit electrostatic Maxwell equations, the divergence theorem, and electrostatic uniqueness as external starting primitives; they are recorded below as assumptions and are not claimed as derived.\&quot;,\&quot;why\&quot;:\&quot;The normalized density, symmetry reduction, enclosed charge, and Gaussian flux relation derived in slot 2 determine both regional expressions. The checks below close the boundary behavior, Maxwell equations, signs, limits, dimensions, and dependency ledger.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;dc301186270d79fc780901367223cd431ae3bddfe2b35b7cb2f9d73665ddf8fa&quot;
+}</pre></details></td></tr><tr><td>24</td><td><code>evt_00000024</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>ea49da486aa6</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 8672,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;output_sha256&quot;: &quot;dc301186270d79fc780901367223cd431ae3bddfe2b35b7cb2f9d73665ddf8fa&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;The electric field of the uniformly charged solid sphere is \\\\(\\\\mathbf E(\\\\mathbf 0)=\\\\mathbf 0\\\\) and, for \\\\(r&gt;0\\\\), \\\\(\\\\mathbf E(\\\\mathbf x)=(Qr/R^3)\\\\hat{\\\\mathbf r}\\\\) inside and \\\\(\\\\mathbf E(\\\\mathbf x)=(Q/r^2)\\\\hat{\\\\mathbf r}\\\\) outside; it is continuous at \\\\(r=R\\\\), radial, regular at the origin, and decays at infinity.\&quot;,\&quot;derivation\&quot;:\&quot;FINAL RESULT AND CONDITIONS. With \\\\(r=|\\\\mathbf x|\\\\), \\\\(\\\\hat{\\\\mathbf r}=\\\\mathbf x/r\\\\) for \\\\(r&gt;0\\\\), and \\\\(R&gt;0\\\\), slot 2 found\\n\\\\[\\n\\\\rho_0=\\\\frac{3Q}{4\\\\pi R^3},\\\\qquad\\n\\\\boxed{\\\\mathbf E(\\\\mathbf x)=\\n\\\\begin{cases}\\n\\\\mathbf 0,&amp;r=0,\\\\\\\\[3pt]\\n\\\\dfrac{Qr}{R^3}\\\\hat{\\\\mathbf r}=\\\\dfrac{Q}{R^3}\\\\mathbf x,&amp;0&lt;r&lt;R,\\\\\\\\[7pt]\\n\\\\dfrac{Q}{R^2}\\\\hat{\\\\mathbf r},&amp;r=R,\\\\\\\\[7pt]\\n\\\\dfrac{Q}{r^2}\\\\hat{\\\\mathbf r}=\\\\dfrac{Q}{r^3}\\\\mathbf x,&amp;r&gt;R.\\n\\\\end{cases}}\\n\\\\]\\nHere \\\\(\\\\hat{\\\\mathbf r}\\\\) is outward. Hence \\\\(Q&gt;0\\\\) gives an outward field, \\\\(Q&lt;0\\\\) an inward field, and \\\\(Q=0\\\\) the zero field.\\n\\nBOUNDARY CHECK. Directly,\\n\\\\[\\n\\\\lim_{r\\\\to R^-}\\\\mathbf E=\\\\frac{QR}{R^3}\\\\hat{\\\\mathbf r}=\\\\frac{Q}{R^2}\\\\hat{\\\\mathbf r}\\n=\\\\lim_{r\\\\to R^+}\\\\frac{Q}{r^2}\\\\hat{\\\\mathbf r}.\\n\\\\]\\nThus the normal jump is zero, \\\\(\\\\hat{\\\\mathbf r}\\\\cdot(\\\\mathbf E_{\\\\rm out}-\\\\mathbf E_{\\\\rm in})=0\\\\), consistently with the absence of a surface delta-function charge. The tangential field vanishes on both sides by spherical symmetry.\\n\\nMAXWELL, SIGN, AND FACTOR CHECKS. In Cartesian components, inside the sphere\\n\\\\[\\nE_i=\\\\frac{Qx_i}{R^3},\\\\qquad \\\\partial_jE_i=\\\\frac{Q}{R^3}\\\\delta_{ij},\\n\\\\]\\nso\\n\\\\[\\n\\\\nabla\\\\cdot\\\\mathbf E=\\\\partial_iE_i=\\\\frac{3Q}{R^3}=4\\\\pi\\\\frac{3Q}{4\\\\pi R^3}=4\\\\pi\\\\rho_0,\\n\\\\qquad\\n(\\\\nabla\\\\times\\\\mathbf E)_k=\\\\epsilon_{kji}\\\\partial_jE_i=0.\\n\\\\]\\nOutside, for \\\\(r&gt;R\\\\),\\n\\\\[\\nE_i=Qx_ir^{-3},\\\\qquad\\n\\\\partial_jE_i=Q\\\\left(\\\\delta_{ij}r^{-3}-3x_ix_jr^{-5}\\\\right).\\n\\\\]\\nTherefore\\n\\\\[\\n\\\\partial_iE_i=Q(3r^{-3}-3r^2r^{-5})=0,\\n\\\\qquad\\n\\\\epsilon_{kji}\\\\partial_jE_i=0,\\n\\\\]\\nbecause \\\\(\\\\partial_jE_i\\\\) is symmetric in \\\\(i,j\\\\). Continuity at \\\\(R\\\\) prevents a surface delta term in either distributional derivative, and regularity at \\\\(r=0\\\\) prevents a point-charge delta there. The flux is \\\\(4\\\\pi r^2E(r)=4\\\\pi Q_{\\\\rm enc}(r)\\\\); thus the factors and the sign agree with \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\).\\n\\nEXPLICIT LIMITING EXPANSIONS. At the center,\\n\\\\[\\n\\\\mathbf E(\\\\mathbf x)=\\\\frac{Q}{R^3}\\\\mathbf x=O(r),\\\\qquad r\\\\to0,\\n\\\\]\\nso \\\\(\\\\mathbf E(\\\\mathbf0)=\\\\mathbf0\\\\). Writing \\\\(\\\\delta&gt;0\\\\), the two surface limits are\\n\\\\[\\n\\\\mathbf E((R-\\\\delta)\\\\hat{\\\\mathbf r})\\n=\\\\frac{Q}{R^2}\\\\left(1-\\\\frac{\\\\delta}{R}\\\\right)\\\\hat{\\\\mathbf r},\\n\\\\]\\n\\\\[\\n\\\\mathbf E((R+\\\\delta)\\\\hat{\\\\mathbf r})\\n=\\\\frac{Q}{R^2}\\\\left(1-2\\\\frac{\\\\delta}{R}+3\\\\frac{\\\\delta^2}{R^2}+O\\\\!\\\\left(\\\\frac{\\\\delta^3}{R^3}\\\\right)\\\\right)\\\\hat{\\\\mathbf r}.\\n\\\\]\\nBoth have leading value \\\\(Q\\\\hat{\\\\mathbf r}/R^2\\\\), although their radial derivatives differ because the volume density jumps. At large radius,\\n\\\\[\\n\\\\mathbf E(\\\\mathbf x)=\\\\frac{Q}{r^2}\\\\hat{\\\\mathbf r}=O(r^{-2})\\\\longrightarrow\\\\mathbf0,\\n\\\\qquad r\\\\to\\\\infty.\\n\\\\]\\nIndeed, throughout \\\\(r&gt;R\\\\) this is exactly, not merely asymptotically, the Gaussian-unit field of a point charge \\\\(Q\\\\) at the origin.\\n\\nDIMENSIONAL ANALYSIS IN GAUSSIAN UNITS. From the declared equation \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\), with \\\\([\\\\nabla]=L^{-1}\\\\), \\\\([\\\\rho]=[Q]L^{-3}\\\\), and \\\\([4\\\\pi]=[\\\\hat{\\\\mathbf r}]=1\\\\), one has \\\\([\\\\mathbf E]=[Q]L^{-2}\\\\). Every factor in the endpoint closes explicitly:\\n\\\\[\\n\\\\left[\\\\frac{Qr}{R^3}\\\\hat{\\\\mathbf r}\\\\right]=[Q]L\\\\,L^{-3}\\\\cdot1=[Q]L^{-2}=[\\\\mathbf E],\\n\\\\qquad\\n\\\\left[\\\\frac{Q}{r^2}\\\\hat{\\\\mathbf r}\\\\right]=[Q]L^{-2}\\\\cdot1=[\\\\mathbf E].\\n\\\\]\\nThere is no \\\\(\\\\epsilon_0\\\\) in Gaussian units, and the \\\\(4\\\\pi\\\\) from Maxwell&#x27;s equation cancels the dimensionless \\\\(4\\\\pi\\\\) area factor of a sphere.\\n\\nASSUMPTION REGISTER AND RECONCILIATION WITH SLOT 1. Intent entries 1–3 are retired from the proof-dependency ledger because the frozen task explicitly declares them external starting primitives, while also forbidding their derivation here and supplying no allowlisted source from which they could receive the status SOURCED. They remain openly recorded as assumptions: (A1) \\\\(\\\\nabla\\\\cdot\\\\mathbf E=4\\\\pi\\\\rho\\\\) and \\\\(\\\\nabla\\\\times\\\\mathbf E=0\\\\); (A2) the divergence theorem; (A3) uniqueness for the decaying electrostatic boundary-value problem. This is not an unresolved scientific ingredient within the conditional derivation: the requested result is derived under precisely these admitted axioms. No Hamiltonian is used.\\n\\nFINAL DEPENDENCY LEDGER. Every entry below has exactly one permitted status.\\n1. DERIVED_HERE (slot 2) — Rotational covariance, spherical invariance of the source and boundary condition, and admitted uniqueness imply \\\\(\\\\mathbf E(\\\\mathcal R\\\\mathbf x)=\\\\mathcal R\\\\mathbf E(\\\\mathbf x)\\\\), hence \\\\(\\\\mathbf E=E(r)\\\\hat{\\\\mathbf r}\\\\). This closes intent entry 4.\\n2. DERIVED_HERE (this step) — The spherical-coordinate map \\\\(\\\\mathbf x=(r\\\\sin\\\\theta\\\\cos\\\\phi,r\\\\sin\\\\theta\\\\sin\\\\phi,r\\\\cos\\\\theta)\\\\) has Jacobian magnitude \\\\(r^2\\\\sin\\\\theta\\\\); fixing \\\\(r\\\\) gives outward area element \\\\(d\\\\mathbf A=\\\\hat{\\\\mathbf r}r^2\\\\sin\\\\theta\\\\,d\\\\theta\\\\,d\\\\phi\\\\). Consequently \\\\(d^3x=r^2\\\\sin\\\\theta\\\\,dr\\\\,d\\\\theta\\\\,d\\\\phi\\\\), \\\\(\\\\int d\\\\Omega=\\\\int_0^{2\\\\pi}d\\\\phi\\\\int_0^\\\\pi\\\\sin\\\\theta\\\\,d\\\\theta=4\\\\pi\\\\), and \\\\(\\\\operatorname{area}(S_r)=4\\\\pi r^2\\\\). This closes intent entry 5 and defines all measures and weights used.\\n3. DERIVED_HERE (slot 2) — Integrating A1 over \\\\(B_r\\\\) and applying A2 gives \\\\(\\\\oint_{S_r}\\\\mathbf E\\\\cdot d\\\\mathbf A=4\\\\pi Q_{\\\\rm enc}(r)\\\\). This closes intent entry 6.\\n4. DERIVED_HERE (slot 2) — Normalization gives \\\\(\\\\rho_0=3Q/(4\\\\pi R^3)\\\\), and direct radial integration gives \\\\(Q_{\\\\rm enc}=Qr^3/R^3\\\\) inside and \\\\(Q_{\\\\rm enc}=Q\\\\) outside.\\n5. DERIVED_HERE (this step) — The regional limits both equal \\\\(Q\\\\hat{\\\\mathbf r}/R^2\\\\); hence the field is continuous without a surface-charge term. This closes intent entry 7.\\n6. DERIVED_HERE (slot 2) — The interior result is linear in \\\\(\\\\mathbf x\\\\), so it is regular and vanishes at the origin; the exterior result decays as \\\\(r^{-2}\\\\), and the flux construction leaves no free \\\\(C/r^2\\\\) term. This closes intent entry 8.\\n7. DERIVED_HERE (this step) — The Gaussian-unit dimensional equations above give \\\\([\\\\mathbf E]=[Q]L^{-2}\\\\) and verify both endpoint branches factor by factor. This closes intent entry 9.\\n8. DERIVED_HERE (slot 2) — With outward \\\\(\\\\hat{\\\\mathbf r}\\\\), the scalar coefficient has the sign of \\\\(Q\\\\), fixing the field direction. This closes intent entry 10.\\n9. DERIVED_HERE (this step) — Direct Cartesian differentiation verifies both divergence and curl in each region; field continuity eliminates a surface distribution, while regularity eliminates an origin singularity.\\n10. DERIVED_HERE (this step) — The explicit expansions close the center, surface, and infinity limits, and the exterior branch is exactly the point-charge field.\\n11. DERIVED_HERE (slot 1) — The declared validity class is classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed static, exactly spherically symmetric uniform volume charge, with no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic effects, or quantum effects. Ordinary Euclidean divergence and curl are used classically away from the density step and distributionally across it; no Hamiltonian, projector, gauge choice, complex quantity, or degeneracy enters.\\n\\nThere are no approximations and no unresolved endpoint dependencies.\&quot;,\&quot;scope\&quot;:\&quot;Complete within classical linear Maxwell electrostatics in three-dimensional vacuum, Gaussian units, for an isolated, static, exactly spherical and spatially uniform volume charge distribution. The result does not claim validity with external fields, nonspherical sources, surface charge, conductors, dielectrics, time dependence, relativistic corrections, or quantum effects.\&quot;,\&quot;source\&quot;:\&quot;No external references are allowlisted. The frozen task itself admits Gaussian-unit electrostatic Maxwell equations, the divergence theorem, and electrostatic uniqueness as external starting primitives; they are recorded below as assumptions and are not claimed as derived.\&quot;,\&quot;why\&quot;:\&quot;The normalized density, symmetry reduction, enclosed charge, and Gaussian flux relation derived in slot 2 determine both regional expressions. The checks below close the boundary behavior, Maxwell equations, signs, limits, dimensions, and dependency ledger.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 17408,
+      &quot;inputTokens&quot;: 24776,
+      &quot;outputTokens&quot;: 3615,
+      &quot;reasoningOutputTokens&quot;: 814,
+      &quot;totalTokens&quot;: 28391
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 38016,
+      &quot;inputTokens&quot;: 55281,
+      &quot;outputTokens&quot;: 7174,
+      &quot;reasoningOutputTokens&quot;: 1547,
+      &quot;totalTokens&quot;: 62455
+    }
+  }
+}</pre></details></td></tr><tr><td>25</td><td><code>evt_00000025</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>295f23c81df9</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;The electric field of the uniformly charged solid sphere is \\(\\mathbf E(\\mathbf 0)=\\mathbf 0\\) and, for \\(r&gt;0\\), \\(\\mathbf E(\\mathbf x)=(Qr/R^3)\\hat{\\mathbf r}\\) inside and \\(\\mathbf E(\\mathbf x)=(Q/r^2)\\hat{\\mathbf r}\\) outside; it is continuous at \\(r=R\\), radial, regular at the origin, and decays at infinity.&quot;,
+    &quot;derivation&quot;: &quot;FINAL RESULT AND CONDITIONS. With \\(r=|\\mathbf x|\\), \\(\\hat{\\mathbf r}=\\mathbf x/r\\) for \\(r&gt;0\\), and \\(R&gt;0\\), slot 2 found\n\\[\n\\rho_0=\\frac{3Q}{4\\pi R^3},\\qquad\n\\boxed{\\mathbf E(\\mathbf x)=\n\\begin{cases}\n\\mathbf 0,&amp;r=0,\\\\[3pt]\n\\dfrac{Qr}{R^3}\\hat{\\mathbf r}=\\dfrac{Q}{R^3}\\mathbf x,&amp;0&lt;r&lt;R,\\\\[7pt]\n\\dfrac{Q}{R^2}\\hat{\\mathbf r},&amp;r=R,\\\\[7pt]\n\\dfrac{Q}{r^2}\\hat{\\mathbf r}=\\dfrac{Q}{r^3}\\mathbf x,&amp;r&gt;R.\n\\end{cases}}\n\\]\nHere \\(\\hat{\\mathbf r}\\) is outward. Hence \\(Q&gt;0\\) gives an outward field, \\(Q&lt;0\\) an inward field, and \\(Q=0\\) the zero field.\n\nBOUNDARY CHECK. Directly,\n\\[\n\\lim_{r\\to R^-}\\mathbf E=\\frac{QR}{R^3}\\hat{\\mathbf r}=\\frac{Q}{R^2}\\hat{\\mathbf r}\n=\\lim_{r\\to R^+}\\frac{Q}{r^2}\\hat{\\mathbf r}.\n\\]\nThus the normal jump is zero, \\(\\hat{\\mathbf r}\\cdot(\\mathbf E_{\\rm out}-\\mathbf E_{\\rm in})=0\\), consistently with the absence of a surface delta-function charge. The tangential field vanishes on both sides by spherical symmetry.\n\nMAXWELL, SIGN, AND FACTOR CHECKS. In Cartesian components, inside the sphere\n\\[\nE_i=\\frac{Qx_i}{R^3},\\qquad \\partial_jE_i=\\frac{Q}{R^3}\\delta_{ij},\n\\]\nso\n\\[\n\\nabla\\cdot\\mathbf E=\\partial_iE_i=\\frac{3Q}{R^3}=4\\pi\\frac{3Q}{4\\pi R^3}=4\\pi\\rho_0,\n\\qquad\n(\\nabla\\times\\mathbf E)_k=\\epsilon_{kji}\\partial_jE_i=0.\n\\]\nOutside, for \\(r&gt;R\\),\n\\[\nE_i=Qx_ir^{-3},\\qquad\n\\partial_jE_i=Q\\left(\\delta_{ij}r^{-3}-3x_ix_jr^{-5}\\right).\n\\]\nTherefore\n\\[\n\\partial_iE_i=Q(3r^{-3}-3r^2r^{-5})=0,\n\\qquad\n\\epsilon_{kji}\\partial_jE_i=0,\n\\]\nbecause \\(\\partial_jE_i\\) is symmetric in \\(i,j\\). Continuity at \\(R\\) prevents a surface delta term in either distributional derivative, and regularity at \\(r=0\\) prevents a point-charge delta there. The flux is \\(4\\pi r^2E(r)=4\\pi Q_{\\rm enc}(r)\\); thus the factors and the sign agree with \\(\\nabla\\cdot\\mathbf E=4\\pi\\rho\\).\n\nEXPLICIT LIMITING EXPANSIONS. At the center,\n\\[\n\\mathbf E(\\mathbf x)=\\frac{Q}{R^3}\\mathbf x=O(r),\\qquad r\\to0,\n\\]\nso \\(\\mathbf E(\\mathbf0)=\\mathbf0\\). Writing \\(\\delta&gt;0\\), the two surface limits are\n\\[\n\\mathbf E((R-\\delta)\\hat{\\mathbf r})\n=\\frac{Q}{R^2}\\left(1-\\frac{\\delta}{R}\\right)\\hat{\\mathbf r},\n\\]\n\\[\n\\mathbf E((R+\\delta)\\hat{\\mathbf r})\n=\\frac{Q}{R^2}\\left(1-2\\frac{\\delta}{R}+3\\frac{\\delta^2}{R^2}+O\\!\\left(\\frac{\\delta^3}{R^3}\\right)\\right)\\hat{\\mathbf r}.\n\\]\nBoth have leading value \\(Q\\hat{\\mathbf r}/R^2\\), although their radial derivatives differ because the volume density jumps. At large radius,\n\\[\n\\mathbf E(\\mathbf x)=\\frac{Q}{r^2}\\hat{\\mathbf r}=O(r^{-2})\\longrightarrow\\mathbf0,\n\\qquad r\\to\\infty.\n\\]\nIndeed, throughout \\(r&gt;R\\) this is exactly, not merely asymptotically, the Gaussian-unit field of a point charge \\(Q\\) at the origin.\n\nDIMENSIONAL ANALYSIS IN GAUSSIAN UNITS. From the declared equation \\(\\nabla\\cdot\\mathbf E=4\\pi\\rho\\), with \\([\\nabla]=L^{-1}\\), \\([\\rho]=[Q]L^{-3}\\), and \\([4\\pi]=[\\hat{\\mathbf r}]=1\\), one has \\([\\mathbf E]=[Q]L^{-2}\\). Every factor in the endpoint closes explicitly:\n\\[\n\\left[\\frac{Qr}{R^3}\\hat{\\mathbf r}\\right]=[Q]L\\,L^{-3}\\cdot1=[Q]L^{-2}=[\\mathbf E],\n\\qquad\n\\left[\\frac{Q}{r^2}\\hat{\\mathbf r}\\right]=[Q]L^{-2}\\cdot1=[\\mathbf E].\n\\]\nThere is no \\(\\epsilon_0\\) in Gaussian units, and the \\(4\\pi\\) from Maxwell&#x27;s equation cancels the dimensionless \\(4\\pi\\) area factor of a sphere.\n\nASSUMPTION REGISTER AND RECONCILIATION WITH SLOT 1. Intent entries 1–3 are retired from the proof-dependency ledger because the frozen task explicitly declares them external starting primitives, while also forbidding their derivation here and supplying no allowlisted source from which they could receive the status SOURCED. They remain openly recorded as assumptions: (A1) \\(\\nabla\\cdot\\mathbf E=4\\pi\\rho\\) and \\(\\nabla\\times\\mathbf E=0\\); (A2) the divergence theorem; (A3) uniqueness for the decaying electrostatic boundary-value problem. This is not an unresolved scientific ingredient within the conditional derivation: the requested result is derived under precisely these admitted axioms. No Hamiltonian is used.\n\nFINAL DEPENDENCY LEDGER. Every entry below has exactly one permitted status.\n1. DERIVED_HERE (slot 2) — Rotational covariance, spherical invariance of the source and boundary condition, and admitted uniqueness imply \\(\\mathbf E(\\mathcal R\\mathbf x)=\\mathcal R\\mathbf E(\\mathbf x)\\), hence \\(\\mathbf E=E(r)\\hat{\\mathbf r}\\). This closes intent entry 4.\n2. DERIVED_HERE (this step) — The spherical-coordinate map \\(\\mathbf x=(r\\sin\\theta\\cos\\phi,r\\sin\\theta\\sin\\phi,r\\cos\\theta)\\) has Jacobian magnitude \\(r^2\\sin\\theta\\); fixing \\(r\\) gives outward area element \\(d\\mathbf A=\\hat{\\mathbf r}r^2\\sin\\theta\\,d\\theta\\,d\\phi\\). Consequently \\(d^3x=r^2\\sin\\theta\\,dr\\,d\\theta\\,d\\phi\\), \\(\\int d\\Omega=\\int_0^{2\\pi}d\\phi\\int_0^\\pi\\sin\\theta\\,d\\theta=4\\pi\\), and \\(\\operatorname{area}(S_r)=4\\pi r^2\\). This closes intent entry 5 and defines all measures and weights used.\n3. DERIVED_HERE (slot 2) — Integrating A1 over \\(B_r\\) and applying A2 gives \\(\\oint_{S_r}\\mathbf E\\cdot d\\mathbf A=4\\pi Q_{\\rm enc}(r)\\). This closes intent entry 6.\n4. DERIVED_HERE (slot 2) — Normalization gives \\(\\rho_0=3Q/(4\\pi R^3)\\), and direct radial integration gives \\(Q_{\\rm enc}=Qr^3/R^3\\) inside and \\(Q_{\\rm enc}=Q\\) outside.\n5. DERIVED_HERE (this step) — The regional limits both equal \\(Q\\hat{\\mathbf r}/R^2\\); hence the field is continuous without a surface-charge term. This closes intent entry 7.\n6. DERIVED_HERE (slot 2) — The interior result is linear in \\(\\mathbf x\\), so it is regular and vanishes at the origin; the exterior result decays as \\(r^{-2}\\), and the flux construction leaves no free \\(C/r^2\\) term. This closes intent entry 8.\n7. DERIVED_HERE (this step) — The Gaussian-unit dimensional equations above give \\([\\mathbf E]=[Q]L^{-2}\\) and verify both endpoint branches factor by factor. This closes intent entry 9.\n8. DERIVED_HERE (slot 2) — With outward \\(\\hat{\\mathbf r}\\), the scalar coefficient has the sign of \\(Q\\), fixing the field direction. This closes intent entry 10.\n9. DERIVED_HERE (this step) — Direct Cartesian differentiation verifies both divergence and curl in each region; field continuity eliminates a surface distribution, while regularity eliminates an origin singularity.\n10. DERIVED_HERE (this step) — The explicit expansions close the center, surface, and infinity limits, and the exterior branch is exactly the point-charge field.\n11. DERIVED_HERE (slot 1) — The declared validity class is classical, linear Maxwell electrostatics in three-dimensional Euclidean vacuum for a prescribed static, exactly spherically symmetric uniform volume charge, with no external fields, conductors, dielectrics, polarization, magnetic induction, relativistic effects, or quantum effects. Ordinary Euclidean divergence and curl are used classically away from the density step and distributionally across it; no Hamiltonian, projector, gauge choice, complex quantity, or degeneracy enters.\n\nThere are no approximations and no unresolved endpoint dependencies.&quot;,
+    &quot;scope&quot;: &quot;Complete within classical linear Maxwell electrostatics in three-dimensional vacuum, Gaussian units, for an isolated, static, exactly spherical and spatially uniform volume charge distribution. The result does not claim validity with external fields, nonspherical sources, surface charge, conductors, dielectrics, time dependence, relativistic corrections, or quantum effects.&quot;,
+    &quot;source&quot;: &quot;No external references are allowlisted. The frozen task itself admits Gaussian-unit electrostatic Maxwell equations, the divergence theorem, and electrostatic uniqueness as external starting primitives; they are recorded below as assumptions and are not claimed as derived.&quot;,
+    &quot;why&quot;: &quot;The normalized density, symmetry reduction, enclosed charge, and Gaussian flux relation derived in slot 2 determine both regional expressions. The checks below close the boundary behavior, Maxwell equations, signs, limits, dimensions, and dependency ledger.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0005&quot;
+  },
+  &quot;output_sha256&quot;: &quot;dc301186270d79fc780901367223cd431ae3bddfe2b35b7cb2f9d73665ddf8fa&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0003&quot;,
+  &quot;step_slot&quot;: 3
+}</pre></details></td></tr><tr><td>26</td><td><code>evt_00000026</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>b9040f1ec973</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0003&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;dc301186270d79fc780901367223cd431ae3bddfe2b35b7cb2f9d73665ddf8fa&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0003&quot;
+}</pre></details></td></tr><tr><td>27</td><td><code>evt_00000027</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>bf27a2ca2ca8</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0006&quot;,
+  &quot;prompt_sha256&quot;: &quot;50d4a4b07540e755250ed096cd3737dfb825b464df12b2cee0e8a6d83dc2182a&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0003&quot;
+  }
+}</pre></details></td></tr><tr><td>28</td><td><code>evt_00000028</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>10503bbc0cbf</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 653,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0006&quot;,
+  &quot;output_sha256&quot;: &quot;b37251d5773b77f4248451dde7cc8c086a9195440eb86873bd6384a43ce49d55&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The assembled route derives and checks the explicit inside and outside fields, center and surface values, direction, normalization, symmetry reduction, boundary continuity, point-charge exterior behavior, limiting expansions, Maxwell signs and factors, and Gaussian-unit dimensions. The final scope matches the operator and source class actually handled. The dependency ledger reconciles the intent ledger, gives reasons for retiring the task-admitted primitives, and its DERIVED_HERE references are supported by the cited route steps. No load-bearing unresolved dependency or dimensional inconsistency remains.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 26730,
+      &quot;outputTokens&quot;: 626,
+      &quot;reasoningOutputTokens&quot;: 499,
+      &quot;totalTokens&quot;: 27356
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 26730,
+      &quot;outputTokens&quot;: 626,
+      &quot;reasoningOutputTokens&quot;: 499,
+      &quot;totalTokens&quot;: 27356
+    }
+  }
+}</pre></details></td></tr><tr><td>29</td><td><code>evt_00000029</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>44e76af67caa</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0003&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0006&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The assembled route derives and checks the explicit inside and outside fields, center and surface values, direction, normalization, symmetry reduction, boundary continuity, point-charge exterior behavior, limiting expansions, Maxwell signs and factors, and Gaussian-unit dimensions. The final scope matches the operator and source class actually handled. The dependency ledger reconciles the intent ledger, gives reasons for retiring the task-admitted primitives, and its DERIVED_HERE references are supported by the cited route steps. No load-bearing unresolved dependency or dimensional inconsistency remains.&quot;,
+  &quot;target_output_sha256&quot;: &quot;dc301186270d79fc780901367223cd431ae3bddfe2b35b7cb2f9d73665ddf8fa&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0003&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>30</td><td><code>evt_00000030</code></td><td>branch_status_changed</td><td>model:runtime:writer</td><td><code>16f5218b6c2b</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;check_id&quot;: null,
+  &quot;from_status&quot;: &quot;active&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: null,
+  &quot;reason_code&quot;: &quot;writer_complete&quot;,
+  &quot;to_status&quot;: &quot;completed&quot;
+}</pre></details></td></tr><tr><td>31</td><td><code>evt_00000031</code></td><td>candidate_declared</td><td>model:runtime:writer</td><td><code>7b55c56f8ce0</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;candidate_id&quot;: &quot;cand_0001&quot;,
+  &quot;declared_by&quot;: &quot;writer&quot;,
+  &quot;reason&quot;: &quot;Writer declared the branch purpose reached after required checks.&quot;,
+  &quot;required_check_ids&quot;: [
+    &quot;check_0001&quot;,
+    &quot;check_0002&quot;,
+    &quot;check_0003&quot;
+  ],
+  &quot;tip_step_revision_id&quot;: &quot;step_0003&quot;,
+  &quot;transcript_sha256&quot;: &quot;0933f00283b7a8818daa9fbc30ba88cb4805896868514936137049dd243da66c&quot;,
+  &quot;transcript_step_revision_ids&quot;: [
+    &quot;step_0001&quot;,
+    &quot;step_0002&quot;,
+    &quot;step_0003&quot;
+  ]
+}</pre></details></td></tr><tr><td>32</td><td><code>evt_00000032</code></td><td>judgement_requested</td><td>system:record-runtime</td><td><code>de9261b965a5</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_0001&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;0933f00283b7a8818daa9fbc30ba88cb4805896868514936137049dd243da66c&quot;,
+  &quot;judgement_id&quot;: &quot;judge_0001&quot;,
+  &quot;reason&quot;: &quot;Independent terminal judgement for an eligible candidate.&quot;,
+  &quot;requested_by&quot;: &quot;system&quot;
+}</pre></details></td></tr><tr><td>33</td><td><code>evt_00000033</code></td><td>model_call_started</td><td>judge:runtime:judge</td><td><code>6ad614245a74</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;medium&quot;,
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;model_call_id&quot;: &quot;call_0007&quot;,
+  &quot;prompt_sha256&quot;: &quot;e064e45b0c5248cd08334b8a80fd386f230b760ebc79e0b3c73282b0ab51e741&quot;,
+  &quot;provider&quot;: &quot;openai&quot;,
+  &quot;role&quot;: &quot;judge&quot;,
+  &quot;target&quot;: {
+    &quot;judgement_id&quot;: &quot;judge_0001&quot;
+  }
+}</pre></details></td></tr><tr><td>34</td><td><code>evt_00000034</code></td><td>model_call_finished</td><td>judge:runtime:judge</td><td><code>d2511b7145fd</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 619,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0007&quot;,
+  &quot;output_sha256&quot;: &quot;307268aa089ad00fbe5695acbd24e4a1119c19adbd3a8130adfdac147e1c3c7e&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The transcript correctly derives the uniform density, explicitly justifies radial symmetry using rotational covariance and uniqueness, derives Gauss’s law from the admitted Maxwell equation and divergence theorem, and obtains the correct Gaussian-unit fields: E=(Qr/R^3) rhat inside and E=(Q/r^2) rhat outside. It states the sign-dependent direction, regularity at the origin, decay at infinity, continuity at r=R, and the exact exterior point-charge result. The required assumptions and scope are clearly recorded, with admitted external results not misrepresented as derived.\&quot;,\&quot;score\&quot;:1.0,\&quot;verdict\&quot;:\&quot;pass\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;last&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 15123,
+      &quot;outputTokens&quot;: 367,
+      &quot;reasoningOutputTokens&quot;: 228,
+      &quot;totalTokens&quot;: 15490
+    },
+    &quot;modelContextWindow&quot;: 258400,
+    &quot;total&quot;: {
+      &quot;cacheWriteInputTokens&quot;: 0,
+      &quot;cachedInputTokens&quot;: 0,
+      &quot;inputTokens&quot;: 15123,
+      &quot;outputTokens&quot;: 367,
+      &quot;reasoningOutputTokens&quot;: 228,
+      &quot;totalTokens&quot;: 15490
+    }
+  }
+}</pre></details></td></tr><tr><td>35</td><td><code>evt_00000035</code></td><td>judgement_completed</td><td>judge:runtime:judge</td><td><code>35c99f778def</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_0001&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;0933f00283b7a8818daa9fbc30ba88cb4805896868514936137049dd243da66c&quot;,
+  &quot;judge_call_id&quot;: &quot;call_0007&quot;,
+  &quot;judgement_id&quot;: &quot;judge_0001&quot;,
+  &quot;reason&quot;: &quot;The transcript correctly derives the uniform density, explicitly justifies radial symmetry using rotational covariance and uniqueness, derives Gauss’s law from the admitted Maxwell equation and divergence theorem, and obtains the correct Gaussian-unit fields: E=(Qr/R^3) rhat inside and E=(Q/r^2) rhat outside. It states the sign-dependent direction, regularity at the origin, decay at infinity, continuity at r=R, and the exact exterior point-charge result. The required assumptions and scope are clearly recorded, with admitted external results not misrepresented as derived.&quot;,
+  &quot;score&quot;: 1.0,
+  &quot;verdict&quot;: &quot;pass&quot;
+}</pre></details></td></tr></tbody></table>
+</body>
+</html>

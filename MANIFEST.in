@@ -1,0 +1,37 @@
+# What goes into the source distribution.
+#
+# setuptools' own default sweeps up `tests/test*.py` and nothing else, which
+# produces an sdist carrying a test suite that cannot run: no conftest, no
+# fixtures, no example record. An sdist that ships a suite has to ship a suite
+# that passes, so the fixtures, the contract documents and the example runs go
+# with it. Unpack the sdist and `pytest` is green there too.
+
+include LICENSE
+include NOTICE
+include CITATION.cff
+include CHANGELOG.md
+include CONTRIBUTING.md
+include SECURITY.md
+include MANIFEST.in
+
+# `.md` matters here: every case under tests/records/ ships a `why.md`, and the
+# suite requires it, so an sdist without them would carry a suite that fails.
+recursive-include tests *.py *.json *.jsonl *.html *.md
+recursive-include examples *.md *.json *.jsonl *.html
+recursive-include docs *.md *.json
+# The PEP 561 marker, so an sdist build produces a wheel that still declares the
+# package typed.
+include src/derivation_agent_record/py.typed
+
+include tools/release_check.py
+include tools/verify_record_pins.py
+# The Tectonic provisioning script belongs to the application, not to this
+# distribution, and its test reads the application's config/reporting/ pins.
+exclude tests/test_provision_tectonic.py
+# The scanner's needle list is never in this repository; the format is. The
+# suite reads this file, so an sdist without it would carry a failing test.
+include .release-needles.example
+
+global-exclude *.py[cod]
+global-exclude .DS_Store
+prune **/__pycache__

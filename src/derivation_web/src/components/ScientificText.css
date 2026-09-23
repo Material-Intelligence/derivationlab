@@ -1,0 +1,108 @@
+/*
+ * Scientific prose and formulas.
+ *
+ * `.scientific-text` is the reading-desk default: body scale, generous leading.
+ * `.scientific-text--compact` is the chrome variant for tree cards, list rows and drawers.
+ * All colours come from the token blocks in styles.css; nothing here is hard-coded.
+ */
+
+.scientific-text {
+  min-width: 0;
+  color: inherit;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  overflow-wrap: anywhere;
+}
+
+.scientific-text > :first-child { margin-top: 0; }
+.scientific-text > :last-child { margin-bottom: 0; }
+.scientific-text p,
+.scientific-text ul,
+.scientific-text ol,
+.scientific-text blockquote,
+.scientific-text pre,
+.scientific-text table { margin: .7em 0; }
+.scientific-text ul,
+.scientific-text ol { padding-left: 1.45em; }
+.scientific-text li + li { margin-top: .25em; }
+.scientific-text a { color: var(--accent); text-underline-offset: 2px; }
+.scientific-text blockquote {
+  margin-left: 0;
+  padding-left: .9em;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+}
+.scientific-text code {
+  border-radius: var(--radius-xsmall);
+  background: var(--surface-subtle);
+  padding: .08em .3em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: .92em;
+}
+.scientific-text pre {
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: var(--surface-subtle);
+  padding: .7em .8em;
+}
+.scientific-text pre code { background: transparent; padding: 0; }
+.scientific-text table { width: 100%; border-collapse: collapse; }
+.scientific-text th,
+.scientific-text td { border: 1px solid var(--line); padding: .35em .5em; text-align: left; }
+.scientific-text .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable;
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-left: 2px solid var(--formula-edge);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+  background: var(--formula-bg);
+}
+/*
+ * macOS hides overlay scrollbars, so a formula wider than the column silently
+ * looks finished. `data-overflow` is set by ScientificText once the block is
+ * measured; the mask stays pinned to the border box while the content scrolls
+ * under it, which is the affordance that says "this line continues".
+ */
+.scientific-text .katex-display[data-overflow="true"] {
+  cursor: grab;
+  -webkit-mask-image: linear-gradient(to right, var(--formula-bg) calc(100% - 34px), transparent 100%);
+  mask-image: linear-gradient(to right, var(--formula-bg) calc(100% - 34px), transparent 100%);
+}
+.scientific-text .katex-display[data-overflow="true"]:active { cursor: grabbing; }
+.scientific-text .katex-error {
+  display: inline-block;
+  max-width: 100%;
+  border: 1px solid var(--danger-line);
+  border-radius: var(--radius-xsmall);
+  background: var(--danger-soft);
+  color: var(--danger) !important;
+  padding: .15em .35em;
+  white-space: pre-wrap;
+}
+.scientific-text .katex-error::before { content: "Formula error · "; font-family: system-ui, sans-serif; font-weight: var(--font-weight-semibold); }
+
+.scientific-text--compact { font-size: var(--font-size-control); line-height: 1.5; }
+.scientific-text--compact .katex-display { margin: 10px 0; padding: 8px 10px; }
+
+/* The five-field drawer is chrome, not the reading desk: keep it at the compact scale. */
+.details-drawer .scientific-text { font-size: var(--font-size-control); line-height: 1.5; }
+.details-drawer .scientific-text .katex-display { margin: 10px 0; padding: 8px 10px; }
+
+.selected-step-actions > .scientific-text,
+.selected-step-actions > .selected-step-output { display: block; }
+.selected-step-actions > .selected-step-output { margin-top: 10px; }
+.selected-step-output > strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.selected-step-actions > .selected-step-buttons { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }

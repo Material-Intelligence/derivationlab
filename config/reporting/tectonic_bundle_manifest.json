@@ -1,0 +1,2068 @@
+{
+  "schema_version": "derivationlab-tectonic-bundle-manifest-v1",
+  "description": "Every file of the pinned Tectonic DirBundle, by name, size and SHA-256, and where tools/provision_tectonic.py fetches it from. Names and digests only: no content of any third-party file is in this repository. The tree hash of these entries must equal bundle.sha256 in tectonic_runtime.lock.json.",
+  "tectonic_version": "0.17.0",
+  "bundle_sha256": "29c5072c80211e5928d67d7a188e345d9c4b248e144cd049816a83b4d1b891ae",
+  "sources": {
+    "tectonic-bundle": {
+      "how": "tectonic -X bundle cat NAME, run with the verified Tectonic binary against its built-in default bundle",
+      "bundle_url": "https://relay.fullyjustified.net/default_bundle_v33.tar",
+      "license": "per-package TeX licences (LPPL, SIL OFL 1.1, GUST Font License and others)"
+    },
+    "bundle-digest": {
+      "how": "the bundle's own SHA256SUM, from tectonic -X bundle cat SHA256SUM, stored with one trailing newline"
+    },
+    "fandol": {
+      "how": "the file of that name inside the first archive below that has it with the pinned size and SHA-256; archives are tried in order and a source that fails (network, certificate or digest) is skipped",
+      "license": "GPL-3.0 with font exception (Fandol-COPYING)",
+      "archives": [
+        {
+          "url": "https://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/2025/tlnet-final/archive/fandol.tar.xz",
+          "sha256": "0b71eebb1c9b9fbd1eb4281f8af3f6c1a556a394ba2b6eae69ed9bb76c5fa56a",
+          "what": "TeX Live 2025 final, fonts (frozen)"
+        },
+        {
+          "url": "https://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/2025/tlnet-final/archive/fandol.doc.tar.xz",
+          "sha256": "bc612f810ba56397700b678adecd43613f35a6fce9f4204c3357b874709843d0",
+          "what": "TeX Live 2025 final, COPYING and README (frozen)"
+        },
+        {
+          "url": "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2025/tlnet-final/archive/fandol.tar.xz",
+          "sha256": "0b71eebb1c9b9fbd1eb4281f8af3f6c1a556a394ba2b6eae69ed9bb76c5fa56a",
+          "what": "the same archive on a second TeX Live mirror"
+        },
+        {
+          "url": "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2025/tlnet-final/archive/fandol.doc.tar.xz",
+          "sha256": "bc612f810ba56397700b678adecd43613f35a6fce9f4204c3357b874709843d0",
+          "what": "the same archive on a second TeX Live mirror"
+        },
+        {
+          "url": "https://mirrors.ctan.org/fonts/fandol.zip",
+          "sha256": null,
+          "what": "current CTAN package through the mirror redirector (unversioned; only the per-file digests apply)"
+        },
+        {
+          "url": "https://ftp.fau.de/ctan/fonts/fandol.zip",
+          "sha256": null,
+          "what": "the same, from a named CTAN mirror"
+        },
+        {
+          "url": "https://mirrors.mit.edu/CTAN/fonts/fandol.zip",
+          "sha256": null,
+          "what": "the same, from a named CTAN mirror"
+        }
+      ]
+    }
+  },
+  "release": {
+    "darwin-arm64": {
+      "url": "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.17.0/tectonic-0.17.0-aarch64-apple-darwin.tar.gz",
+      "member": "tectonic"
+    }
+  },
+  "license": {
+    "path": "tectonic-0.17.0/LICENSE",
+    "url": "https://raw.githubusercontent.com/tectonic-typesetting/tectonic/tectonic%400.17.0/LICENSE",
+    "size": 1192,
+    "sha256": "814a258f76e420b25cb3c07172eb2b3956f34cefbf0a650413b78e65c425f306"
+  },
+  "files": [
+    {
+      "name": "CaseFolding.txt",
+      "size": 84688,
+      "sha256": "a566cd48687b2cd897e02501118b2413c14ae86d318f9abbbba97feb84189f0f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "Fandol-COPYING",
+      "size": 35737,
+      "sha256": "853b586f0d520493390e571431afaf36a5fbb27dcfd239338a7ee9b0505cb004",
+      "source": "fandol",
+      "member": "fandol/COPYING"
+    },
+    {
+      "name": "Fandol-README",
+      "size": 645,
+      "sha256": "32537e063f4c7d4aebf016d5c8279cbce13f34fc8970f24b2578a3c04d0f8ca6",
+      "source": "fandol",
+      "member": "fandol/README"
+    },
+    {
+      "name": "FandolKai-Regular.otf",
+      "size": 7790552,
+      "sha256": "ea7e7fb4f9b3ac694a68d43946e04d21deed6e8c29a7c2d3081e1a4138f2f827",
+      "source": "fandol",
+      "member": "fandol/FandolKai-Regular.otf"
+    },
+    {
+      "name": "FandolSong-Bold.otf",
+      "size": 5777588,
+      "sha256": "ffa76a70e128947a4dd22151d5ee829b23e24ce3cb6fe8ad49891cd1c2d9e9b9",
+      "source": "fandol",
+      "member": "fandol/FandolSong-Bold.otf"
+    },
+    {
+      "name": "FandolSong-Regular.otf",
+      "size": 4947904,
+      "sha256": "a3820003227d4abe31fe28b493200d94a849ccfd078b50a019264f70353020b0",
+      "source": "fandol",
+      "member": "fandol/FandolSong-Regular.otf"
+    },
+    {
+      "name": "LibertinusKeyboard-Regular.otf",
+      "size": 53984,
+      "sha256": "a31d42f2e809c5212ecc05343268e2d8b38887ee748d4dedffed4e33ef6d6d75",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusMath-Regular.otf",
+      "size": 522244,
+      "sha256": "3d8e10533c73f7fbcee24dab9791817e7a34af7fd98751408627f538f0e273bc",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusMono-Regular.otf",
+      "size": 59028,
+      "sha256": "05194e8d9f6be63c35fb21e6c780c485bdf3fe7b83b53e4078f436f368f279a3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSans-Bold.otf",
+      "size": 275464,
+      "sha256": "ba778c3e7d03db1a5ad1c470221529c9c4863a67c403dd8a32a70e2628dd8ba8",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSans-Italic.otf",
+      "size": 289112,
+      "sha256": "35ba0114e52aa04769ff178a439e4fcf672532a9b9f13fb70a5cbba6bddc69ae",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSans-Regular.otf",
+      "size": 256824,
+      "sha256": "545d8b83afdf6c973c0e3dee7d8af482b6461b411b4ecededd03bd5f602a8fde",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerif-Bold.otf",
+      "size": 279844,
+      "sha256": "e81781521d8a5788d643afa56a8aa30f559f8b3ae51b0d40a9204e9a0b81b235",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerif-BoldItalic.otf",
+      "size": 238532,
+      "sha256": "d26c412af5912a2d4a3cda2b5edf97fc192fd07076f26694c3bb44992358d48a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerif-Italic.otf",
+      "size": 318424,
+      "sha256": "6061c8b602a313956a85035d1eab44b64311d35e4f9bbfd50bd4f2325a8b7325",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerif-Regular.otf",
+      "size": 298384,
+      "sha256": "37e34c5ac60ef91ba2fc032fafc160d76e3fab3769a3823d17ba250aad41c2fe",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerif-Semibold.otf",
+      "size": 276512,
+      "sha256": "37521be0e91f98441b1da3a337479755e2ea78771a85366600bfc6f4e8a42a5f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerif-SemiboldItalic.otf",
+      "size": 328672,
+      "sha256": "01167527b658aded1e1a07972ae1946d0b31baa07835dc1b9acfc465f70e8973",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerifDisplay-Regular.otf",
+      "size": 254808,
+      "sha256": "c5986f198a1294f6e3b3f18f726b7a29c131bcf90f9cb3698b6c479a24e62d67",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "LibertinusSerifInitials-Regular.otf",
+      "size": 84356,
+      "sha256": "76c4ea3ba8a88dc0718ad56bd37bada6a5a18d6a4c385de6745b3c44e9c85b15",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "SHA256SUM",
+      "size": 65,
+      "sha256": "1f94cb6e6893fb09037585fdde65d436f90e2d726175e06363723529f52c880e",
+      "source": "bundle-digest"
+    },
+    {
+      "name": "SpecialCasing.txt",
+      "size": 16830,
+      "sha256": "c667b45908fd269af25fd55d2fc5bbc157fb1b77675936e25c513ce32e080334",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "UnicodeData.txt",
+      "size": 1897793,
+      "sha256": "36018e68657fdcb3485f636630ffe8c8532e01c977703d2803f5b89d6c5feafb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amsbsy.sty",
+      "size": 2222,
+      "sha256": "7f25c33d4010066ff2eed0286f62854867698b06d10ebad93b1b1ab96d12f936",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amsfonts.sty",
+      "size": 5949,
+      "sha256": "dab8b0e621267acfd89736cf97bdcc02647c545c0719c4997be8a7d1bf98f9c3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amsgen.sty",
+      "size": 4173,
+      "sha256": "d90cfa74087e9f8678fb81bde57f809f0d4043f2674cb23b73a85958ec4a0fb6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amsmath.sty",
+      "size": 87648,
+      "sha256": "027b292408d989f370f160c9b5f5b89641f69cd19027b0342beb022dd74d7c83",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amsopn.sty",
+      "size": 4128,
+      "sha256": "18c28b99321d0f4576cb42e2793d2654828b273700224cd9ee27047f803e99f5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amssymb.sty",
+      "size": 13829,
+      "sha256": "70838b061b56569dd3ed9f339b1bdd1c78ba185de49f27ceae331c97f48b5986",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "amstext.sty",
+      "size": 2444,
+      "sha256": "49426425d82407dc702c77236fdeb4b82568ebb9566b8dd849bcfbf9eb9644de",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "article.cls",
+      "size": 20144,
+      "sha256": "988fb3e599df7e5b545e4253829dab11f0c7bd7827b79d32c2aaadfb52db6f6c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "atbegshi-ltx.sty",
+      "size": 3034,
+      "sha256": "815582a920087c3a3c7dbf4d357b22db05e087f87b7fdcadf606d9f1fe750cb4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "atbegshi.sty",
+      "size": 24708,
+      "sha256": "a73003b4bb2dc8a814533ddbd31600e6626827799c2a465d03ef42e7a33fa71b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "atveryend-ltx.sty",
+      "size": 2462,
+      "sha256": "5cf523f1f8f87a365b9b2d16d79e62e0363a833dfdfa889e99f5251064661e83",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "atveryend.sty",
+      "size": 19336,
+      "sha256": "a62143db8b3bf1e52082c32e3feb7450bc90c000c6c48a38fa51cf96a6075eae",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "auxhook.sty",
+      "size": 3935,
+      "sha256": "1d9f36f4e9674bef594a47cac7d5781e9f7e0c7c8edf9f72769f4dc6f10d1b5f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "bigintcalc.sty",
+      "size": 40635,
+      "sha256": "050f2ad3a3671a1f4f9bcf97784836301bc751507e7ada546632379406aea103",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "bitset.sty",
+      "size": 33961,
+      "sha256": "af5c7196c69dc9d28225189169b60c9b9039125bc1756c04d54886f0a3e1891e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "booktabs.sty",
+      "size": 6078,
+      "sha256": "3fe694a5406f84847143e56ba1841385364277cfe7694a9f4bc0072ca8656abc",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ckx.map",
+      "size": 1289,
+      "sha256": "52859584f1baa4aea9e5c6318ded82b1b5bfa713dcdc945bda7e26b206c8bdc4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmex10.tfm",
+      "size": 992,
+      "sha256": "0890bccea1dd4d27f001ac30e86c63af35bc803e0557c35aafb1903c8d208e92",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmmi10.tfm",
+      "size": 1528,
+      "sha256": "e442c5487f84df70218ff37f775c87060856f5b6e04c011b6cadbbadfcf46645",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmmi12.tfm",
+      "size": 1524,
+      "sha256": "79563547084d85388e6909888f9fa7f5cad33bdda44ca6b25b362e1d301db539",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmmi5.tfm",
+      "size": 1508,
+      "sha256": "8839e40838381a0a3c976bdd5becf72afd60bde5a965c3d9b985c3479c6cf75e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmmi6.tfm",
+      "size": 1512,
+      "sha256": "ab6ecb4aaba9ca1b4259b1d1f64309a785bbaeb09183fd79a066b7764a448a28",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmmi7.tfm",
+      "size": 1528,
+      "sha256": "ce55681703aae565f17286d800ea9780223132589bdbaeda1751b869aba26a38",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmmi8.tfm",
+      "size": 1520,
+      "sha256": "65af8c1e162a952cab8e93c834fcf43ce09b508e6c16e512ebb673cd850b0d41",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmr10.tfm",
+      "size": 1296,
+      "sha256": "87f2d8981927644cbecaf3d639e96e348ea4e7be49d8804468bd8ba9ff3f5244",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmr5.tfm",
+      "size": 1220,
+      "sha256": "581be818f67bd11a1792d05e129abe3ea30c5cbdfce3bed8da7c5fb50f5ba95b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmr7.tfm",
+      "size": 1300,
+      "sha256": "28f9f4d237bdae4babef4a59d90f17686a09d6f9df0b2c3c23b2ba15f20eee82",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmsy10.tfm",
+      "size": 1124,
+      "sha256": "0ca13d421ac7133271aed7c935099ecf3d1d08ac9e15f81acb34a16564ab8a46",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmsy5.tfm",
+      "size": 1112,
+      "sha256": "6b7dc18cba9ca8996d7b146f1ed78d9227577b26248083310fec227692198ca5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "cmsy7.tfm",
+      "size": 1120,
+      "sha256": "4f59bbf683e947c807158641621982dc83f55fec042fea7963d8ce9f9da98256",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ctexhook.sty",
+      "size": 6480,
+      "sha256": "1c1b7e806ae828b1aa6fac1a2fa949cd40c769fdcf3c52c131ae4957cba5277b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "dehyphn-x-2022-03-16.pat",
+      "size": 273989,
+      "sha256": "72e371729891000698d0e29b5514625733e5529ca5d619bc706f69c81778052f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "dehyphn-x-2022-03-16.tex",
+      "size": 4964,
+      "sha256": "2909d9b18ab2a94854c5c8270eae7b51788d0edb849985fd04fa602d7aa0adc6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "dehypht-x-2022-03-16.pat",
+      "size": 272152,
+      "sha256": "063c15918921ad5d4a95a73853453929a14df34ced1bd8b9ae1113fc34831e12",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "dehypht-x-2022-03-16.tex",
+      "size": 4964,
+      "sha256": "a25d30636a6b342c6dfd41bde80ab38e500e28236166fc8f1a061a0a4e9f709d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "dumyhyph.tex",
+      "size": 419,
+      "sha256": "99d210320228a242478c36c0dfde48c7513e4495d4feea7fe3997aab27582dfc",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "etexcmds.sty",
+      "size": 7734,
+      "sha256": "a7db2834e02bd11be0e62a3be15e3dc293ba1be9196f19b29b9d98bfdbeb7514",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "expl3-code.tex",
+      "size": 1204757,
+      "sha256": "496aa058ffd3c379d77df9d842ae931575f1ea12db5f806cbeea1634d505b6a1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "expl3.ltx",
+      "size": 5015,
+      "sha256": "5a61e07f882337465d24c17e9d3865d1849e3baf37a12e2b7956af4dacf745ab",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "expl3.sty",
+      "size": 6107,
+      "sha256": "d25966b6774e1153ada51b5c52eb5084b76708181861fa090844a18c2092a905",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fix-cm.sty",
+      "size": 14741,
+      "sha256": "bc40dfd4efc0c827a3845afbf1c09d26170d44ae79e4dbd5d3c884f2d1670f5e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fontenc.sty",
+      "size": 4946,
+      "sha256": "d088c75e16c3c9f6b979a59571b96e5dd9e487a720bc74591580878388b82918",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fontmath.cfg",
+      "size": 1983,
+      "sha256": "d3f100870b4ddd3f7b31fc799d01fbfb3bfa125d6fc473e64ce273901555b0c4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fontmath.ltx",
+      "size": 24949,
+      "sha256": "f16b8c352292d9bb9ae82fa6764651e7f61d21e7bb5fdb039c18dca704700855",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fontspec-xetex.sty",
+      "size": 162076,
+      "sha256": "7d9dbc9c795bcfe13930a88fc0d6066f064eea04fb1006c6ded73d54c863e12b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fontspec.cfg",
+      "size": 549,
+      "sha256": "f31d038ca5322ef4fc3fbe391f42695bf1305567a04b6ac1005964703dd1232a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fontspec.sty",
+      "size": 1656,
+      "sha256": "a13fef368454be939bc947e688700508adbf75b2b3d3dbe9730521808945fe7e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fonttext.cfg",
+      "size": 1983,
+      "sha256": "2d7fcaf04dba33fb4344c3f8b0be1f200379f8f08fbe14b412a461c1d3578736",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "fonttext.ltx",
+      "size": 3304,
+      "sha256": "adb63677a08ed1904346996fa43c165f6c2ed2a869661b37f24ead11c23e0dad",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "geometry.sty",
+      "size": 41601,
+      "sha256": "d5d36ad74051ad36288242b51438e2d9a5db2bd6c063b9b5704d0931fbc9f439",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "gettitlestring.sty",
+      "size": 8371,
+      "sha256": "26ab10fd43fd5a90f98bcbed3a99978808da8878eb73835db4e0346371aee41e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "glyphlist.txt",
+      "size": 77146,
+      "sha256": "1d090feeb2cef487186d67f42d0b106bf09abf67e2cd94ab99e238d57c561d56",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hxetex.def",
+      "size": 45016,
+      "sha256": "e75c6f3b53051c998018e827df34d74c86ff643f76111bd94efa716ba6ab7ea2",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hycolor.sty",
+      "size": 17914,
+      "sha256": "8acaa03eda19a8158780356701e905e354e1dc47dc736e6e26fc860c12a15e14",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyperref.sty",
+      "size": 220999,
+      "sha256": "deda7321a95e6307e3c6d03975704440ce0ab81b5dbadecf82acce4365091e4e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-af.tex",
+      "size": 80741,
+      "sha256": "9c413b121d989ad8f0c95c0a4e4fa3bb78d412404919e04b71f609e10a85099f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-as.tex",
+      "size": 3156,
+      "sha256": "c0d23a0364983038ee73fdc9ee54dc8faa23d38111991b7c5c2b31833f22a050",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-be.tex",
+      "size": 36788,
+      "sha256": "ce0c69d86e03c40bdd0ab9f4535cee2503fe2894590380e45a99974f029cea6f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-bg.tex",
+      "size": 106100,
+      "sha256": "d37886f8cecea60bf829e4dd9dc1107aea8e8ee3eb92425423534bafac5f59b0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-bn.tex",
+      "size": 3152,
+      "sha256": "b44ca65373a702020d5ffbf1acdffa78f5b4d3259b4f18a12a88b2a71ae2445d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ca.tex",
+      "size": 8076,
+      "sha256": "153b51e2a9f8afdd87a8848f73f4462a902c58d597aa55c66506af65c5596e7a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-cop.tex",
+      "size": 11833,
+      "sha256": "e66cbaa15da902f47cf955bd654f2eb0afe2abe5d1c819db1fd8186b98c7bb40",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-cs.tex",
+      "size": 22983,
+      "sha256": "37b16173109c9c1a34d04c87eeb4ea8206d55e636c380dbcd72e912b4ca5033a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-cu.tex",
+      "size": 138901,
+      "sha256": "f4636573f2e35ac367159d286bf4b8f65fb68d3bc2712b3e763ad53d498a56ca",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-cy.tex",
+      "size": 45634,
+      "sha256": "22c4d441e790c035bd208c4cccbe9a8254ab81c3da0ca0a8b062f8ed34f3e14c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-da.tex",
+      "size": 8454,
+      "sha256": "23e0a50f0c20d632be06f973e700323463961eac737bb14f6c3787675a4f5575",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-de-1901.tex",
+      "size": 259355,
+      "sha256": "0ddaf40840131da550564a606d9f806f001ca3e72e67475ef3c4f79a1ab1e9c9",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-de-1996.tex",
+      "size": 261255,
+      "sha256": "162ae879d2e61112bf7ab37b2bf47027e3df409f2641fb9b8cd6e6388c6d547d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-de-ch-1901.tex",
+      "size": 254924,
+      "sha256": "8ec39fd63d22fc935fe2a2839dd73c88d061b51225e7218a6b90e67be7c2f937",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-el-monoton.tex",
+      "size": 8327,
+      "sha256": "abfd086443070d6c7e89710dc87429dce51bda1b55a6afd03e43f1d1cd04ff4a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-el-polyton.tex",
+      "size": 19750,
+      "sha256": "716cc8bd2e46a52e66a5d86ebe2f886a222d1ce0941378c7a5ab56bd8eee43f7",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-en-gb.tex",
+      "size": 58474,
+      "sha256": "e95bb4ab350f620c41c231c4785d7bdb4f91949d3e631b30e08b3ead3c340a52",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-en-us.tex",
+      "size": 34128,
+      "sha256": "f4ffcd96c5cbc886bdad23f95dcae8edc3cd3620eae62f7946eceda97c4e68f8",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-eo.tex",
+      "size": 17045,
+      "sha256": "6892e3758fd35a1cb509556bb06fcb008eda3e975a867ee87eb828f204460d18",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-es.tex",
+      "size": 42602,
+      "sha256": "6a2e5f39a991a23d1cd8a23dbd0f6fe96a9f07561a6695f4f3320f47030e236c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-et.tex",
+      "size": 25785,
+      "sha256": "617abc528446e33c1690a3d13ae7629292d2f00557b1b4ec96cb2a1d790ac090",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-eu.tex",
+      "size": 4646,
+      "sha256": "e080a1e42ac443d8451df46d9d6628e64e8317aa53d826f99099652aaba613d0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-fi-x-school.tex",
+      "size": 2456,
+      "sha256": "264a2ba2ab5237246f0bd902c7b3f111b03662ddd55c4dab03a9897e47e5491c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-fi.tex",
+      "size": 4820,
+      "sha256": "cf68be5eb003d299f85f2b7185f31d8ff5799c19dfad3f0300eaf9843e9cc8d3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-fr.tex",
+      "size": 30353,
+      "sha256": "526cad6fe8f52fcd3caa3fcaf667cb1740cfc14bca198680e00dc343a84594de",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-fur.tex",
+      "size": 5290,
+      "sha256": "1987a744179d443677258f9ac0ef941fd2673e235aa576c20da64e352c95f6aa",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ga.tex",
+      "size": 46868,
+      "sha256": "7856cb341fd978b910c3807aa6918b39791e2f507d803253daccb5c71bbc02c6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-gl.tex",
+      "size": 22745,
+      "sha256": "a0756f747765a075edd1ee7d2be8fcf9ff8068f554166a79f5a760659307fde3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-grc.tex",
+      "size": 82082,
+      "sha256": "dee55cf442ba4f4c5655622571ee796bede243a65ef2286858b28db7f1b40d78",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-gu.tex",
+      "size": 3078,
+      "sha256": "7b9f11a5fb0ab27bad7ed3a0b9dbb1ef33d67050069610cc7630de35d2a34cda",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-hi.tex",
+      "size": 3088,
+      "sha256": "a55a2766d7e1c2d36991f4fccfef639016721b41593029043c2d13bc340ef632",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-hr.tex",
+      "size": 10761,
+      "sha256": "69d684289c626c2576678112699c960d5821b52e7addbd473c0e8d0ef0c1694e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-hsb.tex",
+      "size": 11583,
+      "sha256": "0b961d89317523960f41b2f32742abf807a253717200d9756b8d69c12f895fcf",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-hu.tex",
+      "size": 529279,
+      "sha256": "c6f02d2b6f49d5068035f7bbc91aaeefd0b691ff806c17539a033a716c374692",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-hy.tex",
+      "size": 12797,
+      "sha256": "a132d1fdfafbc601da8540c3bc8419335dde455369b80c3a0a8ce06116eec449",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ia.tex",
+      "size": 4412,
+      "sha256": "c2e570831d02831f2c2c26e17ebe68d81c02a1c2cfbf4ac9d182610d6a0c6e3d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-id.tex",
+      "size": 3389,
+      "sha256": "95bb9f56044f5f4bcceb838224a13d560df0188f0d91543c8d3b4c9a2abfc032",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-is.tex",
+      "size": 27097,
+      "sha256": "2707969ebe34a9ddfd861aaef40619e75ac78453718a56401aed91c5cbdcfcec",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-it.tex",
+      "size": 5011,
+      "sha256": "6ce56ed6ed2ca7c0688838e366e6595e0429f984f4fc6e96ec045cebb1e76a47",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ka.tex",
+      "size": 26863,
+      "sha256": "8044f2b27b802b996209cdbf8594f4c2fbf6f7a3cbb142eb529ddf2a50bc1e3b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-kmr.tex",
+      "size": 2635,
+      "sha256": "2299d69ff2e093291338275b20fa85a35c62abc156835647d5d91a9dfad476eb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-kn.tex",
+      "size": 3117,
+      "sha256": "2f88ea093e99239f7c22a2b26455fcebec7a9dbcbfbfd73683582ea3af5fc99c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-la-x-classic.tex",
+      "size": 219137,
+      "sha256": "68257e2ce6ee077f635e38c700734ede7d1ebb4f4708546b878a0bee68bd7d8f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-la-x-liturgic.tex",
+      "size": 19389,
+      "sha256": "60fea9390492d86bf701f77da8ac818a027da7ea9badb2965e9889ddeb95a5d0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-la.tex",
+      "size": 9443,
+      "sha256": "84e0be1877beaf6d1d7a83d5639fb65a0e0645cd2447b0dbccfa5e63565abdfd",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-lt.tex",
+      "size": 11601,
+      "sha256": "6162b566620367abb827ba1457567e7a79680596919886a7138e48b346e983d1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-lv.tex",
+      "size": 85396,
+      "sha256": "209e0a5b09aaf68517724a2cecc7b7bbd278355ffdd918051ce23110687e3d3c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-mk.tex",
+      "size": 6582,
+      "sha256": "3cd8cf3ad015adec006523ba0c087069ee262f06625275ad4a332d3051f655fd",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ml.tex",
+      "size": 3257,
+      "sha256": "b37b1446d79587003d85887731df822aa01afea2f6d8cc5728d55e00a92edb8d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-mn-cyrl-x-lmc.tex",
+      "size": 5462,
+      "sha256": "fd41a62b83e0229b188756eb0afe27555bf425f94354a8adeadc23406676c238",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-mn-cyrl.tex",
+      "size": 16059,
+      "sha256": "22903e12e25e5348d7c2285f8d3173215540296e1b47f38515936618993988fa",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-mr.tex",
+      "size": 3112,
+      "sha256": "dd033b789f381081fbf05a976e34790b566f40ddcd276790f581b15b62eca844",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-mul-ethi.tex",
+      "size": 12004,
+      "sha256": "df702eec647db16b37056d7850b066fb7e006a0c9753006e2cd761f19f642bff",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-nb.tex",
+      "size": 1664,
+      "sha256": "b111264f46d59089d4cf96691c66b637166f5aae5b86719a5b9fe32737cc0169",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-nl.tex",
+      "size": 87546,
+      "sha256": "c3749c79c435edc8273b701148462dc3751f38f4d4e4381f7850ae4432a0a5f4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-nn.tex",
+      "size": 1547,
+      "sha256": "f217dca0e815443bc9feac27d9eb48cf795b3f4f222afacf7f87fb6c2b0e196e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-no.tex",
+      "size": 196495,
+      "sha256": "05a2ac5fbf88bdc78c580e5cb8a158e6aa760d13756604f9523aa99feec3ec65",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-oc.tex",
+      "size": 4216,
+      "sha256": "0a968a3588697da7c0ef13f219f45973fc75c08e8ee9253ff1a4bf567167c8fb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-or.tex",
+      "size": 3054,
+      "sha256": "a028fb9f5554f709cbc3f073873e5771b2b669e3725c9888d917c38152d8ea0b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-pa.tex",
+      "size": 3062,
+      "sha256": "7582a5ac2e6959d64c13b3f2cee41222c810f1e0ed6b29c870da657fee09442a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-pi.tex",
+      "size": 2568,
+      "sha256": "d27f9141dc55bfff0a00a204fd8af2031a1fd23ead83836ffec61debf4eb9033",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-pl.tex",
+      "size": 34118,
+      "sha256": "83ddbbd21bc06a44bc4f4a4c49c38782e809cff5f026b764c044daa29e818843",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-pms.tex",
+      "size": 4794,
+      "sha256": "a5af2db65a7bc27318c3d0300d1a3ef332997a6d447a572aa728e0710ac3243e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-pt.tex",
+      "size": 4547,
+      "sha256": "59fe5ef9929d5f82fb6fff2df4119ba30fcbb9c6a119953f8561679193e3c53d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-af.tex",
+      "size": 120,
+      "sha256": "80a2d5493c62f62f9df6959d4b7867d5a8158efc958d252235e00db81836b0e2",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-be.tex",
+      "size": 548,
+      "sha256": "9a055ed4d781da3111e6522862ac51d50f6670de7cf823de646f1b3bf1676b9f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-fr.tex",
+      "size": 768,
+      "sha256": "708975d63ba0777eed42b57046d4514c88170c1c924ec714837870d753bd794d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-fur.tex",
+      "size": 282,
+      "sha256": "6d50da6af4bb9aaf13d4bb26692421056c7af508d71f5e9940eb5b85959182f5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-it.tex",
+      "size": 250,
+      "sha256": "063fe294c0389c1b17383135a2d109fef2bb9bdc8e018e18113ae615576a60bd",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-oc.tex",
+      "size": 250,
+      "sha256": "063fe294c0389c1b17383135a2d109fef2bb9bdc8e018e18113ae615576a60bd",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-pms.tex",
+      "size": 252,
+      "sha256": "bbdf4a6a82ffcb11fd4e155c132250bad1815bdd1958f65b0ce8a8b16faeb941",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-rm.tex",
+      "size": 298,
+      "sha256": "3af69b37f4b4b0f524d92fbe51262b9983fb4b3ecd62bdabdc4ea70c85167f76",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-quote-uk.tex",
+      "size": 2400,
+      "sha256": "e41dcb8e394702c3958128cbfe5a9e50ffd22a4a3de72809720fba5b6f8fe73e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-rm.tex",
+      "size": 5169,
+      "sha256": "c413cce7a61040348c271775786c63005050a716b69b11d2483a379d1cf44726",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ro.tex",
+      "size": 4958,
+      "sha256": "6f09c53cc65cb6fcf4435396371c49bf50aaa88e40af7931a9e6bccc405f1fab",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ru.tex",
+      "size": 68421,
+      "sha256": "ce988fcc66e5e29d7474df5ab5b489d3f52a50ebccf570997f992d84221b922a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-sa.tex",
+      "size": 10621,
+      "sha256": "7f895b18be9ef598dfbc490ed19a24200712652eb0c5068f5c6fd88c363759c8",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-sh-cyrl.tex",
+      "size": 32824,
+      "sha256": "9b0f8f489868d3f98d4dec8a5d71f465ad5a70afde6857c6c2d79ec0344618fc",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-sh-latn.tex",
+      "size": 23036,
+      "sha256": "5aea49c845df3c21b95e417abfc28349909a4c9565523702055a122153486a4a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-sk.tex",
+      "size": 20919,
+      "sha256": "a3d18dada329f0893c55d56b456877472234304ce9c63480325dfe9ce211e257",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-sl.tex",
+      "size": 9070,
+      "sha256": "27da982d03b881fe84f1c4fb42ba0948f33e01a3a44eaa5ebd07e01d20c72691",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-sv.tex",
+      "size": 31706,
+      "sha256": "102253382bd91cdb7535de5c20744254c9ac9aaa4ca12ed420eb835e5004c0b3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-ta.tex",
+      "size": 3201,
+      "sha256": "7154ee4519ae5fcebbb2c1d05fd7f19820b53db8b84dbaea34e6a6f6a8fd4642",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-te.tex",
+      "size": 3112,
+      "sha256": "101a8f1664ea5a7520e06f07f0275c9bdf6ad3de63d6f74c4f44fd1369396ccd",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-th.tex",
+      "size": 86109,
+      "sha256": "2d59071f549c68419362e9489044f67cc94bd395c004479afce9dc37338fc0c5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-tk.tex",
+      "size": 15831,
+      "sha256": "801ef59c14dab4fec0a9ae178632e63b8ef9f0362dcea74f4a3689a4a7908690",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-tr.tex",
+      "size": 5744,
+      "sha256": "9243b6fc1426b07dae71c6136bd7d4a907e01a36ab6326f349ee6c310e6bb2b5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-uk.tex",
+      "size": 43691,
+      "sha256": "05fdacf5a771f5c528dd65f6f67b63fedb6f6caf768902c24ec81676e500966f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyph-zh-latn-pinyin.tex",
+      "size": 5845,
+      "sha256": "c007e61bd59a16a00e12603b9a97968d730b955627d1aed5d856c5e425f7970e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyphen.cfg",
+      "size": 6424,
+      "sha256": "b68e6ae011a0a15c12f6ab72b70a0b6e3893be885a00ef3853c67fd989c9975c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "hyphen.tex",
+      "size": 27860,
+      "sha256": "2c18acdc04c1a066aeb1759905e7ca449f0616c314b5ed6aebe55b9d4a89b8d4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ibyhyph.tex",
+      "size": 28651,
+      "sha256": "b12db81b0c101b38b5570c21a560e71236dc16ea5540012394a6f700f9b9d59d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ifluatex.sty",
+      "size": 492,
+      "sha256": "1f1dd9c7cc37bfc574fdf4103a4b8e476e31a5058b0214f14985d2f5f018a221",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "iftex.sty",
+      "size": 7237,
+      "sha256": "2de50639c1f27201f2b4d04e9083e0a51fc5a73b8908eea2e80d6e3205636d4a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ifvtex.sty",
+      "size": 1057,
+      "sha256": "1138730b9ad7d9f664b4760a4ea0ae0945afd21c006b76b67e623e863bbf3756",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ifxetex.sty",
+      "size": 488,
+      "sha256": "b4729967ca572a3fbbcdc36f0e0764a53ae0855a0b7c3e29222ca119c054bd6e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "infwarerr.sty",
+      "size": 8356,
+      "sha256": "8c3e23b8bb7d940ff26cb0cf96e0151f540acf55020dc3c1aa8bcdb2eb66305c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "intcalc.sty",
+      "size": 31769,
+      "sha256": "1343ba1b10b245bfd199c22947249af1d756808690c7811c90f07fe0a3772080",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "kanjix.map",
+      "size": 11946,
+      "sha256": "a71059fc7213517c40d9d9ee353b107dc5b8dc20e5b4c10fb0c7414879c8a1ed",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "keyval.sty",
+      "size": 2671,
+      "sha256": "cdac603619a4c129511ef8a3abfbb4d2068b1bb67626cb30568baa0ceb26aea2",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "keyval.tex",
+      "size": 2725,
+      "sha256": "9edeba753c9d3b10c87033b108c20887670c1c36ce45ad5dc480e7ab52868a6f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "kvdefinekeys.sty",
+      "size": 5412,
+      "sha256": "c42f0c2628dc5fbd95b535cf8cd3cc964347653c099d38c0d416f896d84e8240",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "kvoptions.sty",
+      "size": 22521,
+      "sha256": "28be410832fdddeb9c853ceb14d49845de1c62316acfe4406f8b5b60f2e13e62",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "kvsetkeys.sty",
+      "size": 13807,
+      "sha256": "00c8665544687fea57c27a6be454f832c5190e710545102ef0507238bad1365e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "l3backend-xetex.def",
+      "size": 37437,
+      "sha256": "47e2f4fc8bda65ba3f5d295145da3f7bb783b71f2a07f11a4038e84b2fd5cd13",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "l3keys2e.sty",
+      "size": 4674,
+      "sha256": "5420457e8d55f6c83eb4c62be750cb6a0302241dafb3f0a82e262b8ac783b0ba",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "language.dat",
+      "size": 6593,
+      "sha256": "a8a8e36e120beb9a19ffc2ca7c83445a1308ac9602a50cab1128deac14f5bee9",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "latex.ltx",
+      "size": 540518,
+      "sha256": "70ba1d0d113a986e4966e5a7ebb5afa3fbb17843ec4395bd0187d2aa266b5646",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "latex2e-first-aid-for-external-files.ltx",
+      "size": 6545,
+      "sha256": "1519a32708089df30c05e2ecbb61584dcb6bd325a485e4bfb90b79b46f097a27",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "lcircle10.tfm",
+      "size": 820,
+      "sha256": "f5aaff47e226ff644ae94765b8d6012e0ffb6d62956993acac2f2dd4ad589929",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "lcirclew10.tfm",
+      "size": 820,
+      "sha256": "7906e4c5d770db4002740cba4d8194281b06d6fe7edd9d9949b60a291b753646",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "letltxmacro.sty",
+      "size": 5766,
+      "sha256": "3a5e77870557530b7bef361a2d5af7346121807e335dcc291cb6fb6a773b569a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "libertinus-otf.sty",
+      "size": 25475,
+      "sha256": "43b9d4b2ff01ba4838e30727b664003bf4e43efbec03e173116c2e9b53a08e8e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "libertinus.sty",
+      "size": 847,
+      "sha256": "84f9598df562544653abe4136e54f45a78cfce0c4d8bec24601c5f10f261be2d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "line10.tfm",
+      "size": 748,
+      "sha256": "250200d9efa885fecff118d72e5239adacd0783ccb00c4fb96fa677708ce5217",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "linew10.tfm",
+      "size": 748,
+      "sha256": "925de632e8afb641692c58bf6c464fb1aa79782212523532590dd6b91b78c40f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "lmroman10-bold.otf",
+      "size": 111240,
+      "sha256": "102fe06c430a8b681b2bf6876b7cd967ae4d47b4b6b41d915eb7913b726d9fb1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "lmroman10-regular.otf",
+      "size": 111536,
+      "sha256": "1aa18cfefa58132c52ce5de70db1fd1154201c19cd2b2cdaffba4906a33e6852",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "load-unicode-data.tex",
+      "size": 7054,
+      "sha256": "399edc983618f5e9dfa2877ec9f99b6c3b082358f278a492f8178243aa2f11ed",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-af.tex",
+      "size": 1231,
+      "sha256": "a5aad224dd2c22e9e7d001c212b0a8684903efc6cf7860516614aca10afc42ce",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-as.tex",
+      "size": 1227,
+      "sha256": "417ff8e76faddd7154db8f9360b3244c091216d9003ee8527cc8045ec2c66f7e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-be.tex",
+      "size": 1239,
+      "sha256": "a019fb953181b941c4ff71f04c86ff9d0e3e178f7b2e7ccfa111b48370a2659a",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-bg.tex",
+      "size": 1176,
+      "sha256": "840416a612b28a8c7e7487dc12c81328c9133a51a86f86f01c925041354ea98f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-bn.tex",
+      "size": 1223,
+      "sha256": "34718be2d55b622cb30614f3730073386bf319403b05e52420ec615a95e54d05",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ca.tex",
+      "size": 1164,
+      "sha256": "175daa786bb191aef9312d53d47bd93edf44e5df6dd0cb0cb15736ad42c41444",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-cop.tex",
+      "size": 1217,
+      "sha256": "81035bc2f5e9599b8bc50ba9d5bcd41240b948eb320b9b5c24b80c74e58f66b3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-cs.tex",
+      "size": 1156,
+      "sha256": "cf224cb3f26a9af859e3cb0b0c4ead28313bb33b2d94f618516d65e3e6804b7d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-cu.tex",
+      "size": 1509,
+      "sha256": "b39d8195b52b2dffcf1a88eb81a79f6191b691c90511beda29a2e5b14b81ea6b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-cy.tex",
+      "size": 1156,
+      "sha256": "b7c20c72b80d07f2f99571c952c3e51b68013492cd7d5fb0a8ff1f41c4c53914",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-da.tex",
+      "size": 1160,
+      "sha256": "5e57a6f6d2ab2bbbf34ea213487ae1e76031516427c5a9ef8d15fa54c5c9d50d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-de-1901.tex",
+      "size": 1327,
+      "sha256": "dd90647d1078f6de0dd48228518f531fddd0414658333996c889137257b3ce3d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-de-1996.tex",
+      "size": 1319,
+      "sha256": "0ad838f07ef23416d4b8ced7f4c230563f3a0959f0b6f81cfd66e88a2c675733",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-de-ch-1901.tex",
+      "size": 1293,
+      "sha256": "2c5757bab22bdbf1e82a33b79d47784f179e6961bea445a994c1867133d21d22",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-el-monoton.tex",
+      "size": 1479,
+      "sha256": "ed2fbc731e08e263959548008e9c39288c93bde48a39ab3f8613c74b55f8ff65",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-el-polyton.tex",
+      "size": 1481,
+      "sha256": "f64a7db14ed565fcfbec6acad4dee8faac4cc5a3f8197f9229715547cb69820e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-en-gb.tex",
+      "size": 632,
+      "sha256": "f79b49f8146271eab67a01e568262ebe0d817bfc13f8aec25ce311d6177b624f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-en-us.tex",
+      "size": 636,
+      "sha256": "fc9ed1c52e4e909a31d0a42c0c0f423c9e7b622ae7878ed47f1883e48ac53d21",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-eo.tex",
+      "size": 1176,
+      "sha256": "5e7c2ccef97aecd22dd3deb4c677912de6678da05764d4ba4e3ccf06e3a49068",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-es.tex",
+      "size": 1164,
+      "sha256": "503984db3fd0c1a8167aebf6cde8de8dadb6d5a24c153963cae5f8138e6c24ad",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-et.tex",
+      "size": 1168,
+      "sha256": "c766f3e9cbb65ad0b11f7beb3c84c02115f7c4686dad3be08332874f4eaa8fbb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-eu.tex",
+      "size": 1160,
+      "sha256": "eccbeaaad617afff54fad6bb35c3294982ff4ac3720b06c4c66d577adc174d99",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-fi-x-school.tex",
+      "size": 1239,
+      "sha256": "8affc6e962e8ec85a08e478e31ac503ddcb7b8a75dcaf7fb2cf48400b2c94465",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-fi.tex",
+      "size": 1164,
+      "sha256": "6ee635777b5ce280e323aeaef1fac8be8fb4f6492f4d5faa5b08d6a4252bb7c9",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-fr.tex",
+      "size": 1204,
+      "sha256": "a6180a6456b37c37fd80e5fed6c8366c7694c0816f75b71464ddad5e062bed05",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-fur.tex",
+      "size": 1213,
+      "sha256": "6540ab775fb5fccb2bcfe490ec1d2a5e0a77bc4d506ec05d04d7b505651bae81",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ga.tex",
+      "size": 1156,
+      "sha256": "73ebe8a7770b2d7862e96c588f656f78699b9ada41d79a64c0ecfa4579e632d1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-gl.tex",
+      "size": 1168,
+      "sha256": "5d99aee8b934fe80ee6bdfb227ddff0051959fa4742300061f90eb7e1e8bdb39",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-grc.tex",
+      "size": 1402,
+      "sha256": "08c7932549bf7f6c6fd2913feb6772706575824b24616f546afeabfc1f492ac6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-gu.tex",
+      "size": 1227,
+      "sha256": "453f8ae9517d7f19de52f69ca7873e595be14cec8f2f92f3c596566bca4df2f6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-hi.tex",
+      "size": 1215,
+      "sha256": "b5e50dcef1a49ff2acb8cc57f046ce34817bcf9789011147af86ca7dd6b7dcc1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-hr.tex",
+      "size": 1168,
+      "sha256": "0baadea799304f1b80dfa08c97a99d5cf58293b625293846080f94343ca0538f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-hsb.tex",
+      "size": 1191,
+      "sha256": "bd15223abf31b7729286a4ffc70d5c0a5414abbed054a91bdb6f7a38c01519fd",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-hu.tex",
+      "size": 1172,
+      "sha256": "ed49bb9f763b55360c671b9619a43c207e8c2e36710d21ee55e739fdaece3f3e",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-hy.tex",
+      "size": 1227,
+      "sha256": "9c74e9b56b27cdfeb01537becfddf881882e72753e54f76bf7c7aefdb29a1209",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ia.tex",
+      "size": 624,
+      "sha256": "cd3b533cf647edafde5bdeedb193003cdd8b2c1480a5a1785bc75664db34589c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-id.tex",
+      "size": 618,
+      "sha256": "435ddde8c3f95e986035e27247c630415d7c9176c28b116d16c65b702b41d62d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-is.tex",
+      "size": 1172,
+      "sha256": "82e2a9411d09cdd8086b810f630aff051bb2b9bd13af92eccb6a42254b5f4729",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-it.tex",
+      "size": 1183,
+      "sha256": "9e1497131da40926e9a1b5b70635bf6dccaea012509c8dbc0245489cd3df48b7",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ka.tex",
+      "size": 1172,
+      "sha256": "af388325534fb4fd9f43dbd93e104afb1003b35b6df57ce4183031244e7fac48",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-kmr.tex",
+      "size": 1172,
+      "sha256": "3fc2dcc231fdcf1fbea89dd678cefccc2c7446cd1a56358aa36d298bc888b841",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-kn.tex",
+      "size": 1223,
+      "sha256": "feb851c91571c86b264f5206f78591fea29be7086b13008a0917ece05f18e11b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-la-x-classic.tex",
+      "size": 1318,
+      "sha256": "ecd5b7d5572a0032cea6ff682be89169fed4eab8b9db97709ff176b47b661d9c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-la-x-liturgic.tex",
+      "size": 1218,
+      "sha256": "9fbeb42d27f532d77a8841f22a62f6a11f7a9cf865447cae2fecf6eb3f85aed9",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-la.tex",
+      "size": 1156,
+      "sha256": "71ff015d8acdab67451e3cc2322f756b30eedf0dd9bb42857f52f9c09e350a98",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-lt.tex",
+      "size": 1180,
+      "sha256": "912c29539d3298e221a1c68b8348dbe772be79570b2a193bc1131f46423e5e70",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-lv.tex",
+      "size": 1168,
+      "sha256": "64f4b0d5fb8101b7611d5d5e52608616ff934cf4141239eb7006b0844cb2ea9d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-mk.tex",
+      "size": 1239,
+      "sha256": "3ef5c3ca2fd9a65b3f69d535d06ec5f13cfc4f74e3effe3b774e62a584419714",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ml.tex",
+      "size": 1231,
+      "sha256": "2f778adae962bd27184780ebc8f075a22f0d5d9b8235089fdad4ab6f04cc1142",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-mn-cyrl-x-lmc.tex",
+      "size": 1223,
+      "sha256": "365268856ade0363c499273fd3585f1d5fe9cdd0fb4705ed4bdd0c4d21f539a0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-mn-cyrl.tex",
+      "size": 1214,
+      "sha256": "93d1eddd54976804afc9f8ceb4d9bd472955cc3445f47031ecfe3ffc3af7e2df",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-mr.tex",
+      "size": 1223,
+      "sha256": "b22f6ba8e4e25b58eb0641ec54f398e9f11e3f394f923d986484a5c7ad4d6f23",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-mul-ethi.tex",
+      "size": 1259,
+      "sha256": "98122d76bbf7597db51c8d34557d678de5cead25eb55d17a4736596be027b284",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-nb.tex",
+      "size": 1190,
+      "sha256": "3391a46e9a38de1c515df413627ba5578c3fd330fe970192612a5652a12e5f41",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-nl.tex",
+      "size": 1156,
+      "sha256": "bcb8585191394743e5a391a211ef520b59ebdcc99846a4c0bfab7cf99070f1ef",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-nn.tex",
+      "size": 1194,
+      "sha256": "c2bbeb64f76afcf813ea2bc81da05137e02975623e01bae7fbf5b8ee3f1367dc",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-oc.tex",
+      "size": 1208,
+      "sha256": "1a316945c723748b56d74a44d6d656750c83185407fb5e66f3b0f684401862e5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-or.tex",
+      "size": 1215,
+      "sha256": "940d94d70e19ca0403a5311f7c5b3ef834542025915766b9abdf15c5788488ee",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-pa.tex",
+      "size": 1223,
+      "sha256": "e742577a3ab4fed70d0dd972d1890ff7f75659e844ffa7b99a20951b4e88da5f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-pi.tex",
+      "size": 1211,
+      "sha256": "cf13042fa65c08101e4cb6b4cbfc5da94db0d84cd4f4147979cfc9b2ed9c3ce4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-pl.tex",
+      "size": 1160,
+      "sha256": "6a0d24ab87f1b6da2d5ec92d48f26a6e9847d49c8d4b158040feef0e860831b0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-pms.tex",
+      "size": 1204,
+      "sha256": "3825f71105f9b7b51b2c4e000204970622ea6755326759867079bab74d233024",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-pt.tex",
+      "size": 1191,
+      "sha256": "87c3428d0bae37568adc07479dacbea5a4ba0bb422d52ab82fc3c8823d7c5eb8",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-rm.tex",
+      "size": 1183,
+      "sha256": "14fff5ecc58d1a7e1fa644bc79a72465821716e8afed9de7afe67a239dffae1b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ro.tex",
+      "size": 1168,
+      "sha256": "2688729d0648204273954d5ee044fe37aa0388414c1d49918727457db2749a0f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ru.tex",
+      "size": 1324,
+      "sha256": "c98ac4dfaed22d86afb806bf876641db4c7dc9b02b8e40dd265654c978bd7b81",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-sa.tex",
+      "size": 1349,
+      "sha256": "466259ac8ef63d0443f4b0ea8d2d9a9af9bfe117bf59f55fd6c448c264d918e4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-sk.tex",
+      "size": 1160,
+      "sha256": "cc5a71990cd3967880ed0bd8b8302af509f743f9d6b8cb4b92f868e0dfa45def",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-sl.tex",
+      "size": 1172,
+      "sha256": "03414b763c952ed508e7486bdaddc0745af8bb3bcdead33f767938f4feb0a9d5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-sr-cyrl.tex",
+      "size": 1317,
+      "sha256": "c53cf8518364a0a6f86c202a13127adbb5b147b5c7f7a8a595ea160f1310aed3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-sr-latn.tex",
+      "size": 1306,
+      "sha256": "7a9f055b2d900f8ced36dd2c2d3ff629aecec34be726f98682069402bf4b4c43",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-sv.tex",
+      "size": 1164,
+      "sha256": "257938b3f7233ccf186e4d66cfa1b68f27d98bddc3188a81b7d7c8e5e98102cb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-ta.tex",
+      "size": 1215,
+      "sha256": "1c55fab31c1d6642864b542b8b9acaaf1d3bd29bccea193f0f48d34279f32538",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-te.tex",
+      "size": 1219,
+      "sha256": "46e6c837db5cb8c2c14dc747fd6b5997a26a320dffa905ba3364913aca02261f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-th.tex",
+      "size": 1156,
+      "sha256": "8832d0d3991c1024760682da8c709deb27132cba44a74f9d197df8037b2f41fb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-tk.tex",
+      "size": 1179,
+      "sha256": "fa2d534858fad7b9f10b60111bc22871f51ab847f2406812a98b8920b434b037",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-tr.tex",
+      "size": 1164,
+      "sha256": "e8ff56c073a30d5e3b068313a15bafb0a12c9be609eeed483de72074d2aa54eb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-uk.tex",
+      "size": 1375,
+      "sha256": "8067154e77d85980b4010d876d23e02ce2e3b7b25751bb6603ca82ff3656f928",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "loadhyph-zh-latn-pinyin.tex",
+      "size": 1359,
+      "sha256": "eef5be5a705fa50598f5759017987f35b2e31334c5972042c446e5824900dc71",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "longtable.sty",
+      "size": 12892,
+      "sha256": "196f2a7038e1727c4088a015bf11cac88abfedc5b7ee5eca65f44ab91dbac415",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ltxcmds.sty",
+      "size": 17859,
+      "sha256": "72a45b7f07d85a66605bbec6c0f783527995722e15c3bc5963b3048b9831bbc0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "nameref.sty",
+      "size": 13242,
+      "sha256": "4a728ad40dd3708c44cb418f4a19bf0ba4f32fdbfa35ee3a5ad205352d5497b6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "omlcmm.fd",
+      "size": 2332,
+      "sha256": "64c6d721bd82e1b1d0cdae0041737e473e7ae4b6a2ef30be5a4cb58504c2bf27",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "omlenc.def",
+      "size": 1901,
+      "sha256": "1a82bddbbad0234be439dffccefc2fe26ea9216520be7f1fb888293d9bbd63a4",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "omscmsy.fd",
+      "size": 2262,
+      "sha256": "2b7223030a17cc25d00f47cc7fe8bb503049acfce8899f0ae409e79949123ae1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "omsenc.def",
+      "size": 2693,
+      "sha256": "b2ac48b774931de1988b88bcfff6076c72ba0a739420a6fdbf1378cddf2c8482",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "omxcmex.fd",
+      "size": 2040,
+      "sha256": "18ef86924d2a8f33abe9fa92aac9416e73bf9cc92b05e964535abb8ae23816fe",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ot1cmr.fd",
+      "size": 3705,
+      "sha256": "bcc3699050bd2e0c4214ba93cf28a129f63332a0dea665c2dece1f4a9a1dd57f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ot1cmss.fd",
+      "size": 3152,
+      "sha256": "b997a943a79bcad7b88db340e380d87fe4f668de544e1eb76081b929024c0165",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ot1cmtt.fd",
+      "size": 2909,
+      "sha256": "ed73ac7c8ad40924be86b895ec3bc762fb57e58963ea87d267122b98ceb9f942",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ot1enc.def",
+      "size": 4647,
+      "sha256": "3b1c1cb3b065751f28a59223c3cdcbd1639549ed5a57c960f22a033d7d4799fa",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "pd1enc.def",
+      "size": 14132,
+      "sha256": "96bf91e42bc16a4038ed9690ab4f03a7c4c7228232bb7813492a58737de4bb06",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "pdfescape.sty",
+      "size": 19007,
+      "sha256": "b3f0e56366c11b85dae521f9a48a6fd415dec1ce8c83152fde813a9f64445b49",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "pdfglyphlist.txt",
+      "size": 5117,
+      "sha256": "9d7bee92b7cfdaa6e03c7df895003145ed982be0bf6d1e78fdd5eb71bf4945aa",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "pdftex.map",
+      "size": 4408061,
+      "sha256": "16bbb011215db3c7b919e0274bf1a95dc478e6b3712b9cb478149551e0820a6d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "pdftexcmds.sty",
+      "size": 20089,
+      "sha256": "2df7e0bd148c99d8097352b8ac9948dccf91d61ba360dcf43f82206933b6045b",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "preload.cfg",
+      "size": 1982,
+      "sha256": "26b89597c49af2ab6b8fda1a3dffc5cd8edb6259a23b9b57c7892bae07b75e5c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "preload.ltx",
+      "size": 2024,
+      "sha256": "05d0c64b1212bb3e6d733290a504773f64ce030f64ee91b0daf9992f20815404",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "puenc.def",
+      "size": 117004,
+      "sha256": "69ac820f22e954a34cc9b1a24b74107366effd89a196516b58b00c89e748a677",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "pzdr.tfm",
+      "size": 1528,
+      "sha256": "6b4254217851e285d1d5c6dfe677284396eeffc59f709ad775404b76dc99d513",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "refcount.sty",
+      "size": 9878,
+      "sha256": "1bd5d42025520bef74f8808af99cf3f3be7d2e3774b9931bf85c11ba81bb6cab",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "rerunfilecheck.sty",
+      "size": 9715,
+      "sha256": "c206a966a49fe47d1c59723d116dac95994468272cda392a56cf7379519c460f",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "size11.clo",
+      "size": 8464,
+      "sha256": "efc946da03cfa55c75be27d73012ab866fcc935fd47ac4a674026bbdbdcfa9f1",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "stringenc.sty",
+      "size": 21514,
+      "sha256": "b134a7bba648a6987afc83ddfb6a3fcdad43bcae6b616e533eb484306d56ac45",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "t1cmr.fd",
+      "size": 2463,
+      "sha256": "90dce135f4859c6e3276b9a19a08b8af76457881dbf9523d2313fa23d973af7c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "t1enc.def",
+      "size": 10880,
+      "sha256": "537d0535c1eb3d4ff06f28398b4e3ec3c2a7b66d0ad046441e6856bddd6c8871",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "tectonic-format-latex.tex",
+      "size": 19,
+      "sha256": "86d8d12cfdfbe74a81b9df7c5b38a766303a772d57e7cb0d228e1e7b9294cf34",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "tex-text.tec",
+      "size": 398,
+      "sha256": "511836c4d363daffa1c789956bdb44b89ac526ef3e4215a846c313b717447d40",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "texglyphlist.txt",
+      "size": 10227,
+      "sha256": "4b11bf2dcd65b004ee2023c5392339aaf89429bef0d3ace13b7b098d108cd991",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "texsys.cfg",
+      "size": 8067,
+      "sha256": "a0986d94c81fd7ce2251695a1affc58060055ccc9430483e64a73f4aa5e53306",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "textcomp.sty",
+      "size": 2894,
+      "sha256": "8c2797b9debcbc41cc8704713a532180175396f14ea783ea9bbc12c60f21faf5",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ts1enc.def",
+      "size": 8044,
+      "sha256": "0cb1bfd59bf0af4f46eb9b48af25331a9583d186fff93810a6204ebc4cb45659",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ts1lmr.fd",
+      "size": 1914,
+      "sha256": "ecda20924242346d91d241e19c89a9a36c7423dc76b1c94e4a3d4d8b51d235d7",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "tuenc.def",
+      "size": 29098,
+      "sha256": "9893474e5e84d8015aebe5094efbc9383ad4adee1a41553f80dfc468c8e483c6",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "tulmr.fd",
+      "size": 4822,
+      "sha256": "043558fa61747653d027ba166253292ef24348c1ebe393792f5e1d93f5ed64d7",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "tulmss.fd",
+      "size": 3663,
+      "sha256": "ef1e9b4bd9b66df17293e552ecbb60401cdb8fb394e60ae79d30990d1c8297cb",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "tulmtt.fd",
+      "size": 4574,
+      "sha256": "f73aad3758a44b0bb462d99b3dad4232ef1a8fbbb31808cbfa75ca0c1f669fa2",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "ucmr.fd",
+      "size": 3680,
+      "sha256": "85f78f04e6a9625407f86d519344d3135ff5225f18ef624665a4c0b2e1befdd3",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "unicode-math-table.tex",
+      "size": 241265,
+      "sha256": "3d370b983c7bb3aa4add6bcfaa41373a3b12962ac4b3e6403810b54474ea6998",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "unicode-math-xetex.sty",
+      "size": 132064,
+      "sha256": "7b89271a7fd2f3dfe29343252c48e9290fd7a5518f25d4eee9693a086b516495",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "unicode-math.sty",
+      "size": 1474,
+      "sha256": "a3892962cdb8b63e627790614d39258d7b50f03364c079e83e33603cc9472c83",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "uniquecounter.sty",
+      "size": 7008,
+      "sha256": "9d11c81501953d689787ff14c073d2f1eda5874068db9e882b8dbbf9a9d863b0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "url.sty",
+      "size": 12796,
+      "sha256": "2373f56849ac606473e77053e5c1d14c92aba312b3f684e02a130eaf36f2de47",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xeCJK.cfg",
+      "size": 408,
+      "sha256": "d00c2b56efa858dc83077ae89cf6ca90c38fea38b568bf5082932d371ab6e928",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xeCJK.sty",
+      "size": 181053,
+      "sha256": "5b9c518115b9cca05d8eccd53f37f77f59618a771d18f8dea83a8963cf66dcb0",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xebabel.def",
+      "size": 11961,
+      "sha256": "95718f62527966b22816d91d433f5bb7baf5204e7d7cdb51275ace15bb8ed716",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xelatex.ini",
+      "size": 486,
+      "sha256": "1f0fd8f63b3244b8d56f245aae51f1003b9fe56599b9a60aa28bd1a9fb8b8628",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xkeyval.sty",
+      "size": 4902,
+      "sha256": "3e83a817c6fc8ae6a6f1572a7a56292b7185e27c5765431517206e1d808c794c",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xkeyval.tex",
+      "size": 19231,
+      "sha256": "d956774b1d33cbb50e6756a9007533d1ba7435271376251fd2f8139aa9efd623",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xkvutils.tex",
+      "size": 7677,
+      "sha256": "94b8f49361521f5d814df927422379ce74e11af372d4337df0279543c3e0615d",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xparse.sty",
+      "size": 6758,
+      "sha256": "c10bc5df2c6dc10c1e796988a4095d3a8a2728e33e0d0e7230e4a5d999d3a5ec",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xtemplate.sty",
+      "size": 47954,
+      "sha256": "c14a350598ab3f6f75d231d824324d3d3f57fff106e46dbec1aea236a5eed2da",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xunicode-addon.sty",
+      "size": 26486,
+      "sha256": "0b21183d5e8181e043ec600fedb3f32eb05832ca1c99d845643d6cc167e93c07",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "xunicode-extra.def",
+      "size": 61684,
+      "sha256": "1098d30219a7cf9a1ea06767714d04d3d5f8f0ff38532da2c77c838dbb5acbba",
+      "source": "tectonic-bundle"
+    },
+    {
+      "name": "zerohyph.tex",
+      "size": 402,
+      "sha256": "80b6e5b7ff3bcd2ff1d32599f9fcd7d3aa40a4c67aa06f72527dd6eb741b551c",
+      "source": "tectonic-bundle"
+    }
+  ]
+}

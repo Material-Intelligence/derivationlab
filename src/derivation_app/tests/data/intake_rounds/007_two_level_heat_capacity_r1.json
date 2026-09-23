@@ -1,0 +1,135 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0004.jsonl line 27",
+  "captured": "2026-09-04",
+  "provenance": {
+    "recorded_at": "2026-09-04T00:01:00Z",
+    "intake_session_id": "intake_corpus_004",
+    "round_number": 1,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": "gpt-5.6-sol",
+    "payload_sha256_prefix": "78eb6e6d0461"
+  },
+  "payload": {
+    "public_summary": "The specification is scientifically executable. The resolved model is N independent localized two-state units, each with nondegenerate energies 0 and Δ, so the derivation will produce Z_N=(1+e^{-βΔ})^N and the corresponding mean energy and heat capacity per particle.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Derive the canonical thermodynamics of N independent localized two-state units.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "Obtain the N-unit canonical partition function, mean energy per particle, and heat capacity per particle as explicit functions of temperature T and level spacing Δ.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "Each localized unit has two nondegenerate states with energies 0 and Δ, where Δ>0. The N units are distinguishable, independent, and in canonical equilibrium.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use β=1/(k_B T), retain k_B explicitly, denote the total mean energy by U, and define the internal heat capacity by C=dU/dT.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "Use exact canonical Boltzmann weights for T>0. Because the units are independent, the N-unit partition function factorizes into the Nth power of the single-unit partition function. Temperature limits may be evaluated by continuity.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "Include only the two internal levels. Exclude interactions, quantum exchange between units, translational motion, extra degeneracies or degrees of freedom, and any external-field or temperature dependence of Δ.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "Construct the single-unit partition function and the factorized N-unit partition function Z_N=(1+e^{-βΔ})^N, then derive closed-form expressions for U/N and C/N as functions of T, Δ, and k_B.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The expressions must be dimensionally consistent and give C/N≥0, U/N→0 and C/N→0 as T→0, and U/N→Δ/2 and C/N→0 as T→∞.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "The derivation agent may use exponential or hyperbolic-function forms, may derive observables through derivatives of ln Z_N or direct probabilities, and may include low- and high-temperature checks.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_004a",
+      "event_corpus_004b"
+    ],
+    "questions": [],
+    "declared_defaults": [
+      {
+        "default_id": "explicit_boltzmann_constant",
+        "decision_class": "convention",
+        "title": "Thermal units",
+        "statement": "Retain k_B explicitly and define β=1/(k_B T).",
+        "rationale": "This preserves physical dimensions and is immediately translatable to units with k_B=1.",
+        "alternatives": [
+          "Set k_B=1",
+          "Use β as the sole temperature variable"
+        ]
+      },
+      {
+        "default_id": "internal_heat_capacity_definition",
+        "decision_class": "convention",
+        "title": "Heat-capacity notation",
+        "statement": "Interpret heat capacity as C=dU/dT for the internal two-level energy, equivalently C_V when volume is fixed.",
+        "rationale": "The stated model contains no volume-dependent energy.",
+        "alternatives": [
+          "Write C_V explicitly",
+          "Report molar heat capacity"
+        ]
+      },
+      {
+        "default_id": "exact_finite_temperature_weights",
+        "decision_class": "approximation_level",
+        "title": "Temperature treatment",
+        "statement": "Use exact finite-temperature Boltzmann factors over both levels.",
+        "rationale": "The full requested temperature dependence is available in closed form without asymptotic approximation.",
+        "alternatives": [
+          "Low-temperature approximation",
+          "High-temperature expansion",
+          "Zero-temperature occupation only"
+        ]
+      },
+      {
+        "default_id": "equivalent_algebraic_form",
+        "decision_class": "convention",
+        "title": "Expression form",
+        "statement": "Treat exponential and hyperbolic-function forms as equivalent representations of the thermodynamic functions.",
+        "rationale": "These forms are algebraically interchangeable and encode identical physics.",
+        "alternatives": [
+          "Exponential form only",
+          "Hyperbolic-function form only"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Exact independent two-level result",
+        "relaxes": "Baseline and final rung; it relaxes nothing and directly supplies the exact full-temperature deliverable for independent localized two-state units.",
+        "default_ids": [
+          "explicit_boltzmann_constant",
+          "internal_heat_capacity_definition",
+          "exact_finite_temperature_weights",
+          "equivalent_algebraic_form"
+        ],
+        "decision_ids": [
+          "particle_realization"
+        ],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": true
+  }
+}

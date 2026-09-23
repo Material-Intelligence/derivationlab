@@ -1,0 +1,2040 @@
+{
+  "schema_version": "formula-engine-whitelist-v1",
+  "engine": {
+    "version": "0.17.0",
+    "target": "darwin-arm64",
+    "binary_sha256": "b52b5a730e2b0b33087304f7720f649603953f270a6b1c88bb031e1ae01f7f9c",
+    "bundle_sha256": "29c5072c80211e5928d67d7a188e345d9c4b248e144cd049816a83b4d1b891ae",
+    "lock_sha256": "2e456756718d22a7f4a6e3fb6939a54eddef0ef5f4185566b11502f4289fbf41"
+  },
+  "preamble_sha256": "3a517c7326ae320913d17efa05711c399dc5e3b6ffd8dd40afa818f8109777ca",
+  "supported": {
+    "Big": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "Bigg": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "Biggl": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "Biggr": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "Bigl": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "Bigr": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "Delta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Downarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Gamma": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Im": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Lambda": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Leftarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Leftrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Longleftarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Longleftrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Longrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Omega": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Phi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Pi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Pr": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Psi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Re": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Rightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Sigma": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Theta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Uparrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Updownarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Upsilon": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Vert": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "Xi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "acute": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "alpha": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "approx": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "arccos": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "arcsin": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "arctan": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "arg": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ast": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "asymp": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bar": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "because": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "begin": [
+      "begin_env"
+    ],
+    "beta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bf": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "big": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "bigcap": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigcup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigg": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "biggl": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "biggr": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "bigl": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "bigodot": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigoplus": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigotimes": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigr": [
+      "opt_arg",
+      "delim",
+      "middle_pair"
+    ],
+    "bigsqcup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigtriangledown": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigtriangleup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "biguplus": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigvee": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "bigwedge": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "boldsymbol": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "bowtie": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "boxed": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "breve": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "bullet": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cal": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cap": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cdot": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cdots": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "check": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "chi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "circ": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cong": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "coprod": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cos": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cosh": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cot": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "coth": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "csc": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "cup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "dagger": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "dashv": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ddagger": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ddddot": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "dddot": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "ddot": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "deg": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "delta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "det": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "dfrac": [
+      "arg2"
+    ],
+    "dim": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "displaystyle": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "div": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "dot": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "downarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ell": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "emptyset": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "end": [
+      "end_env"
+    ],
+    "enspace": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "epsilon": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "equiv": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "eta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "exists": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "exp": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "forall": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "frac": [
+      "arg2"
+    ],
+    "frown": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "gamma": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "gcd": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ge": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "geq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "gets": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "gg": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "grave": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "hat": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "hbar": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "hom": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "hookleftarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "hookrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "hspace": [
+      "length_arg"
+    ],
+    "iiiint": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "iiint": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "iint": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "imath": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "in": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "inf": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "infty": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "int": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "iota": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "jmath": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "kappa": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ker": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lVert": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lambda": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "land": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "langle": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lceil": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ldots": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "le": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "left": [
+      "left_pair"
+    ],
+    "leftarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "leftharpoondown": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "leftharpoonup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "leftrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "leq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lfloor": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lim": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "liminf": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "limsup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ll": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ln": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "log": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "longleftarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "longleftrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "longmapsto": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "longrightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lor": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "lvert": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "mapsto": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "mathbb": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathbf": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathcal": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathfrak": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathit": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathring": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathrm": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathscr": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathsf": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "mathtt": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "max": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "medspace": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "mid": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "middle": [
+      "middle_pair"
+    ],
+    "min": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "models": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "mp": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "mu": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "nabla": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ne": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "nearrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "neg": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "neq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "nexists": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ni": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "nmid": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "not": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "notin": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "nu": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "nwarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "odot": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "oint": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "omega": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "omicron": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "ominus": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "operatorname": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "operatornamewithlimits": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "oplus": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "oslash": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "otimes": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "overbrace": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "overline": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "overset": [
+      "arg2"
+    ],
+    "parallel": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "partial": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "perp": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "phi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "pi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "pm": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "prec": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "preceq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "prod": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "propto": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "psi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "qquad": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "quad": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rVert": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rangle": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rceil": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rfloor": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rho": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "right": [
+      "right_pair"
+    ],
+    "rightarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rightharpoondown": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rightharpoonup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rightleftharpoons": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rm": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "rvert": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "scriptscriptstyle": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "scriptstyle": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "searrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sec": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "setminus": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sigma": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sim": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "simeq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sin": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sinh": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "smile": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sqcap": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sqcup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sqrt": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "sqsubset": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sqsubseteq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sqsupset": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sqsupseteq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "star": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "subset": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "subseteq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "substack": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "succ": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "succeq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sum": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "sup": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "supset": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "supseteq": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "swarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "tan": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "tanh": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "tau": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "text": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "textit": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "textstyle": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "tfrac": [
+      "arg2"
+    ],
+    "therefore": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "theta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "thickspace": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "thinspace": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "tilde": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "times": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "to": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "triangleleft": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "triangleright": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "underbrace": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "underline": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "underset": [
+      "arg2"
+    ],
+    "uparrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "updownarrow": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "uplus": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "upsilon": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "varepsilon": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "varnothing": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "varphi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "varpi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "varrho": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "varsigma": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "vartheta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "vdash": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "vec": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "vee": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "vert": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "wedge": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "widehat": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "widetilde": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "wp": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "wr": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "xi": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ],
+    "xrightarrow": [
+      "arg1",
+      "arg2",
+      "space_arg"
+    ],
+    "zeta": [
+      "bare",
+      "arg1",
+      "arg2",
+      "space_arg",
+      "sub"
+    ]
+  },
+  "control_symbols": [
+    " ",
+    "!",
+    "$",
+    "&",
+    ",",
+    "/",
+    ":",
+    ";",
+    "\\",
+    "_",
+    "{",
+    "|",
+    "}"
+  ],
+  "environments": [
+    "Vmatrix",
+    "aligned",
+    "alignedat",
+    "array",
+    "bmatrix",
+    "cases",
+    "gathered",
+    "matrix",
+    "pmatrix",
+    "smallmatrix",
+    "split",
+    "vmatrix"
+  ],
+  "unsafe_excluded": [
+    "batchmode",
+    "catcode",
+    "csname",
+    "def",
+    "directlua",
+    "documentclass",
+    "dump",
+    "edef",
+    "endcsname",
+    "enddocument",
+    "endinput",
+    "errorstopmode",
+    "everydisplay",
+    "everyjob",
+    "everymath",
+    "expandafter",
+    "font",
+    "futurelet",
+    "gdef",
+    "global",
+    "hbox",
+    "immediate",
+    "include",
+    "input",
+    "let",
+    "loop",
+    "luaexec",
+    "newcommand",
+    "newenvironment",
+    "noexpand",
+    "nonstopmode",
+    "openin",
+    "openout",
+    "providecommand",
+    "read",
+    "renewcommand",
+    "renewenvironment",
+    "repeat",
+    "scantokens",
+    "scrollmode",
+    "shipout",
+    "special",
+    "stop",
+    "usepackage",
+    "vbox",
+    "write",
+    "xdef"
+  ]
+}

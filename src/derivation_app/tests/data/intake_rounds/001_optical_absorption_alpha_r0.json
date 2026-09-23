@@ -1,0 +1,341 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0001.jsonl line 10",
+  "captured": "2026-09-02",
+  "provenance": {
+    "recorded_at": "2026-09-02T00:00:00Z",
+    "intake_session_id": "intake_corpus_001",
+    "round_number": 0,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": null,
+    "payload_sha256_prefix": "5a774517373f"
+  },
+  "payload": {
+    "public_summary": "The intake is not yet scientifically executable. One frontier round is used to settle the blocking choices that determine the deliverable, the allowed DFT starting data, the optical physics included, and whether the target is a bulk absorption coefficient or a lower-dimensional optical observable.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Derive how optical absorption varies with photon energy, starting from quantities obtainable from an ordinary DFT calculation.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "A derivation connecting DFT-accessible electronic structure data to an optical absorption observable as a function of photon energy. The exact observable and deliverable remain blocked by unresolved problem-class choices.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "The authoritative user statement is: start from results obtainable from an ordinary DFT calculation and derive the dependence of optical absorption on photon energy.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use standard condensed-matter optical-response notation: photon energy as ħω, band energies as E_n(k), occupations as f_n(k), and optical response expressed through the dielectric/response-function route by default unless later refined.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "Pending user decisions, the baseline working regime is direct optical response from Kohn-Sham electronic structure in the independent-particle picture for a bulk periodic solid.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "The current baseline excludes many-body corrections and auxiliary effects unless the user explicitly requires them. Exact scope is still blocked by unresolved physics-inclusion choices.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "A derivation specification with a refinement ladder from a textbook baseline to the user-required final optical-absorption formulation, starting from ordinary DFT outputs.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The final specification must produce a scientifically coherent derivation whose inputs are obtainable within the permitted DFT starting point and whose final observable matches the user-selected optical target and physics scope.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "All non-blocking conventions and approximation-level choices default to the simplest baseline compatible with the user's answers, and may later be upgraded along the refinement ladder.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_001a"
+    ],
+    "questions": [
+      {
+        "question_id": "q1_deliverable_scope",
+        "decision_id": "d1_deliverable_scope",
+        "semantic_key": "deliverable_scope",
+        "title": "Deliverable Type",
+        "prompt": "What derivation do you want as the final deliverable?",
+        "why_needed": "The requested output could be a formal textbook derivation or a DFT-to-computation recipe, and that changes the target deliverable.",
+        "why_it_matters": "This determines whether the derivation ends at a symbolic absorption formula or at a workflow that explicitly maps DFT outputs into computable optical spectra.",
+        "decision_class": "problem",
+        "answer_mode": "choice_with_text",
+        "options": [
+          {
+            "option_id": "formal_only",
+            "label": "Formal derivation (Recommended)",
+            "impact": "Ends with the analytical relation for the absorption observable in terms of DFT quantities, without implementation details."
+          },
+          {
+            "option_id": "formal_plus_workflow",
+            "label": "Derivation plus workflow",
+            "impact": "Also requires an explicit computational route from DFT outputs to the plotted absorption spectrum."
+          },
+          {
+            "option_id": "implementation_focused",
+            "label": "Workflow-focused",
+            "impact": "Prioritizes the practical post-processing pipeline over a full symbolic derivation."
+          }
+        ],
+        "recommended_option_ids": [
+          "formal_only"
+        ],
+        "recommendation_reason": "The user's wording asks to derive the relation from ordinary DFT results, which most directly matches a formal derivation baseline.",
+        "allow_custom": true,
+        "depends_on": [],
+        "blocking": true,
+        "grounded_in": "The user asked to derive the relation from ordinary DFT outputs, but did not specify whether the endpoint is purely analytical or also computational."
+      },
+      {
+        "question_id": "q2_allowed_dft_inputs",
+        "decision_id": "d2_allowed_dft_inputs",
+        "semantic_key": "allowed_dft_inputs",
+        "title": "Allowed DFT Outputs",
+        "prompt": "Which outputs count as 'ordinary DFT results' for this derivation?",
+        "why_needed": "The explicit starting-point constraint must be fixed because different allowed inputs lead to different derivation routes.",
+        "why_it_matters": "If only eigenvalues and occupations are allowed, the derivation is more limited than if Kohn-Sham orbitals and optical matrix elements from the same DFT run are also allowed.",
+        "decision_class": "problem",
+        "answer_mode": "choice_with_text",
+        "options": [
+          {
+            "option_id": "ks_full",
+            "label": "Eigenvalues, orbitals, occupations (Recommended)",
+            "impact": "Allows the standard independent-particle optical derivation using Kohn-Sham states and transition matrix elements."
+          },
+          {
+            "option_id": "eigenvalues_only",
+            "label": "Eigenvalues only",
+            "impact": "Restricts the derivation to a much narrower or model-based route and may prevent a first-principles absorption formula."
+          },
+          {
+            "option_id": "plus_optical_elements",
+            "label": "Include optical matrix elements",
+            "impact": "Treats dipole/velocity matrix elements obtainable in standard DFT optics post-processing as allowed starting data."
+          }
+        ],
+        "recommended_option_ids": [
+          "ks_full"
+        ],
+        "recommendation_reason": "A first-principles derivation of optical absorption normally requires Kohn-Sham states beyond eigenvalues alone, while still staying within ordinary DFT outputs.",
+        "allow_custom": true,
+        "depends_on": [],
+        "blocking": true,
+        "grounded_in": "The phrase 'results obtainable from ordinary DFT' is explicit but scientifically ambiguous about which DFT-accessible quantities are permitted."
+      },
+      {
+        "question_id": "q3_physics_scope",
+        "decision_id": "d3_physics_scope",
+        "semantic_key": "physics_scope",
+        "title": "Included Physics",
+        "prompt": "Which optical-absorption physics must be included in the derivation?",
+        "why_needed": "This decides the physical content of the derivation and therefore which terms and theory must appear.",
+        "why_it_matters": "Including only independent-particle interband absorption leads to a different derivation than including intraband, excitonic, or phonon-assisted processes.",
+        "decision_class": "problem",
+        "answer_mode": "multi_choice",
+        "options": [
+          {
+            "option_id": "interband_ip",
+            "label": "Interband independent-particle (Recommended)",
+            "impact": "Uses the standard Kohn-Sham independent-particle optical response as the baseline absorption mechanism."
+          },
+          {
+            "option_id": "intraband",
+            "label": "Intraband/Drude",
+            "impact": "Adds free-carrier absorption terms relevant for metals or doped systems."
+          },
+          {
+            "option_id": "excitonic",
+            "label": "Excitonic effects",
+            "impact": "Requires going beyond ordinary independent-particle DFT optics."
+          },
+          {
+            "option_id": "phonon_assisted",
+            "label": "Phonon-assisted transitions",
+            "impact": "Adds indirect absorption processes beyond simple vertical transitions."
+          }
+        ],
+        "recommended_option_ids": [
+          "interband_ip"
+        ],
+        "recommendation_reason": "Ordinary DFT most naturally supports the independent-particle interband route; the other options require additional physics beyond that baseline.",
+        "allow_custom": true,
+        "depends_on": [],
+        "blocking": true,
+        "grounded_in": "The user asked for optical absorption from DFT, but did not specify whether to include only the baseline interband response or additional mechanisms."
+      },
+      {
+        "question_id": "q4_system_dimensionality",
+        "decision_id": "d4_system_dimensionality",
+        "semantic_key": "system_dimensionality",
+        "title": "Optical Observable",
+        "prompt": "Is the target system a 3D bulk solid, or do you want the derivation for a lower-dimensional material?",
+        "why_needed": "The target observable changes with dimensionality because bulk materials use an absorption coefficient while 2D systems often use absorbance or sheet conductivity.",
+        "why_it_matters": "This changes the final quantity to be derived and the conversion from the optical response function to the experimentally reported absorption measure.",
+        "decision_class": "problem",
+        "answer_mode": "single_choice",
+        "options": [
+          {
+            "option_id": "bulk_3d",
+            "label": "3D bulk coefficient (Recommended)",
+            "impact": "Derives the conventional bulk absorption coefficient α(ħω)."
+          },
+          {
+            "option_id": "2d_sheet",
+            "label": "2D material",
+            "impact": "Shifts the target toward absorbance or sheet optical response rather than a bulk coefficient."
+          },
+          {
+            "option_id": "1d_or_other",
+            "label": "1D or other geometry",
+            "impact": "Requires a different optical observable and normalization."
+          }
+        ],
+        "recommended_option_ids": [
+          "bulk_3d"
+        ],
+        "recommendation_reason": "The user explicitly named the absorption coefficient, which is the standard bulk 3D observable.",
+        "allow_custom": true,
+        "depends_on": [],
+        "blocking": true,
+        "grounded_in": "The user's target quantity is 'absorption coefficient', but that is not the natural observable for all dimensionalities."
+      }
+    ],
+    "declared_defaults": [
+      {
+        "default_id": "def_conv_units",
+        "decision_class": "convention",
+        "title": "Unit system",
+        "statement": "Default to SI-compatible final expressions.",
+        "rationale": "The choice is interchangeable and does not change the physics or deliverable.",
+        "alternatives": [
+          "Gaussian units",
+          "atomic units throughout"
+        ]
+      },
+      {
+        "default_id": "def_conv_gauge",
+        "decision_class": "convention",
+        "title": "Optical matrix-element form",
+        "statement": "Default to the velocity or momentum-matrix-element route, translated as needed to equivalent dipole forms.",
+        "rationale": "Gauge/form choice is a translatable convention and should not block intake.",
+        "alternatives": [
+          "length-gauge dipole form",
+          "explicit momentum form only"
+        ]
+      },
+      {
+        "default_id": "def_conv_lineshape",
+        "decision_class": "convention",
+        "title": "Line shape",
+        "statement": "Default to an ideal delta-function spectrum at the baseline rung.",
+        "rationale": "Broadening choice is a non-blocking convention/approximation owned by the derivation ladder.",
+        "alternatives": [
+          "Lorentzian broadening",
+          "Gaussian broadening"
+        ]
+      },
+      {
+        "default_id": "def_conv_response_route",
+        "decision_class": "convention",
+        "title": "Response conversion route",
+        "statement": "Default to deriving Im ε(ω) first and then converting to the absorption observable.",
+        "rationale": "The route through equivalent response quantities is interchangeable and standard.",
+        "alternatives": [
+          "conductivity-first route",
+          "susceptibility-first route"
+        ]
+      },
+      {
+        "default_id": "def_conv_real_part_source",
+        "decision_class": "convention",
+        "title": "Real dielectric part",
+        "statement": "Default to obtaining the real part from the imaginary part by the standard dispersive relation when needed.",
+        "rationale": "This is a standard convention and does not change the scientific scope.",
+        "alternatives": [
+          "direct independent expression for Re ε",
+          "external optical-model input"
+        ]
+      },
+      {
+        "default_id": "def_app_band_model",
+        "decision_class": "approximation_level",
+        "title": "Electronic-structure level",
+        "statement": "Default baseline to general Bloch bands from Kohn-Sham DFT rather than reducing to a two-band effective model.",
+        "rationale": "The user explicitly wants to start from ordinary DFT outputs, so the baseline should stay in the DFT band picture.",
+        "alternatives": [
+          "parabolic two-band model",
+          "Kane model"
+        ]
+      },
+      {
+        "default_id": "def_app_matrix_element",
+        "decision_class": "approximation_level",
+        "title": "Matrix-element complexity",
+        "statement": "Default to allowing k-dependent transition matrix elements.",
+        "rationale": "Ordinary DFT optics naturally provides state-dependent matrix elements; a constant element can appear as a lower-complexity rung if useful.",
+        "alternatives": [
+          "constant matrix element"
+        ]
+      },
+      {
+        "default_id": "def_app_broadening",
+        "decision_class": "approximation_level",
+        "title": "Spectral broadening level",
+        "statement": "Default baseline uses an ideal delta function, with finite broadening as a higher refinement.",
+        "rationale": "This is the textbook-simplest starting point and does not need user resolution now.",
+        "alternatives": [
+          "constant broadening",
+          "state-dependent lifetime"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Textbook Independent-Particle Bulk Baseline",
+        "relaxes": "Nothing below it; this is the simplest baseline compatible with the current intake.",
+        "default_ids": [
+          "def_conv_units",
+          "def_conv_gauge",
+          "def_conv_lineshape",
+          "def_conv_response_route",
+          "def_conv_real_part_source",
+          "def_app_band_model",
+          "def_app_matrix_element",
+          "def_app_broadening"
+        ],
+        "decision_ids": [],
+        "parallel_branch": false
+      },
+      {
+        "rung": 1,
+        "name": "User-Resolved Final Derivation",
+        "relaxes": "Resolves the blocked problem choices for deliverable type, permitted DFT starting data, included optical physics, and target optical observable relative to rung 0.",
+        "default_ids": [],
+        "decision_ids": [
+          "d1_deliverable_scope",
+          "d2_allowed_dft_inputs",
+          "d3_physics_scope",
+          "d4_system_dimensionality"
+        ],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": false
+  }
+}

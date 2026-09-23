@@ -1,0 +1,135 @@
+{
+  "mode": "advance",
+  "source": "recorded codex app-server intake round (DerivationLab); session file, session, event ids and timestamp replaced by stand-ins: rollout-synthetic-0003.jsonl line 10",
+  "captured": "2026-09-04",
+  "provenance": {
+    "recorded_at": "2026-09-04T00:00:00Z",
+    "intake_session_id": "intake_corpus_003",
+    "round_number": 0,
+    "prompt_version": "intake-grill-v3",
+    "schema_version": "intake-session-v3",
+    "model": "gpt-5.4",
+    "payload_sha256_prefix": "0eff21a624e6"
+  },
+  "payload": {
+    "public_summary": "The request is scientifically executable as stated: derive and check that differentiating x^2 with respect to x gives 2x. No blocking scientific ambiguities remain, so no frontier questions are needed this round.",
+    "specification_sections": [
+      {
+        "name": "purpose",
+        "content": "Produce a self-contained derivation showing that d(x^2)/dx = 2x, and include an explicit check of the result.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scientific_target",
+        "content": "The target quantity is the derivative of the function f(x)=x^2 with respect to x, with the result to be shown as 2x.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "givens_and_starting_point",
+        "content": "Given the user-specified function f(x)=x^2. Start from the textbook definition of the derivative with respect to x and carry out the algebra explicitly.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "notation_and_conventions",
+        "content": "Use standard calculus notation d(x^2)/dx and f'(x). Treat x as a real variable and h as the increment in the difference quotient.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "assumptions_and_regime",
+        "content": "Work in ordinary single-variable real calculus, at generic x where the derivative is defined. No distributional, complex-analytic, or numerical-approximation framework is required.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "scope_and_non_goals",
+        "content": "Scope: one elementary derivation and one explicit verification. Non-goals: extending to x^n, proving general power rules, or discussing alternative formalisms unless needed briefly for the check.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "required_output",
+        "content": "A checked derivation that explicitly differentiates x^2 with respect to x and concludes 2x, with the check stated in the output.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "validation_criteria",
+        "content": "The derivation must use valid algebra from the derivative definition, take the h->0 limit correctly, and include an explicit verification that the obtained derivative is 2x.",
+        "not_applicable_reason": null
+      },
+      {
+        "name": "agent_discretion",
+        "content": "The derivation agent may choose the specific check format, such as a direct substitution back into the difference quotient or a brief independent consistency check via the standard power rule, while keeping the main derivation elementary.",
+        "not_applicable_reason": null
+      }
+    ],
+    "critical_message_refs": [
+      "event_corpus_003a"
+    ],
+    "questions": [],
+    "declared_defaults": [
+      {
+        "default_id": "default_conv_1",
+        "decision_class": "convention",
+        "title": "Standard real-calculus notation",
+        "statement": "Use standard single-variable real-calculus notation d/dx and f'(x).",
+        "rationale": "This is fully interchangeable notation and does not change the physics or deliverable.",
+        "alternatives": [
+          "Leibniz-only notation",
+          "prime-only notation",
+          "operator-only notation"
+        ]
+      },
+      {
+        "default_id": "default_approx_1",
+        "decision_class": "approximation_level",
+        "title": "Textbook baseline derivation route",
+        "statement": "Use the textbook-simplest route: the derivative definition via the difference quotient.",
+        "rationale": "This is the lowest refinement rung compatible with the requested checked derivation.",
+        "alternatives": [
+          "Assume the power rule directly",
+          "use an infinitesimal-style derivation",
+          "use a geometric tangent argument"
+        ]
+      },
+      {
+        "default_id": "default_approx_2",
+        "decision_class": "approximation_level",
+        "title": "Real-variable regime",
+        "statement": "Treat x as a real variable in ordinary elementary calculus.",
+        "rationale": "No user-stated constraint requires a broader regime, and this is the standard baseline for the requested result.",
+        "alternatives": [
+          "Complex-variable treatment",
+          "distributional treatment",
+          "numerical finite-difference treatment"
+        ]
+      },
+      {
+        "default_id": "default_approx_3",
+        "decision_class": "approximation_level",
+        "title": "Direct explicit check",
+        "statement": "Include a brief explicit verification of the result after the main derivation.",
+        "rationale": "The user explicitly requested a checked derivation, and a direct check satisfies that requirement at minimal complexity.",
+        "alternatives": [
+          "No separate check",
+          "check only by citing a known rule",
+          "graphical consistency check"
+        ]
+      }
+    ],
+    "refinement_ladder": [
+      {
+        "rung": 0,
+        "name": "Elementary checked derivative of x^2",
+        "relaxes": "None; baseline textbook derivation and explicit check already match the required deliverable.",
+        "default_ids": [
+          "default_conv_1",
+          "default_approx_1",
+          "default_approx_2",
+          "default_approx_3"
+        ],
+        "decision_ids": [],
+        "parallel_branch": false
+      }
+    ],
+    "reopen_requests": [],
+    "candidate_ready": true
+  }
+}

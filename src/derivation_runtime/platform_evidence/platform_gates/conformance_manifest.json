@@ -1,0 +1,122 @@
+{
+  "schema_version": "derivation-platform-conformance-v1",
+  "codex_version": "0.147.0",
+  "app_server_transport": "stdio_jsonl",
+  "permission_profile": "strict_run_workspace",
+  "policy": {
+    "unsupported_platform_action": "deny_model_turns",
+    "credential_store_auto_allowed": false,
+    "shell_command_launch_allowed": false,
+    "linux_or_windows_downgrade_allowed": false
+  },
+  "checks": [
+    {
+      "id": "app_server_initialize",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "App Server initializes over stdio JSONL and reports the pinned platform and version.",
+      "pass_condition": "initialize succeeds; platform and version match the host contract"
+    },
+    {
+      "id": "sandbox_activation",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "The required native sandbox can actually enter its strongest supported mode.",
+      "pass_condition": "no sandbox setup warning or fallback; requested policy is enforceable"
+    },
+    {
+      "id": "workspace_read",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "A sandboxed command reads a fixture inside the run workspace.",
+      "pass_condition": "expected fixture bytes are returned"
+    },
+    {
+      "id": "workspace_write",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "A sandboxed command writes only inside the run workspace.",
+      "pass_condition": "expected output exists inside workspace and nowhere else"
+    },
+    {
+      "id": "adjacent_read_denied",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "A sandboxed command cannot read a sibling sentinel outside the workspace.",
+      "pass_condition": "non-zero command result with an OS permission denial"
+    },
+    {
+      "id": "symlink_escape_denied",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "A link created inside the workspace cannot expose a target outside it.",
+      "pass_condition": "read and write through the link are denied"
+    },
+    {
+      "id": "windows_junction_escape_denied",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["windows"],
+      "semantics": "A Windows junction or reparse point cannot expose a target outside the workspace.",
+      "pass_condition": "read and write through the junction are denied in elevated sandbox mode"
+    },
+    {
+      "id": "network_off",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "Sandboxed scientific commands have no outbound network access.",
+      "pass_condition": "direct TCP attempt is denied by the sandbox"
+    },
+    {
+      "id": "python_sympy",
+      "required": true,
+      "model_turn_prerequisite": true,
+      "phase": "no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "The pinned immutable Python runtime imports SymPy and solves the same expression.",
+      "pass_condition": "SymPy version and deterministic roots match the locked fixture"
+    },
+    {
+      "id": "account_persistence",
+      "required": true,
+      "model_turn_prerequisite": false,
+      "phase": "credential_no_model",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "An explicit keyring or file credential store remains logged in after App Server restart.",
+      "pass_condition": "account/read remains authenticated without reading or printing tokens"
+    },
+    {
+      "id": "restart_resume",
+      "required": true,
+      "model_turn_prerequisite": false,
+      "phase": "capped_real_subscription",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "A completed thread is resumed after process restart without losing branch context.",
+      "pass_condition": "thread/read and thread/resume recover the recorded completed turn"
+    },
+    {
+      "id": "fork_completed_node",
+      "required": true,
+      "model_turn_prerequisite": false,
+      "phase": "capped_real_subscription",
+      "applies_to": ["macos", "linux", "windows"],
+      "semantics": "A fork from a completed turn creates a new thread with the correct ancestry.",
+      "pass_condition": "thread/fork succeeds only for the completed lastTurnId and ancestry matches Record"
+    }
+  ]
+}

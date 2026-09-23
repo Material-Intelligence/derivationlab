@@ -1,0 +1,55 @@
+{
+  "provenance": "synthetic: written by hand for this test in the shape of a Checker failure (ancestor quotes of the decoded step text compared against the JSON-encoded step). Nothing here was captured from a run: the task, the step, the Checker output, the reference, the identifiers, the timestamp and the digests are all invented.",
+  "task_id": "task_synthetic_decoded_quote",
+  "task_text": "# Toy problem cubic_expansion_readback:v1\n\n## Objective\n\nExpand (a-b)^3, then differentiate the expansion with respect to a, and show one bounded read of the stand-in reference.\n\n## Givens\n\n- a and b are real scalars; b is held fixed.\n- Part one: read one line of the stand-in reference with source_read and quote it with its source_id, digest and line number; expand (a-b)**3 with scientific_compute; answer continue. Part two: differentiate with respect to a, verify the result, and answer complete.\n\n## Accepted assumptions\n\n- The quoted line only shows that the reference can be read; the algebra does not rest on it.\n\n## Scope\n\nTwo algebraic stages and one short read of the stand-in reference. Nothing physical is claimed.\n\n## Required deliverable\n\nBoth algebraic results as returned by scientific_compute, and the quoted reference line with its source_id, digest and line number.\n\n## Allowed tools\n\n- scientific_compute\n\n## Allowed references\n\n- 10.0000/synthetic.0001 — A stand-in reference (synthetic)\n\n## Success criteria\n\n- Both algebraic stages are established.\n- The reference line is quoted exactly.\n- The Writer takes at least two model calls.\n\n## Source pack binding\n\n- id: synthetic-stand-in\n- version: 1\n- sha256: 031303b9b8c0d7a79bd2eaff285fbc241bd4229b1790ff359d1f45a4776aa3d4",
+  "task_sha256": "72588e8e5211cd6df1e6d2cbc533a87769589bd654f6c222ab02b17fe7fc8923",
+  "step": {
+    "branch_id": "br_0001",
+    "content": {
+      "claim": "With b held fixed, the cubic expands as (a-b)^3 = a^3 - 3a^2 b + 3a b^2 - b^3. The stand-in reference was read once as the task asks: source_id src_synthetic_0001, sha256 09be63b7d4469ddfcbf7887279971f6a9f497f5d1f5306bdca6aae2133119463, line 12, \"\\subsection{Notation}\".",
+      "derivation": "Write (a-b)^3 = (a-b)(a-b)^2 = (a-b)(a^2 - 2ab + b^2). Distributing gives a^3 - 2a^2 b + a b^2 - a^2 b + 2a b^2 - b^3, and collecting like terms gives a^3 - 3a^2 b + 3a b^2 - b^3, the same as the symbolic result.",
+      "scope": "Only part one is done here: the expansion and the single reference read. Differentiation with respect to a is left for part two, and nothing physical is asserted.",
+      "source": "Reference read: 10.0000/synthetic.0001, source_id src_synthetic_0001, sha256 09be63b7d4469ddfcbf7887279971f6a9f497f5d1f5306bdca6aae2133119463, line 12, text \"\\subsection{Notation}\". Expansion: scientific_compute(expression=\"(a-b)**3\", operation=\"expand\") returned \"a**3 - 3*a**2*b + 3*a*b**2 - b**3\".",
+      "why": "The reference line is quoted to show a bounded read, not to support the algebra, which rests on the binomial expansion and the exact output of scientific_compute."
+    },
+    "origin": {
+      "human_action_id": null,
+      "kind": "model",
+      "model_call_id": "call_0001"
+    },
+    "output_sha256": "37e90734623f5fa79adcb918e30e660304a5fe0b17d5bd1f75583b084e8101ec",
+    "replaces_step_revision_id": null,
+    "revision": 1,
+    "step_revision_id": "step_0001",
+    "step_slot": 1,
+    "sealed_event_id": "evt_00000009",
+    "sealed_at": "2026-01-15T12:00:00Z"
+  },
+  "checker_raw_output": "{\"verdict\":\"ok\",\"reason\":\"Part one is complete: the reference line is quoted with its source_id, digest and line number, the cubic is expanded exactly, and differentiation is left to part two as the task asks.\",\"evidence\":[{\"kind\":\"task_constraint_quote\",\"source_id\":\"task_synthetic_decoded_quote\",\"quote\":\"Part one: read one line of the stand-in reference with source_read and quote it with its source_id, digest and line number; expand (a-b)**3 with scientific_compute; answer continue.\"},{\"kind\":\"literature_quote\",\"source_id\":\"src_synthetic_0001\",\"quote\":\"\\\\subsection{Notation}\"},{\"kind\":\"ancestor_quote\",\"source_id\":\"step_0001\",\"quote\":\"Expansion: scientific_compute(expression=\\\"(a-b)**3\\\", operation=\\\"expand\\\") returned \\\"a**3 - 3*a**2*b + 3*a*b**2 - b**3\\\".\"},{\"kind\":\"scope_quote\",\"source_id\":\"step_0001\",\"quote\":\"Only part one is done here: the expansion and the single reference read. Differentiation with respect to a is left for part two, and nothing physical is asserted.\"}]}",
+  "checker_evidence": [
+    {
+      "kind": "task_constraint_quote",
+      "source_id": "task_synthetic_decoded_quote",
+      "quote": "Part one: read one line of the stand-in reference with source_read and quote it with its source_id, digest and line number; expand (a-b)**3 with scientific_compute; answer continue."
+    },
+    {
+      "kind": "literature_quote",
+      "source_id": "src_synthetic_0001",
+      "quote": "\\subsection{Notation}"
+    },
+    {
+      "kind": "ancestor_quote",
+      "source_id": "step_0001",
+      "quote": "Expansion: scientific_compute(expression=\"(a-b)**3\", operation=\"expand\") returned \"a**3 - 3*a**2*b + 3*a*b**2 - b**3\"."
+    },
+    {
+      "kind": "scope_quote",
+      "source_id": "step_0001",
+      "quote": "Only part one is done here: the expansion and the single reference read. Differentiation with respect to a is left for part two, and nothing physical is asserted."
+    }
+  ],
+  "literature_excerpt": {
+    "source_id": "src_synthetic_0001",
+    "text": "\\subsection{Notation}"
+  }
+}

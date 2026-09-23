@@ -1,0 +1,269 @@
+name: CI
+
+# One job per question a reader of this repository would ask:
+#
+#   record-tests  Does the Record contract suite hold on every Python the
+#                 verifier claims, with nothing but the standard library?
+#   examples      Does every shipped record replay, resolve its pins and
+#                 re-render byte for byte, with nothing installed at all?
+#   app-tests     Do the runtime, the service and the API pass their suites?
+#   web           Does the web UI build, type-check, lint and pass its tests,
+#                 and does its generated client match openapi.json?
+#   gates         Is the tree free of everything that must not be published?
+#   lint          Is the Python code clean under each package's own rules?
+#   packaging     Does the record distribution install and work outside the
+#                 checkout?
+#
+# They are separate jobs, not steps: `gates` and `packaging` inspect the
+# working tree, and a test run first would litter it with caches and build
+# output. A fresh checkout each is cheaper than teaching the scanner to look
+# away. No job calls a model; none has credentials.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  record-tests:
+    name: record tests (python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # The verifier has no dependencies. pytest is the only thing installed,
+      # on its own, so a broken transitive dependency could never be mistaken
+      # for a broken verifier.
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check "pytest>=8"
+
+      - name: Contract suite, with nothing but the standard library
+        env:
+          PYTHONPATH: src
+        run: python -m unittest derivation_agent_record.selftest -v
+
+      - name: Record suite and repository tooling
+        run: python -m pytest
+
+  examples:
+    name: examples replay with a bare interpreter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Nothing is installed in this job on purpose: the README says a reader
+      # needs Python and this repository and nothing else.
+      - name: Verify every shipped record
+        env:
+          PYTHONPATH: src
+        run: |
+          set -euo pipefail
+          found=0
+          for events in examples/runs/*/events.jsonl; do
+            echo "::group::verify ${events}"
+            python -m derivation_agent_record verify "${events}"
+            echo "::endgroup::"
+            found=$((found + 1))
+          done
+          if [ "${found}" -eq 0 ]; then
+            echo "no example record found under examples/runs/" >&2
+            exit 1
+          fi
+          echo "verified ${found} record(s)"
+
+      # A record's run_created pins the contract and both schemas by path and
+      # SHA-256. Replay cannot check those, because the pinned file is not part
+      # of the record, so they are resolved here.
+      - name: Resolve every record's run_created pins
+        run: python tools/verify_record_pins.py
+
+      - name: Re-render every shipped record and check it is self-contained
+        env:
+          PYTHONPATH: src
+        run: |
+          set -euo pipefail
+          for events in examples/runs/*/events.jsonl; do
+            run_dir="$(dirname "${events}")"
+            python -m derivation_agent_record render "${events}" --output "${RUNNER_TEMP}/viewer.html"
+
+            # The committed viewer must be exactly what the renderer produces,
+            # or a reader is looking at something other than the record.
+            diff -u "${run_dir}/viewer.html" "${RUNNER_TEMP}/viewer.html"
+
+            # An audit view that fetches anything is not an audit view.
+            if grep -nE '://|<script|<link|<img|@import' "${RUNNER_TEMP}/viewer.html"; then
+              echo "${run_dir}: rendered view is not self-contained" >&2
+              exit 1
+            fi
+            echo "ok: ${run_dir}"
+          done
+
+  app-tests:
+    name: runtime, service and API tests
+    # macOS on Apple silicon, pinned rather than `macos-latest`: the formula
+    # engine whitelist (src/derivation_runtime/formula_engine_whitelist.json)
+    # was generated on darwin-arm64 and fails closed anywhere else, so on a
+    # Linux x86_64 runner the service suite stops at collection. It is also the
+    # only platform with sandbox evidence in this repository.
+    runs-on: macos-14
+    env:
+      PYTHONPATH: src:src/derivation_api
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      # The API project pins its interpreter (src/derivation_api/.python-version)
+      # and its dependencies (uv.lock); --frozen refuses to run on a stale lock.
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.14"
+
+      - name: Runtime, service and API suites
+        run: >-
+          uv run --frozen --project src/derivation_api
+          pytest -q --import-mode=importlib
+          src/derivation_app/tests src/derivation_api/tests src/derivation_runtime
+          tools/formula_whitelist/tests
+
+      # The Tectonic provisioning script must hash the bundle exactly as the
+      # service checks it. This comparison needs the service importable, so it
+      # runs here rather than in the standard-library job.
+      - name: Provisioning tree hash matches the service's
+        run: uv run --frozen --project src/derivation_api python -m pytest -q tests/test_provision_tectonic.py
+
+  web:
+    name: web UI
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/derivation_web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: src/derivation_web/package-lock.json
+
+      - run: npm ci
+      - run: npm test
+      - name: Generated API client matches openapi.json
+        run: npm run api:check
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+
+  gates:
+    name: release gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Nothing runs before this step, so the tree it scans is the tree that
+      # would be published.
+      #
+      # Three of the scanner's gates need a needle list, which is not in this
+      # repository on purpose (see `.release-needles.example`), so they do not
+      # run here and the scanner says so in its output. Everything else it
+      # checks on every push: secret patterns, high-entropy tokens, third-party
+      # addresses, CJK outside the reasoned exemptions, oversized files,
+      # committed bytecode and non-text files.
+      - name: Scan the working tree
+        run: python tools/release_check.py
+
+  lint:
+    name: lint and format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.14"
+
+      # The record package, the tests and the tools, under the root
+      # pyproject.toml. The root configuration excludes the application
+      # packages, which keep the rules they were developed with.
+      - name: ruff (record package, tests, tools)
+        run: uvx ruff@0.16.5 check --output-format=github .
+
+      - name: black (tests, tools)
+        run: uvx black@26.5.1 --check --diff .
+
+      # The application packages: each file is checked under its own package's
+      # configuration (src/derivation_app/ruff.toml, src/derivation_runtime/ruff.toml,
+      # src/derivation_api/pyproject.toml), with the ruff version the API lock pins.
+      - name: ruff (runtime, service, API)
+        run: >-
+          uv run --frozen --project src/derivation_api
+          ruff check --output-format=github
+          src/derivation_app src/derivation_runtime src/derivation_api
+
+  packaging:
+    name: build and install the record distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Build an sdist and a wheel
+        run: uv build --out-dir "${RUNNER_TEMP}/dist"
+
+      - name: Install the wheel into a clean environment
+        run: |
+          set -euo pipefail
+          uv venv "${RUNNER_TEMP}/venv"
+          uv pip install --python "${RUNNER_TEMP}/venv/bin/python" "${RUNNER_TEMP}"/dist/*.whl
+
+      # Run from outside the checkout, so an import that only worked because
+      # the source tree happened to be on the path would fail here.
+      - name: Exercise the installed distribution
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          "${RUNNER_TEMP}/venv/bin/python" -c "
+          import derivation_agent_record as package
+          from pathlib import Path
+          assert {'load_events', 'replay_events', 'render_html', 'ContractError'} <= set(package.__all__)
+          schemas = Path(package.__file__).parent / 'schemas'
+          assert sorted(path.suffix for path in schemas.iterdir()) == ['.json', '.json'], 'schemas did not ship'
+          print('installed package looks right')
+          "
+          "${RUNNER_TEMP}/venv/bin/derivationlab-record" --help
+          "${RUNNER_TEMP}/venv/bin/python" -m derivation_agent_record verify \
+            "${GITHUB_WORKSPACE}/examples/runs/deterministic_fixture/events.jsonl"
+
+      # An sdist that ships a test suite has to ship one that runs.
+      - name: Run the suite from the unpacked sdist
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/sdist"
+          tar xzf "${RUNNER_TEMP}"/dist/*.tar.gz -C "${RUNNER_TEMP}/sdist"
+          cd "${RUNNER_TEMP}/sdist"/*/
+          uv run --isolated --with "pytest>=8" python -m pytest

@@ -1,0 +1,1626 @@
+{
+  "$id": "https://material-intelligence.invalid/schema/derivation_agent_canonical_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Deterministic replay output. Cross-object semantics are enforced by replay.",
+  "properties": {
+    "branches": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "anchor_step_revision_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "branch_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "created_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "created_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "created_reason": {
+            "enum": [
+              "root",
+              "model_alternative",
+              "instrument_retry",
+              "human_direction",
+              "human_hypothesis",
+              "human_revision"
+            ]
+          },
+          "fork_mode": {
+            "enum": [
+              "root",
+              "after",
+              "replace"
+            ]
+          },
+          "human_action_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hypothesis": {
+            "additionalProperties": false,
+            "properties": {
+              "source": {
+                "enum": [
+                  "model",
+                  "human",
+                  "inherited"
+                ]
+              },
+              "source_event_id": {
+                "oneOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "text": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "source_event_id",
+              "text"
+            ],
+            "type": "object"
+          },
+          "inherited_step_revision_ids": {
+            "items": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "initial_status": {
+            "enum": [
+              "active",
+              "paused"
+            ]
+          },
+          "lineage_branch_ids": {
+            "items": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "parent_branch_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "provenance": {
+            "additionalProperties": true,
+            "properties": {
+              "content_class": {
+                "enum": [
+                  "model_only",
+                  "human_steered",
+                  "human_edited"
+                ]
+              },
+              "edit_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "human_touched": {
+                "type": "boolean"
+              },
+              "operational_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "steering_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "content_class",
+              "edit_action_ids",
+              "human_touched",
+              "operational_action_ids",
+              "steering_action_ids"
+            ],
+            "type": "object"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "paused",
+              "parked",
+              "completed",
+              "killed"
+            ]
+          },
+          "status_history": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "event_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "from": {
+                  "oneOf": [
+                    {
+                      "enum": [
+                        "active",
+                        "paused",
+                        "parked",
+                        "completed",
+                        "killed"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "reason": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "seq": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "to": {
+                  "enum": [
+                    "active",
+                    "paused",
+                    "parked",
+                    "completed",
+                    "killed"
+                  ]
+                }
+              },
+              "required": [
+                "event_id",
+                "from",
+                "reason",
+                "seq",
+                "to"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "step_revision_ids": {
+            "items": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "anchor_step_revision_id",
+          "branch_id",
+          "created_at",
+          "created_event_id",
+          "created_reason",
+          "fork_mode",
+          "human_action_id",
+          "hypothesis",
+          "inherited_step_revision_ids",
+          "lineage_branch_ids",
+          "parent_branch_id",
+          "provenance",
+          "status",
+          "status_history",
+          "step_revision_ids"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "candidates": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "branch_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "candidate_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "declared_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "declared_by": {
+            "enum": [
+              "writer",
+              "human"
+            ]
+          },
+          "declared_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "declared_seq": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "provenance": {
+            "additionalProperties": true,
+            "properties": {
+              "content_class": {
+                "enum": [
+                  "model_only",
+                  "human_steered",
+                  "human_edited"
+                ]
+              },
+              "edit_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "human_touched": {
+                "type": "boolean"
+              },
+              "operational_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "steering_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "content_class",
+              "edit_action_ids",
+              "human_touched",
+              "operational_action_ids",
+              "steering_action_ids"
+            ],
+            "type": "object"
+          },
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "required_check_ids": {
+            "items": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "provisional",
+              "blocked",
+              "rejected",
+              "eligible"
+            ]
+          },
+          "tip_step_revision_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "transcript_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "transcript_step_revision_ids": {
+            "items": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "branch_id",
+          "candidate_id",
+          "declared_at",
+          "declared_by",
+          "declared_event_id",
+          "declared_seq",
+          "provenance",
+          "reason",
+          "required_check_ids",
+          "status",
+          "tip_step_revision_id",
+          "transcript_sha256",
+          "transcript_step_revision_ids"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "checks": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "check_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "checker_call_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "completed_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "completed_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "completion_reason": {
+            "oneOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "ancestor_quote",
+                    "hypothesis_quote",
+                    "scope_quote",
+                    "task_constraint_quote"
+                  ]
+                },
+                "quote": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "source_id": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "quote",
+                "source_id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "requested_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "requested_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "required_for_candidate": {
+            "type": "boolean"
+          },
+          "state": {
+            "enum": [
+              "requested",
+              "completed"
+            ]
+          },
+          "target_output_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "target_step_revision_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "verdict": {
+            "oneOf": [
+              {
+                "enum": [
+                  "ok",
+                  "objection",
+                  "hard_defect",
+                  "instrument_failure"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "check_id",
+          "checker_call_id",
+          "completion_reason",
+          "evidence",
+          "reason",
+          "requested_at",
+          "requested_event_id",
+          "required_for_candidate",
+          "state",
+          "target_output_sha256",
+          "target_step_revision_id",
+          "verdict"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "event_log": {
+      "additionalProperties": false,
+      "properties": {
+        "event_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "head_event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_count",
+        "head_event_sha256"
+      ],
+      "type": "object"
+    },
+    "human_actions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "pause_branch",
+              "resume_branch",
+              "kill_branch",
+              "revise_step",
+              "set_direction",
+              "set_hypothesis",
+              "abort_model_call",
+              "select_candidate"
+            ]
+          },
+          "action_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "actor_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "content": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "content_sha256": {
+            "oneOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "recorded_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "seq": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "target": {
+            "additionalProperties": false,
+            "minProperties": 1,
+            "properties": {
+              "branch_id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "candidate_id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "judgement_id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "model_call_id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "step_revision_id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              }
+            },
+            "required": [],
+            "type": "object"
+          }
+        },
+        "required": [
+          "action",
+          "action_id",
+          "actor_id",
+          "content",
+          "content_sha256",
+          "event_id",
+          "reason",
+          "recorded_at",
+          "seq",
+          "target"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "judgements": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "candidate_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "candidate_transcript_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "completed_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "completed_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "completion_reason": {
+            "oneOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "judge_call_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "judgement_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "requested_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "requested_by": {
+            "enum": [
+              "system",
+              "human"
+            ]
+          },
+          "requested_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "score": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "state": {
+            "enum": [
+              "requested",
+              "completed"
+            ]
+          },
+          "verdict": {
+            "oneOf": [
+              {
+                "enum": [
+                  "pass",
+                  "near_pass",
+                  "fail",
+                  "instrument_failure"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "candidate_id",
+          "candidate_transcript_sha256",
+          "completion_reason",
+          "judge_call_id",
+          "judgement_id",
+          "reason",
+          "requested_at",
+          "requested_by",
+          "requested_event_id",
+          "score",
+          "state",
+          "verdict"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "model_calls": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "body_chars": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "chunks": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "channel": {
+                  "enum": [
+                    "analysis",
+                    "body",
+                    "raw"
+                  ]
+                },
+                "index": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "model_call_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "text_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "channel",
+                "index",
+                "model_call_id",
+                "text",
+                "text_sha256"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "effort": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "failure": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "message": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "retryable": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "message",
+                  "retryable"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "finish_reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "model": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "model_call_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "output_sha256": {
+            "oneOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "output_text": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "prompt_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "provider": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "writer",
+              "checker",
+              "judge"
+            ]
+          },
+          "started_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "started_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "started",
+              "finished",
+              "failed",
+              "aborted"
+            ]
+          },
+          "target": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "branch_id": {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  },
+                  "step_slot": {
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "branch_id",
+                  "step_slot"
+                ],
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "check_id": {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "check_id"
+                ],
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "judgement_id": {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "judgement_id"
+                ],
+                "type": "object"
+              }
+            ]
+          },
+          "terminal_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "terminal_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "usage": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "body_chars",
+          "chunks",
+          "effort",
+          "failure",
+          "model",
+          "model_call_id",
+          "output_sha256",
+          "output_text",
+          "prompt_sha256",
+          "provider",
+          "role",
+          "started_at",
+          "started_event_id",
+          "state",
+          "target"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "run": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "code_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "configuration": {
+          "additionalProperties": false,
+          "properties": {
+            "backend": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "version": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "version"
+              ],
+              "type": "object"
+            },
+            "granularity": {
+              "enum": [
+                "one_claim",
+                "one_task"
+              ]
+            },
+            "max_active_branches": {
+              "oneOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "max_model_calls": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "models": {
+              "additionalProperties": false,
+              "properties": {
+                "checker": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "effort": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "model": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "provider": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "effort",
+                    "model",
+                    "provider"
+                  ],
+                  "type": "object"
+                },
+                "judge": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "effort": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "model": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "provider": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "effort",
+                    "model",
+                    "provider"
+                  ],
+                  "type": "object"
+                },
+                "writer": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "effort": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "model": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "provider": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "effort",
+                    "model",
+                    "provider"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "checker",
+                "judge",
+                "writer"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "backend",
+            "granularity",
+            "max_active_branches",
+            "max_model_calls",
+            "models"
+          ],
+          "type": "object"
+        },
+        "created_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "created_event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "input_policy": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_paths": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "reference_allowed": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "allowed_paths",
+            "reference_allowed"
+          ],
+          "type": "object"
+        },
+        "pack": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "record_spec": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "task": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "sha256"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "canonical_schema",
+        "code_commit",
+        "configuration",
+        "created_at",
+        "created_event_id",
+        "event_schema",
+        "input_policy",
+        "pack",
+        "record_spec",
+        "run_id",
+        "task"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "derivation-agent-canonical-v1"
+    },
+    "selections": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actor": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "system",
+                  "model",
+                  "checker",
+                  "judge",
+                  "human"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind"
+            ],
+            "type": "object"
+          },
+          "candidate_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "candidate_transcript_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "human_action_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "judgement_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "provenance": {
+            "additionalProperties": true,
+            "properties": {
+              "content_class": {
+                "enum": [
+                  "model_only",
+                  "human_steered",
+                  "human_edited"
+                ]
+              },
+              "edit_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "human_touched": {
+                "type": "boolean"
+              },
+              "operational_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "steering_action_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "content_class",
+              "edit_action_ids",
+              "human_touched",
+              "operational_action_ids",
+              "steering_action_ids"
+            ],
+            "type": "object"
+          },
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "recorded_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "selection_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "seq": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "actor",
+          "candidate_id",
+          "candidate_transcript_sha256",
+          "event_id",
+          "human_action_id",
+          "judgement_id",
+          "provenance",
+          "reason",
+          "recorded_at",
+          "selection_id",
+          "seq"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "step_revisions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "branch_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "content": {
+            "additionalProperties": false,
+            "properties": {
+              "claim": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "derivation": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "scope": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "why": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "claim",
+              "derivation",
+              "scope",
+              "source",
+              "why"
+            ],
+            "type": "object"
+          },
+          "origin": {
+            "additionalProperties": false,
+            "properties": {
+              "human_action_id": {
+                "oneOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "enum": [
+                  "model",
+                  "human"
+                ]
+              },
+              "model_call_id": {
+                "oneOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "human_action_id",
+              "kind",
+              "model_call_id"
+            ],
+            "type": "object"
+          },
+          "output_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "replaces_step_revision_id": {
+            "oneOf": [
+              {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "sealed_at": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sealed_event_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "step_revision_id": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "step_slot": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "branch_id",
+          "content",
+          "origin",
+          "output_sha256",
+          "replaces_step_revision_id",
+          "revision",
+          "sealed_at",
+          "sealed_event_id",
+          "step_revision_id",
+          "step_slot"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "candidate_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "candidate_status_counts": {
+          "additionalProperties": false,
+          "properties": {
+            "blocked": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "eligible": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "provisional": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "rejected": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "blocked",
+            "eligible",
+            "provisional",
+            "rejected"
+          ],
+          "type": "object"
+        },
+        "check_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "judgement_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "model_call_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "selected_candidate_id": {
+          "oneOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selection_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "step_revision_count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "branch_count",
+        "candidate_count",
+        "candidate_status_counts",
+        "check_count",
+        "judgement_count",
+        "model_call_count",
+        "selected_candidate_id",
+        "selection_count",
+        "step_revision_count"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run",
+    "branches",
+    "step_revisions",
+    "model_calls",
+    "checks",
+    "candidates",
+    "judgements",
+    "human_actions",
+    "selections",
+    "summary",
+    "event_log"
+  ],
+  "title": "Derivation Agent Record V1 canonical state",
+  "type": "object"
+}

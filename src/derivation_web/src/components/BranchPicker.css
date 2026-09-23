@@ -1,0 +1,78 @@
+/*
+ * In-prose fork picker (M2).
+ *
+ * The frame (`.branch-picker`, `.branch-picker-options button`) is defined in
+ * styles.css. This file adds the radio-group semantics the picker uses instead
+ * of toggle semantics, and the status marking that makes a `failed` or
+ * `proposed` direction impossible to mistake for a live one.
+ */
+
+.branch-picker {
+  min-width: 0;
+  margin: 16px 0 0;
+  border: 1px solid var(--line, #dcdcdc);
+  border-left: 2px solid var(--accent, #0069cc);
+  border-radius: var(--radius-medium, 6px);
+  padding: 10px 12px;
+  background: var(--surface, #ffffff);
+}
+
+.branch-picker-group + .branch-picker-group {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line-strong, #c8c8c8);
+}
+.branch-picker-legend { margin: 0 0 8px; color: var(--muted, #606060); font-size: var(--font-size-meta, 12px); }
+
+.branch-picker-options { display: flex; flex-wrap: wrap; gap: 6px; }
+.branch-picker-options .branch-picker-option {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 30px;
+  border: 1px solid var(--line-strong, #c8c8c8);
+  border-radius: var(--control-radius, 6px);
+  padding: 4px 10px;
+  color: var(--ink, #202020);
+  background: var(--surface, #ffffff);
+  cursor: pointer;
+  font-size: var(--font-size-control, 12px);
+  text-align: left;
+}
+.branch-picker-options .branch-picker-option:hover { background: var(--hover, #00000014); }
+.branch-picker-options .branch-picker-option[aria-checked="true"] {
+  border-color: var(--accent, #0069cc);
+  color: var(--accent, #0069cc);
+  background: var(--accent-soft, #eaf3fc);
+  font-weight: var(--font-weight-semibold, 600);
+}
+.branch-picker-options .branch-picker-option:disabled {
+  color: var(--ink-disabled, #a0a0a0);
+  cursor: not-allowed;
+}
+.branch-picker-options .branch-picker-option[data-status="failed"] {
+  border-style: dashed;
+  border-color: var(--danger-line, #e2a8a3);
+}
+.branch-picker-options .branch-picker-option[data-status="proposed"],
+.branch-picker-options .branch-picker-option[data-status="unrealized"] {
+  border-style: dashed;
+  border-color: var(--warning-line, #e6d184);
+}
+
+.branch-picker-option-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.branch-picker-option-status {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 1px 6px;
+  color: var(--muted, #606060);
+  background: var(--surface-subtle, #f5f5f7);
+  font-size: var(--font-size-caption, 11px);
+  font-weight: var(--font-weight-regular, 400);
+}
+.branch-picker-option-status[data-status="failed"] { color: var(--danger, #b42318); background: var(--danger-soft, #fff1f0); }
+.branch-picker-option-status[data-status="proposed"],
+.branch-picker-option-status[data-status="unrealized"] { color: var(--warning, #9a6700); background: var(--warning-soft, #fff8c5); }
+
+.branch-picker-new { margin-top: 10px; }

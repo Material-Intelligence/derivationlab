@@ -1,0 +1,2445 @@
+{
+  "$id": "https://material-intelligence.invalid/schema/derivation_agent_event_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Strict shape of one append-only event. Cross-event semantics are enforced by replay.",
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "canonical_schema": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "code_commit": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "configuration": {
+              "additionalProperties": false,
+              "properties": {
+                "backend": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "name": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "version": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "version"
+                  ],
+                  "type": "object"
+                },
+                "granularity": {
+                  "enum": [
+                    "one_claim",
+                    "one_task"
+                  ]
+                },
+                "max_active_branches": {
+                  "oneOf": [
+                    {
+                      "minimum": 1,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "max_model_calls": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "models": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "checker": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "effort": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "model": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "provider": {
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "effort",
+                        "model",
+                        "provider"
+                      ],
+                      "type": "object"
+                    },
+                    "judge": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "effort": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "model": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "provider": {
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "effort",
+                        "model",
+                        "provider"
+                      ],
+                      "type": "object"
+                    },
+                    "writer": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "effort": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "model": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "provider": {
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "effort",
+                        "model",
+                        "provider"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "checker",
+                    "judge",
+                    "writer"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "backend",
+                "granularity",
+                "max_active_branches",
+                "max_model_calls",
+                "models"
+              ],
+              "type": "object"
+            },
+            "event_schema": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "input_policy": {
+              "additionalProperties": false,
+              "properties": {
+                "allowed_paths": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "reference_allowed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "allowed_paths",
+                "reference_allowed"
+              ],
+              "type": "object"
+            },
+            "pack": {
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "record_spec": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "task": {
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "sha256"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "canonical_schema",
+            "code_commit",
+            "configuration",
+            "event_schema",
+            "input_policy",
+            "pack",
+            "record_spec",
+            "task"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "run_created"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "pause_branch",
+                "resume_branch",
+                "kill_branch",
+                "revise_step",
+                "set_direction",
+                "set_hypothesis",
+                "abort_model_call",
+                "select_candidate"
+              ]
+            },
+            "action_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "content": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "content_sha256": {
+              "oneOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "target": {
+              "additionalProperties": false,
+              "minProperties": 1,
+              "properties": {
+                "branch_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "candidate_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "judgement_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "model_call_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                "step_revision_id": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                }
+              },
+              "required": [],
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "action_id",
+            "content",
+            "content_sha256",
+            "reason",
+            "target"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "human_action_recorded"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "anchor_step_revision_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "branch_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "created_reason": {
+              "enum": [
+                "root",
+                "model_alternative",
+                "instrument_retry",
+                "human_direction",
+                "human_hypothesis",
+                "human_revision"
+              ]
+            },
+            "fork_mode": {
+              "enum": [
+                "root",
+                "after",
+                "replace"
+              ]
+            },
+            "human_action_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "hypothesis": {
+              "additionalProperties": false,
+              "properties": {
+                "source": {
+                  "enum": [
+                    "model",
+                    "human",
+                    "inherited"
+                  ]
+                },
+                "source_event_id": {
+                  "oneOf": [
+                    {
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "text": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source",
+                "source_event_id",
+                "text"
+              ],
+              "type": "object"
+            },
+            "inherited_step_revision_ids": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "initial_status": {
+              "enum": [
+                "active",
+                "paused"
+              ]
+            },
+            "parent_branch_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "anchor_step_revision_id",
+            "branch_id",
+            "created_reason",
+            "fork_mode",
+            "human_action_id",
+            "hypothesis",
+            "inherited_step_revision_ids",
+            "initial_status",
+            "parent_branch_id"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "branch_created"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "branch_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "check_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "from_status": {
+              "enum": [
+                "active",
+                "paused",
+                "parked",
+                "completed",
+                "killed"
+              ]
+            },
+            "human_action_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "model_call_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reason_code": {
+              "enum": [
+                "human_pause",
+                "human_resume",
+                "human_kill",
+                "writer_complete",
+                "hard_defect",
+                "instrument_failure",
+                "manual_reopen"
+              ]
+            },
+            "to_status": {
+              "enum": [
+                "active",
+                "paused",
+                "parked",
+                "completed",
+                "killed"
+              ]
+            }
+          },
+          "required": [
+            "branch_id",
+            "check_id",
+            "from_status",
+            "human_action_id",
+            "model_call_id",
+            "reason_code",
+            "to_status"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "branch_status_changed"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "effort": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "model": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "model_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "prompt_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "provider": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "role": {
+              "enum": [
+                "writer",
+                "checker",
+                "judge"
+              ]
+            },
+            "target": {
+              "oneOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "branch_id": {
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                      "type": "string"
+                    },
+                    "step_slot": {
+                      "minimum": 1,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "branch_id",
+                    "step_slot"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "check_id": {
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "check_id"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "judgement_id": {
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "judgement_id"
+                  ],
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "effort",
+            "model",
+            "model_call_id",
+            "prompt_sha256",
+            "provider",
+            "role",
+            "target"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "model_call_started"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "channel": {
+              "enum": [
+                "analysis",
+                "body",
+                "raw"
+              ]
+            },
+            "index": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "model_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "text_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "index",
+            "model_call_id",
+            "text",
+            "text_sha256"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "model_call_chunk"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "body_chars": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "finish_reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "model_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "output_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "output_text": {
+              "type": "string"
+            },
+            "usage": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "body_chars",
+            "finish_reason",
+            "model_call_id",
+            "output_sha256",
+            "output_text",
+            "usage"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "model_call_finished"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "body_chars": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "failure_kind": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "message": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "model_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "partial_output_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "partial_output_text": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "body_chars",
+            "failure_kind",
+            "message",
+            "model_call_id",
+            "partial_output_sha256",
+            "partial_output_text",
+            "retryable"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "model_call_failed"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "body_chars": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "human_action_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "model_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "partial_output_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "partial_output_text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "body_chars",
+            "human_action_id",
+            "model_call_id",
+            "partial_output_sha256",
+            "partial_output_text"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "model_call_aborted"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "branch_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "content": {
+              "additionalProperties": false,
+              "properties": {
+                "claim": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "derivation": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "scope": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "source": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "why": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "claim",
+                "derivation",
+                "scope",
+                "source",
+                "why"
+              ],
+              "type": "object"
+            },
+            "origin": {
+              "additionalProperties": false,
+              "properties": {
+                "human_action_id": {
+                  "oneOf": [
+                    {
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "kind": {
+                  "enum": [
+                    "model",
+                    "human"
+                  ]
+                },
+                "model_call_id": {
+                  "oneOf": [
+                    {
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "human_action_id",
+                "kind",
+                "model_call_id"
+              ],
+              "type": "object"
+            },
+            "output_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "replaces_step_revision_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "revision": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "step_revision_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "step_slot": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "branch_id",
+            "content",
+            "origin",
+            "output_sha256",
+            "replaces_step_revision_id",
+            "revision",
+            "step_revision_id",
+            "step_slot"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "step_revision_sealed"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "check_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "required_for_candidate": {
+              "type": "boolean"
+            },
+            "target_output_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "target_step_revision_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "check_id",
+            "reason",
+            "required_for_candidate",
+            "target_output_sha256",
+            "target_step_revision_id"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "check_requested"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "check_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "checker_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "evidence": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "enum": [
+                      "ancestor_quote",
+                      "hypothesis_quote",
+                      "scope_quote",
+                      "task_constraint_quote"
+                    ]
+                  },
+                  "quote": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "source_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "quote",
+                  "source_id"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "target_output_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "target_step_revision_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "verdict": {
+              "enum": [
+                "ok",
+                "objection",
+                "hard_defect",
+                "instrument_failure"
+              ]
+            }
+          },
+          "required": [
+            "check_id",
+            "checker_call_id",
+            "evidence",
+            "reason",
+            "target_output_sha256",
+            "target_step_revision_id",
+            "verdict"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "check_completed"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "branch_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "candidate_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "declared_by": {
+              "enum": [
+                "writer",
+                "human"
+              ]
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "required_check_ids": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "tip_step_revision_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "transcript_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "transcript_step_revision_ids": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "branch_id",
+            "candidate_id",
+            "declared_by",
+            "reason",
+            "required_check_ids",
+            "tip_step_revision_id",
+            "transcript_sha256",
+            "transcript_step_revision_ids"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "candidate_declared"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "candidate_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "candidate_transcript_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "judgement_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "requested_by": {
+              "enum": [
+                "system",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "candidate_id",
+            "candidate_transcript_sha256",
+            "judgement_id",
+            "reason",
+            "requested_by"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "judgement_requested"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "candidate_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "candidate_transcript_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "judge_call_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "judgement_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "score": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "verdict": {
+              "enum": [
+                "pass",
+                "near_pass",
+                "fail",
+                "instrument_failure"
+              ]
+            }
+          },
+          "required": [
+            "candidate_id",
+            "candidate_transcript_sha256",
+            "judge_call_id",
+            "judgement_id",
+            "reason",
+            "score",
+            "verdict"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "judgement_completed"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "system",
+                "model",
+                "checker",
+                "judge",
+                "human"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "kind"
+          ],
+          "type": "object"
+        },
+        "event_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "candidate_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "candidate_transcript_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "human_action_id": {
+              "oneOf": [
+                {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "judgement_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "selection_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "candidate_transcript_sha256",
+            "human_action_id",
+            "judgement_id",
+            "reason",
+            "selection_id"
+          ],
+          "type": "object"
+        },
+        "prev_event_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "run_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "derivation-agent-event-v1"
+        },
+        "seq": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "const": "selection_recorded"
+        }
+      },
+      "required": [
+        "actor",
+        "event_id",
+        "event_sha256",
+        "payload",
+        "prev_event_sha256",
+        "recorded_at",
+        "run_id",
+        "schema_version",
+        "seq",
+        "type"
+      ],
+      "type": "object"
+    }
+  ],
+  "title": "Derivation Agent Record V1 event"
+}

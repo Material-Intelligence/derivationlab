@@ -1,0 +1,26 @@
+{
+  "architecture": "arm64",
+  "checks": {
+    "adjacent_read_denied": "passed",
+    "app_server_initialize": "passed",
+    "network_off": "passed",
+    "python_sympy": "passed",
+    "sandbox_activation": "passed",
+    "symlink_escape_read_denied": "passed",
+    "symlink_escape_write_denied": "passed",
+    "workspace_read": "passed",
+    "workspace_write": "passed"
+  },
+  "codex_version": "0.147.0",
+  "failures": [],
+  "outside_write_created": false,
+  "permission_profile": "strict_run_workspace",
+  "platform": "macos",
+  "read_or_printed_credentials": false,
+  "recorded_command_output": false,
+  "schema_version": "macos-launch-security-probe-v1",
+  "script_sha256": "98ac9a1d4dc2a185bb1349e78dd0ac147a7987802f2f51b20bf3a6cd1bc78317",
+  "status": "passed",
+  "used_model_call": false,
+  "warning_methods": []
+}

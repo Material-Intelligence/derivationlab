@@ -1,0 +1,106 @@
+[build-system]
+# 77 is the floor for PEP 639 (`license` as an SPDX expression plus
+# `license-files`), which is how the licence is declared below.
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "derivationlab-record"
+version = "0.1.0"
+description = "Offline verification, replay and rendering of hash-chained derivation records"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Jiahao Xie", email = "xiejh.mail@gmail.com" }]
+keywords = ["provenance", "reproducibility", "hash-chain", "audit-trail"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering",
+  "Typing :: Typed",
+]
+# The package is standard library only, on purpose: a record must stay
+# verifiable years from now, on a machine with no network and no wheels.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "black>=24"]
+
+[project.urls]
+Homepage = "https://github.com/Material-Intelligence/derivationlab"
+Source = "https://github.com/Material-Intelligence/derivationlab"
+Documentation = "https://github.com/Material-Intelligence/derivationlab/blob/main/docs/RECORD_SPEC.md"
+Issues = "https://github.com/Material-Intelligence/derivationlab/issues"
+Changelog = "https://github.com/Material-Intelligence/derivationlab/blob/main/CHANGELOG.md"
+
+[project.scripts]
+# Note: src/derivation_agent_record/__main__.py runs the CLI at import time, so it
+# is not usable as an entry point. The callable lives in cli.py.
+derivationlab-record = "derivation_agent_record.cli:main"
+
+[tool.setuptools]
+# This distribution is the record core only. The application packages next to it
+# under src/ are not part of the wheel; they run from the checkout (see
+# README.md, "Run DerivationLab locally"), and the API service has its own
+# pyproject.toml and lock file under src/derivation_api/.
+package-dir = { "" = "src" }
+packages = ["derivation_agent_record"]
+
+[tool.setuptools.package-data]
+# `py.typed` is the PEP 561 marker: without it in the wheel, every annotation in
+# this package is invisible to a type checker once installed, and the
+# `Typing :: Typed` classifier above would be a claim with nothing behind it.
+derivation_agent_record = ["schemas/*.json", "py.typed"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+# The rule set below is the record core's. The application packages keep the
+# configuration they were developed with (ruff defaults, checked by their own CI
+# job), so they are outside this one.
+extend-exclude = [
+  "src/derivation_app",
+  "src/derivation_runtime",
+  "src/derivation_api",
+  "src/derivation_web",
+  # The formula whitelist generator belongs to the application and is kept as
+  # it was developed. It is not linted in CI: it puts src/ on sys.path before
+  # its imports (E402), which is how it runs as a script.
+  "tools/formula_whitelist",
+]
+
+[tool.ruff.lint]
+# Pinned explicitly rather than left to the installed ruff's default, so a
+# contributor and CI get the same answer from the same source tree.
+select = ["E", "W", "F", "I", "B", "UP", "ISC", "C4", "PIE", "RUF", "EXE"]
+
+[tool.ruff.lint.per-file-ignores]
+# Honest debt, written down instead of hidden by a narrower rule set. The
+# record package was written by hand, before this configuration existed, and
+# its long single-expression `require(...)` calls are deliberate: each one is a
+# rule of the contract on one line. Reformatting 1,200 lines of a verifier is a
+# change that deserves its own commit and its own test run, not a drive-by.
+#
+# To clear this block: `ruff check --fix src/derivation_agent_record/` fixes the
+# four non-E501 rules mechanically; E501 goes away only with a reflow, so
+# decide on that one deliberately. The suite must stay green afterwards.
+"src/derivation_agent_record/*.py" = ["E501", "I001", "UP035", "C420"]
+
+[tool.black]
+line-length = 120
+target-version = ["py39"]
+# Same debt as above, same reason. Everything this repository added — the test
+# suite and the release scanner — is black-formatted and checked in CI. The
+# application packages are formatted by their own tooling, not by black.
+extend-exclude = "^/(src|tools/formula_whitelist)/"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# `pytest` from a fresh clone must work without installing this package first:
+# the README tells a reader to clone and run, and the suite has to hold that
+# promise too. An installed copy still wins if one is present in the env.
+pythonpath = ["src"]
+addopts = "-ra --strict-markers --strict-config"
+xfail_strict = true

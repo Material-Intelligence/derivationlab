@@ -1,0 +1,11 @@
+# The application is linted with ruff's default rule set, as it was developed.
+# This file stops the record library's configuration in the root pyproject.toml
+# from applying here. `src` keeps the sibling packages first-party for import sorting.
+src = [".."]
+# Without a target, ruff would infer the record verifier's 3.9 floor from the root
+# pyproject.toml and flag PEP 604 annotations. py310 is ruff's own default, the
+# target this code was developed and linted against. The interpreter floor is
+# 3.13 (src/derivation_api/pyproject.toml); raising the target to match it turns
+# on version-gated rewrites (UP017, UP040, stdlib ordering of tomllib) that are
+# deliberately left undone so the code stays identical to upstream.
+target-version = "py310"

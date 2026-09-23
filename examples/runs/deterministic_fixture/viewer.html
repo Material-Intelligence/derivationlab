@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derivation Agent Record v1 audit</title>
+<style>
+:root { font-family: ui-sans-serif, system-ui, sans-serif; color: #171717; background: #f5f5f5; }
+body { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+h1, h2 { letter-spacing: -0.02em; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+code { overflow-wrap: anywhere; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .75rem; }
+.metric, .card { background: white; border: 1px solid #ddd; border-radius: .7rem; padding: 1rem; margin: .7rem 0; }
+.metric strong { display: block; font-size: 1.6rem; }
+.selected { border-width: 2px; }
+table { width: 100%; border-collapse: collapse; background: white; font-size: .9rem; }
+th, td { border: 1px solid #ddd; padding: .55rem; text-align: left; vertical-align: top; }
+pre { white-space: pre-wrap; max-width: 50rem; }
+.badge { display: inline-block; padding: .15rem .45rem; border-radius: 999px; background: #e5e5e5; font-size: .8rem; }
+.eligible, .pass, .ok { background: #d1fae5; }
+.rejected, .fail, .hard_defect { background: #fee2e2; }
+.provisional, .blocked, .conditional, .near_pass, .objection, .instrument_failure { background: #fef3c7; }
+.small { color: #555; font-size: .9rem; }
+.label { color: #555; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; margin: .6rem 0 .1rem; }
+.field { margin: 0; }
+ul { margin: 0; padding-left: 1.1rem; }
+</style>
+</head>
+<body>
+<h1>Derivation Agent Record v1 audit</h1>
+<p class="small">Read-only view derived from the append-only event log. It is not a control surface.</p>
+<div class="metrics">
+<div class="metric"><strong>2</strong>branches</div>
+<div class="metric"><strong>4</strong>step revisions</div>
+<div class="metric"><strong>10</strong>model calls</div>
+<div class="metric"><strong>4</strong>checks</div>
+<div class="metric"><strong>2</strong>candidates</div>
+<div class="metric"><strong>2</strong>judgements</div>
+</div>
+<h2>Selected submission</h2>
+<p>No selected submission.</p>
+<h2>Branches</h2>
+<table><thead><tr><th>Branch</th><th>Status</th><th>Created reason</th><th>Content provenance</th><th>Steps</th></tr></thead>
+<tbody><tr><td><code>br_0001</code></td><td>completed</td><td>root</td><td>model_only</td><td>3</td></tr><tr><td><code>br_0002</code></td><td>completed</td><td>model_alternative</td><td>model_only</td><td>3</td></tr></tbody></table>
+<h2>Step revisions</h2>
+<p class="small">Every step on every branch route, in transcript order. Inherited steps appear on each route that carries them.</p>
+<h3>Branch <code>br_0001</code></h3><article class="card"><h4><code>step_0001</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">Deterministic claim for root step 1</pre><p class="label">why</p><pre class="field">The hermetic fixture advances root step 1 without a network or model dependency.</pre><p class="label">source</p><pre class="field">Deterministic runtime script entry root step 1.</pre><p class="label">derivation</p><pre class="field">Apply the fixed transition for root step 1, seal it, and verify its hash.</pre><p class="label">scope</p><pre class="field">Application integration verification only; this is not a scientific conclusion.</pre><p class="small">Output SHA-256 <code>5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f</code>; sealed by model <code>call_0001</code>.</p></article><article class="card"><h4><code>step_0002</code> <span class="small">slot 2, revision 1</span></h4><p class="label">claim</p><pre class="field">Deterministic claim for root step 2</pre><p class="label">why</p><pre class="field">The hermetic fixture advances root step 2 without a network or model dependency.</pre><p class="label">source</p><pre class="field">Deterministic runtime script entry root step 2.</pre><p class="label">derivation</p><pre class="field">Apply the fixed transition for root step 2, seal it, and verify its hash.</pre><p class="label">scope</p><pre class="field">Application integration verification only; this is not a scientific conclusion.</pre><p class="small">Output SHA-256 <code>c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db</code>; sealed by model <code>call_0003</code>.</p></article><article class="card"><h4><code>step_0003</code> <span class="small">slot 3, revision 1</span></h4><p class="label">claim</p><pre class="field">Deterministic claim for root step 3</pre><p class="label">why</p><pre class="field">The hermetic fixture advances root step 3 without a network or model dependency.</pre><p class="label">source</p><pre class="field">Deterministic runtime script entry root step 3.</pre><p class="label">derivation</p><pre class="field">Apply the fixed transition for root step 3, seal it, and verify its hash.</pre><p class="label">scope</p><pre class="field">Application integration verification only; this is not a scientific conclusion.</pre><p class="small">Output SHA-256 <code>63b7a3fc64f581bd1ac99ad99380be21473c63cd1e4e52adacfda4422df78cd9</code>; sealed by model <code>call_0005</code>.</p></article><h3>Branch <code>br_0002</code></h3><article class="card"><h4><code>step_0001</code> <span class="small">slot 1, revision 1</span></h4><p class="label">claim</p><pre class="field">Deterministic claim for root step 1</pre><p class="label">why</p><pre class="field">The hermetic fixture advances root step 1 without a network or model dependency.</pre><p class="label">source</p><pre class="field">Deterministic runtime script entry root step 1.</pre><p class="label">derivation</p><pre class="field">Apply the fixed transition for root step 1, seal it, and verify its hash.</pre><p class="label">scope</p><pre class="field">Application integration verification only; this is not a scientific conclusion.</pre><p class="small">Output SHA-256 <code>5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f</code>; sealed by model <code>call_0001</code>.</p></article><article class="card"><h4><code>step_0002</code> <span class="small">slot 2, revision 1</span></h4><p class="label">claim</p><pre class="field">Deterministic claim for root step 2</pre><p class="label">why</p><pre class="field">The hermetic fixture advances root step 2 without a network or model dependency.</pre><p class="label">source</p><pre class="field">Deterministic runtime script entry root step 2.</pre><p class="label">derivation</p><pre class="field">Apply the fixed transition for root step 2, seal it, and verify its hash.</pre><p class="label">scope</p><pre class="field">Application integration verification only; this is not a scientific conclusion.</pre><p class="small">Output SHA-256 <code>c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db</code>; sealed by model <code>call_0003</code>.</p></article><article class="card"><h4><code>step_0004</code> <span class="small">slot 3, revision 1</span></h4><p class="label">claim</p><pre class="field">Deterministic claim for model alternative step 3</pre><p class="label">why</p><pre class="field">The hermetic fixture advances model alternative step 3 without a network or model dependency.</pre><p class="label">source</p><pre class="field">Deterministic runtime script entry model alternative step 3.</pre><p class="label">derivation</p><pre class="field">Apply the fixed transition for model alternative step 3, seal it, and verify its hash.</pre><p class="label">scope</p><pre class="field">Application integration verification only; this is not a scientific conclusion.</pre><p class="small">Output SHA-256 <code>90b1d55a70602bef0b966ab4d20385c3b1d78dc9adef75e2ea00eb856e927ea8</code>; sealed by model <code>call_0008</code>.</p></article>
+<h2>Checks</h2>
+<table><thead><tr><th>Check</th><th>Target step</th><th>Verdict</th><th>Reason</th><th>Evidence</th></tr></thead>
+<tbody><tr><td><code>check_0001</code></td><td><code>step_0001</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The deterministic five-field step satisfies the integration fixture.</td><td></td></tr><tr><td><code>check_0002</code></td><td><code>step_0002</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The deterministic five-field step satisfies the integration fixture.</td><td></td></tr><tr><td><code>check_0003</code></td><td><code>step_0003</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The deterministic five-field step satisfies the integration fixture.</td><td></td></tr><tr><td><code>check_0004</code></td><td><code>step_0004</code></td><td><span class="badge ok">ok</span> <span class="small">required</span></td><td>The deterministic five-field step satisfies the integration fixture.</td><td></td></tr></tbody></table>
+<h2>Candidates</h2>
+<article class="card"><h3><code>cand_0001</code> <span class="badge eligible">eligible</span></h3><p>Branch <code>br_0001</code>; tip <code>step_0003</code>.</p><p>Transcript SHA-256: <code>8815178344a7d650963b0e3a84351ce5d6ada0fde23897d50227ece02d091bb8</code></p><p>Provenance: <strong>model_only</strong>; human_touched=<strong>False</strong>.</p><p>Required checks: check_0001, check_0002, check_0003</p></article><article class="card"><h3><code>cand_0002</code> <span class="badge eligible">eligible</span></h3><p>Branch <code>br_0002</code>; tip <code>step_0004</code>.</p><p>Transcript SHA-256: <code>24887b771417f3922f28fafbffe20787ca70b79e8ec1bfcea8ff5659a0ae4873</code></p><p>Provenance: <strong>model_only</strong>; human_touched=<strong>False</strong>.</p><p>Required checks: check_0001, check_0002, check_0004</p></article>
+<h2>Judgements</h2>
+<article class="card"><h3><code>judge_0001</code> <span class="badge pass">pass</span></h3><p>Candidate <code>cand_0001</code>; reason: The deterministic candidate reached its bounded fixture objective.</p></article><article class="card"><h3><code>judge_0002</code> <span class="badge pass">pass</span></h3><p>Candidate <code>cand_0002</code>; reason: The deterministic candidate reached its bounded fixture objective.</p></article>
+<h2>Event hash chain</h2>
+<p class="small">Head: <code>f82703d1ee9177db3e1287bf5a50d8c0525338c820dc310132dbede0e7d31b17</code></p>
+<table><thead><tr><th>Seq</th><th>Event</th><th>Type</th><th>Actor</th><th>Hash</th><th>Payload</th></tr></thead>
+<tbody><tr><td>1</td><td><code>evt_00000001</code></td><td>run_created</td><td>system:record-runtime</td><td><code>8b5426e75f6e</code></td><td><details><summary>payload</summary><pre>{
+  &quot;canonical_schema&quot;: {
+    &quot;path&quot;: &quot;docs/spec/derivation_agent_canonical_v1.schema.json&quot;,
+    &quot;sha256&quot;: &quot;f4050b21035309adb07b5a544132223984a941c697b1d2e24cab05fbc0753625&quot;
+  },
+  &quot;code_commit&quot;: &quot;0000000000000000000000000000000000000000&quot;,
+  &quot;configuration&quot;: {
+    &quot;backend&quot;: {
+      &quot;name&quot;: &quot;deterministic-fake-runtime&quot;,
+      &quot;version&quot;: &quot;1&quot;
+    },
+    &quot;granularity&quot;: &quot;one_claim&quot;,
+    &quot;max_active_branches&quot;: 2,
+    &quot;max_model_calls&quot;: 12,
+    &quot;models&quot;: {
+      &quot;checker&quot;: {
+        &quot;effort&quot;: &quot;low&quot;,
+        &quot;model&quot;: &quot;deterministic-checker&quot;,
+        &quot;provider&quot;: &quot;fake&quot;
+      },
+      &quot;judge&quot;: {
+        &quot;effort&quot;: &quot;low&quot;,
+        &quot;model&quot;: &quot;deterministic-judge&quot;,
+        &quot;provider&quot;: &quot;fake&quot;
+      },
+      &quot;writer&quot;: {
+        &quot;effort&quot;: &quot;low&quot;,
+        &quot;model&quot;: &quot;deterministic-writer&quot;,
+        &quot;provider&quot;: &quot;fake&quot;
+      }
+    }
+  },
+  &quot;event_schema&quot;: {
+    &quot;path&quot;: &quot;docs/spec/derivation_agent_event_v1.schema.json&quot;,
+    &quot;sha256&quot;: &quot;2d23d2490f6bc274e6f65d48a7e06df2ab144429ab05bdc9cd6a70e2ec868d24&quot;
+  },
+  &quot;input_policy&quot;: {
+    &quot;allowed_paths&quot;: [],
+    &quot;reference_allowed&quot;: false
+  },
+  &quot;pack&quot;: {
+    &quot;id&quot;: &quot;pack_empty&quot;,
+    &quot;sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;
+  },
+  &quot;record_spec&quot;: {
+    &quot;path&quot;: &quot;docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md&quot;,
+    &quot;sha256&quot;: &quot;9d6cfcd525ac2fe60921c01523bf29e1e81e8dd4cb290fb7e282101fc5a58a1b&quot;
+  },
+  &quot;task&quot;: {
+    &quot;id&quot;: &quot;task_run_ab141dc1abe94a3591b8e35a6e76340e&quot;,
+    &quot;sha256&quot;: &quot;059770d72b6f7530e3f21487ea05ca4dcc593965ed87a38dad7d978baef481d6&quot;
+  }
+}</pre></details></td></tr><tr><td>2</td><td><code>evt_00000002</code></td><td>branch_created</td><td>system:record-runtime</td><td><code>377839d6ea8c</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: null,
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;created_reason&quot;: &quot;root&quot;,
+  &quot;fork_mode&quot;: &quot;root&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;inherited&quot;,
+    &quot;source_event_id&quot;: null,
+    &quot;text&quot;: &quot;# Frozen derivation problem gate-a-symbolic-tree:v1\n\n## Objective\n\nShow that differentiating x^3 + sin(x) with respect to x gives 3*x^2 + cos(x), and present a checked derivation tree.\n\n## Givens\n\n- x is a real symbolic variable.\n\n## Accepted assumptions\n\n- Standard differentiation rules apply.\n\n## Scope\n\nA bounded symbolic derivation used only for offline product integration validation.\n\n## Required deliverable\n\nA checked derivation with a terminal route judgement.\n\n## Allowed tools\n\n- scientific_compute\n\n## Allowed references\n\n- None declared\n\n## Success criteria\n\n- The run reaches review_ready.\n- Record V1 strict replay succeeds.\n- At least one checked step and terminal judgement are present.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [],
+  &quot;initial_status&quot;: &quot;active&quot;,
+  &quot;parent_branch_id&quot;: null
+}</pre></details></td></tr><tr><td>3</td><td><code>evt_00000003</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>29c6c50c85a4</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;prompt_sha256&quot;: &quot;48d2b95a8ab30dfb3405489f027f213824e70fef4ffb06e0e15e3f2685a6150c&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0001&quot;,
+    &quot;step_slot&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>4</td><td><code>evt_00000004</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>10d5f33cf91d</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;continue\&quot;,\&quot;reason\&quot;:null,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;f97418808bf8be65f6087cfebc65e33b57b11297c0e6abf9b4f7ee05ca621284&quot;
+}</pre></details></td></tr><tr><td>5</td><td><code>evt_00000005</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>4c391a26144f</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for root step 1\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for root step 1, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry root step 1.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances root step 1 without a network or model dependency.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f&quot;
+}</pre></details></td></tr><tr><td>6</td><td><code>evt_00000006</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>9538d4ef18f1</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 374,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0001&quot;,
+  &quot;output_sha256&quot;: &quot;5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for root step 1\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for root step 1, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry root step 1.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances root step 1 without a network or model dependency.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>7</td><td><code>evt_00000007</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>97e10b36aa42</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;Deterministic claim for root step 1&quot;,
+    &quot;derivation&quot;: &quot;Apply the fixed transition for root step 1, seal it, and verify its hash.&quot;,
+    &quot;scope&quot;: &quot;Application integration verification only; this is not a scientific conclusion.&quot;,
+    &quot;source&quot;: &quot;Deterministic runtime script entry root step 1.&quot;,
+    &quot;why&quot;: &quot;The hermetic fixture advances root step 1 without a network or model dependency.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0001&quot;
+  },
+  &quot;output_sha256&quot;: &quot;5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0001&quot;,
+  &quot;step_slot&quot;: 1
+}</pre></details></td></tr><tr><td>8</td><td><code>evt_00000008</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>7d69962ef876</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0001&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0001&quot;
+}</pre></details></td></tr><tr><td>9</td><td><code>evt_00000009</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>b7b31ebfb423</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_0002&quot;,
+  &quot;prompt_sha256&quot;: &quot;1a81d7b57dd8da54f8e3ca7498ee5fc6b0f7f40e04d389bc50888848c462ae40&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0001&quot;
+  }
+}</pre></details></td></tr><tr><td>10</td><td><code>evt_00000010</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>ef740a30791f</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 110,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0002&quot;,
+  &quot;output_sha256&quot;: &quot;e5c5643fb0c35246c3fa10febce1df1da8874370b383acb15234efe46b5e0685&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The deterministic five-field step satisfies the integration fixture.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>11</td><td><code>evt_00000011</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>7f11e372e71c</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0001&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0002&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The deterministic five-field step satisfies the integration fixture.&quot;,
+  &quot;target_output_sha256&quot;: &quot;5891823a043ba75885858c2a579af4ce213f5346f359c25c67e681090732713f&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0001&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>12</td><td><code>evt_00000012</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>92cca2174dfb</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;prompt_sha256&quot;: &quot;cb47132fd39751fd9295e80c58a40f8f5577bfd35e6eeac6df1b46db0f767572&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0001&quot;,
+    &quot;step_slot&quot;: 2
+  }
+}</pre></details></td></tr><tr><td>13</td><td><code>evt_00000013</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>9549bb680922</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[\&quot;Evaluate the same invariant through a symmetry route.\&quot;],\&quot;decision\&quot;:\&quot;fork\&quot;,\&quot;reason\&quot;:null,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;1bbc79dee47f582ea50accd1d05a865d137b27cc2ffe89ba19aa51b48bf37292&quot;
+}</pre></details></td></tr><tr><td>14</td><td><code>evt_00000014</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>fdd3064707fb</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for root step 2\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for root step 2, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry root step 2.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances root step 2 without a network or model dependency.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db&quot;
+}</pre></details></td></tr><tr><td>15</td><td><code>evt_00000015</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>5d9a88631bdc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 374,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0003&quot;,
+  &quot;output_sha256&quot;: &quot;c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for root step 2\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for root step 2, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry root step 2.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances root step 2 without a network or model dependency.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>16</td><td><code>evt_00000016</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>64a8df26ee85</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;Deterministic claim for root step 2&quot;,
+    &quot;derivation&quot;: &quot;Apply the fixed transition for root step 2, seal it, and verify its hash.&quot;,
+    &quot;scope&quot;: &quot;Application integration verification only; this is not a scientific conclusion.&quot;,
+    &quot;source&quot;: &quot;Deterministic runtime script entry root step 2.&quot;,
+    &quot;why&quot;: &quot;The hermetic fixture advances root step 2 without a network or model dependency.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0003&quot;
+  },
+  &quot;output_sha256&quot;: &quot;c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0002&quot;,
+  &quot;step_slot&quot;: 2
+}</pre></details></td></tr><tr><td>17</td><td><code>evt_00000017</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>7097f6ceb97d</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0002&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0002&quot;
+}</pre></details></td></tr><tr><td>18</td><td><code>evt_00000018</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>00ee5983c167</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_0004&quot;,
+  &quot;prompt_sha256&quot;: &quot;991cc45807f8831dcab269d4da98d28fea8c7c48e4e5cdbf010d21b9f7b591a3&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0002&quot;
+  }
+}</pre></details></td></tr><tr><td>19</td><td><code>evt_00000019</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>4d9e32215517</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 110,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0004&quot;,
+  &quot;output_sha256&quot;: &quot;e5c5643fb0c35246c3fa10febce1df1da8874370b383acb15234efe46b5e0685&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The deterministic five-field step satisfies the integration fixture.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>20</td><td><code>evt_00000020</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>e9242cf8e1e0</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0002&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0004&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The deterministic five-field step satisfies the integration fixture.&quot;,
+  &quot;target_output_sha256&quot;: &quot;c303b1df8265017875ca25a8deffc84773f878c9613ac90627f0e9eaca8e08db&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0002&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>21</td><td><code>evt_00000021</code></td><td>branch_created</td><td>model:runtime:writer</td><td><code>f2c219d14ae9</code></td><td><details><summary>payload</summary><pre>{
+  &quot;anchor_step_revision_id&quot;: &quot;step_0002&quot;,
+  &quot;branch_id&quot;: &quot;br_0002&quot;,
+  &quot;created_reason&quot;: &quot;model_alternative&quot;,
+  &quot;fork_mode&quot;: &quot;after&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;hypothesis&quot;: {
+    &quot;source&quot;: &quot;model&quot;,
+    &quot;source_event_id&quot;: &quot;evt_00000013&quot;,
+    &quot;text&quot;: &quot;Evaluate the same invariant through a symmetry route.&quot;
+  },
+  &quot;inherited_step_revision_ids&quot;: [
+    &quot;step_0001&quot;,
+    &quot;step_0002&quot;
+  ],
+  &quot;initial_status&quot;: &quot;active&quot;,
+  &quot;parent_branch_id&quot;: &quot;br_0001&quot;
+}</pre></details></td></tr><tr><td>22</td><td><code>evt_00000022</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>ecf658118129</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;prompt_sha256&quot;: &quot;5e63563bcf69ae9e7d149d21d92dbc938921ff78b39f5de9371a961d9daebd4b&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0001&quot;,
+    &quot;step_slot&quot;: 3
+  }
+}</pre></details></td></tr><tr><td>23</td><td><code>evt_00000023</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>b769b6119bec</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;complete\&quot;,\&quot;reason\&quot;:null,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;969e02e136aa0d3de2dcd36a3211d82d49e8edfaf60358e1c90804d841b9dba4&quot;
+}</pre></details></td></tr><tr><td>24</td><td><code>evt_00000024</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>880dba5971fc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for root step 3\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for root step 3, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry root step 3.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances root step 3 without a network or model dependency.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;63b7a3fc64f581bd1ac99ad99380be21473c63cd1e4e52adacfda4422df78cd9&quot;
+}</pre></details></td></tr><tr><td>25</td><td><code>evt_00000025</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>f1980421dccc</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 374,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0005&quot;,
+  &quot;output_sha256&quot;: &quot;63b7a3fc64f581bd1ac99ad99380be21473c63cd1e4e52adacfda4422df78cd9&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for root step 3\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for root step 3, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry root step 3.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances root step 3 without a network or model dependency.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>26</td><td><code>evt_00000026</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>59e56d24048c</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;Deterministic claim for root step 3&quot;,
+    &quot;derivation&quot;: &quot;Apply the fixed transition for root step 3, seal it, and verify its hash.&quot;,
+    &quot;scope&quot;: &quot;Application integration verification only; this is not a scientific conclusion.&quot;,
+    &quot;source&quot;: &quot;Deterministic runtime script entry root step 3.&quot;,
+    &quot;why&quot;: &quot;The hermetic fixture advances root step 3 without a network or model dependency.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0005&quot;
+  },
+  &quot;output_sha256&quot;: &quot;63b7a3fc64f581bd1ac99ad99380be21473c63cd1e4e52adacfda4422df78cd9&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0003&quot;,
+  &quot;step_slot&quot;: 3
+}</pre></details></td></tr><tr><td>27</td><td><code>evt_00000027</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>be7f512c78bb</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0003&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;63b7a3fc64f581bd1ac99ad99380be21473c63cd1e4e52adacfda4422df78cd9&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0003&quot;
+}</pre></details></td></tr><tr><td>28</td><td><code>evt_00000028</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>b8d2bd3b4175</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_0006&quot;,
+  &quot;prompt_sha256&quot;: &quot;23ac8701d6b806bd10aec4ce5051b48cf5145255b4fa17a2cd30215083332a2a&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0003&quot;
+  }
+}</pre></details></td></tr><tr><td>29</td><td><code>evt_00000029</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>5d0c8579e876</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 110,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0006&quot;,
+  &quot;output_sha256&quot;: &quot;e5c5643fb0c35246c3fa10febce1df1da8874370b383acb15234efe46b5e0685&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The deterministic five-field step satisfies the integration fixture.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>30</td><td><code>evt_00000030</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>94998032add3</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0003&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0006&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The deterministic five-field step satisfies the integration fixture.&quot;,
+  &quot;target_output_sha256&quot;: &quot;63b7a3fc64f581bd1ac99ad99380be21473c63cd1e4e52adacfda4422df78cd9&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0003&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>31</td><td><code>evt_00000031</code></td><td>branch_status_changed</td><td>model:runtime:writer</td><td><code>68e23929f064</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;check_id&quot;: null,
+  &quot;from_status&quot;: &quot;active&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: null,
+  &quot;reason_code&quot;: &quot;writer_complete&quot;,
+  &quot;to_status&quot;: &quot;completed&quot;
+}</pre></details></td></tr><tr><td>32</td><td><code>evt_00000032</code></td><td>candidate_declared</td><td>model:runtime:writer</td><td><code>38f54dd04888</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0001&quot;,
+  &quot;candidate_id&quot;: &quot;cand_0001&quot;,
+  &quot;declared_by&quot;: &quot;writer&quot;,
+  &quot;reason&quot;: &quot;Writer declared the branch purpose reached after required checks.&quot;,
+  &quot;required_check_ids&quot;: [
+    &quot;check_0001&quot;,
+    &quot;check_0002&quot;,
+    &quot;check_0003&quot;
+  ],
+  &quot;tip_step_revision_id&quot;: &quot;step_0003&quot;,
+  &quot;transcript_sha256&quot;: &quot;8815178344a7d650963b0e3a84351ce5d6ada0fde23897d50227ece02d091bb8&quot;,
+  &quot;transcript_step_revision_ids&quot;: [
+    &quot;step_0001&quot;,
+    &quot;step_0002&quot;,
+    &quot;step_0003&quot;
+  ]
+}</pre></details></td></tr><tr><td>33</td><td><code>evt_00000033</code></td><td>judgement_requested</td><td>system:record-runtime</td><td><code>fd3cd6922345</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_0001&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;8815178344a7d650963b0e3a84351ce5d6ada0fde23897d50227ece02d091bb8&quot;,
+  &quot;judgement_id&quot;: &quot;judge_0001&quot;,
+  &quot;reason&quot;: &quot;Independent terminal judgement for an eligible candidate.&quot;,
+  &quot;requested_by&quot;: &quot;system&quot;
+}</pre></details></td></tr><tr><td>34</td><td><code>evt_00000034</code></td><td>model_call_started</td><td>judge:runtime:judge</td><td><code>1d6e1eb25838</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-judge&quot;,
+  &quot;model_call_id&quot;: &quot;call_0007&quot;,
+  &quot;prompt_sha256&quot;: &quot;e153691ec8d5ff65d9bb0e3add7e5d2a746d0006fcbbbb25ca6c2aa5d314eac0&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;judge&quot;,
+  &quot;target&quot;: {
+    &quot;judgement_id&quot;: &quot;judge_0001&quot;
+  }
+}</pre></details></td></tr><tr><td>35</td><td><code>evt_00000035</code></td><td>model_call_finished</td><td>judge:runtime:judge</td><td><code>b68ae5184dc5</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 108,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0007&quot;,
+  &quot;output_sha256&quot;: &quot;86573ff5958c1249766e407fa47374f872e196bcf8746e1db3fb641be8e32e28&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The deterministic candidate reached its bounded fixture objective.\&quot;,\&quot;score\&quot;:1.0,\&quot;verdict\&quot;:\&quot;pass\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>36</td><td><code>evt_00000036</code></td><td>judgement_completed</td><td>judge:runtime:judge</td><td><code>6596dc7b9e6a</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_0001&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;8815178344a7d650963b0e3a84351ce5d6ada0fde23897d50227ece02d091bb8&quot;,
+  &quot;judge_call_id&quot;: &quot;call_0007&quot;,
+  &quot;judgement_id&quot;: &quot;judge_0001&quot;,
+  &quot;reason&quot;: &quot;The deterministic candidate reached its bounded fixture objective.&quot;,
+  &quot;score&quot;: 1.0,
+  &quot;verdict&quot;: &quot;pass&quot;
+}</pre></details></td></tr><tr><td>37</td><td><code>evt_00000037</code></td><td>model_call_started</td><td>model:runtime:writer</td><td><code>b3b33b9a1835</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-writer&quot;,
+  &quot;model_call_id&quot;: &quot;call_0008&quot;,
+  &quot;prompt_sha256&quot;: &quot;fef5fd6c12ae3ef35502ab6c8d4c21c88c14918a456090600fb8d0c271248717&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;writer&quot;,
+  &quot;target&quot;: {
+    &quot;branch_id&quot;: &quot;br_0002&quot;,
+    &quot;step_slot&quot;: 3
+  }
+}</pre></details></td></tr><tr><td>38</td><td><code>evt_00000038</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>500b328665eb</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;raw&quot;,
+  &quot;index&quot;: 0,
+  &quot;model_call_id&quot;: &quot;call_0008&quot;,
+  &quot;text&quot;: &quot;{\&quot;alternatives\&quot;:[],\&quot;decision\&quot;:\&quot;complete\&quot;,\&quot;reason\&quot;:null,\&quot;revise_step_revision_id\&quot;:null}&quot;,
+  &quot;text_sha256&quot;: &quot;969e02e136aa0d3de2dcd36a3211d82d49e8edfaf60358e1c90804d841b9dba4&quot;
+}</pre></details></td></tr><tr><td>39</td><td><code>evt_00000039</code></td><td>model_call_chunk</td><td>model:runtime:writer</td><td><code>4269e635d648</code></td><td><details><summary>payload</summary><pre>{
+  &quot;channel&quot;: &quot;body&quot;,
+  &quot;index&quot;: 1,
+  &quot;model_call_id&quot;: &quot;call_0008&quot;,
+  &quot;text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for model alternative step 3\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for model alternative step 3, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry model alternative step 3.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances model alternative step 3 without a network or model dependency.\&quot;}&quot;,
+  &quot;text_sha256&quot;: &quot;90b1d55a70602bef0b966ab4d20385c3b1d78dc9adef75e2ea00eb856e927ea8&quot;
+}</pre></details></td></tr><tr><td>40</td><td><code>evt_00000040</code></td><td>model_call_finished</td><td>model:runtime:writer</td><td><code>048fcd81303d</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 426,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0008&quot;,
+  &quot;output_sha256&quot;: &quot;90b1d55a70602bef0b966ab4d20385c3b1d78dc9adef75e2ea00eb856e927ea8&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;claim\&quot;:\&quot;Deterministic claim for model alternative step 3\&quot;,\&quot;derivation\&quot;:\&quot;Apply the fixed transition for model alternative step 3, seal it, and verify its hash.\&quot;,\&quot;scope\&quot;:\&quot;Application integration verification only; this is not a scientific conclusion.\&quot;,\&quot;source\&quot;:\&quot;Deterministic runtime script entry model alternative step 3.\&quot;,\&quot;why\&quot;:\&quot;The hermetic fixture advances model alternative step 3 without a network or model dependency.\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>41</td><td><code>evt_00000041</code></td><td>step_revision_sealed</td><td>model:runtime:writer</td><td><code>a9e291373051</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0002&quot;,
+  &quot;content&quot;: {
+    &quot;claim&quot;: &quot;Deterministic claim for model alternative step 3&quot;,
+    &quot;derivation&quot;: &quot;Apply the fixed transition for model alternative step 3, seal it, and verify its hash.&quot;,
+    &quot;scope&quot;: &quot;Application integration verification only; this is not a scientific conclusion.&quot;,
+    &quot;source&quot;: &quot;Deterministic runtime script entry model alternative step 3.&quot;,
+    &quot;why&quot;: &quot;The hermetic fixture advances model alternative step 3 without a network or model dependency.&quot;
+  },
+  &quot;origin&quot;: {
+    &quot;human_action_id&quot;: null,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;model_call_id&quot;: &quot;call_0008&quot;
+  },
+  &quot;output_sha256&quot;: &quot;90b1d55a70602bef0b966ab4d20385c3b1d78dc9adef75e2ea00eb856e927ea8&quot;,
+  &quot;replaces_step_revision_id&quot;: null,
+  &quot;revision&quot;: 1,
+  &quot;step_revision_id&quot;: &quot;step_0004&quot;,
+  &quot;step_slot&quot;: 3
+}</pre></details></td></tr><tr><td>42</td><td><code>evt_00000042</code></td><td>check_requested</td><td>system:record-runtime</td><td><code>b2619f05931c</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0004&quot;,
+  &quot;reason&quot;: &quot;Required deterministic step check before candidate eligibility.&quot;,
+  &quot;required_for_candidate&quot;: true,
+  &quot;target_output_sha256&quot;: &quot;90b1d55a70602bef0b966ab4d20385c3b1d78dc9adef75e2ea00eb856e927ea8&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0004&quot;
+}</pre></details></td></tr><tr><td>43</td><td><code>evt_00000043</code></td><td>model_call_started</td><td>checker:runtime:checker</td><td><code>711265192a82</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-checker&quot;,
+  &quot;model_call_id&quot;: &quot;call_0009&quot;,
+  &quot;prompt_sha256&quot;: &quot;366d5a674e783af3a54f6982a1157f2781b70e2251cef320eabcb8b60f485ced&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;checker&quot;,
+  &quot;target&quot;: {
+    &quot;check_id&quot;: &quot;check_0004&quot;
+  }
+}</pre></details></td></tr><tr><td>44</td><td><code>evt_00000044</code></td><td>model_call_finished</td><td>checker:runtime:checker</td><td><code>4b28fbf6d9f6</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 110,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0009&quot;,
+  &quot;output_sha256&quot;: &quot;e5c5643fb0c35246c3fa10febce1df1da8874370b383acb15234efe46b5e0685&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;evidence\&quot;:[],\&quot;reason\&quot;:\&quot;The deterministic five-field step satisfies the integration fixture.\&quot;,\&quot;verdict\&quot;:\&quot;ok\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>45</td><td><code>evt_00000045</code></td><td>check_completed</td><td>checker:runtime:checker</td><td><code>5f37f588e918</code></td><td><details><summary>payload</summary><pre>{
+  &quot;check_id&quot;: &quot;check_0004&quot;,
+  &quot;checker_call_id&quot;: &quot;call_0009&quot;,
+  &quot;evidence&quot;: [],
+  &quot;reason&quot;: &quot;The deterministic five-field step satisfies the integration fixture.&quot;,
+  &quot;target_output_sha256&quot;: &quot;90b1d55a70602bef0b966ab4d20385c3b1d78dc9adef75e2ea00eb856e927ea8&quot;,
+  &quot;target_step_revision_id&quot;: &quot;step_0004&quot;,
+  &quot;verdict&quot;: &quot;ok&quot;
+}</pre></details></td></tr><tr><td>46</td><td><code>evt_00000046</code></td><td>branch_status_changed</td><td>model:runtime:writer</td><td><code>3fb12b027144</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0002&quot;,
+  &quot;check_id&quot;: null,
+  &quot;from_status&quot;: &quot;active&quot;,
+  &quot;human_action_id&quot;: null,
+  &quot;model_call_id&quot;: null,
+  &quot;reason_code&quot;: &quot;writer_complete&quot;,
+  &quot;to_status&quot;: &quot;completed&quot;
+}</pre></details></td></tr><tr><td>47</td><td><code>evt_00000047</code></td><td>candidate_declared</td><td>model:runtime:writer</td><td><code>7a4f2d27f124</code></td><td><details><summary>payload</summary><pre>{
+  &quot;branch_id&quot;: &quot;br_0002&quot;,
+  &quot;candidate_id&quot;: &quot;cand_0002&quot;,
+  &quot;declared_by&quot;: &quot;writer&quot;,
+  &quot;reason&quot;: &quot;Writer declared the branch purpose reached after required checks.&quot;,
+  &quot;required_check_ids&quot;: [
+    &quot;check_0001&quot;,
+    &quot;check_0002&quot;,
+    &quot;check_0004&quot;
+  ],
+  &quot;tip_step_revision_id&quot;: &quot;step_0004&quot;,
+  &quot;transcript_sha256&quot;: &quot;24887b771417f3922f28fafbffe20787ca70b79e8ec1bfcea8ff5659a0ae4873&quot;,
+  &quot;transcript_step_revision_ids&quot;: [
+    &quot;step_0001&quot;,
+    &quot;step_0002&quot;,
+    &quot;step_0004&quot;
+  ]
+}</pre></details></td></tr><tr><td>48</td><td><code>evt_00000048</code></td><td>judgement_requested</td><td>system:record-runtime</td><td><code>de386a7c60ce</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_0002&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;24887b771417f3922f28fafbffe20787ca70b79e8ec1bfcea8ff5659a0ae4873&quot;,
+  &quot;judgement_id&quot;: &quot;judge_0002&quot;,
+  &quot;reason&quot;: &quot;Independent terminal judgement for an eligible candidate.&quot;,
+  &quot;requested_by&quot;: &quot;system&quot;
+}</pre></details></td></tr><tr><td>49</td><td><code>evt_00000049</code></td><td>model_call_started</td><td>judge:runtime:judge</td><td><code>26bf5e720490</code></td><td><details><summary>payload</summary><pre>{
+  &quot;effort&quot;: &quot;low&quot;,
+  &quot;model&quot;: &quot;deterministic-judge&quot;,
+  &quot;model_call_id&quot;: &quot;call_0010&quot;,
+  &quot;prompt_sha256&quot;: &quot;9087f4aed80cd215db20ff14a5404734ea900f5e68c57d5e427a92972cb9c185&quot;,
+  &quot;provider&quot;: &quot;fake&quot;,
+  &quot;role&quot;: &quot;judge&quot;,
+  &quot;target&quot;: {
+    &quot;judgement_id&quot;: &quot;judge_0002&quot;
+  }
+}</pre></details></td></tr><tr><td>50</td><td><code>evt_00000050</code></td><td>model_call_finished</td><td>judge:runtime:judge</td><td><code>8a0862f851cb</code></td><td><details><summary>payload</summary><pre>{
+  &quot;body_chars&quot;: 108,
+  &quot;finish_reason&quot;: &quot;stop&quot;,
+  &quot;model_call_id&quot;: &quot;call_0010&quot;,
+  &quot;output_sha256&quot;: &quot;86573ff5958c1249766e407fa47374f872e196bcf8746e1db3fb641be8e32e28&quot;,
+  &quot;output_text&quot;: &quot;{\&quot;reason\&quot;:\&quot;The deterministic candidate reached its bounded fixture objective.\&quot;,\&quot;score\&quot;:1.0,\&quot;verdict\&quot;:\&quot;pass\&quot;}&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 1,
+    &quot;output_tokens&quot;: 1
+  }
+}</pre></details></td></tr><tr><td>51</td><td><code>evt_00000051</code></td><td>judgement_completed</td><td>judge:runtime:judge</td><td><code>f82703d1ee91</code></td><td><details><summary>payload</summary><pre>{
+  &quot;candidate_id&quot;: &quot;cand_0002&quot;,
+  &quot;candidate_transcript_sha256&quot;: &quot;24887b771417f3922f28fafbffe20787ca70b79e8ec1bfcea8ff5659a0ae4873&quot;,
+  &quot;judge_call_id&quot;: &quot;call_0010&quot;,
+  &quot;judgement_id&quot;: &quot;judge_0002&quot;,
+  &quot;reason&quot;: &quot;The deterministic candidate reached its bounded fixture objective.&quot;,
+  &quot;score&quot;: 1.0,
+  &quot;verdict&quot;: &quot;pass&quot;
+}</pre></details></td></tr></tbody></table>
+</body>
+</html>

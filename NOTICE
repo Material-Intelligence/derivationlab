@@ -1,0 +1,124 @@
+DerivationLab
+Copyright 2026 Jiahao Xie
+
+Licensed under the Apache License, Version 2.0. See LICENSE for the full text.
+
+This repository contains source code only. It vendors no third-party package,
+font or binary. The software below is installed from public package registries
+when you build or run DerivationLab, and parts of it end up in what you build.
+It remains under its own licence; the licence texts are in each installed
+package.
+
+
+Python packages of the API service
+----------------------------------
+Pinned in src/derivation_api/uv.lock and installed by `uv` (runtime
+dependencies only; development tools such as pytest and ruff are not listed):
+
+  MIT: fastapi 0.140.13, pydantic 2.13.5, pydantic-core 2.46.5,
+    annotated-doc 0.0.5, annotated-types 0.8.0, anyio 4.14.2, h11 0.16.0,
+    typing-inspection 0.4.4, argon2-cffi 25.1.0, argon2-cffi-bindings 26.1.0,
+    zxcvbn 4.5.0
+  MIT-0: cffi 2.1.1
+  BSD-3-Clause: starlette 0.52.1, uvicorn 0.35.0, click 8.5.0, idna 3.19,
+    pycparser 3.0
+  PSF-2.0: typing-extensions 4.16.0
+
+The scientific runtime the model's tool calls use is a separate environment,
+provisioned at setup from src/derivation_runtime/scientific_runtime_requirements.lock:
+
+  BSD-3-Clause: sympy 1.14.0, mpmath 1.3.0
+
+
+npm packages of the web UI
+--------------------------
+Pinned in src/derivation_web/package-lock.json. These are the packages that the
+production build (`npm run build`) can bundle into src/derivation_web/dist/;
+the list is generated from the lock file's non-development entries. KaTeX's
+package includes the web fonts the build copies into dist/.
+
+MIT (124):
+  @types/debug 4.1.13, @types/estree 1.0.9, @types/estree-jsx 1.0.5,
+  @types/hast 3.0.5, @types/katex 0.16.8, @types/mdast 4.0.4, @types/ms 2.1.0,
+  @types/react 19.2.18, @types/unist 2.0.11, @types/unist 3.0.3, bail 2.0.2,
+  ccount 2.0.1, character-entities 2.0.2, character-entities-html4 2.1.0,
+  character-entities-legacy 3.0.0, character-reference-invalid 2.0.1,
+  comma-separated-tokens 2.0.3, commander 8.3.0, csstype 3.2.3, debug 4.4.3,
+  decode-named-character-reference 1.3.0, dequal 2.0.3, devlop 1.1.0,
+  escape-string-regexp 5.0.0, estree-util-is-identifier-name 3.0.0, extend
+  3.0.2, hast-util-from-html 2.0.3, hast-util-from-html-isomorphic 2.0.0,
+  hast-util-from-parse5 8.0.3, hast-util-is-element 3.0.0,
+  hast-util-parse-selector 4.0.0, hast-util-to-jsx-runtime 2.3.6,
+  hast-util-to-text 4.0.2, hast-util-whitespace 3.0.0, hastscript 9.0.1,
+  html-url-attributes 3.0.1, inline-style-parser 0.2.7, is-alphabetical 2.0.1,
+  is-alphanumerical 2.0.1, is-decimal 2.0.1, is-hexadecimal 2.0.1,
+  is-plain-obj 4.1.0, katex 0.16.47, longest-streak 3.1.0, markdown-table
+  3.0.4, mdast-util-find-and-replace 3.0.2, mdast-util-from-markdown 2.0.3,
+  mdast-util-gfm 3.1.0, mdast-util-gfm-autolink-literal 2.0.1,
+  mdast-util-gfm-footnote 2.1.0, mdast-util-gfm-strikethrough 2.0.0,
+  mdast-util-gfm-table 2.0.0, mdast-util-gfm-task-list-item 2.0.0,
+  mdast-util-math 3.0.0, mdast-util-mdx-expression 2.0.1, mdast-util-mdx-jsx
+  3.2.0, mdast-util-mdxjs-esm 2.0.1, mdast-util-phrasing 4.1.0,
+  mdast-util-to-hast 13.2.1, mdast-util-to-markdown 2.1.2,
+  mdast-util-to-string 4.0.0, micromark 4.0.2, micromark-core-commonmark
+  2.0.3, micromark-extension-gfm 3.0.0,
+  micromark-extension-gfm-autolink-literal 2.1.0,
+  micromark-extension-gfm-footnote 2.1.0,
+  micromark-extension-gfm-strikethrough 2.1.0, micromark-extension-gfm-table
+  2.1.1, micromark-extension-gfm-tagfilter 2.0.0,
+  micromark-extension-gfm-task-list-item 2.1.0, micromark-extension-math
+  3.1.0, micromark-factory-destination 2.0.1, micromark-factory-label 2.0.1,
+  micromark-factory-space 2.0.1, micromark-factory-title 2.0.1,
+  micromark-factory-whitespace 2.0.1, micromark-util-character 2.1.1,
+  micromark-util-chunked 2.0.1, micromark-util-classify-character 2.0.1,
+  micromark-util-combine-extensions 2.0.1,
+  micromark-util-decode-numeric-character-reference 2.0.2,
+  micromark-util-decode-string 2.0.1, micromark-util-encode 2.0.1,
+  micromark-util-html-tag-name 2.0.1, micromark-util-normalize-identifier
+  2.0.1, micromark-util-resolve-all 2.0.1, micromark-util-sanitize-uri 2.0.1,
+  micromark-util-subtokenize 2.1.0, micromark-util-symbol 2.0.1,
+  micromark-util-types 2.0.2, ms 2.1.3, parse-entities 4.0.2, parse5 7.3.0,
+  property-information 7.2.0, react 19.2.8, react-dom 19.2.8, react-markdown
+  10.1.0, rehype-katex 7.0.1, remark-gfm 4.0.1, remark-math 6.0.0,
+  remark-parse 11.0.0, remark-rehype 11.1.2, remark-stringify 11.0.0,
+  scheduler 0.27.0, space-separated-tokens 2.0.2, stringify-entities 4.0.4,
+  style-to-js 1.1.21, style-to-object 1.0.14, trim-lines 3.0.1, trough 2.2.0,
+  unified 11.0.5, unist-util-find-after 5.0.0, unist-util-is 6.0.1,
+  unist-util-position 5.0.0, unist-util-remove-position 5.0.0,
+  unist-util-stringify-position 4.0.0, unist-util-visit 5.1.0,
+  unist-util-visit-parents 6.0.2, vfile 6.0.3, vfile-location 5.0.3,
+  vfile-message 4.0.3, web-namespaces 2.0.1, zod 4.5.4, zwitch 2.0.4
+ISC (2):
+  @ungap/structured-clone 1.4.0, hast-util-from-dom 5.0.1
+BSD-2-Clause (1):
+  entities 6.0.1
+
+Development-only npm packages (build, test and lint tools; not bundled) number
+478 in the lock file: 422 MIT, 20 Apache-2.0, 19 ISC, 9 BSD-2-Clause,
+3 BSD-3-Clause, 1 MIT-0, 1 Python-2.0, 1 MPL-2.0 (axe-core, used by the
+accessibility tests), 1 CC-BY-4.0 (caniuse-lite data), 1 CC0-1.0.
+
+
+Software that is not redistributed
+----------------------------------
+- Codex CLI (OpenAI, Apache-2.0). Runs are executed through the official
+  `codex app-server`, which you install yourself; DerivationLab requires
+  version 0.147.0 exactly. The file
+  src/derivation_runtime/protocol_schema/codex_app_server_protocol.v2.schemas.json
+  is the app-server protocol schema generated from Codex CLI 0.147.0, kept so
+  the tests can check the client against the protocol it pins.
+- Tectonic (MIT) and its TeX resource bundle. PDF reporting uses Tectonic
+  0.17.0 with the default bundle v33 and the Fandol CJK fonts. None of it is in
+  this repository: tools/provision_tectonic.py downloads it and verifies it
+  against config/reporting/tectonic_runtime.lock.json and
+  config/reporting/tectonic_bundle_manifest.json (file names and digests only).
+  Those components remain under their own licences: MIT for Tectonic itself;
+  the LaTeX Project Public License, the SIL Open Font License 1.1, the GUST
+  Font License and others for the bundle's packages and fonts; GPL-3.0 with the
+  font exception for Fandol.
+
+
+Recorded runs
+-------------
+The run records under examples/runs/ are data, not code, and are offered under
+CC-BY 4.0. See examples/runs/README.md.

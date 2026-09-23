@@ -1,0 +1,78 @@
+/*
+ * Run header, live half: budget bar, active-call summary and the running phase pill.
+ *
+ * `styles.css` owns the header layout and is kept separate from the live half, so these
+ * rules live in their own file (imported from App.tsx). Every value reads a token with a fallback,
+ * and the pill rule is one class more specific than `.run-phase i` so it wins whatever the order.
+ */
+
+.run-progress {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--muted, #606060);
+  font-size: var(--font-size-meta, 12px);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.run-progress-track {
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--line, #E4E4E4);
+  overflow: hidden;
+}
+.run-progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent, #0069CC);
+  transition: width .2s ease;
+}
+.run-progress-text { color: var(--muted, #606060); }
+
+.run-live-calls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--accent, #0069CC);
+  font-size: var(--font-size-meta, 12px);
+  white-space: nowrap;
+}
+.run-live-calls > i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #0069CC);
+  animation: run-live-pulse 1.5s ease-in-out infinite;
+}
+.run-live-roles {
+  overflow: hidden;
+  color: var(--muted, #606060);
+  text-overflow: ellipsis;
+}
+
+/* The phase pill breathes only while the runtime is actually working. */
+.run-phase.is-live { border-color: var(--accent-line, #B8D7F3); color: var(--accent, #0069CC); }
+.run-phase.is-live i { background: var(--accent, #0069CC); animation: run-live-pulse 1.5s ease-in-out infinite; }
+
+@keyframes run-live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .28; }
+}
+
+@media (max-width: 760px) {
+  /* `.run-actions > span` is hidden at this width; the live signals must survive it. */
+  .run-live-roles { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .run-live-calls > i,
+  .run-phase.is-live i { animation: none; }
+  .run-progress-fill { transition: none; }
+}

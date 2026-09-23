@@ -1,0 +1,4 @@
+# Scratch space the application and its tests write into. Nothing here is
+# published; the directory is kept so the tests find it in a fresh clone.
+*
+!.gitignore

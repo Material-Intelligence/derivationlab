@@ -1,0 +1,889 @@
+{
+  "branches": [
+    {
+      "anchor_step_revision_id": "step_root_1_r1",
+      "branch_id": "br_human_direction",
+      "created_at": "2026-08-25T18:00:18Z",
+      "created_event_id": "evt_0019",
+      "created_reason": "human_direction",
+      "fork_mode": "after",
+      "human_action_id": "act_direction",
+      "hypothesis": {
+        "source": "human",
+        "source_event_id": "evt_0018",
+        "text": "Explore a direct consistency proof from the positive checkpoint."
+      },
+      "inherited_step_revision_ids": [
+        "step_root_1_r1"
+      ],
+      "lineage_branch_ids": [
+        "br_root",
+        "br_human_direction"
+      ],
+      "parent_branch_id": "br_root",
+      "provenance": {
+        "content_class": "human_steered",
+        "edit_action_ids": [],
+        "human_touched": true,
+        "operational_action_ids": [],
+        "steering_action_ids": [
+          "act_direction"
+        ]
+      },
+      "status": "paused",
+      "status_history": [
+        {
+          "event_id": "evt_0019",
+          "from": null,
+          "reason": "human_direction",
+          "seq": 19,
+          "to": "paused"
+        }
+      ],
+      "step_revision_ids": [
+        "step_root_1_r1"
+      ]
+    },
+    {
+      "anchor_step_revision_id": "step_root_2_r1",
+      "branch_id": "br_human_edit",
+      "created_at": "2026-08-25T18:00:24Z",
+      "created_event_id": "evt_0025",
+      "created_reason": "human_revision",
+      "fork_mode": "replace",
+      "human_action_id": "act_revision",
+      "hypothesis": {
+        "source": "human",
+        "source_event_id": "evt_0024",
+        "text": "Keep the positive invariant and replace the unsupported second step."
+      },
+      "inherited_step_revision_ids": [
+        "step_root_1_r1"
+      ],
+      "lineage_branch_ids": [
+        "br_root",
+        "br_human_edit"
+      ],
+      "parent_branch_id": "br_root",
+      "provenance": {
+        "content_class": "human_edited",
+        "edit_action_ids": [
+          "act_revision"
+        ],
+        "human_touched": true,
+        "operational_action_ids": [],
+        "steering_action_ids": []
+      },
+      "status": "completed",
+      "status_history": [
+        {
+          "event_id": "evt_0025",
+          "from": null,
+          "reason": "human_revision",
+          "seq": 25,
+          "to": "active"
+        },
+        {
+          "event_id": "evt_0038",
+          "from": "active",
+          "reason": "writer_complete",
+          "seq": 38,
+          "to": "completed"
+        }
+      ],
+      "step_revision_ids": [
+        "step_root_1_r1",
+        "step_edit_2_r2",
+        "step_edit_3_r1"
+      ]
+    },
+    {
+      "anchor_step_revision_id": "step_root_1_r1",
+      "branch_id": "br_instrument",
+      "created_at": "2026-08-25T18:00:19Z",
+      "created_event_id": "evt_0020",
+      "created_reason": "model_alternative",
+      "fork_mode": "after",
+      "human_action_id": null,
+      "hypothesis": {
+        "source": "model",
+        "source_event_id": null,
+        "text": "Try a fresh local continuation to exercise the instrument-failure path."
+      },
+      "inherited_step_revision_ids": [
+        "step_root_1_r1"
+      ],
+      "lineage_branch_ids": [
+        "br_root",
+        "br_instrument"
+      ],
+      "parent_branch_id": "br_root",
+      "provenance": {
+        "content_class": "model_only",
+        "edit_action_ids": [],
+        "human_touched": false,
+        "operational_action_ids": [],
+        "steering_action_ids": []
+      },
+      "status": "parked",
+      "status_history": [
+        {
+          "event_id": "evt_0020",
+          "from": null,
+          "reason": "model_alternative",
+          "seq": 20,
+          "to": "active"
+        },
+        {
+          "event_id": "evt_0023",
+          "from": "active",
+          "reason": "instrument_failure",
+          "seq": 23,
+          "to": "parked"
+        }
+      ],
+      "step_revision_ids": [
+        "step_root_1_r1"
+      ]
+    },
+    {
+      "anchor_step_revision_id": "step_root_1_r1",
+      "branch_id": "br_model_alt",
+      "created_at": "2026-08-25T18:00:16Z",
+      "created_event_id": "evt_0017",
+      "created_reason": "model_alternative",
+      "fork_mode": "after",
+      "human_action_id": null,
+      "hypothesis": {
+        "source": "model",
+        "source_event_id": null,
+        "text": "Use an alternative decomposition while preserving Q > 0."
+      },
+      "inherited_step_revision_ids": [
+        "step_root_1_r1"
+      ],
+      "lineage_branch_ids": [
+        "br_root",
+        "br_model_alt"
+      ],
+      "parent_branch_id": "br_root",
+      "provenance": {
+        "content_class": "model_only",
+        "edit_action_ids": [],
+        "human_touched": false,
+        "operational_action_ids": [],
+        "steering_action_ids": []
+      },
+      "status": "paused",
+      "status_history": [
+        {
+          "event_id": "evt_0017",
+          "from": null,
+          "reason": "model_alternative",
+          "seq": 17,
+          "to": "paused"
+        }
+      ],
+      "step_revision_ids": [
+        "step_root_1_r1"
+      ]
+    },
+    {
+      "anchor_step_revision_id": null,
+      "branch_id": "br_root",
+      "created_at": "2026-08-25T18:00:01Z",
+      "created_event_id": "evt_0002",
+      "created_reason": "root",
+      "fork_mode": "root",
+      "human_action_id": null,
+      "hypothesis": {
+        "source": "model",
+        "source_event_id": null,
+        "text": "Assume the invariant Q can be propagated consistently from the initial relation."
+      },
+      "inherited_step_revision_ids": [],
+      "lineage_branch_ids": [
+        "br_root"
+      ],
+      "parent_branch_id": null,
+      "provenance": {
+        "content_class": "model_only",
+        "edit_action_ids": [],
+        "human_touched": false,
+        "operational_action_ids": [],
+        "steering_action_ids": []
+      },
+      "status": "killed",
+      "status_history": [
+        {
+          "event_id": "evt_0002",
+          "from": null,
+          "reason": "root",
+          "seq": 2,
+          "to": "active"
+        },
+        {
+          "event_id": "evt_0015",
+          "from": "active",
+          "reason": "writer_complete",
+          "seq": 15,
+          "to": "completed"
+        },
+        {
+          "event_id": "evt_0043",
+          "from": "completed",
+          "reason": "hard_defect",
+          "seq": 43,
+          "to": "killed"
+        }
+      ],
+      "step_revision_ids": [
+        "step_root_1_r1",
+        "step_root_2_r1"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "branch_id": "br_human_edit",
+      "candidate_id": "cand_human_edit",
+      "declared_at": "2026-08-25T18:00:38Z",
+      "declared_by": "writer",
+      "declared_event_id": "evt_0039",
+      "declared_seq": 39,
+      "provenance": {
+        "content_class": "human_edited",
+        "edit_action_ids": [
+          "act_revision"
+        ],
+        "human_touched": true,
+        "operational_action_ids": [],
+        "steering_action_ids": []
+      },
+      "reason": "The replacement branch reaches a consistent fixture conclusion.",
+      "required_check_ids": [
+        "check_edit_2",
+        "check_edit_3",
+        "check_root_1"
+      ],
+      "status": "eligible",
+      "tip_step_revision_id": "step_edit_3_r1",
+      "transcript_sha256": "eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec",
+      "transcript_step_revision_ids": [
+        "step_root_1_r1",
+        "step_edit_2_r2",
+        "step_edit_3_r1"
+      ]
+    },
+    {
+      "branch_id": "br_root",
+      "candidate_id": "cand_root",
+      "declared_at": "2026-08-25T18:00:15Z",
+      "declared_by": "writer",
+      "declared_event_id": "evt_0016",
+      "declared_seq": 16,
+      "provenance": {
+        "content_class": "model_only",
+        "edit_action_ids": [],
+        "human_touched": false,
+        "operational_action_ids": [],
+        "steering_action_ids": []
+      },
+      "reason": "The root writer declares the toy target reached while one required check is pending.",
+      "required_check_ids": [
+        "check_root_1",
+        "check_root_2_late"
+      ],
+      "status": "rejected",
+      "tip_step_revision_id": "step_root_2_r1",
+      "transcript_sha256": "726f4a2ebb3c87609d97062adcf53f0660a5e549473128de8780c3cc425061fd",
+      "transcript_step_revision_ids": [
+        "step_root_1_r1",
+        "step_root_2_r1"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "check_edit_2",
+      "checker_call_id": "call_checker_edit_2",
+      "completed_at": "2026-08-25T18:00:29Z",
+      "completed_event_id": "evt_0030",
+      "completion_reason": "The new revision preserves the earlier sign and states its scope.",
+      "evidence": [],
+      "reason": "Check the exact human-authored replacement revision.",
+      "requested_at": "2026-08-25T18:00:26Z",
+      "requested_event_id": "evt_0027",
+      "required_for_candidate": true,
+      "state": "completed",
+      "target_output_sha256": "6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156",
+      "target_step_revision_id": "step_edit_2_r2",
+      "verdict": "ok"
+    },
+    {
+      "check_id": "check_edit_3",
+      "checker_call_id": "call_checker_edit_3",
+      "completed_at": "2026-08-25T18:00:36Z",
+      "completed_event_id": "evt_0037",
+      "completion_reason": "The explanation is terse and should be visible to final judgement, but it is not a hard defect.",
+      "evidence": [],
+      "reason": "Check the model-written closure step.",
+      "requested_at": "2026-08-25T18:00:33Z",
+      "requested_event_id": "evt_0034",
+      "required_for_candidate": true,
+      "state": "completed",
+      "target_output_sha256": "7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a",
+      "target_step_revision_id": "step_edit_3_r1",
+      "verdict": "objection"
+    },
+    {
+      "check_id": "check_root_1",
+      "checker_call_id": "call_checker_root_1",
+      "completed_at": "2026-08-25T18:00:09Z",
+      "completed_event_id": "evt_0010",
+      "completion_reason": "No executable defect was found in the sealed revision.",
+      "evidence": [],
+      "reason": "Every sealed step in the fixture receives a required step check.",
+      "requested_at": "2026-08-25T18:00:06Z",
+      "requested_event_id": "evt_0007",
+      "required_for_candidate": true,
+      "state": "completed",
+      "target_output_sha256": "2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83",
+      "target_step_revision_id": "step_root_1_r1",
+      "verdict": "ok"
+    },
+    {
+      "check_id": "check_root_2_late",
+      "checker_call_id": "call_checker_root_2_late",
+      "completed_at": "2026-08-25T18:00:41Z",
+      "completed_event_id": "evt_0042",
+      "completion_reason": "The same scoped invariant is asserted positive and then negative without a justified regime change.",
+      "evidence": [
+        {
+          "kind": "ancestor_quote",
+          "quote": "The invariant Q is positive at the first checkpoint.",
+          "source_id": "step_root_1_r1"
+        }
+      ],
+      "reason": "This check is deliberately completed after candidate declaration.",
+      "requested_at": "2026-08-25T18:00:13Z",
+      "requested_event_id": "evt_0014",
+      "required_for_candidate": true,
+      "state": "completed",
+      "target_output_sha256": "03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704",
+      "target_step_revision_id": "step_root_2_r1",
+      "verdict": "hard_defect"
+    }
+  ],
+  "event_log": {
+    "event_count": 49,
+    "head_event_sha256": "a983d8b0a9495b2ec061c2e93bf7604f772f1106fa08bc087df8e712cd1df4d2"
+  },
+  "human_actions": [
+    {
+      "action": "set_direction",
+      "action_id": "act_direction",
+      "actor_id": "fixture-reviewer",
+      "content": "Explore a direct consistency proof from the positive checkpoint.",
+      "content_sha256": "7792bae5dcf7c8a1f865753a38d7c18cf1df335d88e32cf36027be4b77f844fd",
+      "event_id": "evt_0018",
+      "reason": "Exercise explicit human steering without editing existing text.",
+      "recorded_at": "2026-08-25T18:00:17Z",
+      "seq": 18,
+      "target": {
+        "branch_id": "br_root"
+      }
+    },
+    {
+      "action": "revise_step",
+      "action_id": "act_revision",
+      "actor_id": "fixture-reviewer",
+      "content": "{\"claim\":\"The invariant Q remains positive at the second checkpoint.\",\"derivation\":\"Because Q = u^2 and no sign-changing operation is justified, Q stays positive.\",\"scope\":\"Applies while u is real and nonzero; no sign-changing transformation is assumed.\",\"source\":\"Fixture axiom A1 and explicit human revision act_revision.\",\"why\":\"The human reviewer removes the unsupported sign flip while preserving the first checkpoint.\"}",
+      "content_sha256": "6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156",
+      "event_id": "evt_0024",
+      "reason": "Replace the unsupported sign flip without mutating the old route.",
+      "recorded_at": "2026-08-25T18:00:23Z",
+      "seq": 24,
+      "target": {
+        "step_revision_id": "step_root_2_r1"
+      }
+    },
+    {
+      "action": "select_candidate",
+      "action_id": "act_select",
+      "actor_id": "fixture-reviewer",
+      "content": null,
+      "content_sha256": null,
+      "event_id": "evt_0048",
+      "reason": "Choose the only eligible candidate with a pass judgement.",
+      "recorded_at": "2026-08-25T18:00:47Z",
+      "seq": 48,
+      "target": {
+        "candidate_id": "cand_human_edit"
+      }
+    }
+  ],
+  "judgements": [
+    {
+      "candidate_id": "cand_human_edit",
+      "candidate_transcript_sha256": "eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec",
+      "completed_at": "2026-08-25T18:00:46Z",
+      "completed_event_id": "evt_0047",
+      "completion_reason": "The nonphysics fixture target is met and the human edit is clearly attributed.",
+      "judge_call_id": "call_judge_edit_final",
+      "judgement_id": "judge_edit_final",
+      "reason": "Send the eligible replacement candidate to independent final judgement.",
+      "requested_at": "2026-08-25T18:00:43Z",
+      "requested_by": "system",
+      "requested_event_id": "evt_0044",
+      "score": 1.0,
+      "state": "completed",
+      "verdict": "pass"
+    }
+  ],
+  "model_calls": [
+    {
+      "body_chars": 78,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:checker",
+      "model_call_id": "call_checker_edit_2",
+      "output_sha256": "c7b7c4def03462a89fe19b43589d9b6de3c91a284c096ed711bc97cf4d68ee19",
+      "output_text": "{\"reason\":\"The replacement is consistent with the first step.\",\"verdict\":\"ok\"}",
+      "prompt_sha256": "a303088353cfe9bd3a3c3991716c7b3085036edf29363645394baa1bcb035f42",
+      "provider": "mock",
+      "role": "checker",
+      "started_at": "2026-08-25T18:00:27Z",
+      "started_event_id": "evt_0028",
+      "state": "finished",
+      "target": {
+        "check_id": "check_edit_2"
+      },
+      "terminal_at": "2026-08-25T18:00:28Z",
+      "terminal_event_id": "evt_0029",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 78,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:checker",
+      "model_call_id": "call_checker_edit_3",
+      "output_sha256": "af39960fb65b87fab23e7cd16c342321ca12e2def191a069c833dfdf0a21f63b",
+      "output_text": "{\"reason\":\"The summary is terse but not contradictory.\",\"verdict\":\"objection\"}",
+      "prompt_sha256": "291db1ab9048d31796bee944b314ea45091e94f3610fa37ad19ae02b38a6199e",
+      "provider": "mock",
+      "role": "checker",
+      "started_at": "2026-08-25T18:00:34Z",
+      "started_event_id": "evt_0035",
+      "state": "finished",
+      "target": {
+        "check_id": "check_edit_3"
+      },
+      "terminal_at": "2026-08-25T18:00:35Z",
+      "terminal_event_id": "evt_0036",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 76,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:checker",
+      "model_call_id": "call_checker_root_1",
+      "output_sha256": "bea9e1d26bfe6a7351f644751d17c598443f3a4dca05f6565d60688526e1e8f1",
+      "output_text": "{\"reason\":\"The claim follows from the stated fixture axiom.\",\"verdict\":\"ok\"}",
+      "prompt_sha256": "513045506aacc8c2928374ad5bd1b7ecbb36f33612cbe9127b4f408603b0766d",
+      "provider": "mock",
+      "role": "checker",
+      "started_at": "2026-08-25T18:00:07Z",
+      "started_event_id": "evt_0008",
+      "state": "finished",
+      "target": {
+        "check_id": "check_root_1"
+      },
+      "terminal_at": "2026-08-25T18:00:08Z",
+      "terminal_event_id": "evt_0009",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 89,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:checker",
+      "model_call_id": "call_checker_root_2_late",
+      "output_sha256": "76e45e0419c81f86bcb0e897a843da12b6d09dff1807695c7e274a38ac91293c",
+      "output_text": "{\"reason\":\"The second root step directly contradicts the first.\",\"verdict\":\"hard_defect\"}",
+      "prompt_sha256": "fa7b2aeadd9b3ab24c5cdf0d423b656b6ee75e127d4d009ed7bc381d8e889af7",
+      "provider": "mock",
+      "role": "checker",
+      "started_at": "2026-08-25T18:00:39Z",
+      "started_event_id": "evt_0040",
+      "state": "finished",
+      "target": {
+        "check_id": "check_root_2_late"
+      },
+      "terminal_at": "2026-08-25T18:00:40Z",
+      "terminal_event_id": "evt_0041",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 117,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:judge",
+      "model_call_id": "call_judge_edit_final",
+      "output_sha256": "a0ea8e71e5d751cd7308c295abcf991da0e060329a54cf0d29da52a4f3716490",
+      "output_text": "{\"reason\":\"The fixture conclusion is internally consistent and provenance is explicit.\",\"score\":1.0,\"verdict\":\"pass\"}",
+      "prompt_sha256": "2640e1021bfce7a9b1d6903617a55de6c522e41d710c3c5dfd9c9120ff2bc1ae",
+      "provider": "mock",
+      "role": "judge",
+      "started_at": "2026-08-25T18:00:44Z",
+      "started_event_id": "evt_0045",
+      "state": "finished",
+      "target": {
+        "judgement_id": "judge_edit_final"
+      },
+      "terminal_at": "2026-08-25T18:00:45Z",
+      "terminal_event_id": "evt_0046",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 402,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:writer",
+      "model_call_id": "call_writer_edit_3",
+      "output_sha256": "7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a",
+      "output_text": "{\"claim\":\"The toy derivation closes with a self-consistent positive invariant.\",\"derivation\":\"Both sealed premises assert Q > 0 in the same scope; the conclusion records their consistent closure.\",\"scope\":\"Only the nonphysics fixture assumptions; no external scientific claim is made.\",\"source\":\"Steps step_root_1_r1 and step_edit_2_r2.\",\"why\":\"A final summary step makes the candidate goal explicit.\"}",
+      "prompt_sha256": "33972e14331b8b0ebe7cc6cb52d93798244bf7d7e64b92167b2dac1f2d4f0d58",
+      "provider": "mock",
+      "role": "writer",
+      "started_at": "2026-08-25T18:00:30Z",
+      "started_event_id": "evt_0031",
+      "state": "finished",
+      "target": {
+        "branch_id": "br_human_edit",
+        "step_slot": 3
+      },
+      "terminal_at": "2026-08-25T18:00:31Z",
+      "terminal_event_id": "evt_0032",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 284,
+      "chunks": [
+        {
+          "channel": "body",
+          "index": 0,
+          "model_call_id": "call_writer_s1",
+          "text": "{\"claim\":\"The invariant Q is positive at the first checkpoint.\",\"derivation\":\"From A1, Q = u^2 with u nonzero, so Q > 0.\",\"scope\":\"Applies while u is real and nonzero.\",\"source\":\"Fixture axiom A1.\",\"why\":\"This establishes the sign convention before any branch-specific manipulation.\"}",
+          "text_sha256": "2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83"
+        }
+      ],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:writer",
+      "model_call_id": "call_writer_s1",
+      "output_sha256": "2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83",
+      "output_text": "{\"claim\":\"The invariant Q is positive at the first checkpoint.\",\"derivation\":\"From A1, Q = u^2 with u nonzero, so Q > 0.\",\"scope\":\"Applies while u is real and nonzero.\",\"source\":\"Fixture axiom A1.\",\"why\":\"This establishes the sign convention before any branch-specific manipulation.\"}",
+      "prompt_sha256": "a51f85c4276895f435f4ed55a33df39372f7833fa7c8e6353f8955d1e8847bf3",
+      "provider": "mock",
+      "role": "writer",
+      "started_at": "2026-08-25T18:00:02Z",
+      "started_event_id": "evt_0003",
+      "state": "finished",
+      "target": {
+        "branch_id": "br_root",
+        "step_slot": 1
+      },
+      "terminal_at": "2026-08-25T18:00:04Z",
+      "terminal_event_id": "evt_0005",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 337,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": null,
+      "finish_reason": "mock_complete",
+      "model": "mock:writer",
+      "model_call_id": "call_writer_s2",
+      "output_sha256": "03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704",
+      "output_text": "{\"claim\":\"The same invariant Q is negative at the second checkpoint.\",\"derivation\":\"Applying T-root gives Q -> -Q; the route therefore records Q < 0.\",\"scope\":\"Claims the same real, nonzero regime as the first checkpoint.\",\"source\":\"Fixture transformation T-root.\",\"why\":\"The root route applies a sign flip to close the toy derivation.\"}",
+      "prompt_sha256": "079e4ac4bc1c6c6594f72b0ea297a4fa5167042c8c8d530aba7d361d5f2b55ba",
+      "provider": "mock",
+      "role": "writer",
+      "started_at": "2026-08-25T18:00:10Z",
+      "started_event_id": "evt_0011",
+      "state": "finished",
+      "target": {
+        "branch_id": "br_root",
+        "step_slot": 2
+      },
+      "terminal_at": "2026-08-25T18:00:11Z",
+      "terminal_event_id": "evt_0012",
+      "usage": {
+        "input_tokens": 0,
+        "mock": true,
+        "output_tokens": 0
+      }
+    },
+    {
+      "body_chars": 0,
+      "chunks": [],
+      "effort": "fixture",
+      "failure": {
+        "kind": "zero_body_instrument_failure",
+        "message": "Mock writer exhausted its output budget before emitting body text.",
+        "retryable": true
+      },
+      "model": "mock:writer",
+      "model_call_id": "call_writer_zero_body",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_text": "",
+      "prompt_sha256": "438cc77c9ed6ee337c7acf4206f95f6f69e87dac27d2886729f88cd9054e0860",
+      "provider": "mock",
+      "role": "writer",
+      "started_at": "2026-08-25T18:00:20Z",
+      "started_event_id": "evt_0021",
+      "state": "failed",
+      "target": {
+        "branch_id": "br_instrument",
+        "step_slot": 2
+      },
+      "terminal_at": "2026-08-25T18:00:21Z",
+      "terminal_event_id": "evt_0022"
+    }
+  ],
+  "run": {
+    "canonical_schema": {
+      "path": "docs/spec/derivation_agent_canonical_v1.schema.json",
+      "sha256": "f4050b21035309adb07b5a544132223984a941c697b1d2e24cab05fbc0753625"
+    },
+    "code_commit": "64fff20f1a2253a934f9dcbb3a15522add6f2c53",
+    "configuration": {
+      "backend": {
+        "name": "offline-golden-fixture",
+        "version": "1"
+      },
+      "granularity": "one_task",
+      "max_active_branches": null,
+      "max_model_calls": 32,
+      "models": {
+        "checker": {
+          "effort": "fixture",
+          "model": "mock:checker",
+          "provider": "mock"
+        },
+        "judge": {
+          "effort": "fixture",
+          "model": "mock:judge",
+          "provider": "mock"
+        },
+        "writer": {
+          "effort": "fixture",
+          "model": "mock:writer",
+          "provider": "mock"
+        }
+      }
+    },
+    "created_at": "2026-08-25T18:00:00Z",
+    "created_event_id": "evt_0001",
+    "event_schema": {
+      "path": "docs/spec/derivation_agent_event_v1.schema.json",
+      "sha256": "2d23d2490f6bc274e6f65d48a7e06df2ab144429ab05bdc9cd6a70e2ec868d24"
+    },
+    "input_policy": {
+      "allowed_paths": [],
+      "reference_allowed": false
+    },
+    "pack": {
+      "id": "fixture_empty_pack",
+      "sha256": "9d091c337dff2a149b383d19ef6a06cf489e060dd2e6df456dc37dfcf6fb6681"
+    },
+    "record_spec": {
+      "path": "docs/spec/DERIVATION_AGENT_RECORD_V1_cn.md",
+      "sha256": "9d6cfcd525ac2fe60921c01523bf29e1e81e8dd4cb290fb7e282101fc5a58a1b"
+    },
+    "run_id": "run_record_v1_fixture",
+    "task": {
+      "id": "fixture_nonphysics_task",
+      "sha256": "b00c338053da6866c271aeadd958451618e0e999d5257170dbd76938ebc07cb7"
+    }
+  },
+  "schema_version": "derivation-agent-canonical-v1",
+  "selections": [
+    {
+      "actor": {
+        "id": "fixture-reviewer",
+        "kind": "human"
+      },
+      "candidate_id": "cand_human_edit",
+      "candidate_transcript_sha256": "eb01e55f57be164c905ef1b58835c0b274cc8e1138cfee3c0ee095433e2847ec",
+      "event_id": "evt_0049",
+      "human_action_id": "act_select",
+      "judgement_id": "judge_edit_final",
+      "provenance": {
+        "content_class": "human_edited",
+        "edit_action_ids": [
+          "act_revision"
+        ],
+        "human_touched": true,
+        "operational_action_ids": [],
+        "selection_human_action_id": "act_select",
+        "steering_action_ids": []
+      },
+      "reason": "The root candidate was rejected by a late hard defect; the replacement candidate passed final judgement.",
+      "recorded_at": "2026-08-25T18:00:48Z",
+      "selection_id": "selection_final",
+      "seq": 49
+    }
+  ],
+  "step_revisions": [
+    {
+      "branch_id": "br_human_edit",
+      "content": {
+        "claim": "The invariant Q remains positive at the second checkpoint.",
+        "derivation": "Because Q = u^2 and no sign-changing operation is justified, Q stays positive.",
+        "scope": "Applies while u is real and nonzero; no sign-changing transformation is assumed.",
+        "source": "Fixture axiom A1 and explicit human revision act_revision.",
+        "why": "The human reviewer removes the unsupported sign flip while preserving the first checkpoint."
+      },
+      "origin": {
+        "human_action_id": "act_revision",
+        "kind": "human",
+        "model_call_id": null
+      },
+      "output_sha256": "6cc9b51f5101796cc011c84ce322e5633ad3820c82d38ffcc671f88965593156",
+      "replaces_step_revision_id": "step_root_2_r1",
+      "revision": 2,
+      "sealed_at": "2026-08-25T18:00:25Z",
+      "sealed_event_id": "evt_0026",
+      "step_revision_id": "step_edit_2_r2",
+      "step_slot": 2
+    },
+    {
+      "branch_id": "br_human_edit",
+      "content": {
+        "claim": "The toy derivation closes with a self-consistent positive invariant.",
+        "derivation": "Both sealed premises assert Q > 0 in the same scope; the conclusion records their consistent closure.",
+        "scope": "Only the nonphysics fixture assumptions; no external scientific claim is made.",
+        "source": "Steps step_root_1_r1 and step_edit_2_r2.",
+        "why": "A final summary step makes the candidate goal explicit."
+      },
+      "origin": {
+        "human_action_id": null,
+        "kind": "model",
+        "model_call_id": "call_writer_edit_3"
+      },
+      "output_sha256": "7e6f55ac8d9545316252ab7b0366218b45a0902d5eff933326d20f6e76867b0a",
+      "replaces_step_revision_id": null,
+      "revision": 1,
+      "sealed_at": "2026-08-25T18:00:32Z",
+      "sealed_event_id": "evt_0033",
+      "step_revision_id": "step_edit_3_r1",
+      "step_slot": 3
+    },
+    {
+      "branch_id": "br_root",
+      "content": {
+        "claim": "The invariant Q is positive at the first checkpoint.",
+        "derivation": "From A1, Q = u^2 with u nonzero, so Q > 0.",
+        "scope": "Applies while u is real and nonzero.",
+        "source": "Fixture axiom A1.",
+        "why": "This establishes the sign convention before any branch-specific manipulation."
+      },
+      "origin": {
+        "human_action_id": null,
+        "kind": "model",
+        "model_call_id": "call_writer_s1"
+      },
+      "output_sha256": "2ec6db3d29cc01341fbe18f9dfe5b0519b4945ce490d40d93e44220926a41a83",
+      "replaces_step_revision_id": null,
+      "revision": 1,
+      "sealed_at": "2026-08-25T18:00:05Z",
+      "sealed_event_id": "evt_0006",
+      "step_revision_id": "step_root_1_r1",
+      "step_slot": 1
+    },
+    {
+      "branch_id": "br_root",
+      "content": {
+        "claim": "The same invariant Q is negative at the second checkpoint.",
+        "derivation": "Applying T-root gives Q -> -Q; the route therefore records Q < 0.",
+        "scope": "Claims the same real, nonzero regime as the first checkpoint.",
+        "source": "Fixture transformation T-root.",
+        "why": "The root route applies a sign flip to close the toy derivation."
+      },
+      "origin": {
+        "human_action_id": null,
+        "kind": "model",
+        "model_call_id": "call_writer_s2"
+      },
+      "output_sha256": "03a06925408ac2f9d4d343e4e158c73318393ad8e97db2627cd61c0d76890704",
+      "replaces_step_revision_id": null,
+      "revision": 1,
+      "sealed_at": "2026-08-25T18:00:12Z",
+      "sealed_event_id": "evt_0013",
+      "step_revision_id": "step_root_2_r1",
+      "step_slot": 2
+    }
+  ],
+  "summary": {
+    "branch_count": 5,
+    "candidate_count": 2,
+    "candidate_status_counts": {
+      "blocked": 0,
+      "eligible": 1,
+      "provisional": 0,
+      "rejected": 1
+    },
+    "check_count": 4,
+    "judgement_count": 1,
+    "model_call_count": 9,
+    "selected_candidate_id": "cand_human_edit",
+    "selection_count": 1,
+    "step_revision_count": 4
+  }
+}

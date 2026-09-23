@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Environments
+.venv/
+venv/
+# The record library at the root pins nothing: it has no runtime dependencies
+# and the dev extra should resolve fresh. The API service under src/ does pin
+# its interpreter and lock file, so only the root copies are ignored.
+/.python-version
+/uv.lock
+
+# Secrets
+.env
+.env.*
+*.env
+
+# Web build and tooling output
+node_modules/
+*.tsbuildinfo
+
+# The Tectonic/TeX runtime is provisioned by tools/provision_tectonic.py and is
+# never committed: it is third-party software under several licences. The
+# script stages next to it (.runtime.staging-*) and keeps the old install aside
+# during the swap (.runtime.previous-*); a killed run can leave either behind.
+/src/derivation_app/resources/reporting/runtime/
+/src/derivation_app/resources/reporting/.runtime.*
+
+# Browser-smoke evidence
+.smoke/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# Rendered output is reproducible from the events; keep only what is committed
+# on purpose under examples/ and tests/fixtures/.
+/scratch/
+*.local.*
+
+# The release scanner's needle list: every string that must not appear in this
+# repository, which makes the list itself the one file that must never be in
+# it. `.release-needles.example` is the published format documentation; the
+# real list lives only in a private working copy. tests/test_release_check.py
+# asserts that this path is not in git's publish set.
+/.release-needles

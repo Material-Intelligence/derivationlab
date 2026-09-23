@@ -1,0 +1,45 @@
+{
+  "schema_version": "derivationlab-tectonic-runtime-lock-v1",
+  "tectonic_version": "0.17.0",
+  "managed_root": "src/derivation_app/resources/reporting/runtime",
+  "bundle": {
+    "path": "src/derivation_app/resources/reporting/runtime/tectonic-default-v33",
+    "sha256": "29c5072c80211e5928d67d7a188e345d9c4b248e144cd049816a83b4d1b891ae",
+    "source": "Tectonic default bundle v33 offline DirBundle with matching CJK packages fetched via tectonic bundle cat; Fandol fonts from TeX Live 2025 (GPL with font exception), 2026-09-10"
+  },
+  "targets": {
+    "darwin-arm64": {
+      "status": "provisioned",
+      "binary": {
+        "path": "src/derivation_app/resources/reporting/runtime/tectonic-0.17.0/darwin-arm64/tectonic",
+        "sha256": "b52b5a730e2b0b33087304f7720f649603953f270a6b1c88bb031e1ae01f7f9c",
+        "release_archive_sha256": "a3f1cac7c5678f01661a92212f58480ae3b0634115d880dbc59e2953ded45667"
+      },
+      "evidence": "Official Tectonic 0.17.0 aarch64 macOS binary and the audited offline default-v33 DirBundle were provisioned and verified on 2026-08-30."
+    },
+    "darwin-x86_64": {
+      "status": "unprovisioned",
+      "binary": {
+        "path": "src/derivation_app/resources/reporting/runtime/tectonic-0.17.0/darwin-x86_64/tectonic",
+        "sha256": null
+      },
+      "evidence": "No reviewed x86_64 macOS artifact is provisioned."
+    },
+    "linux-x86_64": {
+      "status": "unprovisioned",
+      "binary": {
+        "path": "src/derivation_app/resources/reporting/runtime/tectonic-0.17.0/linux-x86_64/tectonic",
+        "sha256": null
+      },
+      "evidence": "No reviewed Linux artifact is provisioned."
+    },
+    "windows-x86_64": {
+      "status": "unprovisioned",
+      "binary": {
+        "path": "src/derivation_app/resources/reporting/runtime/tectonic-0.17.0/windows-x86_64/tectonic.exe",
+        "sha256": null
+      },
+      "evidence": "No reviewed Windows artifact is provisioned."
+    }
+  }
+}

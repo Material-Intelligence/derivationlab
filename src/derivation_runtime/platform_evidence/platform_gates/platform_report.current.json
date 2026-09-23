@@ -1,0 +1,127 @@
+{
+  "schema_version": "derivation-platform-report-set-v1",
+  "manifest": "conformance_manifest.json",
+  "generated_at": "2026-08-30T03:10:46Z",
+  "platform_reports": [
+    {
+      "platform": "macos",
+      "status": "pending",
+      "launch_security_status": "supported",
+      "reason": "No-model launch/security plus real ChatGPT account persistence, restart/resume, and completed-node fork passed. The one-call product FastAPI smoke remained fail-closed because the provider emitted a forbidden tool/process event, so full product vertical support is still pending."
+    },
+    {
+      "platform": "linux",
+      "status": "pending",
+      "launch_security_status": "pending",
+      "reason": "The tested Colima host failed native sandbox prerequisites; no Linux host has a passing conformance report."
+    },
+    {
+      "platform": "windows",
+      "status": "pending",
+      "launch_security_status": "pending",
+      "reason": "No native Windows 11 elevated-sandbox host has been tested."
+    }
+  ],
+  "host_results": [
+    {
+      "host_id": "macos-arm64-local-20260829",
+      "platform": "macos",
+      "architecture": "arm64",
+      "os_description": "macOS arm64 local host",
+      "codex_version": "0.147.0",
+      "sandbox_backend": "seatbelt",
+      "status": "supported",
+      "authorizes_model_turns": true,
+      "scope": "launch_security_and_subscription_lineage",
+      "checks": {
+        "app_server_initialize": "passed",
+        "sandbox_activation": "passed",
+        "workspace_read": "passed",
+        "workspace_write": "passed",
+        "adjacent_read_denied": "passed",
+        "symlink_escape_denied": "passed",
+        "windows_junction_escape_denied": "not_applicable",
+        "network_off": "passed",
+        "python_sympy": "passed",
+        "account_persistence": "passed",
+        "restart_resume": "passed",
+        "fork_completed_node": "passed"
+      },
+      "evidence": [
+        {
+          "path": "../app_server_probe/uv_runtime_probe/probe_results.json",
+          "sha256": "d98178d61584428d3f6959985d9d21bce1c6d4a689dff0d703da2af83c7fc2e6",
+          "contains_secrets": false,
+          "used_model_call": false
+        },
+        {
+          "path": "macos_no_model_probe/probe_results.json",
+          "sha256": "5a62fa6f38a6721a2549f3bd03b226ec6315377d7434a8e9e8e3ec4e629fbcda",
+          "contains_secrets": false,
+          "used_model_call": false
+        },
+        {
+          "path": null,
+          "published": false,
+          "note": "development run artefact, not in this repository; identified by digest only",
+          "sha256": "99b38e8c94518a7e94877f1580bfc1edbf2c622f50ce234bd3e0b816978acf98",
+          "contains_secrets": false,
+          "used_model_call": true
+        },
+        {
+          "path": null,
+          "published": false,
+          "note": "development run artefact, not in this repository; identified by digest only",
+          "sha256": "886ed70c6b67b18e989e9dd3bddcce37e3b0a3c42a028da5d1dec18e31ed09f1",
+          "contains_secrets": false,
+          "used_model_call": true
+        }
+      ]
+    },
+    {
+      "host_id": "colima-ubuntu-24.04.4-arm64-20260829",
+      "platform": "linux",
+      "architecture": "arm64",
+      "os_description": "Ubuntu 24.04.4 LTS in Colima",
+      "codex_version": "0.147.0",
+      "sandbox_backend": "bubblewrap_seccomp",
+      "status": "failed",
+      "authorizes_model_turns": false,
+      "scope": "concrete_host_only",
+      "checks": {
+        "app_server_initialize": "passed",
+        "sandbox_activation": "failed",
+        "workspace_read": "not_run",
+        "workspace_write": "not_run",
+        "adjacent_read_denied": "not_run",
+        "symlink_escape_denied": "not_run",
+        "windows_junction_escape_denied": "not_applicable",
+        "network_off": "not_run",
+        "python_sympy": "not_run",
+        "account_persistence": "not_run",
+        "restart_resume": "not_run",
+        "fork_completed_node": "not_run"
+      },
+      "observations": [
+        "App Server initialize succeeded over stdio JSONL.",
+        "initialize reported userAgent linux_gate/0.147.0 (Ubuntu 24.4.0; aarch64), platformFamily unix, platformOs linux.",
+        "configWarning reported that the Linux sandbox needs access to create user namespaces.",
+        "codex sandbox linux entered bubblewrap, then failed loopback RTM_NEWADDR with Operation not permitted.",
+        "kernel.unprivileged_userns_clone was 1 and user.max_user_namespaces was 31513, but unshare -Urn failed writing /proc/self/uid_map."
+      ],
+      "failures": [
+        "bubblewrap cannot create the required network/user namespace on this Colima host"
+      ],
+      "evidence": [
+        {
+          "path": null,
+          "sha256": null,
+          "evidence_kind": "live_no_model_observation",
+          "contains_secrets": false,
+          "used_model_call": false
+        }
+      ]
+    }
+  ],
+  "secret_material_recorded": false
+}

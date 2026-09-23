@@ -1,0 +1,93 @@
+/*
+ * Tree map: collapse toggles, node meta line, and the low-zoom overview degradation.
+ *
+ * Scoped to the pieces this component introduces. Node, edge and panel chrome stay in styles.css;
+ * if that file grows its own `.tree-svg.is-overview` rules they win (styles.css is imported last),
+ * which is deliberate — these are the fallback so the class is never dead.
+ */
+
+.tree-toggle { cursor: pointer; }
+.tree-toggle:focus, .tree-toggle:focus-visible { outline: none !important; }
+.tree-toggle circle {
+  fill: var(--surface, #FFFFFF);
+  stroke: var(--line-strong, #D9D9D9);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: stroke .1s ease, fill .1s ease;
+}
+.tree-toggle:hover circle { stroke: var(--accent, #0069CC); }
+.tree-toggle:focus-visible circle { stroke: var(--accent, #0069CC); stroke-width: 2; }
+.tree-toggle text {
+  fill: var(--muted, #606060);
+  font-size: var(--font-size-ui, 13px);
+  font-weight: var(--font-weight-semibold, 600);
+  pointer-events: none;
+  user-select: none;
+}
+.tree-toggle:hover text, .tree-toggle:focus-visible text { fill: var(--accent, #0069CC); }
+
+.node-meta { fill: var(--muted, #606060); font-size: var(--font-size-caption, 10px); }
+.node-holds-selection { fill: var(--accent, #0069CC); font-size: 9px; letter-spacing: 0; }
+
+.tree-svg.is-overview .node-order,
+.tree-svg.is-overview .node-status,
+.tree-svg.is-overview .node-meta,
+.tree-svg.is-overview .node-holds-selection { display: none; }
+.tree-svg.is-overview .node-title { font-size: 18px; }
+.tree-svg.is-overview .tree-toggle text { font-size: 18px; }
+
+/*
+ * Live run: the step being written has no node yet (a step enters `run.steps` only once sealed),
+ * so a running call is drawn as a dashed ghost hanging under the sealed step it continues.
+ * `.tree-node.running` covers the other half: a node the record itself reports as still running.
+ */
+.tree-node.running rect {
+  stroke: var(--accent, #0069CC);
+  stroke-dasharray: 5 4;
+  fill: var(--accent-soft, #EAF3FC);
+}
+.tree-node.running .node-status {
+  fill: var(--accent, #0069CC);
+  animation: tree-live-pulse 1.5s ease-in-out infinite;
+}
+
+.tree-ghost { pointer-events: none; }
+.tree-ghost rect {
+  fill: var(--surface, #FFFFFF);
+  stroke: var(--accent, #0069CC);
+  stroke-width: 1;
+  stroke-dasharray: 5 4;
+  vector-effect: non-scaling-stroke;
+}
+.tree-ghost-link {
+  fill: none;
+  stroke: var(--accent-line, #B8D7F3);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  vector-effect: non-scaling-stroke;
+}
+.tree-ghost-role {
+  fill: var(--accent, #0069CC);
+  font-size: var(--font-size-caption, 11px);
+  font-weight: var(--font-weight-semibold, 600);
+  user-select: none;
+}
+.tree-ghost-pulse {
+  fill: var(--accent, #0069CC);
+  animation: tree-live-pulse 1.5s ease-in-out infinite;
+}
+
+/* The map never pans itself during a run; the fit control is marked when a ghost is off screen. */
+.canvas-tools button.is-live { color: var(--accent, #0069CC); font-weight: var(--font-weight-semibold, 600); }
+
+.tree-svg.is-overview .tree-ghost-role { display: none; }
+
+@keyframes tree-live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .28; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tree-node.running .node-status,
+  .tree-ghost-pulse { animation: none; }
+}
